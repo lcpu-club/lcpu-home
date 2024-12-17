@@ -8,6 +8,13 @@ import type { Activity } from '@/data/activity';
 import type { News } from '@/data/news';
 import ActivityListEntry from '@/components/ActivityListEntry.vue';
 import NewsListEntry from '@/components/NewsListEntry.vue';
+import AutoDarkImage from '@/components/AutoDarkImage.vue';
+
+import LcpuDark from '../assets/lcpu-dark.svg';
+import LcpuLight from '../assets/lcpu-light.svg';
+import GithubMark from '../assets/github-mark.svg';
+import GithubMarkWhite from '../assets/github-mark-white.svg';
+
 const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
 const news = rawNewsList as News[];
@@ -17,11 +24,13 @@ const news = rawNewsList as News[];
   <main>
     <div w-full md:h-screen md:grid md:grid-cols-3>
       <div flex="~ items-center justify-center col" w-full h-full m-t-24 md:m-t-0>
-        <img h-48 src="../assets/lcpu-dark.svg">
+        <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
         <!-- TODO: Dark mode switch -->
-        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-4><img src="../assets/github-mark.svg" h-full w-full></a>
+        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-4>
+          <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full w-full />
+        </a>
       </div>
       <div col-span-2 p-x-6 p-y-12 md:p-x-12 overflow-auto>
         <h2>项目</h2>

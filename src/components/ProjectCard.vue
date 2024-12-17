@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Project } from '@/data/project';
 import { ArrowRightIcon } from '@heroicons/vue/24/outline';
+import AutoDarkImage from './AutoDarkImage.vue';
 
 defineProps<{
     project: Project;
@@ -12,7 +13,8 @@ defineProps<{
         class="group">
         <div h-12 w-12 rounded-md bg-gray-200 dark:bg-dark-700 flex justify-center items-center box-border p-2
             border="1 gray-300 dark:dark-200 solid">
-            <img :src="project.image" :alt="project.title" object-contain w-8 h-8>
+            <AutoDarkImage :src="project.image" :src-dark="project.imageDark" :alt="project.title" object-contain w-8
+                h-8 />
         </div>
         <span m-t-1 text-xl font-semibold>{{ project.title }}</span>
         <p p-0 m-0 flex-1>{{ project.description }}</p>
