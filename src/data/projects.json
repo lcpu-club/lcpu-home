@@ -22,24 +22,28 @@
     "title": "PKUGit",
     "description": "便捷 · 安全 · 助力科研开发",
     "image": "/projects/pkugit.svg",
+    "imageDark": "/projects/pkugit-dark.svg",
     "link": "https://git.pku.edu.cn/"
   },
   {
     "title": "北京大学开源镜像站",
-    "description": "少个图标而且也没有 description...",
-    "image": "/projects/pku-mirrors.png",
+    "description": "立足燕园，解放 TUNA！",
+    "image": "/projects/pku-mirrors.svg",
+    "imageDark": "/projects/pku-mirrors-dark.svg",
     "link": "https://mirrors.pku.edu.cn/"
   },
   {
     "title": "GeekGame",
     "description": "“京华杯”信息安全综合能力竞赛",
     "image": "/projects/geekgame.png",
+    "imageDark": "/projects/geekgame-dark.png",
     "link": "https://geekgame.pku.edu.cn/"
   },
   {
     "title": "Arch Linux LoongArch Patches",
     "description": "为 LoongArch 架构的 Arch Linux 打包",
-    "image": "/projects/archlinux-loongarch.svg",
+    "image": "/projects/loongarch.svg",
+    "imageDark": "/projects/loongarch-dark-alt.svg",
     "link": "https://github.com/lcpu-club/loongarch-packages"
   }
 ]

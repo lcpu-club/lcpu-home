@@ -28,7 +28,7 @@ const news = rawNewsList as News[];
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
         <!-- TODO: Dark mode switch -->
-        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-4>
+        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-8>
           <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full w-full />
         </a>
       </div>
