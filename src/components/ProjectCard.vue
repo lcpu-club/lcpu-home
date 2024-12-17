@@ -8,8 +8,10 @@ defineProps<{
 </script>
 <template>
     <a :href="project.link" target="_blank" rel="noopener noreferrer" text-unset decoration-none rounded-xl bg-gray-100
-        flex="~ col gap-2" w-full h-auto p-4 box-border border="1 gray-200 solid" class="group">
-        <div h-12 w-12 rounded-md bg-gray-200 flex justify-center items-center box-border p-2 border="1 gray-300 solid">
+        dark:bg-dark-600 flex="~ col gap-2" w-full h-auto p-4 box-border border="1 gray-200 dark:dark-100 solid"
+        class="group">
+        <div h-12 w-12 rounded-md bg-gray-200 dark:bg-dark-700 flex justify-center items-center box-border p-2
+            border="1 gray-300 dark:dark-200 solid">
             <img :src="project.image" :alt="project.title" object-contain w-8 h-8>
         </div>
         <span m-t-1 text-xl font-semibold>{{ project.title }}</span>
