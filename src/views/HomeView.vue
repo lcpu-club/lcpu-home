@@ -20,6 +20,8 @@ const news = rawNewsList as News[];
         <img h-48 src="../assets/lcpu-dark.svg">
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
+        <!-- TODO: Dark mode switch -->
+        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-4><img src="../assets/github-mark.svg" h-full w-full></a>
       </div>
       <div col-span-2 p-x-6 p-y-12 md:p-x-12 overflow-auto>
         <h2>项目</h2>
