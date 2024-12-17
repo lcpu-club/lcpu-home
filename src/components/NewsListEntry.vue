@@ -10,7 +10,7 @@ defineProps<{
     <div border-t="1 gray-200 solid" class="news-list-entry" p-y-4 box-border>
         <h3 m-0>{{ news.title }}</h3>
         <!-- doesn't seem to be the best way, but it works -->
-        <div flex="~ items-center gap-2" m-t-1 text-gray-500>
+        <div flex="~ items-center gap-1" m-t-1 text-gray-500>
             <span>{{ new Date(news.time).toLocaleString('zh', {
                 timeZone: 'UTC',
                 year: "numeric",
