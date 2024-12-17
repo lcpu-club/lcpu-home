@@ -1,0 +1,33 @@
+[
+  {
+    "title": "云计算平台",
+    "description": "开箱即用的免费云计算服务，为教学与科研服务",
+    "image": "/projects/clab.svg",
+    "link": "https://clab.pku.edu.cn/"
+  },
+  {
+    "title": "PKUTEX",
+    "description": "这里写什么呢？",
+    "image": "/projects/pkutex-light.svg",
+    "imageDark": "/projects/pkutex-dark.svg",
+    "link": "https://latex.pku.edu.cn/"
+  },
+  {
+    "title": "PKUGit",
+    "description": "便捷 · 安全 · 助力科研开发",
+    "image": "/projects/pkugit.svg",
+    "link": "https://git.pku.edu.cn/"
+  },
+  {
+    "title": "北京大学开源镜像站",
+    "description": "少个图标而且也没有 description...",
+    "image": "/projects/pku-mirrors.png",
+    "link": "https://mirrors.pku.edu.cn/"
+  },
+  {
+    "title": "GeekGame",
+    "description": "“京华杯”信息安全综合能力竞赛",
+    "image": "/projects/geekgame.png",
+    "link": "https://geekgame.pku.edu.cn/"
+  }
+]

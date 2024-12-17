@@ -1,0 +1,20 @@
+<script setup lang="ts">
+import type { Project } from '@/data/project';
+import { ArrowRightIcon } from '@heroicons/vue/24/outline';
+
+defineProps<{
+    project: Project;
+}>();
+</script>
+<template>
+    <a :href="project.link" target="_blank" rel="noopener noreferrer" text-unset decoration-none rounded-xl bg-gray-100
+        flex="~ col gap-2" w-full h-auto p-4 box-border border="1 gray-200 solid" class="group">
+        <div h-12 w-12 rounded-md bg-gray-200 flex justify-center items-center box-border p-2 border="1 gray-300 solid">
+            <img :src="project.image" :alt="project.title" object-contain w-8 h-8>
+        </div>
+        <span m-t-1 text-xl font-semibold>{{ project.title }}</span>
+        <p p-0 m-0 flex-1>{{ project.description }}</p>
+        <ArrowRightIcon
+            class="h-5 w-5 text-gray-500 self-end group-hover:translate-x-1 transition-transform duration-200" />
+    </a>
+</template>
