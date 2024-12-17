@@ -2,6 +2,7 @@ import { PluginOption } from 'vite'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
 import type { News } from '../src/data/news'
+import path from 'node:path'
 
 export default function newsListGenerator(): PluginOption {
   const virtualModuleId = 'virtual:news-list.json'
@@ -19,17 +20,18 @@ export default function newsListGenerator(): PluginOption {
         const data = fg
           .sync('./src/data/news/*.md')
           .map((entry) => {
-            return matter.read(entry, { excerpt: true })
+            return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
           })
           .map((file): News => {
+            const { entry, frontmatter } = file
+            const filename = path.parse(entry).name
             return {
-              ...(file.data as { time: Date; title: string; category: string }),
-              excerpt: file.excerpt,
-              // file.data.time.toISOString().slice(0, 10): YYYY-MM-DD
-              contentUrl: `/activities/${file.data.time.toISOString().slice(0, 10)}-${file.data.title}`,
+              ...(frontmatter.data as { time: Date; title: string; category?: string }),
+              excerpt: frontmatter.excerpt,
+              contentUrl: `/news/${filename}`,
             }
           })
-          .sort((a, b) => a.time.valueOf() - b.time.valueOf())
+          .sort((a, b) => b.time.valueOf() - a.time.valueOf())
         return JSON.stringify(data)
       }
     },
