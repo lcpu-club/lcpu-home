@@ -8,18 +8,6 @@ import { createRouter, RouterSymbol } from './router/router'
 const activityModules = import.meta.glob('./data/activities/*.md')
 const newsModules = import.meta.glob('./data/news/*.md')
 
-for (const path in activityModules) {
-  activityModules[path]().then((mod) => {
-    console.log(path, mod)
-  })
-}
-
-for (const path in newsModules) {
-  newsModules[path]().then((mod) => {
-    console.log(path, mod)
-  })
-}
-
 const app = createApp(App)
 const router = createRouter()
 
