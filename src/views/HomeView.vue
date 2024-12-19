@@ -23,7 +23,7 @@ const news = rawNewsList as News[];
 
 <template>
   <main>
-    <div w-full md:h-screen md:h-100dvh md:grid md:grid-cols-3>
+    <div w-full md:h-screen md:h-100dvh md:grid md:grid-cols-3 max-w-1680px m-x-auto>
       <div flex="~ items-center justify-center col" w-full h-full m-t-24 md:m-t-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
