@@ -3,10 +3,13 @@ import './assets/base.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import { createRouter, RouterSymbol } from './router/router'
 
 const app = createApp(App)
+const router = createRouter()
 
-app.use(router)
+app.provide(RouterSymbol, router)
 
-app.mount('#app')
+router.go().then(() => {
+  app.mount('#app')
+})
