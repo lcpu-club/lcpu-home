@@ -63,3 +63,7 @@ td {
 td {
   --at-apply: bg-light-200 'dark:bg-dark-400';
 }
+
+hr {
+  --at-apply: border-solid border-0 b-t-1 border-gray-200 'dark:border-dark-100';
+}

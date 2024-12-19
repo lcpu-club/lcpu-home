@@ -1,5 +1,5 @@
 export interface News {
-  time: Date
+  time: string
   title: string
   category?: string
   excerpt?: string

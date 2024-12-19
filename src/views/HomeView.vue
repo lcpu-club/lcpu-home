@@ -22,7 +22,7 @@ const news = rawNewsList as News[];
 
 <template>
   <main>
-    <div w-full md:h-screen md:grid md:grid-cols-3>
+    <div w-full md:h-screen md:h-100dvh md:grid md:grid-cols-3>
       <div flex="~ items-center justify-center col" w-full h-full m-t-24 md:m-t-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
@@ -37,13 +37,18 @@ const news = rawNewsList as News[];
           <ProjectCard v-for="project in projects" :key="project.title" :project="project" />
         </div>
 
-        <h2 m-t-12>活动</h2>
-        <div>
-          <ActivityListEntry v-for="activity in activities" :key="activity.title" :activity="activity" />
+        <div m-t-12 flex="~ items-center">
+          <h2 flex-grow-1>活动</h2>
+          <a href="/activities/" v-if="activities.length > 3">更多活动...</a>
         </div>
+
+        <div>
+          <ActivityListEntry v-for="activity in activities.slice(0, 3)" :key="activity.title" :activity="activity" />
+        </div>
+
         <h2>新闻</h2>
         <div>
-          <NewsListEntry v-for="_news in news" :key="_news.title" :news="_news" />
+          <NewsListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :news="_news" />
         </div>
       </div>
     </div>

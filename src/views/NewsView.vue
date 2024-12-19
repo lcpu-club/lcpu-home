@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject, shallowRef, watch } from 'vue';
+import { defineAsyncComponent, inject, ref, shallowRef, watch } from 'vue';
 import rawNewsList from 'virtual:news-list.json'
 import type { News } from '@/data/news';
 import AutoDarkImage from '@/components/AutoDarkImage.vue';
@@ -8,14 +8,23 @@ import LcpuLight from '@/assets/lcpu-light.svg';
 import LcpuDark from '@/assets/lcpu-dark.svg';
 import NotFoundView from '@/views/NotFoundView.vue';
 import type { Module } from '@/module';
+import { useTitle } from '@vueuse/core';
+import { dateString } from '@/utils';
 
 const route = useRoute();
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
+const title = useTitle('', { titleTemplate: '%s | 新闻 - 北京大学 Linux 俱乐部' });
+const currentNews = ref<News | null>();
+const scrollViewRef = ref<HTMLDivElement>();
 
 async function resolvePageModule(routerPath: string): Promise<Module> {
   const url = new URL(routerPath, 'http://a.com');
   const path = url.pathname;
+
+  currentNews.value = newsList.find((activity) => activity.contentUrl === path) || null;
+  title.value = currentNews.value?.title;
+
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
     if (modulePath in newsModules) {
@@ -31,12 +40,13 @@ const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.pa
 
 watch(route, async (newVal) => {
   Content.value = (await resolvePageModule(newVal.path)).default;
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
 })
 
 </script>
 
 <template>
-  <div lg:grid lg:grid-cols-4 h-screen>
+  <div lg:grid lg:grid-cols-4 h-screen h-100dvh>
     <div hidden lg:display-unset p-12 bg-gray-100 dark:bg-dark-800 overflow-auto>
       <a flex="~ items-center gap-2" href="/" class="text-unset! decoration-none">
         <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" />
@@ -50,8 +60,16 @@ watch(route, async (newVal) => {
           }}</a>
       </div>
     </div>
-    <div lg:col-span-3 p-y-12 p-x-6 md:p-x-12 overflow-auto>
-      <component :is="Content" />
+    <div lg:col-span-3 p-y-12 p-x-6 md:p-x-12 overflow-auto ref="scrollViewRef">
+      <div v-if="currentNews" m-b-8 max-w-800px m-x-auto>
+        <h1 m-0>{{ currentNews.title }}</h1>
+        <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-gray-300>
+          <span>{{ dateString(currentNews.time) }}</span>
+          <span v-if="currentNews.category?.trim()">·</span>
+          <span v-if="currentNews.category?.trim()">{{ currentNews.category }}</span>
+        </div>
+      </div>
+      <component :is="Content" max-w-800px m-x-auto />
     </div>
   </div>
 </template>

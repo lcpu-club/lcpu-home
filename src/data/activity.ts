@@ -1,5 +1,5 @@
 export interface Activity {
-  time: Date
+  time: string
   title: string
   excerpt?: string
   contentUrl: string
