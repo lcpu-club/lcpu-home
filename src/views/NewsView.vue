@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject } from 'vue';
+import { defineAsyncComponent, inject, shallowRef, watch } from 'vue';
 import rawNewsList from 'virtual:news-list.json'
 import type { News } from '@/data/news';
 import AutoDarkImage from '@/components/AutoDarkImage.vue';
@@ -12,13 +12,11 @@ import type { Module } from '@/module';
 const route = useRoute();
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
-const url = new URL(route.path, 'http://a.com');
-const path = url.pathname;
-const modulePath = './data' + path + '.md';
-console.log(path)
-console.log(newsModules)
 
-const Content = defineAsyncComponent(() => {
+async function resolvePageModule(routerPath: string): Promise<Module> {
+  const url = new URL(routerPath, 'http://a.com');
+  const path = url.pathname;
+  const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
     if (modulePath in newsModules) {
       let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
@@ -27,6 +25,13 @@ const Content = defineAsyncComponent(() => {
     }
     else resolve(NotFoundView as unknown as Module);
   })
+}
+
+const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
+
+watch(route, async (newVal) => {
+  console.log('route changed', newVal);
+  Content.value = (await resolvePageModule(newVal.path)).default;
 })
 
 </script>
