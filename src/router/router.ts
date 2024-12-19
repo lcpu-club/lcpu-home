@@ -23,13 +23,11 @@ const getDefaultRoute = (): Route => ({
   mainComponent: null,
 })
 
-console.log(111)
-
 export function createRouter(): Router {
   const route = reactive(getDefaultRoute())
   const go = async (href?: string) => {
     if (!href) href = window.location.href
-    let { isMarkdownPage, mainModule } = getMainModule(href)
+    let mainModule = getMainModule(href)
     if ('then' in mainModule && typeof mainModule.then === 'function') {
       mainModule = await mainModule
     }
@@ -109,17 +107,12 @@ function initListeners(go: (href?: string) => Promise<void>) {
   })
 }
 
-function getMainModule(href: string): {
-  isMarkdownPage: boolean
-  mainModule: Module | Promise<Module>
-} {
+function getMainModule(href: string): Module | Promise<Module> {
   const url = new URL(href, 'http://a.com/')
   const path = url.pathname
-  if (path === '/') return { isMarkdownPage: false, mainModule: import('@/views/HomeView.vue') }
+  if (path === '/') return import('@/views/HomeView.vue')
   const segs = path.split('/')
-  if (segs[1] === 'activities')
-    return { isMarkdownPage: true, mainModule: import('@/views/ActivityView.vue') }
-  if (segs[1] === 'news')
-    return { isMarkdownPage: true, mainModule: import('@/views/NewsView.vue') }
-  return { isMarkdownPage: false, mainModule: import('@/views/NotFoundView.vue') }
+  if (segs[1] === 'activities') return import('@/views/ActivityView.vue')
+  if (segs[1] === 'news') return import('@/views/NewsView.vue')
+  return import('@/views/NotFoundView.vue')
 }
