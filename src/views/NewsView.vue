@@ -10,6 +10,7 @@ import NotFoundView from '@/views/NotFoundView.vue';
 import type { Module } from '@/module';
 import { useTitle } from '@vueuse/core';
 import { dateString } from '@/utils';
+import NewsListView from './NewsListView.vue';
 
 const route = useRoute();
 const newsList: News[] = rawNewsList;
@@ -18,7 +19,7 @@ const title = useTitle('', { titleTemplate: '%s | 新闻 - 北京大学 Linux �
 const currentNews = ref<News | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 
-async function resolvePageModule(routerPath: string): Promise<Module> {
+async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const url = new URL(routerPath, 'http://a.com');
   const path = url.pathname;
 
@@ -27,19 +28,23 @@ async function resolvePageModule(routerPath: string): Promise<Module> {
 
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
-    if (modulePath in newsModules) {
+    if (path === '/news/' || path === '/news') resolve(NewsListView as never)
+    else if (modulePath in newsModules) {
       let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
       if ('then' in module && typeof module.then === 'function') module = await module;
       resolve(module);
     }
-    else resolve(NotFoundView as unknown as Module);
+    else resolve(NotFoundView as never);
   })
 }
 
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
 
 watch(route, async (newVal) => {
-  Content.value = (await resolvePageModule(newVal.path)).default;
+  const module = await resolvePageModule(newVal.path);
+  if ('default' in module)
+    Content.value = module.default;
+  else Content.value = module;
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
 })
 

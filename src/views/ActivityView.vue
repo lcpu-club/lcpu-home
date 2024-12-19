@@ -10,6 +10,7 @@ import NotFoundView from '@/views/NotFoundView.vue';
 import type { Module } from '@/module';
 import { useTitle } from '@vueuse/core';
 import { dateString } from '@/utils';
+import ActivityListView from './ActivityListView.vue';
 
 const route = useRoute();
 const activityList: Activity[] = rawActivityList;
@@ -19,7 +20,7 @@ const currentActivity = ref<Activity | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 
 // let's also update page title since we have access to the pathname property.
-async function resolvePageModule(routerPath: string): Promise<Module> {
+async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const url = new URL(routerPath, 'http://a.com');
   const path = url.pathname;
 
@@ -28,19 +29,22 @@ async function resolvePageModule(routerPath: string): Promise<Module> {
 
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
-    if (modulePath in activityModules) {
+    if (path === '/activities/' || path === '/activities') resolve(ActivityListView as never);
+    else if (modulePath in activityModules) {
       let module: Promise<Module> | Module = activityModules[modulePath]() as Promise<Module> | Module;
       if ('then' in module && typeof module.then === 'function') module = await module;
       resolve(module);
     }
-    else resolve(NotFoundView as unknown as Module);
+    else resolve(NotFoundView as never);
   })
 }
 
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
 
 watch(route, async (newVal) => {
-  Content.value = (await resolvePageModule(newVal.path)).default;
+  const module = await resolvePageModule(newVal.path);
+  if ('default' in module) Content.value = module.default;
+  else Content.value = module;
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
 })
 </script>

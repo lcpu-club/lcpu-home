@@ -14,6 +14,7 @@ import LcpuDark from '../assets/lcpu-dark.svg';
 import LcpuLight from '../assets/lcpu-light.svg';
 import GithubMark from '../assets/github-mark.svg';
 import GithubMarkWhite from '../assets/github-mark-white.svg';
+import { ChevronRightIcon } from '@heroicons/vue/20/solid';
 
 const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
@@ -39,14 +40,25 @@ const news = rawNewsList as News[];
 
         <div m-t-12 flex="~ items-center">
           <h2 flex-grow-1>活动</h2>
-          <a href="/activities/" v-if="activities.length > 3">更多活动...</a>
+          <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
+            href="/activities/">
+            <span>所有活动</span>
+            <ChevronRightIcon class="h-6" />
+          </a>
         </div>
 
         <div>
           <ActivityListEntry v-for="activity in activities.slice(0, 3)" :key="activity.title" :activity="activity" />
         </div>
 
-        <h2>新闻</h2>
+        <div m-t-12 flex="~ items-center">
+          <h2 flex-grow-1>新闻</h2>
+          <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
+            href="/news/">
+            <span>所有新闻</span>
+            <ChevronRightIcon class="h-6" />
+          </a>
+        </div>
         <div>
           <NewsListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :news="_news" />
         </div>
