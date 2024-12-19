@@ -26,12 +26,12 @@ export default function activityListGenerator(): PluginOption {
             const { entry, frontmatter } = file
             const filename = path.parse(entry).name
             return {
-              ...(frontmatter.data as { time: Date; title: string }),
+              ...(frontmatter.data as { time: string; title: string }),
               excerpt: frontmatter.excerpt,
               contentUrl: `/activities/${filename}`,
             }
           })
-          .sort((a, b) => b.time.valueOf() - a.time.valueOf())
+          .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
         return JSON.stringify(data)
       }
     },

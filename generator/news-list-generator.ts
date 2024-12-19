@@ -26,12 +26,12 @@ export default function newsListGenerator(): PluginOption {
             const { entry, frontmatter } = file
             const filename = path.parse(entry).name
             return {
-              ...(frontmatter.data as { time: Date; title: string; category?: string }),
+              ...(frontmatter.data as { time: string; title: string; category?: string }),
               excerpt: frontmatter.excerpt,
               contentUrl: `/news/${filename}`,
             }
           })
-          .sort((a, b) => b.time.valueOf() - a.time.valueOf())
+          .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
         return JSON.stringify(data)
       }
     },

@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import ActivityListGenerator from './generator/activity-list-generator'
-import NewsListGenerator from './generator/news-list-generator copy'
+import NewsListGenerator from './generator/news-list-generator'
 import MarkdownContentGenerator from './generator/content-generator'
 
 // https://vite.dev/config/
