@@ -9,8 +9,6 @@ interface Module {
 export interface Route {
   path: string
   mainComponent: Component | null
-  isMarkdownPage: boolean
-  innerComponent: Component | null
 }
 
 export interface Router {
@@ -23,9 +21,9 @@ export const RouterSymbol: InjectionKey<Router> = Symbol()
 const getDefaultRoute = (): Route => ({
   path: '/',
   mainComponent: null,
-  isMarkdownPage: false,
-  innerComponent: null,
 })
+
+console.log(111)
 
 export function createRouter(): Router {
   const route = reactive(getDefaultRoute())
@@ -36,13 +34,13 @@ export function createRouter(): Router {
       mainModule = await mainModule
     }
     route.mainComponent = markRaw((mainModule as Module).default)
-    if (isMarkdownPage) {
-      let module = getModule(href)
-      if ('then' in module && typeof module.then === 'function') {
-        module = await module
-      }
-      route.innerComponent = markRaw((module as Module).default)
-    }
+    // if (isMarkdownPage) {
+    //   let module = getModule(href)
+    //   if ('then' in module && typeof module.then === 'function') {
+    //     module = await module
+    //   }
+    //   route.innerComponent = markRaw((module as Module).default)
+    // }
     route.path = href
   }
   initListeners(go)
@@ -61,14 +59,26 @@ export function useRoute(): Route {
   return useRouter().route
 }
 
-function getModule(href: string): Module | Promise<Module> {
-  const url = new URL(href, 'http://a.com/')
-  const path = url.pathname
-  const filePath = '../data' + path + '.md'
-  console.log(filePath)
-  if (href.endsWith('/')) return import('@/views/HomeView.vue')
-  return import(/* @vite-ignore */ filePath)
-}
+// function getModule(href: string): Module | Promise<Module> {
+//   const url = new URL(href, 'http://a.com/')
+//   const path = url.pathname
+//   if (import.meta.env.DEV) {
+//     const filePath = '../data' + path + '.md'
+//     console.log(filePath)
+//     return import(/* @vite-ignore */ filePath)
+//   } else {
+//     const segs = path.split('/')
+//     const filePath = './data' + path + '.md'
+//     console.log(filePath)
+//     if (segs[1] === 'activities') {
+//       return activityModuels[filePath]() as Promise<Module>
+//     }
+//     if (segs[1] === 'news') {
+//       return newsModules[filePath]() as Promise<Module>
+//     }
+//   }
+//   return import('@/views/NotFoundView.vue')
+// }
 
 function initListeners(go: (href?: string) => Promise<void>) {
   window.addEventListener(

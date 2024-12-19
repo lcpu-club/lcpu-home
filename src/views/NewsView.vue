@@ -1,21 +1,33 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { ref, watch } from 'vue';
+import { defineAsyncComponent, inject } from 'vue';
 import rawNewsList from 'virtual:news-list.json'
 import type { News } from '@/data/news';
 import AutoDarkImage from '@/components/AutoDarkImage.vue';
 import LcpuLight from '@/assets/lcpu-light.svg';
 import LcpuDark from '@/assets/lcpu-dark.svg';
+import NotFoundView from '@/views/NotFoundView.vue';
+import type { Module } from '@/module';
 
 const route = useRoute();
-const Content = ref(route.innerComponent);
 const newsList: News[] = rawNewsList;
+const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
+const url = new URL(route.path, 'http://a.com');
+const path = url.pathname;
+const modulePath = './data' + path + '.md';
+console.log(path)
+console.log(newsModules)
 
-console.log(route.path)
-
-watch(route, (newVal) =>
-  Content.value = newVal.innerComponent
-)
+const Content = defineAsyncComponent(() => {
+  return new Promise(async (resolve) => {
+    if (modulePath in newsModules) {
+      let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
+      if ('then' in module && typeof module.then === 'function') module = await module;
+      resolve(module);
+    }
+    else resolve(NotFoundView as unknown as Module);
+  })
+})
 
 </script>
 
