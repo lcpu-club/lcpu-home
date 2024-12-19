@@ -35,7 +35,7 @@ watch(route, async (newVal) => {
 </script>
 
 <template>
-  <div md:grid lg:grid-cols-4 h-screen>
+  <div lg:grid lg:grid-cols-4 h-screen>
     <div hidden lg:display-unset p-12 bg-gray-100 dark:bg-dark-800 overflow-auto>
       <a flex="~ items-center gap-2" href="/" class="text-unset! decoration-none">
         <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" />
@@ -49,7 +49,7 @@ watch(route, async (newVal) => {
           }}</a>
       </div>
     </div>
-    <div md-col-span-3 p-12 overflow-auto>
+    <div lg:col-span-3 p-y-12 p-x-6 md:p-x-12 overflow-auto>
       <component :is="Content" />
     </div>
   </div>
