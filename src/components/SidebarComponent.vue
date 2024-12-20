@@ -3,6 +3,14 @@ import { ref } from 'vue';
 import AutoDarkImage from '@/components/AutoDarkImage.vue';
 import LcpuLight from '@/assets/lcpu-light.svg';
 import LcpuDark from '@/assets/lcpu-dark.svg';
+import rawActivityList from 'virtual:activity-list.json';
+import rawNewsList from 'virtual:news-list.json';
+import type { Activity } from '@/data/activity';
+import type { News } from '@/data/news';
+import ExpanderComponent from './ExpanderComponent.vue';
+
+const activityList = rawActivityList as Activity[];
+const newsList = rawNewsList as News[];
 
 const sidebarCollapsed = ref(true);
 const toggleSidebar = (collapse?: boolean) => {
@@ -27,7 +35,34 @@ defineExpose({ toggleSidebar });
         <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" />
         <span text-xl font-semibold>LCPU</span>
       </a>
-      <slot />
+
+
+      <ExpanderComponent m-t-8>
+        <template #header>
+          <h3 m-0><a href="/activities/" class="text-unset!" decoration-none @click="toggleSidebar()">活动</a></h3>
+        </template>
+        <div flex="~ col gap-2" p-t-4 box-border>
+          <a @click="toggleSidebar()" v-for="activity in activityList" :key="activity.title" :href="activity.contentUrl"
+            text-wrap
+            class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none">{{
+              activity.title
+            }}</a>
+        </div>
+      </ExpanderComponent>
+
+
+      <ExpanderComponent m-t-8>
+        <template #header>
+          <h3 m-0><a href="/news/" class="text-unset!" decoration-none @click="toggleSidebar()">新闻</a></h3>
+        </template>
+        <div flex="~ col gap-2" p-t-4 box-border>
+          <a @click="toggleSidebar()" v-for="news in newsList" :key="news.title" :href="news.contentUrl" text-wrap
+            class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none">{{
+              news.title
+            }}</a>
+        </div>
+      </ExpanderComponent>
+
     </div>
   </div>
 </template>
