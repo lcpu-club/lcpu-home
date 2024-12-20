@@ -12,7 +12,7 @@ import SidebarComponent from '@/components/SidebarComponent.vue';
 import TopbarComponent from '@/components/TopbarComponent.vue';
 import LoadingView from './LoadingView.vue';
 
-const route = useRoute();
+const route = useRoute(() => scrollViewRef?.value?.scrollTop);
 const activityList: Activity[] = rawActivityList;
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>;
 const title = useTitle('', { titleTemplate: '%s | 活动 - 北京大学 Linux 俱乐部' });
@@ -43,16 +43,16 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
 
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
 
-watch(route, async (newVal) => {
+watch(() => route.path, async (newVal) => {
   Content.value = LoadingView as never;
-  const module = await resolvePageModule(newVal.path);
+  const module = await resolvePageModule(newVal);
   if ('default' in module) Content.value = module.default;
   else Content.value = module;
-  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
+  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'smooth' });
 })
 
 onMounted(() => {
-  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
+  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'smooth' });
 })
 
 function handleScroll() {
@@ -68,17 +68,7 @@ function handleScroll() {
 
 <template>
   <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
-    <SidebarComponent ref="sidebar-ref">
-      <h3 m-b-2><a href="/activities/" class="text-unset!" decoration-none @click="sidebarRef?.toggleSidebar()">活动</a>
-      </h3>
-      <div flex="~ col gap-2">
-        <a @click="sidebarRef?.toggleSidebar()" v-for="activity in activityList" :key="activity.title"
-          :href="activity.contentUrl" text-wrap
-          class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none">{{
-            activity.title
-          }}</a>
-      </div>
-    </SidebarComponent>
+    <SidebarComponent ref="sidebar-ref" />
 
     <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen class="h-100dvh!" box-border ref="scrollViewRef"
       @scroll="handleScroll">

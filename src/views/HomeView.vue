@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ProjectCard from '@/components/ProjectCard.vue';
-import rawProjectData from '@/data/projects.json' with {type: 'json'};
-import rawActivityList from 'virtual:activity-list.json' with {type: 'json'};
-import rawNewsList from 'virtual:news-list.json' with {type: 'json'};
+import rawProjectData from '@/data/projects.json';
+import rawActivityList from 'virtual:activity-list.json';
+import rawNewsList from 'virtual:news-list.json';
 import type { Project } from '@/data/project';
 import type { Activity } from '@/data/activity';
 import type { News } from '@/data/news';
@@ -16,11 +16,19 @@ import GithubMark from '../assets/github-mark.svg';
 import GithubMarkWhite from '../assets/github-mark-white.svg';
 import { ChevronRightIcon } from '@heroicons/vue/24/solid';
 import { useTitle } from '@vueuse/core';
+import { useRoute } from '@/router/router';
+import { onMounted, useTemplateRef } from 'vue';
 
 const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
 const news = rawNewsList as News[];
+const scrollViewRef = useTemplateRef('scrollViewRef');
+const route = useRoute(() => scrollViewRef.value?.scrollTop);
 useTitle('北京大学 Linux 俱乐部')
+
+onMounted(() => {
+  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+})
 </script>
 
 <template>
@@ -35,7 +43,7 @@ useTitle('北京大学 Linux 俱乐部')
           <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full w-full />
         </a>
       </div>
-      <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12>
+      <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12 ref="scrollViewRef">
         <h2>项目</h2>
         <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
           <ProjectCard v-for="project in projects" :key="project.title" :project="project" />

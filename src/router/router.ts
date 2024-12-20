@@ -9,6 +9,7 @@ interface Module {
 export interface Route {
   path: string
   mainComponent: Component | null
+  scrollTop: number
 }
 
 export interface Router {
@@ -18,9 +19,13 @@ export interface Router {
 
 export const RouterSymbol: InjectionKey<Router> = Symbol()
 
+const scrollHistory: Record<string, number> = {}
+let getScrollTop: () => number | undefined
+
 const getDefaultRoute = (): Route => ({
   path: '/',
   mainComponent: null,
+  scrollTop: 0,
 })
 
 export function createRouter(): Router {
@@ -32,20 +37,15 @@ export function createRouter(): Router {
       mainModule = await mainModule
     }
     route.mainComponent = markRaw((mainModule as Module).default)
-    // if (isMarkdownPage) {
-    //   let module = getModule(href)
-    //   if ('then' in module && typeof module.then === 'function') {
-    //     module = await module
-    //   }
-    //   route.innerComponent = markRaw((module as Module).default)
-    // }
     route.path = href
+    route.scrollTop = scrollHistory[href] || 0
   }
   initListeners(go)
   return { route, go }
 }
 
-export function useRouter(): Router {
+export function useRouter(provideScrollHeight: () => number | undefined): Router {
+  getScrollTop = provideScrollHeight
   const router = inject(RouterSymbol)
   if (!router) {
     throw new Error('useRouter() is called without provider.')
@@ -53,30 +53,9 @@ export function useRouter(): Router {
   return router
 }
 
-export function useRoute(): Route {
-  return useRouter().route
+export function useRoute(provideScrollHeight: () => number | undefined): Route {
+  return useRouter(provideScrollHeight).route
 }
-
-// function getModule(href: string): Module | Promise<Module> {
-//   const url = new URL(href, 'http://a.com/')
-//   const path = url.pathname
-//   if (import.meta.env.DEV) {
-//     const filePath = '../data' + path + '.md'
-//     console.log(filePath)
-//     return import(/* @vite-ignore */ filePath)
-//   } else {
-//     const segs = path.split('/')
-//     const filePath = './data' + path + '.md'
-//     console.log(filePath)
-//     if (segs[1] === 'activities') {
-//       return activityModuels[filePath]() as Promise<Module>
-//     }
-//     if (segs[1] === 'news') {
-//       return newsModules[filePath]() as Promise<Module>
-//     }
-//   }
-//   return import('@/views/NotFoundView.vue')
-// }
 
 function initListeners(go: (href?: string) => Promise<void>) {
   window.addEventListener(
@@ -96,6 +75,7 @@ function initListeners(go: (href?: string) => Promise<void>) {
         hostname === currentUrl.hostname
       ) {
         e.preventDefault()
+        scrollHistory[currentUrl.href] = getScrollTop?.() ?? 0
         history.pushState(null, '', link.href)
         go(link.href)
       }
