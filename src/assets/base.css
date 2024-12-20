@@ -69,3 +69,13 @@ hr {
 img {
   --at-apply: object-contain max-w-full;
 }
+
+*::-webkit-scrollbar {
+  display: block;
+  width: 0.4rem;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  --at-apply: bg-gray-200 'dark:bg-dark-100' rounded-full;
+}
