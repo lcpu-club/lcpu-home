@@ -25,7 +25,7 @@ useTitle('北京大学 Linux 俱乐部')
 
 <template>
   <main p-l-6 lg:p-l-12>
-    <div w-full box-border sm:h-screen class="md:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px m-x-auto
+    <div w-full box-border sm:h-screen class="sm:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px m-x-auto
       gap-6 lg:gap-12>
       <div flex="~ items-center justify-center col" w-full h-full box-border m-t-24 sm:m-t-0 p-r-6 sm:p-r-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />

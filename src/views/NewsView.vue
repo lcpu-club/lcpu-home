@@ -79,7 +79,7 @@ function handleScroll() {
       </div>
     </SidebarComponent>
 
-    <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen box-border ref="scrollViewRef"
+    <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen class="h-100dvh!" box-border ref="scrollViewRef"
       @scroll="handleScroll">
       <TopbarComponent :toggleSidebarFn="sidebarRef?.toggleSidebar" :title="title ?? '新闻'" :show-title="showTitle" />
       <div v-if="currentNews" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
