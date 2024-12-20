@@ -8,7 +8,7 @@ const newsList = rawNewsList as News[];
 
 <template>
   <div>
-    <h1 m-t-0>所有活动</h1>
+    <h1 m-t-4 lg:m-t-0>所有新闻</h1>
     <div>
       <NewsListEntry v-for="news in newsList" :news="news" :key="news.title" />
     </div>

@@ -8,7 +8,7 @@ const activityList = rawActivityList as Activity[];
 
 <template>
   <div>
-    <h1 m-t-0>所有活动</h1>
+    <h1 m-t-4 lg:m-t-0>所有活动</h1>
     <div>
       <ActivityListEntry v-for="activity in activityList" :activity="activity" :key="activity.title" />
     </div>
