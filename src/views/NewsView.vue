@@ -58,7 +58,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div lg:grid lg:grid-cols-4 h-screen h-100dvh>
+  <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!">
     <SidebarComponent ref="sidebar-ref">
       <h3 m-b-2>新闻</h3>
       <div flex="~ col gap-2">

@@ -15,15 +15,17 @@ import LcpuLight from '../assets/lcpu-light.svg';
 import GithubMark from '../assets/github-mark.svg';
 import GithubMarkWhite from '../assets/github-mark-white.svg';
 import { ChevronRightIcon } from '@heroicons/vue/24/solid';
+import { useTitle } from '@vueuse/core';
 
 const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
 const news = rawNewsList as News[];
+useTitle('北京大学 Linux 俱乐部')
 </script>
 
 <template>
   <main>
-    <div w-full md:h-screen md:h-100dvh md:grid md:grid-cols-3 max-w-1680px m-x-auto>
+    <div w-full md:h-screen class="md:h-100dvh!" md:grid md:grid-cols-3 max-w-1680px m-x-auto>
       <div flex="~ items-center justify-center col" w-full h-full m-t-24 md:m-t-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>

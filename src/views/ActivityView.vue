@@ -59,7 +59,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div lg:grid lg:grid-cols-4 h-screen h-100dvh>
+  <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!">
     <SidebarComponent ref="sidebar-ref">
       <h3 m-b-2><a href="/activities/" class="text-unset!" decoration-none @click="sidebarRef?.toggleSidebar()">活动</a>
       </h3>
