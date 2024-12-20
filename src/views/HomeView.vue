@@ -24,19 +24,20 @@ useTitle('北京大学 Linux 俱乐部')
 </script>
 
 <template>
-  <main>
-    <div w-full md:h-screen class="md:h-100dvh!" md:grid md:grid-cols-3 max-w-1680px m-x-auto>
-      <div flex="~ items-center justify-center col" w-full h-full m-t-24 md:m-t-0>
+  <main p-l-6 lg:p-l-12>
+    <div w-full box-border sm:h-screen class="md:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px m-x-auto
+      gap-6 lg:gap-12>
+      <div flex="~ items-center justify-center col" w-full h-full box-border m-t-24 sm:m-t-0 p-r-6 sm:p-r-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
-        <span m-t-8 text-3xl font-semibold>北京大学 Linux 俱乐部</span>
+        <h1 m-t-8 m-b-0 text-center>北京大学 Linux 俱乐部</h1>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
         <a href="https://github.com/lcpu-club" h-8 w-8 m-t-8>
           <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full w-full />
         </a>
       </div>
-      <div col-span-2 p-x-6 p-y-12 md:p-x-12 overflow-auto>
+      <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12>
         <h2>项目</h2>
-        <div grid md:grid-cols-2 lg:grid-cols-3 gap-2>
+        <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
           <ProjectCard v-for="project in projects" :key="project.title" :project="project" />
         </div>
 
