@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject, ref, shallowRef, useTemplateRef, watch } from 'vue';
+import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue';
 import rawNewsList from 'virtual:news-list.json'
 import type { News } from '@/data/news';
 import NotFoundView from '@/views/NotFoundView.vue';
@@ -10,6 +10,7 @@ import { dateString } from '@/utils';
 import NewsListView from './NewsListView.vue';
 import SidebarComponent from '@/components/SidebarComponent.vue';
 import TopbarComponent from '@/components/TopbarComponent.vue';
+import LoadingView from './LoadingView.vue';
 
 const route = useRoute();
 const newsList: News[] = rawNewsList;
@@ -41,10 +42,16 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
 
 watch(route, async (newVal) => {
+  Content.value = LoadingView as never;
   const module = await resolvePageModule(newVal.path);
   if ('default' in module)
     Content.value = module.default;
   else Content.value = module;
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
+  scrollViewRef.value?.scrollIntoView({ behavior: 'auto' });
+})
+
+onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
   scrollViewRef.value?.scrollIntoView({ behavior: 'auto' });
 })

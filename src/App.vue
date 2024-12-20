@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Content } from './components/Content';
+import MainComponent from './components/MainComponent.vue';
 import { useDark } from '@vueuse/core';
 useDark();
 </script>
 
 <template>
-  <Content />
+  <MainComponent />
 </template>

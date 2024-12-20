@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import NewsListEntry from '@/components/NewsListEntry.vue';
 import type { News } from '@/data/news';
+import { useTitle } from '@vueuse/core';
 import rawNewsList from 'virtual:news-list.json' with {type: 'json'};
 const newsList = rawNewsList as News[];
-
+useTitle('新闻 - 北京大学 Linux 俱乐部')
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject, ref, shallowRef, useTemplateRef, watch } from 'vue';
+import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue';
 import rawActivityList from 'virtual:activity-list.json'
 import type { Activity } from '@/data/activity';
 import NotFoundView from '@/views/NotFoundView.vue';
@@ -10,6 +10,7 @@ import { dateString } from '@/utils';
 import ActivityListView from './ActivityListView.vue';
 import SidebarComponent from '@/components/SidebarComponent.vue';
 import TopbarComponent from '@/components/TopbarComponent.vue';
+import LoadingView from './LoadingView.vue';
 
 const route = useRoute();
 const activityList: Activity[] = rawActivityList;
@@ -42,10 +43,16 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
 
 watch(route, async (newVal) => {
+  Content.value = LoadingView as never;
   const module = await resolvePageModule(newVal.path);
   if ('default' in module) Content.value = module.default;
   else Content.value = module;
   // no idea why this only works on lg
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
+  scrollViewRef.value?.scrollIntoView({ behavior: 'auto' });
+})
+
+onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'auto' });
   scrollViewRef.value?.scrollIntoView({ behavior: 'auto' });
 })

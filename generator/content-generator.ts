@@ -3,7 +3,11 @@ import mdit from 'markdown-it'
 import matter from 'gray-matter'
 import Shiki from '@shikijs/markdown-it'
 
-const md = mdit().use(
+const md = mdit({
+  html: true,
+  linkify: true,
+  typographer: true,
+}).use(
   await Shiki({
     themes: {
       light: 'catppuccin-latte',

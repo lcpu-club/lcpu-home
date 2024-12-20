@@ -14,7 +14,7 @@ import LcpuDark from '../assets/lcpu-dark.svg';
 import LcpuLight from '../assets/lcpu-light.svg';
 import GithubMark from '../assets/github-mark.svg';
 import GithubMarkWhite from '../assets/github-mark-white.svg';
-import { ChevronRightIcon } from '@heroicons/vue/20/solid';
+import { ChevronRightIcon } from '@heroicons/vue/24/solid';
 
 const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
@@ -43,7 +43,7 @@ const news = rawNewsList as News[];
           <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
             href="/activities/">
             <span>所有活动</span>
-            <ChevronRightIcon class="h-6" />
+            <ChevronRightIcon class="h-5" />
           </a>
         </div>
 
@@ -56,7 +56,7 @@ const news = rawNewsList as News[];
           <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
             href="/news/">
             <span>所有新闻</span>
-            <ChevronRightIcon class="h-6" />
+            <ChevronRightIcon class="h-5" />
           </a>
         </div>
         <div>

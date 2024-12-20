@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import ActivityListEntry from '@/components/ActivityListEntry.vue';
 import type { Activity } from '@/data/activity';
+import { useTitle } from '@vueuse/core';
 import rawActivityList from 'virtual:activity-list.json' with {type: 'json'};
 const activityList = rawActivityList as Activity[];
-
+useTitle('活动 - 北京大学 Linux 俱乐部')
 </script>
 
 <template>
