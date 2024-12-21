@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
   <main p-l-6 lg:p-l-12>
-    <div w-full h-screen box-border sm:h-screen class="sm:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px
+    <div w-full h-screen box-border class="h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px
       m-x-auto gap-6 lg:gap-12 overflow-auto ref="mobileScrollViewRef">
       <div flex="~ items-center justify-center col" m-t-24 box-border sm:m-t-0 p-r-6 sm:p-r-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
