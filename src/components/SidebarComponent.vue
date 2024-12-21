@@ -49,12 +49,12 @@ defineExpose({ toggleSidebar });
           flex="~ col gap-2" class="group" p-y-3>
           <span text-xs text-gray-500 dark:text-light-900>{{ activityGroup.year }} 年 {{
             activityGroup.month
-          }} 月
+            }} 月
           </span>
           <a v-for="activity in activityGroup.items" @click="toggleSidebar()" :href="activity.contentUrl" text-wrap
             :key="activity.title"
             class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
-            :class="{ 'text-gray-800! dark:text-light-400!': currentTitle === activity.title }"> {{
+            :class="{ 'text-gray-800! dark:text-light-400! font-medium': currentTitle === activity.title }"> {{
               activity.title
             }}</a>
         </div>
@@ -67,12 +67,12 @@ defineExpose({ toggleSidebar });
           class="group">
           <span text-xs text-gray-500 dark:text-light-900>{{ newsGroup.year }} 年 {{
             newsGroup.month
-          }} 月
+            }} 月
           </span>
           <a v-for="news in newsGroup.items" @click="toggleSidebar()" :href="news.contentUrl" text-wrap
             :key="news.title"
             class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
-            :class="{ 'text-gray-800! dark:text-light-400!': currentTitle === news.title }">{{
+            :class="{ 'text-gray-800! dark:text-light-400! font-medium': currentTitle === news.title }">{{
               news.title
             }}</a>
         </div>
