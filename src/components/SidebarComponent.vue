@@ -90,4 +90,8 @@ defineExpose({ toggleSidebar });
 .group:first-of-type {
   --at-apply: border-t-0;
 }
+
+a {
+  transition: color 0.2s;
+}
 </style>
