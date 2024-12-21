@@ -15,7 +15,7 @@ import LoadingView from './LoadingView.vue';
 const route = useRoute(() => scrollViewRef?.value?.scrollTop);
 const activityList: Activity[] = rawActivityList;
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s活动 - 北京大学 Linux 俱乐部' });
+const title = useTitle('', { titleTemplate: '%s活动 - LCPU' });
 const currentActivity = ref<Activity | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);

@@ -15,7 +15,7 @@ import LoadingView from './LoadingView.vue';
 const route = useRoute(() => scrollViewRef.value?.scrollTop);
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s新闻 - 北京大学 Linux 俱乐部' });
+const title = useTitle('', { titleTemplate: '%s新闻 - LCPU' });
 const currentNews = ref<News | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);

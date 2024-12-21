@@ -5,7 +5,7 @@ import LcpuDark from '../assets/404-dark.svg';
 import LcpuLight from '../assets/404-light.svg';
 import { useTitle } from '@vueuse/core';
 
-useTitle('404 NOT FOUND | 北京大学 Linux 俱乐部')
+useTitle('404 NOT FOUND | LCPU')
 </script>
 
 <template>
