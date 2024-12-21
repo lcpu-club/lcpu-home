@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div lg:hidden fixed top-0 left-0 right-0 backdrop-blur-xl class="bg-white/80 dark:bg-[#121212]/80" h-14
-    flex="~ items-center">
+    flex="~ items-center" z-500>
     <div flex="~ items-center" w-full class="max-w-[calc(800px+3rem)]" m-x-auto p-x-6 gap-6 box-border>
       <button cursor-pointer @click="toggleSidebarFn?.()" p-0 border-none bg-transparent>
         <Bars3BottomLeftIcon class="w-6 h-6 text-black dark:text-white" />
