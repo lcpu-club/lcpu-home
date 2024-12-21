@@ -15,7 +15,7 @@ import LoadingView from './LoadingView.vue';
 const route = useRoute(() => scrollViewRef.value?.scrollTop);
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s | 新闻 - 北京大学 Linux 俱乐部' });
+const title = useTitle('', { titleTemplate: '%s新闻 - 北京大学 Linux 俱乐部' });
 const currentNews = ref<News | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
@@ -26,7 +26,7 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const path = url.pathname;
 
   currentNews.value = newsList.find((activity) => activity.contentUrl === path) || null;
-  title.value = currentNews.value?.title;
+  title.value = currentNews.value?.title ? currentNews.value.title + ' | ' : '';
 
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
@@ -67,11 +67,12 @@ function handleScroll() {
 
 <template>
   <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
-    <SidebarComponent ref="sidebar-ref" :current-title="title" />
+    <SidebarComponent ref="sidebar-ref" :current-title="currentNews?.title" />
 
     <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen class="h-100dvh!" box-border ref="scrollViewRef"
       @scroll="handleScroll">
-      <TopbarComponent :toggleSidebarFn="sidebarRef?.toggleSidebar" :title="title ?? '新闻'" :show-title="showTitle" />
+      <TopbarComponent :toggleSidebarFn="sidebarRef?.toggleSidebar" :title="currentNews?.title ?? '新闻'"
+        :show-title="showTitle" />
       <div v-if="currentNews" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
         <h1 m-0>{{ currentNews.title }}</h1>
         <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-gray-300>

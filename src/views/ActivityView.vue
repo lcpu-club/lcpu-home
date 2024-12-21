@@ -15,7 +15,7 @@ import LoadingView from './LoadingView.vue';
 const route = useRoute(() => scrollViewRef?.value?.scrollTop);
 const activityList: Activity[] = rawActivityList;
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s | 活动 - 北京大学 Linux 俱乐部' });
+const title = useTitle('', { titleTemplate: '%s活动 - 北京大学 Linux 俱乐部' });
 const currentActivity = ref<Activity | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
@@ -27,7 +27,7 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const path = url.pathname;
 
   currentActivity.value = activityList.find((activity) => activity.contentUrl === path) || null;
-  title.value = currentActivity.value?.title;
+  title.value = (currentActivity.value?.title) ? currentActivity.value.title + ' | ' : '';
 
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
@@ -68,11 +68,12 @@ function handleScroll() {
 
 <template>
   <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
-    <SidebarComponent ref="sidebar-ref" :current-title="title" />
+    <SidebarComponent ref="sidebar-ref" :current-title="currentActivity?.title" />
 
     <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen class="h-100dvh!" box-border ref="scrollViewRef"
       @scroll="handleScroll">
-      <TopbarComponent :toggleSidebarFn="sidebarRef?.toggleSidebar" :title="title ?? '活动'" :show-title="showTitle" />
+      <TopbarComponent :toggleSidebarFn="sidebarRef?.toggleSidebar" :title="currentActivity?.title ?? '活动'"
+        :show-title="showTitle" />
       <div v-if="currentActivity" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
         <h1 m-0>{{ currentActivity.title }}</h1>
         <span text-gray-500 block m-t-2 dark:text-gray-300>{{ dateString(currentActivity.time) }}</span>
