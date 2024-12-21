@@ -68,7 +68,7 @@ function handleScroll() {
 
 <template>
   <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
-    <SidebarComponent ref="sidebar-ref" />
+    <SidebarComponent ref="sidebar-ref" :current-title="title" />
 
     <div lg:col-span-3 p-y-12 p-x-6 lg:p-x-12 overflow-auto h-screen class="h-100dvh!" box-border ref="scrollViewRef"
       @scroll="handleScroll">
