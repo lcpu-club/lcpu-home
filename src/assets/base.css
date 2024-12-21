@@ -18,6 +18,15 @@ body {
     'Helvetica Neue',
     sans-serif;
   color: var(--text-color, #000);
+  font-feature-settings:
+    'liga' 1,
+    'calt' 1; /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
 }
 
 .dark {
