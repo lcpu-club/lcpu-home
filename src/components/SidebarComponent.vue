@@ -44,7 +44,7 @@ defineExpose({ toggleSidebar });
 
       <h3 m-b-0><a href="/activities/" class="text-unset!" decoration-none @click="toggleSidebar()">活动</a></h3>
 
-      <div flex="~ col" p-t-3 box-border>
+      <div flex="~ col" box-border>
         <div v-for="activityGroup in activityListGrouped" :key="activityGroup.year + '-' + activityGroup.month"
           flex="~ col gap-2" class="group" p-y-3>
           <span text-xs text-gray-500 dark:text-light-900>{{ activityGroup.year }} 年 {{
@@ -54,7 +54,7 @@ defineExpose({ toggleSidebar });
           <a v-for="activity in activityGroup.items" @click="toggleSidebar()" :href="activity.contentUrl" text-wrap
             :key="activity.title"
             class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
-            :class="{ 'text-gray-800! dark:text-light-400! font-medium': currentTitle === activity.title }"> {{
+            :class="{ 'text-gray-800! dark:text-white! font-medium': currentTitle === activity.title }"> {{
               activity.title
             }}</a>
         </div>
@@ -62,7 +62,7 @@ defineExpose({ toggleSidebar });
 
 
       <h3 m-b-0><a href="/news/" class="text-unset!" decoration-none @click="toggleSidebar()">新闻</a></h3>
-      <div flex="~ col" p-t-3 box-border>
+      <div flex="~ col" box-border>
         <div v-for="newsGroup in newsListGrouped" :key="newsGroup.year + '-' + newsGroup.month" flex="~ col gap-2" p-y-3
           class="group">
           <span text-xs text-gray-500 dark:text-light-900>{{ newsGroup.year }} 年 {{
