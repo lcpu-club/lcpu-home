@@ -6,3 +6,35 @@ export function dateString(rawDate: string | undefined): string {
   const day = date.getDate()
   return `${year} 年 ${month} 月 ${day} 日`
 }
+
+export function groupByYearMonth<T extends { time: string }>(items: T[]) {
+  return items.reduce(
+    (
+      acc: {
+        year: number
+        month: number
+        items: T[]
+      }[],
+      item,
+    ) => {
+      const date = new Date(item.time)
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      if (
+        acc.length === 0 ||
+        acc[acc.length - 1].year !== year ||
+        acc[acc.length - 1].month !== month
+      ) {
+        acc.push({
+          year,
+          month,
+          items: [item],
+        })
+        return acc
+      }
+      acc[acc.length - 1].items.push(item)
+      return acc
+    },
+    [],
+  )
+}

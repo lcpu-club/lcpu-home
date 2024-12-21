@@ -7,10 +7,10 @@ import rawActivityList from 'virtual:activity-list.json';
 import rawNewsList from 'virtual:news-list.json';
 import type { Activity } from '@/data/activity';
 import type { News } from '@/data/news';
-import ExpanderComponent from './ExpanderComponent.vue';
+import { groupByYearMonth } from '@/utils';
 
-const activityList = rawActivityList as Activity[];
-const newsList = rawNewsList as News[];
+const activityListGrouped = groupByYearMonth(rawActivityList as Activity[])
+const newsListGrouped = groupByYearMonth(rawNewsList as News[])
 
 const sidebarCollapsed = ref(true);
 const toggleSidebar = (collapse?: boolean) => {
@@ -30,39 +30,56 @@ defineExpose({ toggleSidebar });
     :class="{ 'backdrop-brightness-40 pointer-events-unset': !sidebarCollapsed }">
     <div @click.stop h-full box-border p-x-6 p-y-12 md:p-x-12 bg-gray-100 dark:bg-dark-800 transition-all duration-300
       overflow-auto class="w-80% max-w-400px lg:w-full lg:max-w-unset -translate-x-100% lg:translate-x-0"
-      :class="{ 'translate-x-0!': !sidebarCollapsed }" shadow-xl>
+      :class="{ 'translate-x-0!': !sidebarCollapsed }" shadow-xl lg:shadow-none>
       <a flex="~ items-center gap-2" href="/" class="text-unset! decoration-none">
         <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" />
         <span text-xl font-semibold>LCPU</span>
       </a>
 
+      <h3 m-b-0><a href="/activities/" class="text-unset!" decoration-none @click="toggleSidebar()">活动</a></h3>
 
-      <ExpanderComponent m-t-8>
-        <template #header>
-          <h3 m-0><a href="/activities/" class="text-unset!" decoration-none @click="toggleSidebar()">活动</a></h3>
-        </template>
-        <div flex="~ col gap-2" p-t-4 box-border>
-          <a @click="toggleSidebar()" v-for="activity in activityList" :key="activity.title" :href="activity.contentUrl"
-            text-wrap
+      <div flex="~ col" p-t-3 box-border>
+        <div v-for="activityGroup in activityListGrouped" :key="activityGroup.year + '-' + activityGroup.month"
+          flex="~ col gap-1" class="group" p-y-2>
+          <span text-xs text-gray-500 dark:text-light-900>{{ activityGroup.year }} 年 {{
+            activityGroup.month
+            }} 月
+          </span>
+          <a v-for="activity in activityGroup.items" @click="toggleSidebar()" :href="activity.contentUrl" text-wrap
+            :key="activity.title"
             class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none">{{
               activity.title
             }}</a>
         </div>
-      </ExpanderComponent>
+      </div>
 
 
-      <ExpanderComponent m-t-8>
-        <template #header>
-          <h3 m-0><a href="/news/" class="text-unset!" decoration-none @click="toggleSidebar()">新闻</a></h3>
-        </template>
-        <div flex="~ col gap-2" p-t-4 box-border>
-          <a @click="toggleSidebar()" v-for="news in newsList" :key="news.title" :href="news.contentUrl" text-wrap
+      <h3 m-b-0><a href="/news/" class="text-unset!" decoration-none @click="toggleSidebar()">新闻</a></h3>
+      <div flex="~ col" p-t-3 box-border>
+        <div v-for="newsGroup in newsListGrouped" :key="newsGroup.year + '-' + newsGroup.month" flex="~ col gap-1" p-y-2
+          class="group">
+          <span text-xs text-gray-500 dark:text-light-900>{{ newsGroup.year }} 年 {{
+            newsGroup.month
+            }} 月
+          </span>
+          <a v-for="news in newsGroup.items" @click="toggleSidebar()" :href="news.contentUrl" text-wrap
+            :key="news.title"
             class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none">{{
               news.title
             }}</a>
         </div>
-      </ExpanderComponent>
+      </div>
 
     </div>
   </div>
 </template>
+
+<style scoped>
+.group {
+  --at-apply: border-t-1 border-gray-200 dark:border-dark-200 border-t-solid;
+}
+
+.group:first-of-type {
+  --at-apply: border-t-0;
+}
+</style>
