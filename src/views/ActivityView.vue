@@ -48,11 +48,11 @@ watch(() => route.path, async (newVal) => {
   const module = await resolvePageModule(newVal);
   if ('default' in module) Content.value = module.default;
   else Content.value = module;
-  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'smooth' });
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
 })
 
 onMounted(() => {
-  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'smooth' });
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
 })
 
 function handleScroll() {

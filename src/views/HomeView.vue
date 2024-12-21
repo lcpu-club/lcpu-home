@@ -23,19 +23,21 @@ const projects = rawProjectData as Project[];
 const activities = rawActivityList as Activity[];
 const news = rawNewsList as News[];
 const scrollViewRef = useTemplateRef('scrollViewRef');
-const route = useRoute(() => scrollViewRef.value?.scrollTop);
+const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef');
+const route = useRoute(() => Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0));
 useTitle('北京大学 Linux 俱乐部')
 
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+  mobileScrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
 })
 </script>
 
 <template>
   <main p-l-6 lg:p-l-12>
-    <div w-full box-border sm:h-screen class="sm:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px m-x-auto
-      gap-6 lg:gap-12>
-      <div flex="~ items-center justify-center col" w-full h-full box-border m-t-24 sm:m-t-0 p-r-6 sm:p-r-0>
+    <div w-full h-screen box-border sm:h-screen class="sm:h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px
+      m-x-auto gap-6 lg:gap-12 overflow-auto ref="mobileScrollViewRef">
+      <div flex="~ items-center justify-center col" m-t-24 box-border sm:m-t-0 p-r-6 sm:p-r-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <h1 m-t-8 m-b-0 text-center>北京大学 Linux 俱乐部</h1>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
