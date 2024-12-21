@@ -14,7 +14,7 @@ const activities = fg
     const { entry, frontmatter } = file
     const filename = path.parse(entry).name
     return {
-      url: `/news/${filename}`,
+      url: `/activities/${filename}`,
       lastmod: frontmatter.data.time,
       changefreq: 'monthly',
       priority: 0.5,
