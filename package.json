@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "vite build && bun run sitemap",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "sitemap": "bun run ./src/sitemap.ts"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -34,6 +35,7 @@
     "npm-run-all2": "^7.0.1",
     "prettier": "^3.3.3",
     "shiki": "^1.24.2",
+    "sitemap": "^8.0.0",
     "typescript": "~5.6.3",
     "unocss": "^0.65.1",
     "vite": "^6.0.1",
