@@ -13,8 +13,6 @@ const activities = fg
   .map((file) => {
     const { entry, frontmatter } = file
     const filename = path.parse(entry).name
-    if (!fs.existsSync('./dist/activities/')) fs.mkdirSync('./dist/activities/')
-    fs.copyFileSync('./dist/index.html', `./dist/activities/${filename}.html`)
     return {
       url: `/activities/${filename}`,
       lastmod: frontmatter.data.time,
@@ -32,8 +30,6 @@ const news = fg
   .map((file) => {
     const { entry, frontmatter } = file
     const filename = path.parse(entry).name
-    if (!fs.existsSync('./dist/news/')) fs.mkdirSync('./dist/news/')
-    fs.copyFileSync('./dist/index.html', `./dist/news/${filename}.html`)
     return {
       url: `/news/${filename}`,
       lastmod: frontmatter.data.time,
@@ -68,4 +64,4 @@ const stream = new SitemapStream({ hostname: 'https://lcpu-home.pages.dev' })
 const buffer = await streamToPromise(Readable.from(links).pipe(stream))
 const sitemap = buffer.toString()
 
-fs.writeFileSync('./dist/sitemap.xml', sitemap)
+fs.writeFileSync('./dist/static/sitemap.xml', sitemap)

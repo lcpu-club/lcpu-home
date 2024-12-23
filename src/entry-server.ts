@@ -1,3 +1,5 @@
+// https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js
+
 import { basename } from 'path'
 import { renderToString, type SSRContext } from 'vue/server-renderer'
 import { createApp } from './main'
