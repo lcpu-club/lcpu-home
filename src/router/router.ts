@@ -31,7 +31,7 @@ const getDefaultRoute = (): Route => ({
 export function createRouter(): Router {
   const route = reactive(getDefaultRoute())
   const go = async (href?: string) => {
-    if (!href) href = window.location.href
+    if (!href) href = import.meta.env.SSR ? '/' : window.location.href
     let mainModule = getMainModule(href)
     if ('then' in mainModule && typeof mainModule.then === 'function') {
       mainModule = await mainModule
@@ -40,7 +40,7 @@ export function createRouter(): Router {
     route.path = href
     route.scrollTop = scrollHistory[href] || 0
   }
-  initListeners(go)
+  if (!import.meta.env.SSR) initListeners(go)
   return { route, go }
 }
 

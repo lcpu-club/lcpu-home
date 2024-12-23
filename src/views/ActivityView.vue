@@ -21,6 +21,14 @@ const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
 const sidebarRef = useTemplateRef('sidebar-ref')
 
+watch(() => route.path, async (newVal) => {
+  Content.value = LoadingView as never;
+  const module = await resolvePageModule(newVal);
+  if ('default' in module) Content.value = module.default;
+  else Content.value = module;
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
+})
+
 // let's also update page title since we have access to the pathname property.
 async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const url = new URL(routerPath, 'http://a.com');
@@ -42,14 +50,6 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
 }
 
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
-
-watch(() => route.path, async (newVal) => {
-  Content.value = LoadingView as never;
-  const module = await resolvePageModule(newVal);
-  if ('default' in module) Content.value = module.default;
-  else Content.value = module;
-  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
-})
 
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
