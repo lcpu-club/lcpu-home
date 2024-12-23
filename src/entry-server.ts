@@ -21,7 +21,7 @@ export async function render(url: string, manifest: { [key: string]: string[] })
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  return [html, preloadLinks]
+  return [html, preloadLinks, ctx.titlePrefix ?? '']
 }
 
 function renderPreloadLinks(modules: Set<string>, manifest: { [key: string]: string[] }) {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue';
+import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useSSRContext, useTemplateRef, watch } from 'vue';
 import rawNewsList from 'virtual:news-list.json'
 import type { News } from '@/data/news';
 import NotFoundView from '@/views/NotFoundView.vue';
@@ -11,15 +11,18 @@ import NewsListView from './NewsListView.vue';
 import SidebarComponent from '@/components/SidebarComponent.vue';
 import TopbarComponent from '@/components/TopbarComponent.vue';
 import LoadingView from './LoadingView.vue';
+import type { SSRContext } from 'vue/server-renderer';
 
 const route = useRoute(() => scrollViewRef.value?.scrollTop);
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s新闻 - LCPU' });
+const title = useTitle('', { titleTemplate: '%s新闻 - 北京大学学生 Linux 俱乐部' });
 const currentNews = ref<News | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
 const sidebarRef = useTemplateRef('sidebar-ref')
+let ssrContext: SSRContext | undefined;
+if (import.meta.env.SSR) ssrContext = useSSRContext();
 
 async function resolvePageModule(routerPath: string): Promise<Module | never> {
   const url = new URL(routerPath, 'http://a.com');
@@ -28,9 +31,11 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
   currentNews.value = newsList.find((activity) => activity.contentUrl === path) || null;
   title.value = currentNews.value?.title ? currentNews.value.title + ' | ' : '';
 
+  if (ssrContext) ssrContext.titlePrefix = title.value + '新闻 - ';
+
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
-    if (path === '/news/' || path === '/news') resolve(NewsListView as never)
+    if (path === '/news/' || path === '/news/index' || path === '/news/index.html') resolve(NewsListView as never)
     else if (modulePath in newsModules) {
       let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
       if ('then' in module && typeof module.then === 'function') module = await module;

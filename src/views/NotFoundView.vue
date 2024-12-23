@@ -4,8 +4,13 @@ import AutoDarkImage from '@/components/AutoDarkImage.vue';
 import LcpuDark from '../assets/404-dark.svg';
 import LcpuLight from '../assets/404-light.svg';
 import { useTitle } from '@vueuse/core';
+import { useSSRContext } from 'vue';
 
-useTitle('404 NOT FOUND | LCPU')
+useTitle('404 NOT FOUND | 北京大学学生 Linux 俱乐部')
+if (import.meta.env.SSR) {
+  const context = useSSRContext();
+  if (context) context.titlePrefix = '404 NOT FOUND | '
+}
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router';
-import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useTemplateRef, watch } from 'vue';
+import { defineAsyncComponent, inject, onMounted, ref, shallowRef, useSSRContext, useTemplateRef, watch } from 'vue';
 import rawActivityList from 'virtual:activity-list.json'
 import type { Activity } from '@/data/activity';
 import NotFoundView from '@/views/NotFoundView.vue';
@@ -11,15 +11,18 @@ import ActivityListView from './ActivityListView.vue';
 import SidebarComponent from '@/components/SidebarComponent.vue';
 import TopbarComponent from '@/components/TopbarComponent.vue';
 import LoadingView from './LoadingView.vue';
+import type { SSRContext } from 'vue/server-renderer';
 
 const route = useRoute(() => scrollViewRef?.value?.scrollTop);
 const activityList: Activity[] = rawActivityList;
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>;
-const title = useTitle('', { titleTemplate: '%s活动 - LCPU' });
+const title = useTitle('', { titleTemplate: '%s活动 - 北京大学学生 Linux 俱乐部' });
 const currentActivity = ref<Activity | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
 const sidebarRef = useTemplateRef('sidebar-ref')
+let ssrContext: SSRContext | undefined;
+if (import.meta.env.SSR) ssrContext = useSSRContext();
 
 watch(() => route.path, async (newVal) => {
   Content.value = LoadingView as never;
@@ -37,9 +40,11 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
   currentActivity.value = activityList.find((activity) => activity.contentUrl === path) || null;
   title.value = (currentActivity.value?.title) ? currentActivity.value.title + ' | ' : '';
 
+  if (ssrContext) ssrContext.titlePrefix = title.value + '活动 - ';
+
   const modulePath = './data' + path + '.md';
   return new Promise(async (resolve) => {
-    if (path === '/activities/' || path === '/activities') resolve(ActivityListView as never);
+    if (path === '/activities/' || path === '/activities/index' || path === '/activities/index.html') resolve(ActivityListView as never);
     else if (modulePath in activityModules) {
       let module: Promise<Module> | Module = activityModules[modulePath]() as Promise<Module> | Module;
       if ('then' in module && typeof module.then === 'function') module = await module;
