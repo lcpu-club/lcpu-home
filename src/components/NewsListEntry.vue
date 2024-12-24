@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { News } from '@/data/news';
-import { dateString } from '@/utils';
+import type { News } from '@/data/news'
+import { dateString } from '@/utils'
 
 defineProps<{
-  news: News;
-}>();
+  news: News
+}>()
 </script>
 
 <template>
@@ -16,9 +16,20 @@ defineProps<{
       <span v-if="news.category?.trim()">·</span>
       <span v-if="news.category?.trim()">{{ news.category }}</span>
     </div>
-    <p v-if="news.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>{{ news.excerpt.trim() }}</p>
-    <a :href="news.contentUrl" text-blue-500 dark:text-blue-300 underline-offset-4 m-b-2 m-t-2 inline-block
-      w-auto>阅读全文...</a>
+    <p v-if="news.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>
+      {{ news.excerpt.trim() }}
+    </p>
+    <a
+      :href="news.contentUrl"
+      text-blue-500
+      dark:text-blue-300
+      underline-offset-4
+      m-b-2
+      m-t-2
+      inline-block
+      w-auto
+      >阅读全文...</a
+    >
   </div>
 </template>
 

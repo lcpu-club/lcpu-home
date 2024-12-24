@@ -1,30 +1,32 @@
 <script setup lang="ts">
-import ProjectCard from '@/components/ProjectCard.vue';
-import rawProjectData from '@/data/projects.json';
-import rawActivityList from 'virtual:activity-list.json';
-import rawNewsList from 'virtual:news-list.json';
-import type { Project } from '@/data/project';
-import type { Activity } from '@/data/activity';
-import type { News } from '@/data/news';
-import ActivityListEntry from '@/components/ActivityListEntry.vue';
-import NewsListEntry from '@/components/NewsListEntry.vue';
-import AutoDarkImage from '@/components/AutoDarkImage.vue';
+import ProjectCard from '@/components/ProjectCard.vue'
+import rawProjectData from '@/data/projects.json'
+import rawActivityList from 'virtual:activity-list.json'
+import rawNewsList from 'virtual:news-list.json'
+import type { Project } from '@/data/project'
+import type { Activity } from '@/data/activity'
+import type { News } from '@/data/news'
+import ActivityListEntry from '@/components/ActivityListEntry.vue'
+import NewsListEntry from '@/components/NewsListEntry.vue'
+import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
-import LcpuDark from '../assets/lcpu-dark.svg';
-import LcpuLight from '../assets/lcpu-light.svg';
-import GithubMark from '../assets/github-mark.svg';
-import GithubMarkWhite from '../assets/github-mark-white.svg';
-import { ChevronRightIcon } from '@heroicons/vue/24/solid';
-import { useTitle } from '@vueuse/core';
-import { useRoute } from '@/router/router';
-import { onMounted, useTemplateRef } from 'vue';
+import LcpuDark from '../assets/lcpu-dark.svg'
+import LcpuLight from '../assets/lcpu-light.svg'
+import GithubMark from '../assets/github-mark.svg'
+import GithubMarkWhite from '../assets/github-mark-white.svg'
+import { ChevronRightIcon } from '@heroicons/vue/24/solid'
+import { useTitle } from '@vueuse/core'
+import { useRoute } from '@/router/router'
+import { onMounted, useTemplateRef } from 'vue'
 
-const projects = rawProjectData as Project[];
-const activities = rawActivityList as Activity[];
-const news = rawNewsList as News[];
-const scrollViewRef = useTemplateRef('scrollViewRef');
-const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef');
-const route = useRoute(() => Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0));
+const projects = rawProjectData as Project[]
+const activities = rawActivityList as Activity[]
+const news = rawNewsList as News[]
+const scrollViewRef = useTemplateRef('scrollViewRef')
+const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
+const route = useRoute(() =>
+  Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0),
+)
 useTitle('北京大学学生 Linux 俱乐部')
 
 onMounted(() => {
@@ -35,8 +37,21 @@ onMounted(() => {
 
 <template>
   <main p-l-6 lg:p-l-12>
-    <div w-full h-screen box-border class="h-100dvh!" sm:grid sm:grid-cols-2 lg:grid-cols-3 max-w-1680px m-x-auto gap-6
-      lg:gap-12 overflow-auto ref="mobileScrollViewRef">
+    <div
+      w-full
+      h-screen
+      box-border
+      class="h-100dvh!"
+      sm:grid
+      sm:grid-cols-2
+      lg:grid-cols-3
+      max-w-1680px
+      m-x-auto
+      gap-6
+      lg:gap-12
+      overflow-auto
+      ref="mobileScrollViewRef"
+    >
       <div flex="~ items-center justify-center col" m-t-24 box-border sm:m-t-0 p-r-6 sm:p-r-0>
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
         <h1 m-t-8 m-b-0 text-center>北京大学<br />学生 Linux 俱乐部</h1>
@@ -53,21 +68,33 @@ onMounted(() => {
 
         <div m-t-12 flex="~ items-center">
           <h2 flex-grow-1>活动</h2>
-          <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
-            href="/activities/">
+          <a
+            class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
+            decoration-none
+            flex="~ items-center"
+            href="/activities/"
+          >
             <span>所有活动</span>
             <ChevronRightIcon class="h-5" />
           </a>
         </div>
 
         <div>
-          <ActivityListEntry v-for="activity in activities.slice(0, 3)" :key="activity.title" :activity="activity" />
+          <ActivityListEntry
+            v-for="activity in activities.slice(0, 3)"
+            :key="activity.title"
+            :activity="activity"
+          />
         </div>
 
         <div m-t-12 flex="~ items-center">
           <h2 flex-grow-1>新闻</h2>
-          <a class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md" decoration-none flex="~ items-center"
-            href="/news/">
+          <a
+            class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
+            decoration-none
+            flex="~ items-center"
+            href="/news/"
+          >
             <span>所有新闻</span>
             <ChevronRightIcon class="h-5" />
           </a>
