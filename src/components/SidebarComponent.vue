@@ -75,6 +75,10 @@ defineExpose({ toggleSidebar })
           :key="activityGroup.year + '-' + activityGroup.month"
           flex="~ col gap-2"
           class="group"
+          border-t-1
+          border-gray-200
+          dark:border-dark-200
+          border-t-solid
           p-y-3
         >
           <span text-xs text-gray-500 dark:text-light-900
@@ -106,6 +110,10 @@ defineExpose({ toggleSidebar })
           flex="~ col gap-2"
           p-y-3
           class="group"
+          border-t-1
+          border-gray-200
+          dark:border-dark-200
+          border-t-solid
         >
           <span text-xs text-gray-500 dark:text-light-900
             >{{ newsGroup.year }} 年 {{ newsGroup.month }} 月
@@ -129,10 +137,6 @@ defineExpose({ toggleSidebar })
 </template>
 
 <style scoped>
-.group {
-  --at-apply: border-t-1 border-gray-200 dark: border-dark-200 border-t-solid;
-}
-
 .group:first-of-type {
   --at-apply: border-t-0;
 }
