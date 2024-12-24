@@ -90,8 +90,7 @@ function initListeners(go: (href?: string) => Promise<void>) {
 function getMainModule(href: string): Module | Promise<Module> {
   const url = new URL(href, 'http://a.com/')
   const path = url.pathname
-  if (path === '/') return import('@/views/HomeView.vue')
-  const segs = path.split('/')
-  if (segs[1] === 'activities' || segs[1] === 'news') return import('@/views/PageView.vue')
-  return import('@/views/NotFoundView.vue')
+  if (path === '/' || path === '/index' || path === '/index.html')
+    return import('@/views/HomeView.vue')
+  return import('@/views/PageView.vue')
 }
