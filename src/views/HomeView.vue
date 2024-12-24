@@ -5,8 +5,7 @@ import rawActivityList from 'virtual:activity-list.json'
 import rawNewsList from 'virtual:news-list.json'
 import type { Project } from '@/data/project'
 import type { PageData } from '@/data/pagedata'
-import ActivityListEntry from '@/components/ActivityListEntry.vue'
-import NewsListEntry from '@/components/NewsListEntry.vue'
+import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
 import LcpuDark from '../assets/lcpu-dark.svg'
@@ -79,10 +78,10 @@ onMounted(() => {
         </div>
 
         <div>
-          <ActivityListEntry
+          <PageListEntry
             v-for="activity in activities.slice(0, 3)"
             :key="activity.title"
-            :activity="activity"
+            :page-entry="activity"
           />
         </div>
 
@@ -99,7 +98,7 @@ onMounted(() => {
           </a>
         </div>
         <div>
-          <NewsListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :news="_news" />
+          <PageListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :page-entry="_news" />
         </div>
       </div>
     </div>

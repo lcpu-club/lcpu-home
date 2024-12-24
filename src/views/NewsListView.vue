@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import NewsListEntry from '@/components/NewsListEntry.vue'
-import type { News } from '@/data/news'
+import NewsListEntry from '@/components/PageListEntry.vue'
+import type { PageData } from '@/data/pagedata'
 import { groupByYearMonth } from '@/utils'
 import rawNewsList from 'virtual:news-list.json' with { type: 'json' }
-const newsGroups = groupByYearMonth(rawNewsList as News[])
+const newsGroups = groupByYearMonth(rawNewsList as PageData[])
 </script>
 
 <template>
@@ -31,7 +31,7 @@ const newsGroups = groupByYearMonth(rawNewsList as News[])
           {{ newsGroup.year }}<br />
           {{ newsGroup.month.toString().padStart(2, '0') }}
         </h2>
-        <newsListEntry v-for="news in newsGroup.items" :news="news" :key="news.title" />
+        <newsListEntry v-for="news in newsGroup.items" :page-entry="news" :key="news.title" />
       </div>
     </div>
   </div>

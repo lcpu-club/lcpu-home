@@ -11,38 +11,57 @@ import {
   watch,
 } from 'vue'
 import rawNewsList from 'virtual:news-list.json'
-import type { News } from '@/data/news'
+import rawActivityList from 'virtual:activity-list.json'
+import type { PageData } from '@/data/pagedata'
 import NotFoundView from '@/views/NotFoundView.vue'
 import type { Module } from '@/module'
 import { useTitle } from '@vueuse/core'
 import { dateString } from '@/utils'
 import NewsListView from './NewsListView.vue'
+import ActivityListView from './ActivityListView.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
 import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
 
-const route = useRoute(() => scrollViewRef.value?.scrollTop)
-const newsList: News[] = rawNewsList
-const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>
-const title = useTitle('', { titleTemplate: '%s新闻 - 北京大学学生 Linux 俱乐部' })
-const scrollViewRef = ref<HTMLDivElement>()
-const showTitle = ref(false)
-const sidebarRef = useTemplateRef('sidebar-ref')
+const categoryNames: Record<string, string> = {
+  news: '新闻',
+  activities: '活动',
+}
+
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
 
+const newsList: PageData[] = rawNewsList
+const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>
+const activityList: PageData[] = rawActivityList
+const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>
+const allPages = [...newsList, ...activityList]
+const pageModuleCategories = [newsModules, activityModules]
+const route = useRoute(() => scrollViewRef.value?.scrollTop)
 const pathname = getPathname(route.path)
-const currentNews = shallowRef(getCurrentNews(pathname))
-title.value = currentNews.value?.title ? currentNews.value.title + ' | ' : ''
-if (ssrContext) ssrContext.titlePrefix = title.value + '新闻 - '
+const pageCategory = getPageCategory(pathname)
+const currentPage = shallowRef(getCurrentPage(pathname))
+const title = useTitle('', { titleTemplate: '%s北京大学学生 Linux 俱乐部' })
+title.value = currentPage.value?.title
+  ? currentPage.value.title + ` | ${pageCategory} - `
+  : `${pageCategory} - `
+if (ssrContext) ssrContext.titlePrefix = title.value
+const scrollViewRef = ref<HTMLDivElement>()
+const showTitle = ref(false)
+const sidebarRef = useTemplateRef('sidebar-ref')
+
 const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(pathname)))
 
 watch(
   () => route.path,
   async (newVal) => {
     const pathname = getPathname(newVal)
-    currentNews.value = getCurrentNews(pathname)
+    const pageCategory = getPageCategory(pathname)
+    currentPage.value = getCurrentPage(pathname)
+    title.value = currentPage.value?.title
+      ? currentPage.value.title + ` | ${pageCategory} - `
+      : `${pageCategory} - `
     Content.value = LoadingView as never
     const module = await resolvePageModule(pathname)
     if ('default' in module) Content.value = module.default
@@ -60,11 +79,24 @@ async function resolvePageModule(pathname: string): Promise<Module | never> {
   return new Promise(async (resolve) => {
     if (pathname === '/news/' || pathname === '/news/index' || pathname === '/news/index.html')
       resolve(NewsListView as never)
-    else if (modulePath in newsModules) {
-      let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module
-      if ('then' in module && typeof module.then === 'function') module = await module
-      resolve(module)
-    } else resolve(NotFoundView as never)
+    else if (
+      pathname === '/activities/' ||
+      pathname === '/activities/index' ||
+      pathname === '/activities/index.html'
+    )
+      resolve(ActivityListView as never)
+    else
+      for (const moduleCategory of pageModuleCategories) {
+        if (modulePath in moduleCategory) {
+          let module: Promise<Module> | Module = moduleCategory[modulePath]() as
+            | Promise<Module>
+            | Module
+          if ('then' in module && typeof module.then === 'function') module = await module
+          resolve(module)
+          return
+        }
+      }
+    resolve(NotFoundView as never)
   })
 }
 
@@ -82,15 +114,19 @@ function getPathname(path: string) {
   return new URL(path, 'http://a.com').pathname
 }
 
-function getCurrentNews(pathname: string): News | undefined {
-  return newsList.find((news) => news.contentUrl === pathname) || undefined
+function getCurrentPage(pathname: string): PageData | undefined {
+  return allPages.find((news) => news.contentUrl === pathname) || undefined
+}
+
+function getPageCategory(pathname: string): string {
+  const pageSegs = pathname.split('/')
+  return categoryNames[pageSegs[1]] ?? '新闻'
 }
 </script>
 
 <template>
   <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
-    <SidebarComponent ref="sidebar-ref" :current-title="currentNews?.title" />
-
+    <SidebarComponent ref="sidebar-ref" :current-title="currentPage?.title" />
     <div
       lg:col-span-3
       p-y-12
@@ -105,15 +141,17 @@ function getCurrentNews(pathname: string): News | undefined {
     >
       <TopbarComponent
         :toggleSidebarFn="sidebarRef?.toggleSidebar"
-        :title="currentNews?.title ?? '新闻'"
+        :title="currentPage?.title ?? '新闻'"
         :show-title="showTitle"
       />
-      <div v-if="currentNews" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
-        <h1 m-0>{{ currentNews.title }}</h1>
+      <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
+        <h1 m-0>{{ currentPage.title }}</h1>
         <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-gray-300>
-          <span>{{ dateString(currentNews.time) }}</span>
-          <span v-if="currentNews.category?.trim()">·</span>
-          <span v-if="currentNews.category?.trim()">{{ currentNews.category }}</span>
+          <span>{{ dateString(currentPage.time) }}</span>
+          <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
+            <span>·</span>
+            <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
+          </span>
         </div>
       </div>
       <Transition mode="out-in">

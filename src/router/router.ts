@@ -92,7 +92,6 @@ function getMainModule(href: string): Module | Promise<Module> {
   const path = url.pathname
   if (path === '/') return import('@/views/HomeView.vue')
   const segs = path.split('/')
-  if (segs[1] === 'activities') return import('@/views/ActivityView.vue')
-  if (segs[1] === 'news') return import('@/views/NewsView.vue')
+  if (segs[1] === 'activities' || segs[1] === 'news') return import('@/views/PageView.vue')
   return import('@/views/NotFoundView.vue')
 }

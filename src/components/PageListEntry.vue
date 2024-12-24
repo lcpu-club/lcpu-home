@@ -3,24 +3,25 @@ import type { PageData } from '@/data/pagedata'
 import { dateString } from '@/utils'
 
 defineProps<{
-  news: PageData
+  pageEntry: PageData
 }>()
 </script>
 
 <template>
   <div border-t="1 gray-200 dark:dark-100 solid" class="news-list-entry" p-y-4 box-border>
-    <h3 m-0>{{ news.title }}</h3>
-    <!-- doesn't seem to be the best way, but it works -->
+    <h3 m-0>{{ pageEntry.title }}</h3>
     <div flex="~ items-center gap-1" m-t-1 text-gray-500 dark:text-gray-300>
-      <span>{{ dateString(news.time) }}</span>
-      <span v-if="(news.data.category as string)?.trim()">·</span>
-      <span v-if="(news.data.category as string)?.trim()">{{ news.data.category }}</span>
+      <span>{{ dateString(pageEntry.time) }}</span>
+      <span flex="~ gap-1" v-for="key in Object.keys(pageEntry.data)" :key="key">
+        <span>·</span>
+        <span v-if="pageEntry.data[key]">{{ pageEntry.data[key] }}</span>
+      </span>
     </div>
-    <p v-if="news.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>
-      {{ news.excerpt.trim() }}
+    <p v-if="pageEntry.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>
+      {{ pageEntry.excerpt.trim() }}
     </p>
     <a
-      :href="news.contentUrl"
+      :href="pageEntry.contentUrl"
       text-blue-500
       dark:text-blue-300
       underline-offset-4

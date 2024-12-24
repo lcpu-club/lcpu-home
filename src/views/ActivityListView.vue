@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ActivityListEntry from '@/components/ActivityListEntry.vue'
+import PageListEntry from '@/components/PageListEntry.vue'
 import type { PageData } from '@/data/pagedata'
 import { groupByYearMonth } from '@/utils'
-import rawActivityList from 'virtual:activity-list.json' with { type: 'json' }
+import rawActivityList from 'virtual:activity-list.json'
 const activityGroups = groupByYearMonth(rawActivityList as PageData[])
 </script>
 
@@ -35,9 +35,9 @@ const activityGroups = groupByYearMonth(rawActivityList as PageData[])
           {{ activityGroup.year }}<br />
           {{ activityGroup.month.toString().padStart(2, '0') }}
         </h2>
-        <ActivityListEntry
+        <PageListEntry
           v-for="activity in activityGroup.items"
-          :activity="activity"
+          :page-entry="activity"
           :key="activity.title"
         />
       </div>
