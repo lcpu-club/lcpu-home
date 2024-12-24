@@ -16,6 +16,7 @@ import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
 import { onMounted, useTemplateRef } from 'vue'
+import FooterComponent from '@/components/FooterComponent.vue'
 
 const projects = rawProjectData as Project[]
 const activities = rawActivityList as PageData[]
@@ -100,6 +101,7 @@ onMounted(() => {
         <div>
           <PageListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :page-entry="_news" />
         </div>
+        <FooterComponent m-t-12 />
       </div>
     </div>
   </main>

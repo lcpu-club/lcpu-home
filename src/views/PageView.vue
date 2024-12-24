@@ -23,6 +23,7 @@ import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
 import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
+import FooterComponent from '@/components/FooterComponent.vue'
 
 const categoryNames: Record<string, string> = {
   news: '新闻',
@@ -157,6 +158,7 @@ function getPageCategory(pathname: string): string {
       <Transition mode="out-in">
         <component :is="Content" max-w-800px m-x-auto />
       </Transition>
+      <FooterComponent m-t-12 max-w-800px m-x-auto />
     </div>
   </div>
 </template>
