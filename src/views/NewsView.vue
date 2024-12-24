@@ -17,39 +17,23 @@ const route = useRoute(() => scrollViewRef.value?.scrollTop);
 const newsList: News[] = rawNewsList;
 const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>;
 const title = useTitle('', { titleTemplate: '%s新闻 - 北京大学学生 Linux 俱乐部' });
-const currentNews = ref<News | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
 const sidebarRef = useTemplateRef('sidebar-ref')
 let ssrContext: SSRContext | undefined;
 if (import.meta.env.SSR) ssrContext = useSSRContext();
 
-async function resolvePageModule(routerPath: string): Promise<Module | never> {
-  const url = new URL(routerPath, 'http://a.com');
-  const path = url.pathname;
-
-  currentNews.value = newsList.find((activity) => activity.contentUrl === path) || null;
-  title.value = currentNews.value?.title ? currentNews.value.title + ' | ' : '';
-
-  if (ssrContext) ssrContext.titlePrefix = title.value + '新闻 - ';
-
-  const modulePath = './data' + path + '.md';
-  return new Promise(async (resolve) => {
-    if (path === '/news/' || path === '/news/index' || path === '/news/index.html') resolve(NewsListView as never)
-    else if (modulePath in newsModules) {
-      let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
-      if ('then' in module && typeof module.then === 'function') module = await module;
-      resolve(module);
-    }
-    else resolve(NotFoundView as never);
-  })
-}
-
-const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
+const pathname = getPathname(route.path);
+const currentNews = shallowRef(getCurrentNews(pathname));
+title.value = currentNews.value?.title ? currentNews.value.title + ' | ' : '';
+if (ssrContext) ssrContext.titlePrefix = title.value + '新闻 - ';
+const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(pathname)));
 
 watch(() => route.path, async (newVal) => {
+  const pathname = getPathname(newVal);
+  currentNews.value = getCurrentNews(pathname);
   Content.value = LoadingView as never;
-  const module = await resolvePageModule(newVal);
+  const module = await resolvePageModule(pathname);
   if ('default' in module) Content.value = module.default;
   else Content.value = module;
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' });
@@ -59,6 +43,19 @@ onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' });
 })
 
+async function resolvePageModule(pathname: string): Promise<Module | never> {
+  const modulePath = './data' + pathname + '.md';
+  return new Promise(async (resolve) => {
+    if (pathname === '/news/' || pathname === '/news/index' || pathname === '/news/index.html') resolve(NewsListView as never)
+    else if (modulePath in newsModules) {
+      let module: Promise<Module> | Module = newsModules[modulePath]() as Promise<Module> | Module;
+      if ('then' in module && typeof module.then === 'function') module = await module;
+      resolve(module);
+    }
+    else resolve(NotFoundView as never);
+  })
+}
+
 function handleScroll() {
   const scrollTop = scrollViewRef.value?.scrollTop;
   if (scrollTop == undefined) return;
@@ -67,6 +64,14 @@ function handleScroll() {
   } else {
     showTitle.value = false;
   }
+}
+
+function getPathname(path: string) {
+  return new URL(path, 'http://a.com').pathname
+}
+
+function getCurrentNews(pathname: string): News | undefined {
+  return newsList.find((news) => news.contentUrl === pathname) || undefined;
 }
 </script>
 

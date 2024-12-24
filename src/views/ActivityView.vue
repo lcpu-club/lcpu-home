@@ -17,34 +17,37 @@ const route = useRoute(() => scrollViewRef?.value?.scrollTop);
 const activityList: Activity[] = rawActivityList;
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>;
 const title = useTitle('', { titleTemplate: '%s活动 - 北京大学学生 Linux 俱乐部' });
-const currentActivity = ref<Activity | null>();
 const scrollViewRef = ref<HTMLDivElement>();
 const showTitle = ref(false);
 const sidebarRef = useTemplateRef('sidebar-ref')
 let ssrContext: SSRContext | undefined;
 if (import.meta.env.SSR) ssrContext = useSSRContext();
 
+const pathname = getPathname(route.path);
+const currentActivity = shallowRef(getCurrentActivity(pathname));
+title.value = (currentActivity.value?.title) ? currentActivity.value.title + ' | ' : '';
+if (ssrContext) ssrContext.titlePrefix = title.value + '活动 - ';
+const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(pathname)));
+
 watch(() => route.path, async (newVal) => {
+  const pathname = getPathname(newVal);
+  currentActivity.value = getCurrentActivity(pathname);
   Content.value = LoadingView as never;
-  const module = await resolvePageModule(newVal);
+  const module = await resolvePageModule(pathname);
   if ('default' in module) Content.value = module.default;
   else Content.value = module;
   scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
 })
 
+onMounted(() => {
+  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
+})
+
 // let's also update page title since we have access to the pathname property.
-async function resolvePageModule(routerPath: string): Promise<Module | never> {
-  const url = new URL(routerPath, 'http://a.com');
-  const path = url.pathname;
-
-  currentActivity.value = activityList.find((activity) => activity.contentUrl === path) || null;
-  title.value = (currentActivity.value?.title) ? currentActivity.value.title + ' | ' : '';
-
-  if (ssrContext) ssrContext.titlePrefix = title.value + '活动 - ';
-
-  const modulePath = './data' + path + '.md';
+async function resolvePageModule(pathname: string): Promise<Module | never> {
+  const modulePath = './data' + pathname + '.md';
   return new Promise(async (resolve) => {
-    if (path === '/activities/' || path === '/activities/index' || path === '/activities/index.html') resolve(ActivityListView as never);
+    if (pathname === '/activities/' || pathname === '/activities/index' || pathname === '/activities/index.html') resolve(ActivityListView as never);
     else if (modulePath in activityModules) {
       let module: Promise<Module> | Module = activityModules[modulePath]() as Promise<Module> | Module;
       if ('then' in module && typeof module.then === 'function') module = await module;
@@ -54,12 +57,6 @@ async function resolvePageModule(routerPath: string): Promise<Module | never> {
   })
 }
 
-const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(route.path)));
-
-onMounted(() => {
-  scrollViewRef.value?.scrollTo({ top: 0, behavior: 'instant' });
-})
-
 function handleScroll() {
   const scrollTop = scrollViewRef.value?.scrollTop;
   if (scrollTop == undefined) return;
@@ -68,6 +65,14 @@ function handleScroll() {
   } else {
     showTitle.value = false;
   }
+}
+
+function getPathname(path: string) {
+  return new URL(path, 'http://a.com').pathname
+}
+
+function getCurrentActivity(pathname: string): Activity | undefined {
+  return activityList.find((activity) => activity.contentUrl === pathname) || undefined;
 }
 </script>
 
