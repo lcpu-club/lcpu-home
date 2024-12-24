@@ -60,7 +60,7 @@ const links = [
 
 links.push(...activities, ...news)
 
-const stream = new SitemapStream({ hostname: 'https://lcpu-home.pages.dev' })
+const stream = new SitemapStream({ hostname: 'https://lh.djdjz7.top' })
 const buffer = await streamToPromise(Readable.from(links).pipe(stream))
 const sitemap = buffer.toString()
 
