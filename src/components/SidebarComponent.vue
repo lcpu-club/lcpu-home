@@ -5,12 +5,11 @@ import LcpuLight from '@/assets/lcpu-light.svg'
 import LcpuDark from '@/assets/lcpu-dark.svg'
 import rawActivityList from 'virtual:activity-list.json'
 import rawNewsList from 'virtual:news-list.json'
-import type { Activity } from '@/data/activity'
-import type { News } from '@/data/news'
+import type { PageData } from '@/data/pagedata'
 import { groupByYearMonth } from '@/utils'
 
-const activityListGrouped = groupByYearMonth(rawActivityList as Activity[])
-const newsListGrouped = groupByYearMonth(rawNewsList as News[])
+const activityListGrouped = groupByYearMonth(rawActivityList as PageData[])
+const newsListGrouped = groupByYearMonth(rawNewsList as PageData[])
 
 const sidebarCollapsed = ref(true)
 const toggleSidebar = (collapse?: boolean) => {

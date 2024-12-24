@@ -1,7 +1,7 @@
 import { PluginOption } from 'vite'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import type { News } from '../src/data/news'
+import type { PageData } from '../src/data/pagedata'
 import path from 'node:path'
 
 export default function newsListGenerator(): PluginOption {
@@ -22,11 +22,18 @@ export default function newsListGenerator(): PluginOption {
           .map((entry) => {
             return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
           })
-          .map((file): News => {
+          .map((file): PageData => {
             const { entry, frontmatter } = file
             const filename = path.parse(entry).name
+            const data = frontmatter.data
+            const time = data.time
+            const title = data.title
+            delete data.time
+            delete data.title
             return {
-              ...(frontmatter.data as { time: string; title: string; category?: string }),
+              title,
+              time,
+              data,
               excerpt: frontmatter.excerpt,
               contentUrl: `/news/${filename}`,
             }

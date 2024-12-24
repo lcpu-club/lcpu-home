@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { News } from '@/data/news'
+import type { PageData } from '@/data/pagedata'
 import { dateString } from '@/utils'
 
 defineProps<{
-  news: News
+  news: PageData
 }>()
 </script>
 
@@ -13,8 +13,8 @@ defineProps<{
     <!-- doesn't seem to be the best way, but it works -->
     <div flex="~ items-center gap-1" m-t-1 text-gray-500 dark:text-gray-300>
       <span>{{ dateString(news.time) }}</span>
-      <span v-if="news.category?.trim()">·</span>
-      <span v-if="news.category?.trim()">{{ news.category }}</span>
+      <span v-if="(news.data.category as string)?.trim()">·</span>
+      <span v-if="(news.data.category as string)?.trim()">{{ news.data.category }}</span>
     </div>
     <p v-if="news.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>
       {{ news.excerpt.trim() }}

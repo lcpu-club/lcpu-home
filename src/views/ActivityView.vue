@@ -11,7 +11,7 @@ import {
   watch,
 } from 'vue'
 import rawActivityList from 'virtual:activity-list.json'
-import type { Activity } from '@/data/activity'
+import type { PageData } from '@/data/pagedata'
 import NotFoundView from '@/views/NotFoundView.vue'
 import type { Module } from '@/module'
 import { useTitle } from '@vueuse/core'
@@ -23,7 +23,7 @@ import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
 
 const route = useRoute(() => scrollViewRef?.value?.scrollTop)
-const activityList: Activity[] = rawActivityList
+const activityList: PageData[] = rawActivityList
 const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>
 const title = useTitle('', { titleTemplate: '%s活动 - 北京大学学生 Linux 俱乐部' })
 const scrollViewRef = ref<HTMLDivElement>()
@@ -89,7 +89,7 @@ function getPathname(path: string) {
   return new URL(path, 'http://a.com').pathname
 }
 
-function getCurrentActivity(pathname: string): Activity | undefined {
+function getCurrentActivity(pathname: string): PageData | undefined {
   return activityList.find((activity) => activity.contentUrl === pathname) || undefined
 }
 </script>

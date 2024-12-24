@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ActivityListEntry from '@/components/ActivityListEntry.vue'
-import type { Activity } from '@/data/activity'
+import type { PageData } from '@/data/pagedata'
 import { groupByYearMonth } from '@/utils'
 import rawActivityList from 'virtual:activity-list.json' with { type: 'json' }
-const activityGroups = groupByYearMonth(rawActivityList as Activity[])
+const activityGroups = groupByYearMonth(rawActivityList as PageData[])
 </script>
 
 <template>

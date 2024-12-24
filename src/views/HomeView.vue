@@ -4,8 +4,7 @@ import rawProjectData from '@/data/projects.json'
 import rawActivityList from 'virtual:activity-list.json'
 import rawNewsList from 'virtual:news-list.json'
 import type { Project } from '@/data/project'
-import type { Activity } from '@/data/activity'
-import type { News } from '@/data/news'
+import type { PageData } from '@/data/pagedata'
 import ActivityListEntry from '@/components/ActivityListEntry.vue'
 import NewsListEntry from '@/components/NewsListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
@@ -20,8 +19,8 @@ import { useRoute } from '@/router/router'
 import { onMounted, useTemplateRef } from 'vue'
 
 const projects = rawProjectData as Project[]
-const activities = rawActivityList as Activity[]
-const news = rawNewsList as News[]
+const activities = rawActivityList as PageData[]
+const news = rawNewsList as PageData[]
 const scrollViewRef = useTemplateRef('scrollViewRef')
 const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
 const route = useRoute(() =>

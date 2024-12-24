@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Activity } from '@/data/activity'
+import type { PageData } from '@/data/pagedata'
 import { dateString } from '@/utils'
 
 defineProps<{
-  activity: Activity
+  activity: PageData
 }>()
 </script>
 
