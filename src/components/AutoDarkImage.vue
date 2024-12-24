@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core'
+import { usePreferredDark } from '@vueuse/core'
 import { onMounted, ref, watch } from 'vue'
 const props = defineProps<{
   src: string
@@ -8,7 +8,7 @@ const props = defineProps<{
 }>()
 
 const url = ref('')
-const isDark = useDark()
+const isDark = usePreferredDark()
 onMounted(() => {
   watch(
     isDark,
