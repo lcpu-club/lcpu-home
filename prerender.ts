@@ -24,12 +24,13 @@ routesToPrerender.push(...fg.sync('./src/data/activities/*.md').map((p) => p.sli
 
 // pre-render each route...
 for (const url of routesToPrerender) {
-  const [appHtml, preloadLinks, titlePrefix] = await render(url, manifest)
+  const [appHtml, preloadLinks, titlePrefix, metaDescription] = await render(url, manifest)
 
   const html = template
     .replace(`<!--preload-links-->`, preloadLinks)
     .replace(`<!--app-html-->`, appHtml)
     .replace(`<!--title-prefix-->`, titlePrefix)
+    .replace(`<!--meta-description-->`, metaDescription)
 
   const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}.html`
   customWriteFileSync(toAbsolute(filePath), html)

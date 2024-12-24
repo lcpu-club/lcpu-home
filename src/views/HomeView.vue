@@ -15,7 +15,7 @@ import GithubMarkWhite from '../assets/github-mark-white.svg'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
-import { onMounted, useTemplateRef } from 'vue'
+import { onMounted, useSSRContext, useTemplateRef } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 
 const projects = rawProjectData as Project[]
@@ -32,6 +32,13 @@ onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   mobileScrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
 })
+
+if (import.meta.env.SSR) {
+  const ctx = useSSRContext()
+  if (ctx)
+    ctx.metaDescription =
+      '北京大学学生 Linux 俱乐部是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
+}
 </script>
 
 <template>

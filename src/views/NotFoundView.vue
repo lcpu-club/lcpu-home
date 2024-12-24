@@ -9,7 +9,10 @@ import { useSSRContext } from 'vue'
 useTitle('404 NOT FOUND | 北京大学学生 Linux 俱乐部')
 if (import.meta.env.SSR) {
   const context = useSSRContext()
-  if (context) context.titlePrefix = '404 NOT FOUND | '
+  if (context) {
+    context.titlePrefix = '404 NOT FOUND | '
+    context.metaDescription = '未找到此页面...'
+  }
 }
 </script>
 
