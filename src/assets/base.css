@@ -89,8 +89,6 @@ img {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-  }
   .shiki,
   .shiki span {
     color: var(--shiki-dark) !important;

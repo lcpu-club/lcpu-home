@@ -41,12 +41,12 @@ const allPages = [...newsList, ...activityList]
 const pageModuleCategories = [newsModules, activityModules]
 const route = useRoute(() => scrollViewRef.value?.scrollTop)
 const pathname = getPathname(route.path)
-const pageCategory = getPageCategory(pathname)
+const pageCategory = ref(getPageCategory(pathname))
 const currentPage = shallowRef(getCurrentPage(pathname))
 const title = useTitle('', { titleTemplate: '%s北京大学学生 Linux 俱乐部' })
 title.value = currentPage.value?.title
-  ? currentPage.value.title + ` | ${pageCategory} - `
-  : `${pageCategory} - `
+  ? currentPage.value.title + ` | ${pageCategory.value} - `
+  : `${pageCategory.value} - `
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
   ssrContext.metaDescription = (
@@ -67,11 +67,11 @@ watch(
   () => route.path,
   async (newVal) => {
     const pathname = getPathname(newVal)
-    const pageCategory = getPageCategory(pathname)
+    pageCategory.value = getPageCategory(pathname)
     currentPage.value = getCurrentPage(pathname)
     title.value = currentPage.value?.title
-      ? currentPage.value.title + ` | ${pageCategory} - `
-      : `${pageCategory} - `
+      ? currentPage.value.title + ` | ${pageCategory.value} - `
+      : `${pageCategory.value} - `
     Content.value = LoadingView as never
     const module = await resolvePageModule(pathname)
     if ('default' in module) Content.value = module.default
@@ -151,7 +151,7 @@ function getPageCategory(pathname: string): string {
     >
       <TopbarComponent
         :toggleSidebarFn="sidebarRef?.toggleSidebar"
-        :title="currentPage?.title ?? '新闻'"
+        :title="currentPage?.title ?? pageCategory"
         :show-title="showTitle"
       />
       <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
