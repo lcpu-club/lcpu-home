@@ -49,6 +49,12 @@ def hello_world():
     print("Hello, World!")
 ```
 
+```vue
+<template>
+  <span>{{ 1 + 1 }}</span>
+</template>
+```
+
 > Blockquote  
 > This is a blockquote.
 
@@ -115,7 +121,7 @@ Never gonna run around and,
 Desert you~
 
 ```csharp
-Console.WriteLine("Got rickrolled lol");
+Console.WriteLine("Got rickrolled lol {{ 1 + 1 }}");
 ```
 
 :::

@@ -36,6 +36,7 @@ const md = mdit
 
 const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
 const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g
+const preReplaceRe = /(<pre(?:(?!v-pre)[\s\S])*?)>/gm
 
 export default function markdownContentGenerator(): PluginOption {
   const virtualModuleId = 'virtual:news-list.json'
@@ -63,6 +64,8 @@ export default function markdownContentGenerator(): PluginOption {
           styles.push(style)
         })
         rendered = rendered.replace(styleRe, '')
+        rendered = rendered.replace(preReplaceRe, '$1 v-pre>')
+
         return `<template><div>${rendered}</div></template>${scripts.join('')}${styles.join('')}`
       }
     },
