@@ -22,6 +22,7 @@ onMounted(() => {
 
   watch(content, (newSize) => {
     if (!collapsed.value) contentWrapperRef.value!.style.height = `${newSize}px`
+    console.log(newSize)
   })
 
   content.value = contentDesiredSizeWrapperRef.value!.scrollHeight
@@ -47,6 +48,7 @@ onMounted(() => {
         border-unset
         bg-transparent
         cursor-pointer
+        flex="~ items-center justify-center"
       >
         <ChevronRightIcon
           :class="['h-5 w-5 transition-all duration-300', collapsed ? 'rotate-0' : 'rotate-90']"
@@ -55,7 +57,7 @@ onMounted(() => {
       </button>
     </div>
 
-    <div ref="contentWrapperRef" transition-all duration-300 h-0>
+    <div ref="contentWrapperRef" transition-all duration-300>
       <div ref="contentDesiredSizeWrapperRef">
         <slot></slot>
       </div>
