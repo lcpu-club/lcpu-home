@@ -4,6 +4,7 @@ import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps<{
   initialCollapsed?: boolean
+  extendToggleArea?: boolean
 }>()
 
 const contentWrapperRef = ref<HTMLDivElement>()
@@ -40,7 +41,11 @@ onMounted(() => {
 
 <template>
   <div overflow-clip>
-    <div flex="~ items-center">
+    <div
+      flex="~ items-center"
+      @click.stop="extendToggleArea ? toggleCollapsed() : null"
+      :class="{ 'cursor-pointer': extendToggleArea }"
+    >
       <slot name="header"></slot>
       <button
         title="切换折叠状态"
