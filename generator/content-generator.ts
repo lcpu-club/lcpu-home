@@ -19,7 +19,7 @@ const md = mdit
   .use(MarkdownItContainer, 'expander', {
     render: (tokens: Token[], idx: number) => {
       if (tokens[idx].nesting === 1) {
-        return `<ExpanderComponent class="expander"><template #header><span font-bold text-sm p-y-4>MORE</span></template>\n`
+        return `<ExpanderComponent class="expander" :initial-collapsed="true"><template #header><span font-bold text-sm p-y-4>MORE</span></template>\n`
       } else {
         return '</ExpanderComponent>\n'
       }

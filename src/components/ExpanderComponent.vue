@@ -2,11 +2,15 @@
 import { ChevronRightIcon } from '@heroicons/vue/24/outline'
 import { onMounted, ref, watch } from 'vue'
 
+const props = defineProps<{
+  initialCollapsed?: boolean
+}>()
+
 const contentWrapperRef = ref<HTMLDivElement>()
 const contentDesiredSizeWrapperRef = ref<HTMLDivElement>()
 
 const content = ref(0)
-const collapsed = ref(false)
+const collapsed = ref(props.initialCollapsed ?? false)
 
 function toggleCollapsed() {
   collapsed.value = !collapsed.value
@@ -19,7 +23,7 @@ function toggleCollapsed() {
 
 onMounted(() => {
   if (!contentWrapperRef.value || !contentDesiredSizeWrapperRef.value) return
-
+  if (collapsed.value) contentWrapperRef.value!.style.height = '0'
   watch(content, (newSize) => {
     if (!collapsed.value) contentWrapperRef.value!.style.height = `${newSize}px`
   })
