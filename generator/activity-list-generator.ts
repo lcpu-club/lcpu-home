@@ -28,12 +28,16 @@ export default function activityListGenerator(): PluginOption {
             const data = frontmatter.data
             const time = data.time
             const title = data.title
+            const metaDescription = data.metaDescription
             delete data.time
             delete data.title
+            delete data.markdown
+            delete data.metaDescription
             return {
               title,
               time,
               data,
+              metaDescription,
               excerpt: frontmatter.excerpt,
               contentUrl: `/activities/${filename}`,
             }

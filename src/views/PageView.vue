@@ -50,8 +50,8 @@ title.value = currentPage.value?.title
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
   ssrContext.metaDescription = (
-    (currentPage.value?.data.metaDescription as string | undefined)
-      ? (currentPage.value?.data.metaDescription as string)
+    (currentPage.value?.metaDescription as string | undefined)
+      ? (currentPage.value?.metaDescription as string)
       : currentPage.value?.excerpt
         ? currentPage.value.excerpt
         : (currentPage.value?.title ?? '北京大学学生 Linux 俱乐部')

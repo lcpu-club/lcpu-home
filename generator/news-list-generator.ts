@@ -28,12 +28,15 @@ export default function newsListGenerator(): PluginOption {
             const data = frontmatter.data
             const time = data.time
             const title = data.title
+            const metaDescription = data.metaDescription
             delete data.time
             delete data.title
+            delete data.metaDescription
             return {
               title,
               time,
               data,
+              metaDescription,
               excerpt: frontmatter.excerpt,
               contentUrl: `/news/${filename}`,
             }

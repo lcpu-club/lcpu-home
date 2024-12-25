@@ -3,5 +3,6 @@ export interface PageData {
   title: string
   excerpt?: string
   contentUrl: string
+  metaDescription?: string
   data: { [key: string]: unknown }
 }

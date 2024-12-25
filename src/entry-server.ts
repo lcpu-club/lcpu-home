@@ -64,7 +64,6 @@ function renderPreloadLink(file: string) {
   } else if (file.endsWith('.png')) {
     return ` <link rel="preload" href="${file}" as="image" type="image/png">`
   } else {
-    // TODO
     return ''
   }
 }
