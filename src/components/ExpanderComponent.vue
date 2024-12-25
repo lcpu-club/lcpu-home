@@ -22,7 +22,6 @@ onMounted(() => {
 
   watch(content, (newSize) => {
     if (!collapsed.value) contentWrapperRef.value!.style.height = `${newSize}px`
-    console.log(newSize)
   })
 
   content.value = contentDesiredSizeWrapperRef.value!.scrollHeight

@@ -1,20 +1,39 @@
 import { PluginOption } from 'vite'
-import mdit from 'markdown-it'
+import * as mdit from 'markdown-it'
+import Token from 'markdown-it/lib/token.mjs'
 import matter from 'gray-matter'
 import Shiki from '@shikijs/markdown-it'
+import MathJax3 from 'markdown-it-mathjax3'
+import MarkdownItContainer from 'markdown-it-container'
 
-const md = mdit({
-  html: true,
-  linkify: true,
-  typographer: true,
-}).use(
-  await Shiki({
-    themes: {
-      light: 'catppuccin-latte',
-      dark: 'one-dark-pro',
+const md = mdit
+  .default({
+    html: true,
+    linkify: true,
+    typographer: true,
+  })
+  .use(MathJax3)
+  .use(MarkdownItContainer, 'warning')
+  .use(MarkdownItContainer, 'error')
+  .use(MarkdownItContainer, 'info')
+  .use(MarkdownItContainer, 'expander', {
+    render: (tokens: Token[], idx: number) => {
+      console.log(tokens[idx])
+      if (tokens[idx].nesting === 1) {
+        return `<ExpanderComponent class="expander"><template #header><span w-full font-bold text-sm>MORE</span></template><template>${tokens[idx].info}</template>\n`
+      } else {
+        return '</ExpanderComponent>\n'
+      }
     },
-  }),
-)
+  })
+  .use(
+    await Shiki({
+      themes: {
+        light: 'catppuccin-latte',
+        dark: 'one-dark-pro',
+      },
+    }),
+  )
 
 const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
 const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g

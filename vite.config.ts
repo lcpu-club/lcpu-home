@@ -12,7 +12,14 @@ import MarkdownContentGenerator from './generator/content-generator'
 export default defineConfig({
   plugins: [
     MarkdownContentGenerator(),
-    vue({ include: [/\.vue$/, /\.md$/] }),
+    vue({
+      include: [/\.vue$/, /\.md$/],
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('mjx-'),
+        },
+      },
+    }),
     vueDevTools(),
     UnoCSS(),
     ActivityListGenerator(),
