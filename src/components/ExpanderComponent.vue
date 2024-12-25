@@ -43,13 +43,13 @@ onMounted(() => {
   <div overflow-clip>
     <div
       flex="~ items-center"
-      @click.stop="extendToggleArea ? toggleCollapsed() : null"
+      @click="extendToggleArea ? toggleCollapsed() : null"
       :class="{ 'cursor-pointer': extendToggleArea }"
     >
       <slot name="header"></slot>
       <button
         title="切换折叠状态"
-        @click="toggleCollapsed"
+        @click.stop="toggleCollapsed"
         rounded-unset
         transition-all
         duration-200
