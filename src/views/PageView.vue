@@ -147,7 +147,7 @@ function getPageCategory(pathname: string): string {
       class="h-100dvh!"
       box-border
       ref="scrollViewRef"
-      @scroll="handleScroll"
+      @scroll.passive="handleScroll"
     >
       <TopbarComponent
         :toggleSidebarFn="sidebarRef?.toggleSidebar"
