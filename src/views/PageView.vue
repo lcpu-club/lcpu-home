@@ -34,11 +34,9 @@ let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
 
 const newsList: PageData[] = rawNewsList
-const newsModules = inject('newsModules') as Record<string, () => Promise<unknown>>
+const pageModules = inject('pageModules') as Record<string, () => Promise<unknown>>
 const activityList: PageData[] = rawActivityList
-const activityModules = inject('activityModules') as Record<string, () => Promise<unknown>>
 const allPages = [...newsList, ...activityList]
-const pageModuleCategories = [newsModules, activityModules]
 const route = useRoute(() => scrollViewRef.value?.scrollTop)
 const pathname = getPathname(route.path)
 const pageCategory = ref(getPageCategory(pathname))
@@ -95,18 +93,11 @@ async function resolvePageModule(pathname: string): Promise<Module | never> {
       pathname === '/activities/index.html'
     )
       resolve(ActivityListView as never)
-    else
-      for (const moduleCategory of pageModuleCategories) {
-        if (modulePath in moduleCategory) {
-          let module: Promise<Module> | Module = moduleCategory[modulePath]() as
-            | Promise<Module>
-            | Module
-          if ('then' in module && typeof module.then === 'function') module = await module
-          resolve(module)
-          return
-        }
-      }
-    resolve(NotFoundView as never)
+    else if (modulePath in pageModules) {
+      let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
+      if ('then' in module && typeof module.then === 'function') module = await module
+      resolve(module)
+    } else resolve(NotFoundView as never)
   })
 }
 
