@@ -39,6 +39,7 @@ onMounted(() => {
     <div flex="~ items-center">
       <slot name="header"></slot>
       <button
+        title="切换折叠状态"
         @click="toggleCollapsed"
         rounded-unset
         transition-all

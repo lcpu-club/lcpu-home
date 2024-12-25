@@ -30,10 +30,17 @@ defineProps<{
       gap-6
       box-border
     >
-      <button cursor-pointer @click="toggleSidebarFn?.()" p-0 border-none bg-transparent>
+      <button
+        title="打开侧边栏"
+        cursor-pointer
+        @click="toggleSidebarFn?.()"
+        p-0
+        border-none
+        bg-transparent
+      >
         <Bars3BottomLeftIcon class="w-6 h-6 text-black dark:text-white" />
       </button>
-      <a href="/" p-0 border-none bg-transparent>
+      <a href="/" title="返回主页" p-0 border-none bg-transparent>
         <HomeIcon class="w-6 h-6 text-black dark:text-white" />
       </a>
       <span

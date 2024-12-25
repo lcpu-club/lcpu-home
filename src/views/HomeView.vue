@@ -59,11 +59,17 @@ if (import.meta.env.SSR) {
       ref="mobileScrollViewRef"
     >
       <div flex="~ items-center justify-center col" m-t-24 box-border sm:m-t-0 p-r-6 sm:p-r-0>
-        <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" />
+        <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" alt="LCPU 标识" />
         <h1 m-t-8 m-b-0 text-center>北京大学<br />学生 Linux 俱乐部</h1>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
         <a href="https://github.com/lcpu-club" h-8 w-8 m-t-8>
-          <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full w-full />
+          <AutoDarkImage
+            :src="GithubMark"
+            :src-dark="GithubMarkWhite"
+            h-full
+            w-full
+            alt="Github 标识"
+          />
         </a>
       </div>
       <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12 ref="scrollViewRef">

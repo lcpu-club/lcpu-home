@@ -60,7 +60,7 @@ defineExpose({ toggleSidebar })
       lg:shadow-none
     >
       <a flex="~ items-center gap-2" href="/" class="text-unset! decoration-none">
-        <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" />
+        <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" alt="LCPU 标识" />
         <span text-xl font-semibold>LCPU</span>
       </a>
 
