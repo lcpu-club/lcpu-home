@@ -7,6 +7,7 @@ import UnoCSS from 'unocss/vite'
 import ActivityListGenerator from './generator/activity-list-generator'
 import NewsListGenerator from './generator/news-list-generator'
 import MarkdownContentGenerator from './generator/content-generator'
+import BaseCssGenerator from './generator/base-css-generator'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
     UnoCSS(),
     ActivityListGenerator(),
     NewsListGenerator(),
+    BaseCssGenerator(),
   ],
   resolve: {
     alias: {

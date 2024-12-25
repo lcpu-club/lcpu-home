@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import Shiki from '@shikijs/markdown-it'
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
+import { SiteConfiguration } from '../src/site'
 
 const md = mdit
   .default({
@@ -19,7 +20,12 @@ const md = mdit
   .use(MarkdownItContainer, 'expander', {
     render: (tokens: Token[], idx: number) => {
       if (tokens[idx].nesting === 1) {
-        return `<ExpanderComponent class="expander" :initial-collapsed="true" :extend-toggle-area="true"><template #header><span font-bold text-sm p-y-4>MORE</span></template>\n`
+        return `
+<ExpanderComponent class="expander" :initial-collapsed="true"
+  :extend-toggle-area="true">
+  <template #header>
+    <span font-bold text-sm p-y-4>${SiteConfiguration.markdown.container.expanderLabel ?? 'MORE'}</span>
+  </template>\n`
       } else {
         return '</ExpanderComponent>\n'
       }

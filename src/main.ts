@@ -1,5 +1,5 @@
 import 'virtual:uno.css'
-import './assets/base.css'
+import 'virtual:base.css'
 
 import { createSSRApp } from 'vue'
 import App from './App.vue'

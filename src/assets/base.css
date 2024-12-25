@@ -5,6 +5,12 @@ body {
 }
 
 :root {
+  --warning-text: '/* warning text */';
+  --error-text: '/* error text */';
+  --info-text: '/* info text */';
+
+  /* NOT USED: refer to ../generator/content-generator.ts */
+  --expander-text: '/* expander text */';
   font-family:
     'Inter',
     -apple-system,
@@ -121,7 +127,7 @@ img {
 }
 
 .warning::before {
-  content: 'WARNING';
+  content: var(--warning-text);
 }
 
 .error {
@@ -129,7 +135,7 @@ img {
 }
 
 .error::before {
-  content: 'ERROR';
+  content: var(--error-text);
 }
 
 .info {
@@ -137,7 +143,7 @@ img {
 }
 
 .info::before {
-  content: 'INFO';
+  content: var(--info-text);
 }
 
 .expander {

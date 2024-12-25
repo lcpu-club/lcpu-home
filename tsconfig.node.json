@@ -7,7 +7,8 @@
     "nightwatch.conf.*",
     "playwright.config.*",
     "generator/*",
-    "src/data/*.ts"
+    "src/data/*.ts",
+    "src/site.ts"
   ],
   "compilerOptions": {
     "composite": true,
