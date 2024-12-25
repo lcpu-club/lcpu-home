@@ -16,6 +16,9 @@ const md = mdit({
   }),
 )
 
+const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
+const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g
+
 export default function markdownContentGenerator(): PluginOption {
   const virtualModuleId = 'virtual:news-list.json'
   const resolvedVirtualModuleId = '\0' + virtualModuleId
@@ -31,7 +34,18 @@ export default function markdownContentGenerator(): PluginOption {
     transform(code, id) {
       if (id.endsWith('.md')) {
         const content = matter(code, { excerpt: true }).content
-        return `<template><div>${md.render(content)}</div></template>`
+        let rendered = md.render(content)
+        const scripts: string[] = []
+        const styles: string[] = []
+        rendered.match(scriptRe)?.forEach((script) => {
+          scripts.push(script)
+        })
+        rendered = rendered.replace(scriptRe, '')
+        rendered.match(styleRe)?.forEach((style) => {
+          styles.push(style)
+        })
+        rendered = rendered.replace(styleRe, '')
+        return `<template><div>${rendered}</div></template>${scripts.join('')}${styles.join('')}`
       }
     },
   }
