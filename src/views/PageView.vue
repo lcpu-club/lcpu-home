@@ -24,11 +24,7 @@ import TopbarComponent from '@/components/TopbarComponent.vue'
 import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
 import FooterComponent from '@/components/FooterComponent.vue'
-
-const categoryNames: Record<string, string> = {
-  news: '新闻',
-  activities: '活动',
-}
+import { SiteConfiguration } from '@/site'
 
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
@@ -121,7 +117,7 @@ function getCurrentPage(pathname: string): PageData | undefined {
 
 function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
-  return categoryNames[pageSegs[1]] ?? '新闻'
+  return SiteConfiguration.routeTitleRecord[pageSegs[1]] ?? '未知'
 }
 </script>
 

@@ -7,6 +7,7 @@ interface SiteConfiguration {
       expanderLabel?: string
     }
   }
+  routeTitleRecord: Record<string, string>
 }
 
 export const SiteConfiguration: SiteConfiguration = {
@@ -17,5 +18,9 @@ export const SiteConfiguration: SiteConfiguration = {
       infoLabel: '信息',
       expanderLabel: '更多',
     },
+  },
+  routeTitleRecord: {
+    news: '新闻',
+    activities: '活动',
   },
 }

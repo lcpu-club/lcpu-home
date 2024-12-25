@@ -17,10 +17,14 @@ const manifest = JSON.parse(
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-const routesToPrerender = ['/', '/news/', '/activities/', '/404']
+const routesToPrerender = ['/', '/404']
 
-routesToPrerender.push(...fg.sync('./src/data/news/*.md').map((p) => p.slice(10, -3)))
-routesToPrerender.push(...fg.sync('./src/data/activities/*.md').map((p) => p.slice(10, -3)))
+routesToPrerender.push(
+  ...fg
+    .sync('./src/data/*', { markDirectories: true, onlyDirectories: true })
+    .map((p) => p.slice(10)),
+)
+routesToPrerender.push(...fg.sync('./src/data/*/*.md').map((p) => p.slice(10, -3)))
 
 // pre-render each route...
 for (const url of routesToPrerender) {
@@ -38,7 +42,7 @@ for (const url of routesToPrerender) {
 }
 
 // done, delete .vite directory including ssr manifest
-fs.rmSync(toAbsolute('dist/static/.vite'), { recursive: true })
+// fs.rmSync(toAbsolute('dist/static/.vite'), { recursive: true })
 
 function customWriteFileSync(filePath, content) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
