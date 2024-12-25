@@ -104,10 +104,8 @@ The failing system failed successfully.
 :::
 
 ::: info
-Never gonna give you up,  
-Never gonna let you down,  
-Never gonna run around and,  
-Desert you~
+We will provide you with some information that is
+useless at all
 :::
 
 ::: expander
@@ -115,6 +113,11 @@ Never gonna give you up,
 Never gonna let you down,  
 Never gonna run around and,  
 Desert you~
+
+```csharp
+Console.WriteLine("Got rickrolled lol");
+```
+
 :::
 
 ## UnoCSS

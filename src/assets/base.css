@@ -95,7 +95,7 @@ img {
 }
 
 .expander {
-  --at-apply: p-x-4 p-t-4 rounded-md m-y-2;
+  --at-apply: p-x-4 rounded-md m-y-2;
 }
 
 .warning::before,
@@ -107,8 +107,13 @@ img {
 .warning > p:last-of-type,
 .error > p:last-of-type,
 .info > p:last-of-type,
-.expander > p:last-of-type {
+/* no '>' here as it is two levels deep */
+.expander p:last-of-type {
   margin-bottom: 0;
+}
+
+.expander p:first-of-type {
+  margin-top: 0;
 }
 
 .warning {

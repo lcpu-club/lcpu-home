@@ -57,7 +57,7 @@ onMounted(() => {
     </div>
 
     <div ref="contentWrapperRef" transition-all duration-300>
-      <div ref="contentDesiredSizeWrapperRef">
+      <div ref="contentDesiredSizeWrapperRef" box-border p-b-4>
         <slot></slot>
       </div>
     </div>
