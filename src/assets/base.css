@@ -5,12 +5,6 @@ body {
 }
 
 :root {
-  --warning-text: '/* warning text */';
-  --error-text: '/* error text */';
-  --info-text: '/* info text */';
-
-  /* NOT USED: refer to ../generator/content-generator.ts */
-  --expander-text: '/* expander text */';
   font-family:
     'Inter',
     -apple-system,

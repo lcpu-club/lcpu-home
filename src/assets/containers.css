@@ -1,22 +1,16 @@
-.warning,
-.error,
-.info {
-  --at-apply: p-4 rounded-md m-y-2;
+.container {
+  --at-apply: p-4 rounded-md m-y-2 w-auto;
 }
 
 .expander {
   --at-apply: p-x-4 rounded-md m-y-2;
 }
 
-.warning::before,
-.error::before,
-.info::before {
-  --at-apply: text-sm font-bold;
+.container > .container-title {
+  --at-apply: text-sm font-bold m-0;
 }
 
-.warning > p:last-of-type,
-.error > p:last-of-type,
-.info > p:last-of-type,
+.container > p:last-of-type,
 /* no '>' here as it is two levels deep */
 .expander p:last-of-type {
   margin-bottom: 0;
@@ -33,24 +27,12 @@
   --at-apply: 'text-yellow-800 bg-yellow-200/20 dark:bg-yellow-500/20 dark:text-yellow-100';
 }
 
-.warning::before {
-  content: var(--warning-text);
-}
-
 .error {
   --at-apply: 'text-red-800 bg-red-300/20 dark:bg-red-500/20 dark:text-red-100';
 }
 
-.error::before {
-  content: var(--error-text);
-}
-
 .info {
   --at-apply: 'text-blue-800 bg-blue-300/20 dark:bg-blue-500/20 dark:text-blue-100';
-}
-
-.info::before {
-  content: var(--info-text);
 }
 
 .expander {

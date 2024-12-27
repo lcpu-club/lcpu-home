@@ -1,5 +1,5 @@
 import 'virtual:uno.css'
-import 'virtual:base.css'
+import '@/assets/base.css'
 import '@/assets/codeblocks.css'
 import '@/assets/containers.css'
 
