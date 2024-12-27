@@ -57,9 +57,14 @@ const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(pathname
 
 watch(
   () => route.path,
-  async (newVal) => {
+  async (newVal, oldVal) => {
     const pathname = getPathname(newVal)
-    pageCategory.value = getPageCategory(pathname)
+    const oldPathname = getPathname(oldVal)
+    if (pathname === oldPathname) {
+      const anchor = document.getElementById(getHash(newVal).substring(1))
+      if (anchor) anchor.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
     const { page, isIndexPage } = getCurrentPage(pathname)
     currentPage.value = page
     isCurrentIndexPage.value = isIndexPage
@@ -75,7 +80,9 @@ watch(
 )
 
 onMounted(() => {
-  scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+  const anchor = document.getElementById(getHash(route.path).substring(1))
+  if (anchor) anchor.scrollIntoView({ behavior: 'smooth' })
+  else scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
 })
 
 async function resolvePageModule(pathname: string): Promise<Module | never> {
@@ -103,6 +110,10 @@ function handleScroll() {
 
 function getPathname(path: string) {
   return new URL(path, 'http://a.com').pathname
+}
+
+function getHash(path: string) {
+  return new URL(path, 'http://a.com').hash
 }
 
 function getCurrentPage(pathname: string): { page: PageData | undefined; isIndexPage: boolean } {

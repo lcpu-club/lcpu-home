@@ -35,6 +35,7 @@ defineExpose({ toggleSidebar })
 <template>
   <div
     w-screen
+    h-screen
     lg:w-unset
     box-border
     fixed
@@ -46,6 +47,7 @@ defineExpose({ toggleSidebar })
     @click="toggleSidebar(true)"
     pointer-events-none
     lg:pointer-events-unset
+    class="h-100dvh!"
     :class="{ 'backdrop-brightness-40 pointer-events-unset': !sidebarCollapsed }"
   >
     <div

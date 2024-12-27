@@ -166,3 +166,24 @@ img {
     --text-color: #fff;
   }
 }
+
+h1 .header-anchor,
+h2 .header-anchor,
+h3 .header-anchor,
+h4 .header-anchor,
+h5 .header-anchor,
+h6 .header-anchor {
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-left: -1em;
+  text-decoration: none;
+}
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor,
+h6:hover .header-anchor {
+  opacity: 1;
+}

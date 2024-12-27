@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import Shiki from '@shikijs/markdown-it'
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
+import anchor from 'markdown-it-anchor'
 import { SiteConfiguration } from '../src/site'
 
 const md = mdit
@@ -14,6 +15,12 @@ const md = mdit
     typographer: true,
   })
   .use(MathJax3)
+  .use(anchor, {
+    permalink: anchor.permalink.ariaHidden({
+      placement: 'before',
+      class: 'header-anchor',
+    }),
+  })
   .use(MarkdownItContainer, 'warning')
   .use(MarkdownItContainer, 'error')
   .use(MarkdownItContainer, 'info')
