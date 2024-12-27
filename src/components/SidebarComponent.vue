@@ -3,14 +3,18 @@ import { ref } from 'vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 import LcpuLight from '@/assets/lcpu-light.svg'
 import LcpuDark from '@/assets/lcpu-dark.svg'
-import rawActivityList from 'virtual:activity-list.json'
-import rawNewsList from 'virtual:news-list.json'
-import type { PageData } from '@/data/pagedata'
+import categoryList from 'virtual:category-list.json'
 import { groupByYearMonth } from '@/utils'
 import ExpanderComponent from './ExpanderComponent.vue'
+import { SiteConfiguration } from '@/site'
 
-const activityListGrouped = groupByYearMonth(rawActivityList as PageData[])
-const newsListGrouped = groupByYearMonth(rawNewsList as PageData[])
+const categories = categoryList.map((list) => {
+  return {
+    title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
+    route: `/${list.routeBase}/`,
+    pageGroups: groupByYearMonth(list.pages),
+  }
+})
 
 const sidebarCollapsed = ref(true)
 const toggleSidebar = (collapse?: boolean) => {
@@ -65,18 +69,22 @@ defineExpose({ toggleSidebar })
         <span text-xl font-semibold>LCPU</span>
       </a>
 
-      <ExpanderComponent m-t-4>
+      <ExpanderComponent m-t-4 v-for="category in categories" :key="category.title">
         <template #header>
           <h3 m-0>
-            <a href="/activities/" class="text-unset!" decoration-none @click="toggleSidebar()"
-              >活动</a
+            <a
+              :href="category.route"
+              class="text-unset!"
+              decoration-none
+              @click="toggleSidebar()"
+              >{{ category.title }}</a
             >
           </h3>
         </template>
         <div flex="~ col" box-border>
           <div
-            v-for="activityGroup in activityListGrouped"
-            :key="activityGroup.year + '-' + activityGroup.month"
+            v-for="pageGroup in category.pageGroups"
+            :key="pageGroup.year + '-' + pageGroup.month"
             flex="~ col gap-2"
             class="group"
             border-t-1
@@ -86,57 +94,20 @@ defineExpose({ toggleSidebar })
             p-y-3
           >
             <span text-xs text-gray-500 dark:text-light-900
-              >{{ activityGroup.year }} 年 {{ activityGroup.month }} 月
+              >{{ pageGroup.year }} 年 {{ pageGroup.month }} 月
             </span>
             <a
-              v-for="activity in activityGroup.items"
+              v-for="page in pageGroup.items"
               @click="toggleSidebar()"
-              :href="activity.contentUrl"
+              :href="page.contentUrl"
               text-wrap
-              :key="activity.title"
+              :key="page.title"
               class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
               :class="{
-                'text-gray-800! dark:text-white! font-medium': currentTitle === activity.title,
+                'text-gray-800! dark:text-white! font-medium': currentTitle === page.title,
               }"
             >
-              {{ activity.title }}</a
-            >
-          </div>
-        </div>
-      </ExpanderComponent>
-
-      <ExpanderComponent m-t-4>
-        <template #header>
-          <h3 m-0>
-            <a href="/news/" class="text-unset!" decoration-none @click="toggleSidebar()">新闻</a>
-          </h3>
-        </template>
-        <div flex="~ col" box-border>
-          <div
-            v-for="newsGroup in newsListGrouped"
-            :key="newsGroup.year + '-' + newsGroup.month"
-            flex="~ col gap-2"
-            p-y-3
-            class="group"
-            border-t-1
-            border-gray-200
-            dark:border-dark-200
-            border-t-solid
-          >
-            <span text-xs text-gray-500 dark:text-light-900
-              >{{ newsGroup.year }} 年 {{ newsGroup.month }} 月
-            </span>
-            <a
-              v-for="news in newsGroup.items"
-              @click="toggleSidebar()"
-              :href="news.contentUrl"
-              text-wrap
-              :key="news.title"
-              class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
-              :class="{
-                'text-gray-800! dark:text-light-400! font-medium': currentTitle === news.title,
-              }"
-              >{{ news.title }}</a
+              {{ page.title }}</a
             >
           </div>
         </div>

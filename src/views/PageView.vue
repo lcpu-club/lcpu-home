@@ -10,15 +10,13 @@ import {
   useTemplateRef,
   watch,
 } from 'vue'
-import rawNewsList from 'virtual:news-list.json'
-import rawActivityList from 'virtual:activity-list.json'
 import type { PageData } from '@/data/pagedata'
+import categoryList from 'virtual:category-list.json'
 import NotFoundView from '@/views/NotFoundView.vue'
 import type { Module } from '@/module'
 import { useTitle } from '@vueuse/core'
-import { dateString } from '@/utils'
-import NewsListView from './NewsListView.vue'
-import ActivityListView from './ActivityListView.vue'
+import { dateString, indexPageRe } from '@/utils'
+import PageListView from './PageListView.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
 import LoadingView from './LoadingView.vue'
@@ -29,14 +27,14 @@ import { SiteConfiguration } from '@/site'
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
 
-const newsList: PageData[] = rawNewsList
 const pageModules = inject('pageModules') as Record<string, () => Promise<unknown>>
-const activityList: PageData[] = rawActivityList
-const allPages = [...newsList, ...activityList]
+const allPages = categoryList.flatMap((list) => list.pages)
 const route = useRoute(() => scrollViewRef.value?.scrollTop)
 const pathname = getPathname(route.path)
 const pageCategory = ref(getPageCategory(pathname))
-const currentPage = shallowRef(getCurrentPage(pathname))
+const { page, isIndexPage } = getCurrentPage(pathname)
+const currentPage = shallowRef(page)
+const isCurrentIndexPage = ref(isIndexPage)
 const title = useTitle('', { titleTemplate: '%s北京大学学生 Linux 俱乐部' })
 title.value = currentPage.value?.title
   ? currentPage.value.title + ` | ${pageCategory.value} - `
@@ -62,7 +60,9 @@ watch(
   async (newVal) => {
     const pathname = getPathname(newVal)
     pageCategory.value = getPageCategory(pathname)
-    currentPage.value = getCurrentPage(pathname)
+    const { page, isIndexPage } = getCurrentPage(pathname)
+    currentPage.value = page
+    isCurrentIndexPage.value = isIndexPage
     title.value = currentPage.value?.title
       ? currentPage.value.title + ` | ${pageCategory.value} - `
       : `${pageCategory.value} - `
@@ -81,15 +81,9 @@ onMounted(() => {
 async function resolvePageModule(pathname: string): Promise<Module | never> {
   const modulePath = './data' + pathname + '.md'
   return new Promise(async (resolve) => {
-    if (pathname === '/news/' || pathname === '/news/index' || pathname === '/news/index.html')
-      resolve(NewsListView as never)
-    else if (
-      pathname === '/activities/' ||
-      pathname === '/activities/index' ||
-      pathname === '/activities/index.html'
-    )
-      resolve(ActivityListView as never)
-    else if (modulePath in pageModules) {
+    if (pathname.match(indexPageRe)) {
+      resolve(PageListView as never)
+    } else if (modulePath in pageModules) {
       let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
       if ('then' in module && typeof module.then === 'function') module = await module
       resolve(module)
@@ -111,13 +105,34 @@ function getPathname(path: string) {
   return new URL(path, 'http://a.com').pathname
 }
 
-function getCurrentPage(pathname: string): PageData | undefined {
-  return allPages.find((news) => news.contentUrl === pathname) || undefined
+function getCurrentPage(pathname: string): { page: PageData | undefined; isIndexPage: boolean } {
+  const match = pathname.match(indexPageRe)
+  if (match) {
+    const pages = categoryList.find((list) => list.routeBase === match[1])?.pages ?? []
+    const first = pages[0]
+    const last = pages[pages.length - 1]
+    return {
+      page: {
+        contentUrl: '',
+        title: SiteConfiguration.getRouteCategoryTitle(match[1]),
+        time:
+          pages.length > 1
+            ? `${dateString(last.time)} - ${dateString(first.time)}`
+            : dateString(first.time),
+        data: {},
+      },
+      isIndexPage: true,
+    }
+  }
+  return {
+    page: allPages.find((news) => news.contentUrl === pathname) || undefined,
+    isIndexPage: false,
+  }
 }
 
 function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
-  return SiteConfiguration.routeTitleRecord[pageSegs[1]] ?? '未知'
+  return SiteConfiguration.getRouteCategoryTitle(pageSegs[1])
 }
 </script>
 
@@ -144,7 +159,8 @@ function getPageCategory(pathname: string): string {
       <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
         <h1 m-0>{{ currentPage.title }}</h1>
         <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-gray-300>
-          <span>{{ dateString(currentPage.time) }}</span>
+          <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
+          <span v-else>{{ currentPage.time }}</span>
           <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
             <span>·</span>
             <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>

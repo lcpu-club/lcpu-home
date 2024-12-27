@@ -1,5 +1,5 @@
 ---
-title: ~THE ULTIMATE MARKDOWN BENCHMARK!!!~
+title: ～THE ULTIMATE MARKDOWN BENCHMARK!!!～
 time: 2024-12-25
 metaDescription: 尝试所有在本项目中合法的 Markdown 语法
 ---

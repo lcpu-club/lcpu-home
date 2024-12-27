@@ -1,3 +1,6 @@
+// matches /*/ or /*/index or /*/index.html, but not /*/*/...(anything)
+export const indexPageRe = /^\/([^\/]*?)\/(?:index(?:.html)?)?$/
+
 export function dateString(rawDate: string | undefined): string {
   if (rawDate == undefined) return ''
   const date = new Date(rawDate)

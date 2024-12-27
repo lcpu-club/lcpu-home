@@ -7,7 +7,12 @@ interface SiteConfiguration {
       expanderLabel?: string
     }
   }
-  routeTitleRecord: Record<string, string>
+  getRouteCategoryTitle: (routeSegment: string) => string
+}
+
+const routeTitleRecord: Record<string, string> = {
+  news: '新闻',
+  activities: '活动',
 }
 
 export const SiteConfiguration: SiteConfiguration = {
@@ -19,8 +24,5 @@ export const SiteConfiguration: SiteConfiguration = {
       expanderLabel: '更多',
     },
   },
-  routeTitleRecord: {
-    news: '新闻',
-    activities: '活动',
-  },
+  getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment] || routeSegment,
 }

@@ -4,8 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
-import ActivityListGenerator from './generator/activity-list-generator'
-import NewsListGenerator from './generator/news-list-generator'
+import PageListGenerator from './generator/page-list-generator'
 import MarkdownContentGenerator from './generator/content-generator'
 import BaseCssGenerator from './generator/base-css-generator'
 
@@ -17,14 +16,14 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
       template: {
         compilerOptions: {
+          // mathjax containers
           isCustomElement: (tag) => tag.startsWith('mjx-'),
         },
       },
     }),
     vueDevTools(),
     UnoCSS(),
-    ActivityListGenerator(),
-    NewsListGenerator(),
+    PageListGenerator(['activities', 'news', 'announcements']),
     BaseCssGenerator(),
   ],
   resolve: {

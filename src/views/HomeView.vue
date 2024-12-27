@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import ProjectCard from '@/components/ProjectCard.vue'
 import rawProjectData from '@/data/projects.json'
-import rawActivityList from 'virtual:activity-list.json'
-import rawNewsList from 'virtual:news-list.json'
+import categoryList from 'virtual:category-list.json'
 import type { Project } from '@/data/project'
-import type { PageData } from '@/data/pagedata'
 import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
@@ -17,10 +15,16 @@ import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
 import { onMounted, useSSRContext, useTemplateRef } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
+import { SiteConfiguration } from '@/site'
 
 const projects = rawProjectData as Project[]
-const activities = rawActivityList as PageData[]
-const news = rawNewsList as PageData[]
+const categories = categoryList.map((list) => {
+  return {
+    title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
+    route: `/${list.routeBase}/`,
+    pages: list.pages,
+  }
+})
 const scrollViewRef = useTemplateRef('scrollViewRef')
 const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
 const route = useRoute(() =>
@@ -78,41 +82,27 @@ if (import.meta.env.SSR) {
           <ProjectCard v-for="project in projects" :key="project.title" :project="project" />
         </div>
 
-        <div m-t-12 flex="~ items-center">
-          <h2 flex-grow-1>活动</h2>
-          <a
-            class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
-            decoration-none
-            flex="~ items-center"
-            href="/activities/"
-          >
-            <span>所有活动</span>
-            <ChevronRightIcon class="h-5" />
-          </a>
-        </div>
+        <div m-t-12 v-for="category in categories" :key="category.title">
+          <div flex="~ items-center">
+            <h2 flex-grow-1>{{ category.title }}</h2>
+            <a
+              class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
+              decoration-none
+              flex="~ items-center"
+              :href="category.route"
+            >
+              <span>所有{{ category.title }}</span>
+              <ChevronRightIcon class="h-5" />
+            </a>
+          </div>
 
-        <div>
-          <PageListEntry
-            v-for="activity in activities.slice(0, 3)"
-            :key="activity.title"
-            :page-entry="activity"
-          />
-        </div>
-
-        <div m-t-12 flex="~ items-center">
-          <h2 flex-grow-1>新闻</h2>
-          <a
-            class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
-            decoration-none
-            flex="~ items-center"
-            href="/news/"
-          >
-            <span>所有新闻</span>
-            <ChevronRightIcon class="h-5" />
-          </a>
-        </div>
-        <div>
-          <PageListEntry v-for="_news in news.slice(0, 3)" :key="_news.title" :page-entry="_news" />
+          <div>
+            <PageListEntry
+              v-for="page in category.pages.slice(0, 3)"
+              :key="page.title"
+              :page-entry="page"
+            />
+          </div>
         </div>
         <FooterComponent m-t-12 />
       </div>
