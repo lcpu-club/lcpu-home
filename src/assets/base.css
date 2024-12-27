@@ -44,7 +44,7 @@ a {
 }
 
 p {
-  --at-apply: leading-relaxed;
+  --at-apply: line-height-relaxed;
 }
 
 table {
@@ -171,4 +171,8 @@ blockquote {
   padding-left: 16px;
   transition: border-color 0.5s;
   --at-apply: 'color-gray-500 border-l-2 border-l-solid border-gray-200 dark:border-dark-100 dark:color-truegray-400';
+}
+
+li {
+  --at-apply: line-height-relaxed;
 }
