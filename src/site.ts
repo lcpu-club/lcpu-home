@@ -14,6 +14,7 @@ interface SiteConfiguration {
 const routeTitleRecord: Record<string, string> = {
   news: '新闻',
   activities: '活动',
+  announcements: '公告',
 }
 
 export const SiteConfiguration: SiteConfiguration = {
