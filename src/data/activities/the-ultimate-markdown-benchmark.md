@@ -75,6 +75,42 @@ def hello_world():
 
 ## Extended Markdown Syntax
 
+### More Code Blocks
+
+```js
+export function createApp() {
+  const app = createSSRApp(App) // [!code highlight]
+  const router = createRouter() // [!code focus]
+
+  app.provide(RouterSymbol, router)
+  app.provide('activityModules', activityModules) // [!code --]
+  app.provide('newsModules', newsModules) // [!code ++]
+  app.provide('pageModules', pageModules) // [!code ++]
+  app.component('ExpanderComponent', ExpanderComponent)
+  return { app, router }
+}
+```
+
+::: expander 显示代码
+
+````md
+```js
+export function createApp() {
+  const app = createSSRApp(App) // [\!code highlight]
+  const router = createRouter() // [\!code focus]
+
+  app.provide(RouterSymbol, router)
+  app.provide('activityModules', activityModules) // [\!code --]
+  app.provide('newsModules', newsModules) // [\!code ++]
+  app.provide('pageModules', pageModules) // [\!code ++]
+  app.component('ExpanderComponent', ExpanderComponent)
+  return { app, router }
+}
+```
+````
+
+:::
+
 ### Math `(markdown-it-mathjax3)`
 
 When $(a \ne 0)$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are:
@@ -115,9 +151,9 @@ useless at all
 :::
 
 ::: expander
-Never gonna give you up,  
-Never gonna let you down,  
-Never gonna run around and,  
+Never gonna give you up,
+Never gonna let you down,
+Never gonna run around and,
 Desert you~
 
 ```csharp

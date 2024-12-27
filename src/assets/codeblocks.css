@@ -1,0 +1,69 @@
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+pre.shiki {
+  --at-apply: rounded-md p-y-3 overflow-auto m-0;
+}
+
+.shiki code {
+  --at-apply: flex flex-col items-stretch min-w-max w-full;
+}
+
+.shiki .line {
+  --at-apply: p-x-4 relative line-height-relaxed box-border;
+}
+
+.shiki .line > * {
+  position: relative;
+}
+
+.shiki.has-focused code .line:not(.focused) {
+  filter: blur(0.2em);
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.shiki.has-focused:hover code .line:not(.focused) {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.shiki .line.diff.remove:after,
+.shiki .line.diff.add:after {
+  position: absolute;
+  left: 0;
+  padding-left: 0.5em;
+}
+
+.shiki .line.diff.remove {
+  --at-apply: 'bg-red-100 dark:bg-red-900 opacity-70';
+}
+
+.shiki .line.diff.remove:after {
+  content: '-';
+  --at-apply: 'text-red-500 dark:text-red-500';
+}
+
+.shiki .line.diff.add {
+  --at-apply: 'bg-green-100 dark:bg-green-900';
+}
+
+.shiki .line.diff.add:after {
+  content: '+';
+  --at-apply: 'text-green-500 dark:text-green-500';
+}
+
+.shiki .line.highlighted {
+  --at-apply: 'bg-gray-200 dark:bg-truegray-700';
+}

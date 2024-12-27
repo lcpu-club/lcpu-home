@@ -3,6 +3,12 @@ import * as mdit from 'markdown-it'
 import Token from 'markdown-it/lib/token.mjs'
 import matter from 'gray-matter'
 import Shiki from '@shikijs/markdown-it'
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerRemoveNotationEscape,
+} from '@shikijs/transformers'
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
 import anchor from 'markdown-it-anchor'
@@ -44,6 +50,12 @@ const md = mdit
         light: 'catppuccin-latte',
         dark: 'one-dark-pro',
       },
+      transformers: [
+        transformerNotationDiff(),
+        transformerNotationFocus(),
+        transformerNotationHighlight(),
+        transformerRemoveNotationEscape(),
+      ],
     }),
   )
 

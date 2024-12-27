@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@shikijs/markdown-it": "^1.24.2",
+    "@shikijs/transformers": "^1.24.4",
     "@tsconfig/node22": "^22.0.0",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
