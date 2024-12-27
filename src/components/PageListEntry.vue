@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <div border-t="1 gray-200 dark:dark-100 solid" class="news-list-entry" p-y-4 box-border>
     <h3 m-0>{{ pageEntry.title }}</h3>
-    <div flex="~ items-center gap-1" m-t-1 text-gray-500 dark:text-gray-300>
+    <div flex="~ items-center gap-1" m-t-1 text-gray-500 dark:text-truegray-400>
       <span>{{ dateString(pageEntry.time) }}</span>
       <span flex="~ gap-1" v-for="key in Object.keys(pageEntry.data)" :key="key">
         <span>·</span>

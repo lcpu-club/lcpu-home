@@ -95,7 +95,7 @@ defineExpose({ toggleSidebar })
             border-t-solid
             p-y-3
           >
-            <span text-xs text-gray-500 dark:text-light-900
+            <span text-xs text-gray-500 dark:text-truegray-400
               >{{ pageGroup.year }} 年 {{ pageGroup.month }} 月
             </span>
             <a
@@ -104,7 +104,7 @@ defineExpose({ toggleSidebar })
               :href="page.contentUrl"
               text-wrap
               :key="page.title"
-              class="text-gray-500! dark:text-light-900! hover:text-gray-800! dark:hover:text-light-400! decoration-none"
+              class="text-gray-500! dark:text-truegray-400! hover:text-gray-800! dark:hover:text-white! decoration-none"
               :class="{
                 'text-gray-800! dark:text-white! font-medium': currentTitle === page.title,
               }"

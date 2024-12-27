@@ -50,7 +50,7 @@ onUnmounted(() => {
         <div rounded-full class="bg-white dark:bg-[#121212]" w-10 h-10 left-1 top-1 absolute></div>
       </div>
       <h3 m-b-2>页面加载中</h3>
-      <div flex="~ col items-center gap-1" text-center text-gray-500 dark:text-gray-300>
+      <div flex="~ col items-center gap-1" text-center text-gray-500 dark:text-truegray-400>
         <Transition mode="out-in">
           <span :key="tip" whitespace-pre text-wrap>{{ tip }}</span>
         </Transition>

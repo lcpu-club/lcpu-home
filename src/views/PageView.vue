@@ -169,7 +169,7 @@ function getPageCategory(pathname: string): string {
       />
       <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
         <h1 m-0>{{ currentPage.title }}</h1>
-        <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-gray-300>
+        <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
           <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
           <span v-else>{{ currentPage.time }}</span>
           <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
