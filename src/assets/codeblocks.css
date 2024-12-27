@@ -13,7 +13,7 @@
 }
 
 pre.shiki {
-  --at-apply: rounded-md p-y-3 overflow-auto m-0;
+  --at-apply: rounded-md p-y-3 overflow-auto m-y-2;
 }
 
 .shiki code {

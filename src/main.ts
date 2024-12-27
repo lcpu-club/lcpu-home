@@ -1,6 +1,7 @@
 import 'virtual:uno.css'
 import 'virtual:base.css'
 import '@/assets/codeblocks.css'
+import '@/assets/containers.css'
 
 import { createSSRApp } from 'vue'
 import App from './App.vue'
