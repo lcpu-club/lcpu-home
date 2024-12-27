@@ -6,6 +6,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import url from 'node:url'
 import fg from 'fast-glob'
+import { SiteConfiguration } from './src/site.js'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
@@ -35,6 +36,7 @@ for (const url of routesToPrerender) {
     .replace(`<!--app-html-->`, appHtml)
     .replace(`<!--title-prefix-->`, titlePrefix)
     .replace(`<!--meta-description-->`, metaDescription)
+    .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
   const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}.html`
   customWriteFileSync(toAbsolute(filePath), html)

@@ -5,8 +5,9 @@ import LcpuDark from '../assets/404-dark.svg'
 import LcpuLight from '../assets/404-light.svg'
 import { useTitle } from '@vueuse/core'
 import { useSSRContext } from 'vue'
+import { SiteConfiguration } from '@/site'
 
-useTitle('404 NOT FOUND | 北京大学学生 Linux 俱乐部')
+useTitle(`404 NOT FOUND | ${SiteConfiguration.titleSuffix}`)
 if (import.meta.env.SSR) {
   const context = useSSRContext()
   if (context) {

@@ -35,7 +35,7 @@ const pageCategory = ref(getPageCategory(pathname))
 const { page, isIndexPage } = getCurrentPage(pathname)
 const currentPage = shallowRef(page)
 const isCurrentIndexPage = ref(isIndexPage)
-const title = useTitle('', { titleTemplate: '%s北京大学学生 Linux 俱乐部' })
+const title = useTitle('', { titleTemplate: `%s${SiteConfiguration.titleSuffix}` })
 title.value = currentPage.value?.title
   ? currentPage.value.title + ` | ${pageCategory.value} - `
   : `${pageCategory.value} - `
@@ -46,7 +46,7 @@ if (ssrContext) {
       ? (currentPage.value?.metaDescription as string)
       : currentPage.value?.excerpt
         ? currentPage.value.excerpt
-        : (currentPage.value?.title ?? '北京大学学生 Linux 俱乐部')
+        : (currentPage.value?.title ?? SiteConfiguration.titleSuffix)
   ).trim()
 }
 const scrollViewRef = ref<HTMLDivElement>()

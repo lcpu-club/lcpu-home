@@ -5,6 +5,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
 import { ViteDevServer } from 'vite'
+import { SiteConfiguration } from './src/site'
 
 const isTest = process.env.VITEST
 
@@ -83,6 +84,7 @@ export async function createServer(
         .replace(`<!--app-html-->`, appHtml)
         .replace(`<!--title-prefix-->`, titlePrefix)
         .replace(`<!--meta-description-->`, metaDescription)
+        .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
