@@ -20,15 +20,7 @@ defineProps<{
     <p v-if="pageEntry.excerpt?.trim()" whitespace-pre text-wrap m-t-2 m-b-0>
       {{ pageEntry.excerpt.trim() }}
     </p>
-    <a
-      :href="pageEntry.contentUrl"
-      text-blue-500
-      dark:text-blue-300
-      underline-offset-4
-      m-b-2
-      m-t-2
-      inline-block
-      w-auto
+    <a :href="pageEntry.contentUrl" underline-offset-4 m-b-2 m-t-2 inline-block w-auto
       >阅读全文...</a
     >
   </div>
