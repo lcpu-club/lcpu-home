@@ -37,7 +37,7 @@ const md = mdit
 <ExpanderComponent class="expander" :initial-collapsed="true"
   :extend-toggle-area="true">
   <template #header>
-    <span font-bold text-sm p-y-4>${SiteConfiguration.markdown.container.expanderLabel ?? 'MORE'}</span>
+    <span font-bold text-sm p-y-4>${extractExpanderTitle(tokens[idx].info)}</span>
   </template>\n`
       } else {
         return '</ExpanderComponent>\n'
@@ -95,4 +95,11 @@ export default function markdownContentGenerator(): PluginOption {
       }
     },
   }
+}
+
+function extractExpanderTitle(info: string) {
+  const re = /^ *expander *(.*?)$/
+  const result = info.replace(re, '$1').trim()
+  if (result) return result
+  else return SiteConfiguration.markdown.container.expanderLabel ?? 'MORE'
 }
