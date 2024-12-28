@@ -13,9 +13,11 @@
     "format": "prettier --write src/",
     "build:client": "vite build --outDir dist/static --ssrManifest",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.ts",
+    "build:bundle": "run-p build:client build:server",
     "build:render": "bunx tsx prerender.ts",
     "build:sitemap": "bun ./sitemap.ts",
-    "build:all": "run-s build:client build:server build:render build:sitemap"
+    "build:post": "run-p build:render build:sitemap",
+    "build:all": "run-s build:bundle build:post"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
