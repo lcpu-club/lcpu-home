@@ -12,6 +12,7 @@ const activities = fg
   })
   .map((file) => {
     const { entry, frontmatter } = file
+    if (frontmatter.data.time === undefined) return
     const filename = path.parse(entry).name
     return {
       url: `/activities/${filename}`,
@@ -20,6 +21,7 @@ const activities = fg
       priority: 0.5,
     }
   })
+  .filter((file) => file !== undefined)
   .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
 
 const news = fg
