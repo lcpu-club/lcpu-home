@@ -26,8 +26,9 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
               .map((entry) => {
                 return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
               })
-              .map((file): PageData => {
+              .map((file): PageData | undefined => {
                 const { entry, frontmatter } = file
+                if (frontmatter.data.hidden) return undefined
                 const filename = path.parse(entry).name
                 const data = frontmatter.data
                 const time = data.time
@@ -45,6 +46,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                   contentUrl: `/${base}/${filename}`,
                 }
               })
+              .filter((page) => page !== undefined)
               .sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
           })
         }

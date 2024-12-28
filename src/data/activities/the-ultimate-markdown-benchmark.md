@@ -75,6 +75,14 @@ def hello_world():
 
 ## Extended Markdown Syntax
 
+### Importing External Markdown Files
+
+The file is [here](./referenced-markdown-content)
+
+<div p-x-4 p-y-1 box-border rounded-md bg-gray-100 dark:bg-truegray-800>
+  <ExternalContent />
+</div>
+
 ### More Code Blocks
 
 ```js
@@ -230,6 +238,7 @@ ADD ONE!
 import { ref } from 'vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import type { Project } from '@/data/project'
+import ExternalContent from './referenced-markdown-content.md'
 const count = ref(0)
 const project : Project = {
   title: '>_<',
