@@ -104,13 +104,17 @@ function extractExpanderTitle(info: string) {
   else return SiteConfiguration.markdown.container.expanderLabel ?? 'MORE'
 }
 
+function extractContainerTitle(info: string, klass: string) {
+  const re = new RegExp(`^ *${klass.trim()} *(.*?)$`)
+  const result = info.replace(re, '$1').trim()
+  return result
+}
+
 function createContainer(md: MarkdownIt, klass: string, title: string) {
   MarkdownItContainer(md, klass, {
     render: (tokens: Token[], idx: number) => {
-      console.log(md.renderer.renderAttrs(tokens[idx]))
-      console.log(tokens[idx])
       return tokens[idx].nesting === 1
-        ? `<div class="container ${klass}"><p class="container-title">${title}</p>\n`
+        ? `<div class="container ${klass}"><p class="container-title">${extractContainerTitle(tokens[idx].info, klass) || title}</p>\n`
         : '</div>\n'
     },
   })
