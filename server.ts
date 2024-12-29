@@ -77,13 +77,13 @@ export async function createServer(
         render = (await import('./dist/server/entry-server.js')).render
       }
 
-      const [appHtml, preloadLinks, titlePrefix, metaDescription] = await render(url, manifest)
+      const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
 
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--app-html-->`, appHtml)
         .replace(`<!--title-prefix-->`, titlePrefix)
-        .replace(`<!--meta-description-->`, metaDescription)
+        .replace(`<!--meta-->`, meta)
         .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

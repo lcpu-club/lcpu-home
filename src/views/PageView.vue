@@ -41,13 +41,9 @@ title.value = currentPage.value?.title
   : `${pageCategory.value} - `
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
-  ssrContext.metaDescription = (
-    (currentPage.value?.metaDescription as string | undefined)
-      ? (currentPage.value?.metaDescription as string)
-      : currentPage.value?.excerpt
-        ? currentPage.value.excerpt
-        : (currentPage.value?.title ?? SiteConfiguration.titleSuffix)
-  ).trim()
+  const meta: { [key: string]: string } = currentPage.value?.meta ?? {}
+  meta.description = (meta.description ?? currentPage.value?.excerpt)?.trim()
+  ssrContext.meta = meta
 }
 const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)

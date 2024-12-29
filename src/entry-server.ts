@@ -21,7 +21,8 @@ export async function render(url: string, manifest: { [key: string]: string[] })
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  return [html, preloadLinks, ctx.titlePrefix ?? '', ctx.metaDescription ?? '']
+  const meta = renderMeta(ctx.meta)
+  return [html, preloadLinks, ctx.titlePrefix ?? '', meta]
 }
 
 function renderPreloadLinks(modules: Set<string>, manifest: { [key: string]: string[] }) {
@@ -66,4 +67,14 @@ function renderPreloadLink(file: string) {
   } else {
     return ''
   }
+}
+
+function renderMeta(meta: { [key: string]: string } | undefined | null): string {
+  if (!meta) return ''
+  let result = ''
+  for (const key in meta) {
+    if (!meta[key]) continue
+    result += `<meta name="${key}" content="${meta[key]}">`
+  }
+  return result
 }

@@ -29,13 +29,13 @@ routesToPrerender.push(...fg.sync('./src/data/*/*.md').map((p) => p.slice(10, -3
 
 // pre-render each route...
 for (const url of routesToPrerender) {
-  const [appHtml, preloadLinks, titlePrefix, metaDescription] = await render(url, manifest)
+  const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
 
   const html = template
     .replace(`<!--preload-links-->`, preloadLinks)
     .replace(`<!--app-html-->`, appHtml)
     .replace(`<!--title-prefix-->`, titlePrefix)
-    .replace(`<!--meta-description-->`, metaDescription)
+    .replace(`<!--meta-->`, meta)
     .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
   const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}.html`

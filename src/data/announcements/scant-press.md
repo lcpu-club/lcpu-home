@@ -1,6 +1,9 @@
 ---
 title: Introducing ScantPress
 time: 2024-12-27
+meta:
+  description: A brief introduction to ScantPress
+  generator: ScantPress 0.0.1
 ---
 
 ::: info

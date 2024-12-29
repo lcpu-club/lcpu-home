@@ -12,7 +12,10 @@ if (import.meta.env.SSR) {
   const context = useSSRContext()
   if (context) {
     context.titlePrefix = '404 NOT FOUND | '
-    context.metaDescription = '未找到此页面...'
+    if (!context.meta) {
+      context.meta = {}
+    }
+    context.meta.description = '未找到此页面...'
   }
 }
 </script>

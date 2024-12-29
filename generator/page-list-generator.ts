@@ -33,15 +33,15 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                 const data = frontmatter.data
                 const time = data.time
                 const title = data.title
-                const metaDescription = data.metaDescription
+                const meta= data.meta
                 delete data.time
                 delete data.title
-                delete data.metaDescription
+                delete data.meta
                 return {
                   title,
                   time,
                   data,
-                  metaDescription,
+                  meta,
                   excerpt: frontmatter.excerpt,
                   contentUrl: `/${base}/${filename}`,
                 }
