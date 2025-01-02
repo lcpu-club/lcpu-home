@@ -4,5 +4,5 @@ export interface PageData {
   excerpt?: string
   contentUrl: string
   meta?: { [key: string]: string }
-  data?: { [key: string]: unknown }
+  data: { [key: string]: unknown }
 }
