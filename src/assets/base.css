@@ -34,7 +34,7 @@ body {
 }
 
 a {
-  --at-apply: text-blue-500 underline-offset-4 'dark:text-blue-300';
+  --at-apply: text-primary underline-offset-4 'dark:text-primary-dark';
 }
 
 p {

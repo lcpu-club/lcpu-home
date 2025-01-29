@@ -9,6 +9,7 @@ interface SiteConfiguration {
   }
   getRouteCategoryTitle: (routeSegment: string) => string
   titleSuffix: string
+  theme: 'normal' | 'new-year'
 }
 
 const routeTitleRecord: Record<string, string> = {
@@ -28,4 +29,5 @@ export const SiteConfiguration: SiteConfiguration = {
   },
   getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment] || routeSegment,
   titleSuffix: '北京大学学生 Linux 俱乐部',
+  theme: 'new-year',
 }

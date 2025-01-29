@@ -32,7 +32,7 @@
 }
 
 .info {
-  --at-apply: 'text-blue-800 bg-blue-300/20 dark:bg-blue-500/20 dark:text-blue-100';
+  --at-apply: 'text-blue-800 bg-blue-300/20 dark:bg-blue-500/20 dark:text-primary-dark';
 }
 
 .expander {
