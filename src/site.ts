@@ -29,5 +29,5 @@ export const SiteConfiguration: SiteConfiguration = {
   },
   getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment] || routeSegment,
   titleSuffix: '北京大学学生 Linux 俱乐部',
-  theme: 'new-year',
+  theme: 'normal',
 }
