@@ -15,7 +15,7 @@ const pageGroups = groupByYearMonth(pages)
 </script>
 
 <template>
-  <div>
+  <div p-t-6>
     <div flex="~ col gap-10">
       <div relative v-for="pageGroup in pageGroups" :key="pageGroup.year + '-' + pageGroup.month">
         <h2
