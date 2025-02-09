@@ -12,8 +12,8 @@
     "link": "https://missing.lcpu.dev/"
   },
   {
-    "title": "PKUTEX",
-    "description": "这里写什么呢？",
+    "title": "PKUTeX",
+    "description": "在线协作LaTeX平台，助力科研创造",
     "image": "/projects/pkutex-light.svg",
     "imageDark": "/projects/pkutex-dark.svg",
     "link": "https://latex.pku.edu.cn/"
