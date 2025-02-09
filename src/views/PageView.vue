@@ -124,9 +124,11 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
         contentUrl: '',
         title: SiteConfiguration.getRouteCategoryTitle(match[1]),
         time:
-          pages.length > 1
-            ? `${dateString(last.time)} - ${dateString(first.time)}`
-            : dateString(first.time),
+          pages.length == 0
+            ? ''
+            : pages.length > 1
+              ? `${dateString(last.time)} - ${dateString(first.time)}`
+              : dateString(first.time),
         data: {},
       },
       isIndexPage: true,
