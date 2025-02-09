@@ -4,7 +4,8 @@ import { ArrowRightIcon } from '@heroicons/vue/24/outline'
 import AutoDarkImage from './AutoDarkImage.vue'
 
 defineProps<{
-  project: Project
+  project: Project,
+  pkuNetwork: bool
 }>()
 </script>
 <template>
@@ -22,8 +23,13 @@ defineProps<{
     p-4
     box-border
     border="1 gray-200 dark:dark-100 solid"
-    class="group text-unset!"
+    class="group text-unset! position-relative"
   >
+    <span
+      v-if="project.internal && !pkuNetwork" position-absolute top-0 end-0 mx-4 my-7 px-2 py-1 border-red-400 text-red-400 rounded-md border border-solid text-xs
+    >
+    仅校园网
+    </span>
     <div
       h-12
       w-12

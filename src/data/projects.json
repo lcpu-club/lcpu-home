@@ -3,7 +3,8 @@
     "title": "云计算平台",
     "description": "开箱即用的免费云计算服务，为教学与科研服务",
     "image": "/projects/clab.svg",
-    "link": "https://clab.pku.edu.cn/"
+    "link": "https://clab.pku.edu.cn/",
+    "internal": true
   },
   {
     "title": "LCPU Getting Started",
@@ -16,14 +17,16 @@
     "description": "在线协作LaTeX平台，助力科研创造",
     "image": "/projects/pkutex-light.svg",
     "imageDark": "/projects/pkutex-dark.svg",
-    "link": "https://latex.pku.edu.cn/"
+    "link": "https://latex.pku.edu.cn/",
+    "internal": true
   },
   {
     "title": "PKUGit",
     "description": "便捷 · 安全 · 助力科研开发",
     "image": "/projects/pkugit.svg",
     "imageDark": "/projects/pkugit-dark.svg",
-    "link": "https://git.pku.edu.cn/"
+    "link": "https://git.pku.edu.cn/",
+    "internal": true
   },
   {
     "title": "北京大学开源镜像站",
