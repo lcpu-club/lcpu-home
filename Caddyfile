@@ -1,0 +1,4 @@
+:5001 {
+    root ./dist/static
+    file_server
+}

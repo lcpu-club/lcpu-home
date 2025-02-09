@@ -15,7 +15,7 @@ const activities = fg
     if (frontmatter.data.time === undefined) return
     const filename = path.parse(entry).name
     return {
-      url: `/activities/${filename}`,
+      url: `/activities/${filename}.html`,
       lastmod: frontmatter.data.time,
       changefreq: 'monthly',
       priority: 0.5,
@@ -33,7 +33,7 @@ const news = fg
     const { entry, frontmatter } = file
     const filename = path.parse(entry).name
     return {
-      url: `/news/${filename}`,
+      url: `/news/${filename}.html`,
       lastmod: frontmatter.data.time,
       changefreq: 'monthly',
       priority: 0.5,
@@ -62,7 +62,7 @@ const links = [
 
 links.push(...activities, ...news)
 
-const stream = new SitemapStream({ hostname: 'https://lh.djdjz7.top' })
+const stream = new SitemapStream({ hostname: 'https://lcpu.dev' })
 const buffer = await streamToPromise(Readable.from(links).pipe(stream))
 const sitemap = buffer.toString()
 

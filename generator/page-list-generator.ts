@@ -33,7 +33,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                 const data = frontmatter.data
                 const time = data.time
                 const title = data.title
-                const meta= data.meta
+                const meta = data.meta
                 delete data.time
                 delete data.title
                 delete data.meta
@@ -43,7 +43,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                   data,
                   meta,
                   excerpt: frontmatter.excerpt,
-                  contentUrl: `/${base}/${filename}`,
+                  contentUrl: `/${base}/${filename}.html`,
                 }
               })
               .filter((page) => page !== undefined)

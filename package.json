@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build:default": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
@@ -17,7 +17,7 @@
     "build:render": "bunx tsx prerender.ts",
     "build:sitemap": "bun ./sitemap.ts",
     "build:post": "run-p build:render build:sitemap",
-    "build:all": "run-s build:bundle build:post"
+    "build": "run-s build:bundle build:post"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
