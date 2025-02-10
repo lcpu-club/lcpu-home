@@ -34,6 +34,12 @@ for (const category of categories) {
 }
 
 links.push({ url: '/', changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString() })
+links.push({
+  url: '/contact/about.html',
+  changefreq: 'monthly',
+  priority: 0.5,
+  lastmod: new Date().toISOString(),
+})
 
 const stream = new SitemapStream({ hostname: 'https://lcpu.dev' })
 const buffer = await streamToPromise(Readable.from(links).pipe(stream))
