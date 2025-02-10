@@ -10,14 +10,14 @@ import LcpuDark from '../assets/lcpu-dark.svg?no-inline'
 import LcpuLight from '../assets/lcpu-light.svg?no-inline'
 import GithubMark from '../assets/github-mark.svg?no-inline'
 import GithubMarkWhite from '../assets/github-mark-white.svg?no-inline'
-import { ChevronRightIcon } from '@heroicons/vue/24/solid'
+import BilibiliIcon from '../assets/bilibili.svg?no-inline'
+import BilibiliIconWhite from '../assets/bilibili-white.svg?no-inline'
+import { ChevronRightIcon, EnvelopeIcon } from '@heroicons/vue/24/solid'
 import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
 import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
-
-console.log(GithubMarkWhite)
 
 const projects = rawProjectData as Project[]
 const categories = categoryList.map((list) => {
@@ -82,15 +82,22 @@ if (import.meta.env.SSR) {
         <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" alt="LCPU 标识" />
         <h1 m-t-8 m-b-0 text-center>北京大学<br />学生 Linux 俱乐部</h1>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
-        <a href="https://github.com/lcpu-club" h-8 w-8 m-t-8>
-          <AutoDarkImage
-            :src="GithubMark"
-            :src-dark="GithubMarkWhite"
-            h-full
-            w-full
-            alt="Github 标识"
-          />
-        </a>
+        <div flex="~ items-center gap-6" m-t-8>
+          <a href="https://github.com/lcpu-club" h-7>
+            <AutoDarkImage :src="GithubMark" :src-dark="GithubMarkWhite" h-full alt="Github 标识" />
+          </a>
+          <a href="https://space.bilibili.com/3461562830424779" h-7>
+            <AutoDarkImage
+              :src="BilibiliIcon"
+              :src-dark="BilibiliIconWhite"
+              h-full
+              alt="Bilibili 标识"
+            />
+          </a>
+          <a href="mailto:linuxclub@pku.edu.cn" h-7 dark:text-white text-black>
+            <EnvelopeIcon class="h-7" />
+          </a>
+        </div>
       </div>
       <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12 ref="scrollViewRef">
         <h2>项目</h2>
