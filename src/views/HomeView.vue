@@ -39,7 +39,7 @@ const pkuNetwork = ref(true)
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   mobileScrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
-  fetch('https://live.lcpu.dev', {
+  fetch('https://api.lcpu.dev/generate_204', {
     mode: 'no-cors',
     signal: AbortSignal.timeout(1000),
   })
