@@ -6,16 +6,18 @@ import type { Project } from '@/data/project'
 import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
-import LcpuDark from '../assets/lcpu-dark.svg'
-import LcpuLight from '../assets/lcpu-light.svg'
-import GithubMark from '../assets/github-mark.svg'
-import GithubMarkWhite from '../assets/github-mark-white.svg'
+import LcpuDark from '../assets/lcpu-dark.svg?no-inline'
+import LcpuLight from '../assets/lcpu-light.svg?no-inline'
+import GithubMark from '../assets/github-mark.svg?no-inline'
+import GithubMarkWhite from '../assets/github-mark-white.svg?no-inline'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
 import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
+
+console.log(GithubMarkWhite)
 
 const projects = rawProjectData as Project[]
 const categories = categoryList.map((list) => {
@@ -32,18 +34,19 @@ const route = useRoute(() =>
 )
 useTitle('北京大学学生 Linux 俱乐部')
 
-const pkuNetwork = ref(true);
+const pkuNetwork = ref(true)
 
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   mobileScrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
-  fetch("https://live.lcpu.dev", {
-    mode: "no-cors",
+  fetch('https://live.lcpu.dev', {
+    mode: 'no-cors',
     signal: AbortSignal.timeout(1000),
   })
-  .then(() => {
-  })
-  .catch(()=>{pkuNetwork.value = false})
+    .then(() => {})
+    .catch(() => {
+      pkuNetwork.value = false
+    })
 })
 
 if (import.meta.env.SSR) {
@@ -92,7 +95,12 @@ if (import.meta.env.SSR) {
       <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12 ref="scrollViewRef">
         <h2>项目</h2>
         <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
-          <ProjectCard v-for="project in projects" :key="project.title" :project="project" :pkuNetwork="pkuNetwork"/>
+          <ProjectCard
+            v-for="project in projects"
+            :key="project.title"
+            :project="project"
+            :pkuNetwork="pkuNetwork"
+          />
         </div>
 
         <div m-t-12 v-for="category in categories" :key="category.title">
