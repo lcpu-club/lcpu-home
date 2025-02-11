@@ -89,7 +89,8 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
     return PageListView as never
   }
   if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
-  const modulePath = '../content' + sourceOrPathname
+  const modulePath =
+    '../content' + sourceOrPathname + (sourceOrPathname.endsWith('.md') ? '' : '.md')
   if (modulePath in pageModules) {
     let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
     if ('then' in module && typeof module.then === 'function') module = await module
