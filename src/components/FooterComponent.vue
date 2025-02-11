@@ -5,7 +5,7 @@ const year = new Date().getFullYear()
 <template>
   <footer text-center flex="~ col items-center" text-sm text-gray-400 dark:text-truegray-600>
     <div flex="~ items-center gap-2">
-      <a text-unset href="/contact/about.html">关于我们</a>
+      <a text-unset href="/contact/about/">关于我们</a>
       <a text-unset href="https://github.com/lcpu-club" target="_blank">Github</a>
       <a text-unset href="https://space.bilibili.com/3461562830424779" target="_blank">哔哩哔哩</a>
       <a text-unset href="mailto:linuxclub@pku.edu.cn">邮件联系</a>

@@ -9,7 +9,7 @@ const categories = ['news', 'announcements']
 const links = []
 for (const category of categories) {
   const pages = fg
-    .sync(`./src/data/${category}/*.md`)
+    .sync(`./content/${category}/*.md`)
     .map((entry) => {
       return { entry, frontmatter: matter.read(entry) }
     })
@@ -18,7 +18,7 @@ for (const category of categories) {
       if (frontmatter.data.hidden) return undefined
       const filename = path.parse(entry).name
       return {
-        url: `/${category}/${filename}.html`,
+        url: `/${category}/${filename}/`,
         lastmod: frontmatter.data.time,
         changefreq: 'monthly',
         priority: 0.5,
@@ -37,7 +37,7 @@ for (const category of categories) {
 
 links.push({ url: '/', changefreq: 'daily', priority: 0.8, lastmod: new Date().toISOString() })
 links.push({
-  url: '/contact/about.html',
+  url: '/contact/about/',
   changefreq: 'monthly',
   priority: 0.5,
   lastmod: new Date().toISOString(),

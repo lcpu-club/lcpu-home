@@ -82,8 +82,8 @@ onMounted(() => {
 })
 
 async function resolvePageModule(pathname: string): Promise<Module | never> {
-  if (pathname.endsWith('.html')) pathname = pathname.slice(0, -5)
-  const modulePath = './data' + pathname + '.md'
+  if (pathname.endsWith('/')) pathname = pathname.slice(0, -1)
+  const modulePath = '../content' + pathname + '.md'
   return new Promise(async (resolve) => {
     if (pathname.match(indexPageRe)) {
       resolve(PageListView as never)
@@ -134,7 +134,7 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
       isIndexPage: true,
     }
   }
-  if (!pathname.endsWith('.html')) pathname += '.html'
+
   return {
     page: allPages.find((news) => news.contentUrl === pathname) || undefined,
     isIndexPage: false,

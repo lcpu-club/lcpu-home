@@ -22,7 +22,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
           result.push({
             routeBase: base,
             pages: fg
-              .sync(`./src/data/${base}/*.md`)
+              .sync(`./content/${base}/*.md`)
               .map((entry) => {
                 return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
               })
@@ -34,16 +34,18 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                 const time = data.time
                 const title = data.title
                 const meta = data.meta
+                const slug = data.slug || filename
                 delete data.time
                 delete data.title
                 delete data.meta
+                delete data.slug
                 return {
                   title,
                   time,
                   data,
                   meta,
                   excerpt: frontmatter.excerpt,
-                  contentUrl: `/${base}/${filename}.html`,
+                  contentUrl: `/${base}/${slug}/`,
                 }
               })
               .filter((page) => page !== undefined)
@@ -54,7 +56,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
       }
     },
     handleHotUpdate({ server, file }) {
-      if (file.includes('src/data/')) {
+      if (file.includes('src/data/') || file.includes('content/')) {
         const thisModule = server.moduleGraph.getModuleById(resolvedVirtualModuleId)
         if (thisModule) return [thisModule]
       }

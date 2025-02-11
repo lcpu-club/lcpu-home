@@ -25,7 +25,7 @@ routesToPrerender.push(
     .sync('./src/data/*', { markDirectories: true, onlyDirectories: true })
     .map((p) => p.slice(10)),
 )
-routesToPrerender.push(...fg.sync('./src/data/*/*.md').map((p) => p.slice(10, -3)))
+routesToPrerender.push(...fg.sync('./content/*/*.md').map((p) => p.slice(9, -3)))
 
 // pre-render each route...
 for (const url of routesToPrerender) {
@@ -38,7 +38,7 @@ for (const url of routesToPrerender) {
     .replace(`<!--meta-->`, meta)
     .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
-  const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}.html`
+  const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}/index.html`
   customWriteFileSync(toAbsolute(filePath), html)
   console.log('pre-rendered:', filePath)
 }
