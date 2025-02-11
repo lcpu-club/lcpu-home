@@ -11,6 +11,7 @@ import {
 } from '@shikijs/transformers'
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
+import { componentPlugin } from '@mdit-vue/plugin-component'
 import anchor from 'markdown-it-anchor'
 import { SiteConfiguration } from '../src/site'
 
@@ -58,6 +59,7 @@ const md = mdit
       ],
     }),
   )
+  .use(componentPlugin)
 
 const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
 const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g
