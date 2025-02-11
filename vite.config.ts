@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     vueDevTools(),
     UnoCSS(),
-    PageListGenerator(['activities', 'news', 'announcements']),
+    PageListGenerator(['news', 'announcements']),
   ],
   resolve: {
     alias: {

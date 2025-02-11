@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 import path from 'path'
 import fs from 'fs'
 
-const categories = ['activities', 'news', 'announcements']
+const categories = ['news', 'announcements']
 const links = []
 for (const category of categories) {
   const pages = fg
