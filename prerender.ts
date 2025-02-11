@@ -7,6 +7,7 @@ import path from 'node:path'
 import url from 'node:url'
 import fg from 'fast-glob'
 import { SiteConfiguration } from './src/site.js'
+import gm from 'gray-matter'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
@@ -18,19 +19,27 @@ const manifest = JSON.parse(
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-const routesToPrerender = ['/', '/404']
+const routesToPrerender = ['/', '/404.html']
 
 routesToPrerender.push(
   ...fg
-    .sync('./src/data/*', { markDirectories: true, onlyDirectories: true })
-    .map((p) => p.slice(10)),
+    .sync('./content/*', { markDirectories: true, onlyDirectories: true })
+    .map((p) => p.slice(9)),
 )
-routesToPrerender.push(...fg.sync('./content/*/*.md').map((p) => p.slice(9, -3)))
+routesToPrerender.push(
+  ...fg.sync('./content/*/*.md').map((file) => {
+    const dir = path.dirname(file)
+    const frontmatter = gm(fs.readFileSync(file, 'utf-8')).data
+    if (frontmatter.slug) {
+      return dir.slice(9) + '/' + frontmatter.slug + '/'
+    }
+    return file.slice(9, -3) + '/'
+  }),
+)
 
 // pre-render each route...
 for (const url of routesToPrerender) {
   const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
-
   const html = template
     .replace(`<!--preload-links-->`, preloadLinks)
     .replace(`<!--app-html-->`, appHtml)
@@ -38,7 +47,7 @@ for (const url of routesToPrerender) {
     .replace(`<!--meta-->`, meta)
     .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
-  const filePath = `dist/static${url.endsWith('/') ? url + 'index' : url}/index.html`
+  const filePath = `dist/static${url.endsWith('/') ? url + 'index.html' : url}`
   customWriteFileSync(toAbsolute(filePath), html)
   console.log('pre-rendered:', filePath)
 }
