@@ -145,7 +145,8 @@ function renderMeta(
       inLanguage: 'zh-Hans',
       url: 'https://lcpu.dev/',
       keywords: meta['keywords'],
-      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部' },
+      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev" },
+      image: "https://lcpu.dev/favicon.svg",
     }
     result += `<script type="application/ld+json">${JSON.stringify(
       jsonLd,
@@ -175,12 +176,13 @@ function renderMeta(
       author:
         author !== ''
           ? { '@type': 'Person', name: author }
-          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部' },
+          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev" },
       copyrightYear: dateObj.getFullYear(),
       dateCreated: dateIsoString,
       datePublished: dateIsoString,
       keywords: meta.keywords,
       mainEntityOfPage: 'true',
+      image: meta.image ? meta.image : "https://lcpu.dev/favicon.svg"
     }
 
     result += `<meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="article:published_time" content="${dateIsoString}"><meta property="article:modified_time" content="${dateIsoString}"><script type="application/ld+json">${JSON.stringify(
