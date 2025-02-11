@@ -11,7 +11,7 @@ defineProps<{
 <template>
   <a
     :href="project.link"
-    target="_blank"
+    :target="project.link.startsWith('/') ? '' : '_blank'"
     rel="noopener noreferrer"
     decoration-none
     rounded-xl

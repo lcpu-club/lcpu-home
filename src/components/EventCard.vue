@@ -20,7 +20,6 @@ const color = ref("")
 const tag = ref("")
 
 onMounted(() => {
-
   const nowDate = new Date()
   if (nowDate < startDate) {
     color.value = "gray"
@@ -36,8 +35,8 @@ onMounted(() => {
 </script>
 <template>
   <a
-    :href="props.event.link"
-    target="_blank"
+    :href="event.link"
+    :target="event.link.startsWith('/') ? '' : '_blank'"
     rel="noopener noreferrer"
     decoration-none
     rounded-xl
@@ -70,18 +69,18 @@ onMounted(() => {
       border="1 gray-300 dark:dark-200 solid"
     >
       <AutoDarkImage
-        v-if="props.event.image"
-        :src="props.event.image"
-        :src-dark="props.event.imageDark"
-        :alt="props.event.title"
+        v-if="event.image"
+        :src="event.image"
+        :src-dark="event.imageDark"
+        :alt="event.title"
         object-contain
         w-8
         h-8
       />
-      <span v-else text-xl>{{ props.event.title.charAt(0) }}</span>
+      <span v-else text-xl>{{ event.title.charAt(0) }}</span>
     </div>
-    <span m-t-1 text-xl font-semibold>{{ props.event.title }}</span>
-    <p p-0 m-0 flex-1>{{ props.event.description }}</p>
+    <span m-t-1 text-xl font-semibold>{{ event.title }}</span>
+    <p p-0 m-0 flex-1>{{ event.description }}</p>
     <ArrowRightIcon
       class="h-5 w-5 text-gray-500 self-end group-hover:translate-x-1 transition-transform duration-200"
     />
