@@ -47,7 +47,7 @@ const colorClasses = {
 }
 
 const pkuNetwork = ref("true")
-const nowDate = ref()
+const nowDate = ref(new Date())
 
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
