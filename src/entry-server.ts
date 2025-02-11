@@ -138,6 +138,10 @@ function renderMeta(
       position: count,
     })
   })
+  if (url === "/404.html") {
+    BreadcrumbList[1]['item'] = "https://lcpu.dev/404.html"
+    result += `<meta name="robots" content="noindex">`
+  }
   result += `<script type="application/ld+json">${JSON.stringify(BreadcrumbList)}</script>`
 
   if (url === '/') {
@@ -146,7 +150,7 @@ function renderMeta(
       '@type': 'WebSite',
       '@id': 'https://lcpu.dev/',
       name: '北京大学学生 Linux 俱乐部',
-      description: "${meta['description']}",
+      description: `${meta['description']}`,
       inLanguage: 'zh-Hans',
       url: 'https://lcpu.dev/',
       keywords: meta['keywords'],
