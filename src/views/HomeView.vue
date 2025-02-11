@@ -23,7 +23,7 @@ import { SiteConfiguration } from '@/site'
 
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
-const eventItems = events.map(event => {
+const eventItems = events.map((event) => {
   return { ...event, startDate: new Date(event.startDate), endDate: new Date(event.endDate) }
 })
 const categories = categoryList.map((list) => {
@@ -46,7 +46,7 @@ const colorClasses = {
   gray: 'text-gray-400 border-gray-400',
 }
 
-const pkuNetwork = ref("true")
+const pkuNetwork = ref(true)
 const nowDate = ref(new Date())
 
 onMounted(() => {
@@ -121,7 +121,7 @@ if (import.meta.env.SSR) {
             v-for="item in projects"
             :key="item.title"
             :item="item"
-            :tag="(item.internal && !pkuNetwork) ? '仅校园网' : ''"
+            :tag="item.internal && !pkuNetwork ? '仅校园网' : ''"
             :tagClass="colorClasses['red']"
           />
         </div>
@@ -132,14 +132,22 @@ if (import.meta.env.SSR) {
             v-for="item in eventItems"
             :key="item.title"
             :item="item"
-            :tag="nowDate < item.startDate ? '未开始' : nowDate < item.endDate ? '进行中' : '已结束'"
-            :tagClass="nowDate < item.startDate ? colorClasses['gray'] : nowDate < item.endDate ? colorClasses['green'] : colorClasses['red']"
+            :tag="
+              nowDate < item.startDate ? '未开始' : nowDate < item.endDate ? '进行中' : '已结束'
+            "
+            :tagClass="
+              nowDate < item.startDate
+                ? colorClasses['gray']
+                : nowDate < item.endDate
+                  ? colorClasses['green']
+                  : colorClasses['red']
+            "
           />
         </div>
 
         <div m-t-8 v-for="category in categories" :key="category.title">
           <div flex="~ items-center">
-            <h2 m-t-0 flex-grow-1>{{ category.title }}</h2>
+            <h2 m-0 flex-grow-1>{{ category.title }}</h2>
             <a
               class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
               decoration-none
@@ -151,7 +159,7 @@ if (import.meta.env.SSR) {
             </a>
           </div>
 
-          <div>
+          <div m-t-4>
             <PageListEntry
               v-for="page in category.pages.slice(0, 3)"
               :key="page.title"
