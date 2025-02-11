@@ -139,7 +139,7 @@ function renderMeta(
     })
   })
   if (url === "/404.html") {
-    BreadcrumbList[1]['item'] = "https://lcpu.dev/404.html"
+    BreadcrumbList['itemListElement'][1].item = "https://lcpu.dev/404.html"
     result += `<meta name="robots" content="noindex">`
   }
   result += `<script type="application/ld+json">${JSON.stringify(BreadcrumbList)}</script>`
