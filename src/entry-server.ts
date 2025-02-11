@@ -93,8 +93,10 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
   if (title) {
     result += `<meta name="title" content="${title}"><meta property="og:title" content="${title}"><meta name="twitter:title" content="${title}">`
   }
-  if (author !== '') {
+  if (author !== undefined && author !== '') {
     result += `<meta name="author" content="${author}">`
+  } else {
+    result += `<meta name="author" content="北京大学学生 Linux 俱乐部">`
   }
   result += `<link rel="canonical" href="https://lcpu.dev${url}"><meta property="og:url" content="https://lcpu.dev${url}"><meta property="og:site_name" content="北京大学学生 Linux 俱乐部" />`
 
