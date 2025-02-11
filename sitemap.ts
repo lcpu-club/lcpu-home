@@ -15,6 +15,7 @@ for (const category of categories) {
     })
     .map((file) => {
       const { entry, frontmatter } = file
+      if (frontmatter.data.hidden) return undefined
       const filename = path.parse(entry).name
       return {
         url: `/${category}/${filename}.html`,
@@ -23,6 +24,7 @@ for (const category of categories) {
         priority: 0.5,
       }
     })
+    .filter((page) => page !== undefined)
     .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
   links.push(...pages)
   links.push({
