@@ -116,7 +116,7 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
   if (url === '/') {
     const jsonLd = {"@context":"https://schema.org","@type":"WebSite","@id":"https://lcpu.dev/","name":"北京大学学生 Linux 俱乐部","description":"${meta['description']}","inLanguage":"zh-Hans","url":"https://lcpu.dev/","keywords":meta['keywords'],"publisher":{"@type":"Organization","name":"北京大学学生 Linux 俱乐部"}}
     result += `<script type="application/ld+json">${
-      JSON.stringify(jsonLd)}</script><meta name="author" content="北京大学学生 Linux 俱乐部"><meta property="og:type" content="website"><meta name="twitter:card" content="summary">`
+      JSON.stringify(jsonLd)}</script><meta property="og:type" content="website"><meta name="twitter:card" content="summary">`
   } else if (!url.match(indexPageRe) && url != "/404.html" && url != "/announcements/test/" && url != "/contact/about/" ) {
     const dateObj = new Date(time)
     const dateIsoString = dateObj.toISOString()
