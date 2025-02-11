@@ -145,7 +145,11 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
 
 function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
-  return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
+  return (
+    SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ??
+    SiteConfiguration.getRootPageTitle(pageSegs[1]) ??
+    pageSegs[1]
+  )
 }
 </script>
 

@@ -8,6 +8,7 @@ interface SiteConfiguration {
     }
   }
   getRouteCategoryTitle: (routeSegment: string) => string | undefined
+  getRootPageTitle: (routeSegment: string) => string | undefined
   titleSuffix: string
   theme: 'normal' | 'new-year'
   pureStatic?: boolean
@@ -16,6 +17,10 @@ interface SiteConfiguration {
 const routeTitleRecord: Record<string, string> = {
   news: '新闻',
   announcements: '公告',
+}
+
+const rootPages: Record<string, string> = {
+  about: '关于我们',
 }
 
 export const SiteConfiguration: SiteConfiguration = {
@@ -28,6 +33,7 @@ export const SiteConfiguration: SiteConfiguration = {
     },
   },
   getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment],
+  getRootPageTitle: (routeSegment) => rootPages[routeSegment],
   titleSuffix: '北京大学学生 Linux 俱乐部',
   theme: 'normal',
   pureStatic: true,
