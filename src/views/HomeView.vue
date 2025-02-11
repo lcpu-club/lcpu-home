@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import ProjectCard from '@/components/ProjectCard.vue'
 import rawProjectData from '@/data/projects.json'
+import EventCard from '@/components/EventCard.vue'
+import rawEventData from '@/data/events.json'
 import categoryList from 'virtual:category-list.json'
 import type { Project } from '@/data/project'
+import type { Event } from '@/data/Event'
 import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
@@ -20,6 +23,7 @@ import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
 
 const projects = rawProjectData as Project[]
+const events = rawEventData as Event[]
 const categories = categoryList.map((list) => {
   return {
     title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
@@ -107,6 +111,15 @@ if (import.meta.env.SSR) {
             :key="project.title"
             :project="project"
             :pkuNetwork="pkuNetwork"
+          />
+        </div>
+
+        <h2>活动</h2>
+        <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
+          <EventCard
+            v-for="event in events"
+            :key="event.title"
+            :event="event"
           />
         </div>
 

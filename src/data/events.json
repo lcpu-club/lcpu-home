@@ -1,0 +1,20 @@
+[
+  {
+    "title": "GeekGame",
+    "description": "“京华杯”信息安全综合能力竞赛",
+    "image": "/projects/geekgame.png",
+    "imageDark": "/projects/geekgame-dark.png",
+    "link": "https://geekgame.pku.edu.cn/",
+    "startDate": "2024-10-12",
+    "endDate": "2024-10-19"
+  },
+  {
+    "title": "HPCGame",
+    "description": "北京大学高性能计算综合能力竞赛",
+    "image": "/projects/hpcgame.svg",
+    "imageDark": "/projects/hpcgame-dark.svg",
+    "link": "https://hpcgame.pku.edu.cn/",
+    "startDate": "2025-1-18",
+    "endDate": "2025-1-25"
+  }
+]
