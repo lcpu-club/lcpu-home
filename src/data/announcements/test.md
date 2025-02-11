@@ -226,19 +226,18 @@ ADD ONE!
 
 ## Vue Components
 
-<ProjectCard :project="project" />
+<ItemCard :item="item" />
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import ProjectCard from '@/components/ProjectCard.vue'
-import type { Project } from '@/data/project'
+import ItemCard from '@/components/ItemCard.vue'
+import type { Item } from '@/data/item'
 const count = ref(0)
-const project : Project = {
+const item : Item = {
   title: '>_<',
   description: 'Ciallo～(∠・ω< )⌒★',
   image: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.cfn5B-21s-pyI5_couP9NQHaHa',
   link: "/",
-  internal: false
 }
 
 function add() {

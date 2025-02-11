@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import ProjectCard from '@/components/ProjectCard.vue'
+import ItemCard from '@/components/ItemCard.vue'
 import rawProjectData from '@/data/projects.json'
-import EventCard from '@/components/EventCard.vue'
 import rawEventData from '@/data/events.json'
 import categoryList from 'virtual:category-list.json'
 import type { Project } from '@/data/project'
@@ -24,6 +23,9 @@ import { SiteConfiguration } from '@/site'
 
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
+const eventItems = events.map(event => {
+  return { ...event, startDate: new Date(event.startDate), endDate: new Date(event.endDate) }
+})
 const categories = categoryList.map((list) => {
   return {
     title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
@@ -38,7 +40,14 @@ const route = useRoute(() =>
 )
 useTitle('北京大学学生 Linux 俱乐部')
 
-const pkuNetwork = ref(true)
+const colorClasses = {
+  red: 'text-red-400 border-red-400',
+  green: 'text-green-400 border-green-400',
+  gray: 'text-gray-400 border-gray-400',
+}
+
+const pkuNetwork = ref("true")
+const nowDate = ref()
 
 onMounted(() => {
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
@@ -51,6 +60,8 @@ onMounted(() => {
     .catch(() => {
       pkuNetwork.value = false
     })
+
+  nowDate.value = new Date()
 })
 
 if (import.meta.env.SSR) {
@@ -106,19 +117,24 @@ if (import.meta.env.SSR) {
       <div lg:col-span-2 overflow-auto p-y-12 p-r-6 lg:p-r-12 ref="scrollViewRef">
         <h2>项目</h2>
         <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
-          <ProjectCard
-            v-for="project in projects"
-            :key="project.title"
-            :project="project"
-            :pkuNetwork="pkuNetwork"
+          <ItemCard
+            v-for="item in projects"
+            :key="item.title"
+            :item="item"
+            :tag="(item.internal && !pkuNetwork) ? '仅校园网' : ''"
+            :tagClass="colorClasses['red']"
           />
         </div>
 
-        <div m-t-8>
-          <h2>活动</h2>
-          <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
-            <EventCard v-for="event in events" :key="event.title" :event="event" />
-          </div>
+        <h2>活动</h2>
+        <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
+          <ItemCard
+            v-for="item in eventItems"
+            :key="item.title"
+            :item="item"
+            :tag="nowDate < item.startDate ? '未开始' : nowDate < item.endDate ? '进行中' : '已结束'"
+            :tagClass="nowDate < item.startDate ? colorClasses['gray'] : nowDate < item.endDate ? colorClasses['green'] : colorClasses['red']"
+          />
         </div>
 
         <div m-t-8 v-for="category in categories" :key="category.title">
