@@ -79,6 +79,9 @@ export async function createServer(
 
       const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
 
+      if (url === "/") {
+        template = template.replace(`<!--title-prefix--> | <!--title-suffix-->`, `北京大学学生 Linux 俱乐部`)
+      }
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--app-html-->`, appHtml)

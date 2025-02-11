@@ -11,7 +11,7 @@ useTitle(`404 NOT FOUND | ${SiteConfiguration.titleSuffix}`)
 if (import.meta.env.SSR) {
   const context = useSSRContext()
   if (context) {
-    context.titlePrefix = '404 NOT FOUND | '
+    context.titlePrefix = '404 NOT FOUND'
     if (!context.meta) {
       context.meta = {}
     }

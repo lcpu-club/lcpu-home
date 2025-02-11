@@ -3,6 +3,8 @@
 import { basename } from 'path'
 import { renderToString, type SSRContext } from 'vue/server-renderer'
 import { createApp } from './main'
+import { SiteConfiguration } from './site'
+import { indexPageRe } from './utils'
 
 export async function render(url: string, manifest: { [key: string]: string[] }) {
   const { app, router } = createApp()
@@ -21,7 +23,7 @@ export async function render(url: string, manifest: { [key: string]: string[] })
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  const meta = renderMeta(ctx.meta)
+  const meta = renderMeta(ctx.meta, ctx.titlePrefix, url, ctx.author, ctx.time)
   return [html, preloadLinks, ctx.titlePrefix ?? '', meta]
 }
 
@@ -69,12 +71,62 @@ function renderPreloadLink(file: string) {
   }
 }
 
-function renderMeta(meta: { [key: string]: string } | undefined | null): string {
+function renderMeta(meta, title: string, url: string, author: string, time: string): string {
   if (!meta) return ''
   let result = ''
   for (const key in meta) {
     if (!meta[key]) continue
-    result += `<meta name="${key}" content="${meta[key]}">`
+    switch (key) {
+      case "description":
+        result += `<meta property="og:description" content="${meta[key]}"><meta name="twitter:description" content="${meta[key]}"><meta name="${key}" content="${meta[key]}">`
+        break
+      case "keywords":
+        result += `<meta name="keywords" content="${meta[key].join(",")}">`
+        break
+      case "image":
+        result += `<meta name="twitter:image" content="${meta[key]}"><meta property="og:image" content="${meta[key]}">`
+        break
+      case "video":
+        result += `<meta property="og:video" content="${meta[key]}">`
+    }
+  }
+  if (title) {
+    result += `<meta name="title" content="${title}"><meta property="og:title" content="${title}"><meta name="twitter:title" content="${title}">`
+  }
+  if (author !== '') {
+    result += `<meta name="author" content="${author}">`
+  }
+  result += `<link rel="canonical" href="https://lcpu.dev${url}"><meta property="og:url" content="https://lcpu.dev${url}"><meta property="og:site_name" content="北京大学学生 Linux 俱乐部" />`
+
+  const slugs = url.substring(1).split( '/' )
+  const BreadcrumbList = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://lcpu.dev/","name":"北京大学学生 Linux 俱乐部","position":1}]}
+  let count = 1
+  slugs.forEach(slug => {
+    if (slug === "") {
+      return
+    }
+    count++
+    const category = SiteConfiguration.getRouteCategoryTitle(slug)
+    BreadcrumbList['itemListElement'].push({"@type":"ListItem","item":`https://lcpu.dev/${slug}`, "name": category === slug ? title : category,"position":count})
+  })
+  result += `<script type="application/ld+json">${JSON.stringify(BreadcrumbList)}</script>`
+
+  if (url === '/') {
+    const jsonLd = {"@context":"https://schema.org","@type":"WebSite","@id":"https://lcpu.dev/","name":"北京大学学生 Linux 俱乐部","description":"${meta['description']}","inLanguage":"zh-Hans","url":"https://lcpu.dev/","keywords":meta['keywords'],"publisher":{"@type":"Organization","name":"北京大学学生 Linux 俱乐部"}}
+    result += `<script type="application/ld+json">${
+      JSON.stringify(jsonLd)}</script><meta name="author" content="北京大学学生 Linux 俱乐部"><meta property="og:type" content="website"><meta name="twitter:card" content="summary">`
+  } else if (!url.match(indexPageRe) && url != "/404.html" && url != "/announcements/test/" && url != "/pages/about/" ) {
+    const dateObj = new Date(time)
+    const dateIsoString = dateObj.toISOString()
+    let sectionName
+    if (url.substring(1).split( '/' )[0] !== "") {
+      sectionName = SiteConfiguration.getRouteCategoryTitle(url.substring(1).split( '/' )[0])
+    }
+    const jsonLd = {"@context":"https://schema.org","@type":"Article","articleSection": sectionName,"name": title, "headline": meta['description'],"description":meta['description'],"abstract":meta['description'],"inLanguage":"zh-Hans","url":`https://lcpu.dev${url}`,"author": author !== "" ? {"@type":"Person","name": author} : {"@type":"Organization","name": "北京大学学生 Linux 俱乐部"}, "copyrightYear":dateObj.getFullYear(),"dateCreated":dateIsoString,"datePublished":dateIsoString,"keywords":meta.keywords,"mainEntityOfPage":"true"}
+
+    result += `<meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="article:published_time" content="${dateIsoString}"><meta property="article:modified_time" content="${dateIsoString}"><script type="application/ld+json">${
+      JSON.stringify(jsonLd)}</script>
+`
   }
   return result
 }

@@ -35,15 +35,17 @@ const pageCategory = ref(getPageCategory(pathname))
 const { page, isIndexPage } = getCurrentPage(pathname)
 const currentPage = shallowRef(page)
 const isCurrentIndexPage = ref(isIndexPage)
-const title = useTitle('', { titleTemplate: `%s${SiteConfiguration.titleSuffix}` })
+const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffix}` })
 title.value = currentPage.value?.title
-  ? currentPage.value.title + ` | ${pageCategory.value} - `
-  : `${pageCategory.value} - `
+  ? currentPage.value.title
+  : pageCategory.value
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
   const meta: { [key: string]: string } = currentPage.value?.meta ?? {}
   meta.description = (meta.description ?? currentPage.value?.excerpt)?.trim()
   ssrContext.meta = meta
+  ssrContext.time = currentPage.value?.time ?? ""
+  ssrContext.author = currentPage.value?.data?.author ?? ""
 }
 const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
@@ -67,8 +69,7 @@ watch(
     currentPage.value = page
     isCurrentIndexPage.value = isIndexPage
     title.value = currentPage.value?.title
-      ? currentPage.value.title + ` | ${pageCategory.value} - `
-      : `${pageCategory.value} - `
+      ? currentPage.value.title : pageCategory.value
     Content.value = LoadingView as never
     const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
     if ('default' in module) Content.value = module.default
