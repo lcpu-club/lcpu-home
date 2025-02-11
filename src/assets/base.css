@@ -61,7 +61,7 @@ hr {
 }
 
 img {
-  --at-apply: object-contain max-w-full;
+  --at-apply: object-contain max-w-full h-auto;
 }
 
 *::-webkit-scrollbar {

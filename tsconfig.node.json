@@ -8,7 +8,9 @@
     "playwright.config.*",
     "generator/*",
     "src/data/*.ts",
-    "src/site.ts"
+    "src/site.ts",
+    "generator/*.ts",
+    "generator/**/*.ts",
   ],
   "compilerOptions": {
     "composite": true,

@@ -1,65 +1,15 @@
 import { PluginOption } from 'vite'
-import MarkdownIt, * as mdit from 'markdown-it'
-import Token from 'markdown-it/lib/token.mjs'
 import matter from 'gray-matter'
-import Shiki from '@shikijs/markdown-it'
-import {
-  transformerNotationDiff,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-  transformerRemoveNotationEscape,
-} from '@shikijs/transformers'
-import MathJax3 from 'markdown-it-mathjax3'
-import MarkdownItContainer from 'markdown-it-container'
-import { componentPlugin } from '@mdit-vue/plugin-component'
-import anchor from 'markdown-it-anchor'
-import { SiteConfiguration } from '../src/site'
+import * as mdit from 'markdown-it'
+import { registerMarkdownPlugins } from './markdown'
 
-const md = mdit
-  .default({
-    html: true,
-    linkify: true,
-    typographer: true,
-  })
-  .use(MathJax3)
-  .use(anchor, {
-    permalink: anchor.permalink.ariaHidden({
-      placement: 'before',
-      class: 'header-anchor',
-    }),
-  })
-  .use(createContainer, 'warning', SiteConfiguration.markdown.container.warningLabel || 'WARNING')
-  .use(createContainer, 'error', SiteConfiguration.markdown.container.errorLabel || 'ERROR')
-  .use(createContainer, 'info', SiteConfiguration.markdown.container.infoLabel || 'INFO')
-  .use(MarkdownItContainer, 'expander', {
-    render: (tokens: Token[], idx: number) => {
-      if (tokens[idx].nesting === 1) {
-        return `
-<ExpanderComponent class="expander" :initial-collapsed="true"
-  :extend-toggle-area="true">
-  <template #header>
-    <span font-bold text-sm p-y-4>${extractExpanderTitle(tokens[idx].info)}</span>
-  </template>\n`
-      } else {
-        return '</ExpanderComponent>\n'
-      }
-    },
-  })
-  .use(
-    await Shiki({
-      themes: {
-        light: 'catppuccin-latte',
-        dark: 'one-dark-pro',
-      },
-      transformers: [
-        transformerNotationDiff(),
-        transformerNotationFocus(),
-        transformerNotationHighlight(),
-        transformerRemoveNotationEscape(),
-      ],
-    }),
-  )
-  .use(componentPlugin)
+const md = mdit.default({
+  html: true,
+  linkify: true,
+  typographer: true,
+})
+
+registerMarkdownPlugins(md)
 
 const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
 const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g
@@ -93,31 +43,8 @@ export default function markdownContentGenerator(): PluginOption {
         rendered = rendered.replace(styleRe, '')
         rendered = rendered.replace(preReplaceRe, '$1 v-pre>')
 
-        return `<template><div>${rendered}</div></template>${scripts.join('')}${styles.join('')}`
+        return `<template><div class="md-content">${rendered}</div></template>${scripts.join('')}${styles.join('')}`
       }
     },
   }
-}
-
-function extractExpanderTitle(info: string) {
-  const re = /^ *expander *(.*?)$/
-  const result = info.replace(re, '$1').trim()
-  if (result) return result
-  else return SiteConfiguration.markdown.container.expanderLabel ?? 'MORE'
-}
-
-function extractContainerTitle(info: string, klass: string) {
-  const re = new RegExp(`^ *${klass.trim()} *(.*?)$`)
-  const result = info.replace(re, '$1').trim()
-  return result
-}
-
-function createContainer(md: MarkdownIt, klass: string, title: string) {
-  MarkdownItContainer(md, klass, {
-    render: (tokens: Token[], idx: number) => {
-      return tokens[idx].nesting === 1
-        ? `<div class="container ${klass}"><p class="container-title">${extractContainerTitle(tokens[idx].info, klass) || title}</p>\n`
-        : '</div>\n'
-    },
-  })
 }
