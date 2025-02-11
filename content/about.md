@@ -1,3 +1,4 @@
+
 <h1 m-t-4 lg:m-t-0>关于我们</h1>
 
 > Ciallo～(∠・ω< )⌒★
@@ -16,7 +17,7 @@ useTitle(`关于我们 | ${SiteConfiguration.titleSuffix}`)
 if (import.meta.env.SSR) {
   const context = useSSRContext()
   if (context) {
-    context.titlePrefix = '关于我们 | '
+    context.titlePrefix = '关于我们'
   }
 }
 </script>

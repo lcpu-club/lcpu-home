@@ -129,7 +129,7 @@ function renderMeta(
     BreadcrumbList['itemListElement'].push({
       '@type': 'ListItem',
       item: `https://lcpu.dev/${slug}`,
-      name: category === slug ? title : category,
+      name: (category === undefined || category === slug) ? title : category,
       position: count,
     })
   })
