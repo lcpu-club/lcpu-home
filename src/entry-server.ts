@@ -96,6 +96,11 @@ function renderMeta(
         result += `<meta property="og:video" content="${meta[key]}">`
     }
   }
+
+  if (!meta["image"]) {
+    result += `<meta name="twitter:image" content="https://lcpu.dev/favicon.svg"><meta property="og:image" content="https://lcpu.dev/favicon.svg">`
+  }
+
   if (title) {
     result += `<meta name="title" content="${title}"><meta property="og:title" content="${title}"><meta name="twitter:title" content="${title}">`
   }
