@@ -190,7 +190,6 @@ function renderMeta(
       dateCreated: dateIsoString,
       datePublished: dateIsoString,
       keywords: meta.keywords,
-      mainEntityOfPage: 'true',
       image: meta.image ? meta.image : "https://lcpu.dev/favicon.svg"
     }
 
