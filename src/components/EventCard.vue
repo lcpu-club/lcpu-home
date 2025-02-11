@@ -2,7 +2,6 @@
 import type { Event } from '@/data/event'
 import { ArrowRightIcon } from '@heroicons/vue/24/outline'
 import AutoDarkImage from './AutoDarkImage.vue'
-import { onMounted, ref } from 'vue'
 
 const classes = {
   red: 'text-red-400 border-red-400',
@@ -16,28 +15,14 @@ const props = defineProps<{
 
 const startDate = new Date(props.event.startDate)
 const endDate = new Date(props.event.endDate)
-const color = ref("")
-const tag = ref("")
-
-onMounted(() => {
-  const nowDate = new Date()
-  if (nowDate < startDate) {
-    color.value = "gray"
-    tag.value = "未开始"
-  } else if ( nowDate < endDate ) {
-    color.value = "green"
-    tag.value = "进行中"
-  } else {
-    color.value = "red"
-    tag.value = "已结束"
-  }
-})
+const nowDate = new Date()
+const color = nowDate < startDate ? 'gray' : nowDate < endDate ? 'green' : 'red'
+const tag = nowDate < startDate ? '未开始' : nowDate < endDate ? '进行中' : '已结束'
 </script>
 <template>
   <a
     :href="event.link"
     :target="event.link.startsWith('/') ? '' : '_blank'"
-    rel="noopener noreferrer"
     decoration-none
     rounded-xl
     bg-gray-100
@@ -51,7 +36,18 @@ onMounted(() => {
     class="group text-unset! position-relative"
   >
     <span
-      position-absolute top-0 end-0 mx-4 my-7 px-2 py-1 rounded-md border border-solid text-xs :class="classes[color]"
+      position-absolute
+      top-0
+      end-0
+      mx-4
+      my-7
+      px-2
+      py-1
+      rounded-md
+      border
+      border-solid
+      text-xs
+      :class="classes[color]"
     >
       {{ tag }}
     </span>

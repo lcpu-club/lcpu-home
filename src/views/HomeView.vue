@@ -5,7 +5,7 @@ import EventCard from '@/components/EventCard.vue'
 import rawEventData from '@/data/events.json'
 import categoryList from 'virtual:category-list.json'
 import type { Project } from '@/data/project'
-import type { Event } from '@/data/Event'
+import type { Event } from '@/data/event'
 import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
@@ -114,18 +114,16 @@ if (import.meta.env.SSR) {
           />
         </div>
 
-        <h2>活动</h2>
-        <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
-          <EventCard
-            v-for="event in events"
-            :key="event.title"
-            :event="event"
-          />
+        <div m-t-8>
+          <h2>活动</h2>
+          <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
+            <EventCard v-for="event in events" :key="event.title" :event="event" />
+          </div>
         </div>
 
-        <div m-t-12 v-for="category in categories" :key="category.title">
+        <div m-t-8 v-for="category in categories" :key="category.title">
           <div flex="~ items-center">
-            <h2 flex-grow-1>{{ category.title }}</h2>
+            <h2 m-t-0 flex-grow-1>{{ category.title }}</h2>
             <a
               class="text-unset! hover:bg-gray/10 p-l-2 p-y-1 rounded-md"
               decoration-none
