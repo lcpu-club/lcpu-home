@@ -49,7 +49,9 @@ const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
 const sidebarRef = useTemplateRef('sidebar-ref')
 
-const Content = shallowRef(defineAsyncComponent(() => resolvePageModule(pathname)))
+const Content = shallowRef(
+  defineAsyncComponent(() => resolvePageModule(currentPage.value?.sourceUrl || pathname)),
+)
 
 watch(
   () => route.path,
@@ -68,7 +70,7 @@ watch(
       ? currentPage.value.title + ` | ${pageCategory.value} - `
       : `${pageCategory.value} - `
     Content.value = LoadingView as never
-    const module = await resolvePageModule(pathname)
+    const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
     if ('default' in module) Content.value = module.default
     else Content.value = module
     scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
@@ -81,18 +83,17 @@ onMounted(() => {
   else scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
 })
 
-async function resolvePageModule(pathname: string): Promise<Module | never> {
-  if (pathname.endsWith('/')) pathname = pathname.slice(0, -1)
-  const modulePath = '../content' + pathname + '.md'
-  return new Promise(async (resolve) => {
-    if (pathname.match(indexPageRe)) {
-      resolve(PageListView as never)
-    } else if (modulePath in pageModules) {
-      let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
-      if ('then' in module && typeof module.then === 'function') module = await module
-      resolve(module)
-    } else resolve(NotFoundView as never)
-  })
+async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
+  if (sourceOrPathname.match(indexPageRe)) {
+    return PageListView as never
+  }
+  if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
+  const modulePath = '../content' + sourceOrPathname
+  if (modulePath in pageModules) {
+    let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
+    if ('then' in module && typeof module.then === 'function') module = await module
+    return module
+  } else return NotFoundView as never
 }
 
 function handleScroll() {
@@ -130,6 +131,7 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
               ? `${dateString(last.time)} - ${dateString(first.time)}`
               : dateString(first.time),
         data: {},
+        sourceUrl: '',
       },
       isIndexPage: true,
     }

@@ -46,6 +46,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                   meta,
                   excerpt: frontmatter.excerpt,
                   contentUrl: `/${base}/${slug}/`,
+                  sourceUrl: `/${base}/${filename}.md`,
                 }
               })
               .filter((page) => page !== undefined)
