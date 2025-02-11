@@ -19,7 +19,7 @@ const manifest = JSON.parse(
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-const routesToPrerender = ['/', '/404.html']
+const routesToPrerender = ['/', '/404.html', '/about/']
 
 routesToPrerender.push(
   ...fg

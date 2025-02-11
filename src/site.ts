@@ -7,7 +7,7 @@ interface SiteConfiguration {
       expanderLabel?: string
     }
   }
-  getRouteCategoryTitle: (routeSegment: string) => string
+  getRouteCategoryTitle: (routeSegment: string) => string | undefined
   titleSuffix: string
   theme: 'normal' | 'new-year'
   pureStatic?: boolean
@@ -27,7 +27,7 @@ export const SiteConfiguration: SiteConfiguration = {
       expanderLabel: '更多',
     },
   },
-  getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment] || routeSegment,
+  getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment],
   titleSuffix: '北京大学学生 Linux 俱乐部',
   theme: 'normal',
   pureStatic: true,

@@ -71,7 +71,13 @@ function renderPreloadLink(file: string) {
   }
 }
 
-function renderMeta(meta, title: string, url: string, author: string, time: string): string {
+function renderMeta(
+  meta: { [key: string]: string | string[] },
+  title: string,
+  url: string,
+  author: string,
+  time: string,
+): string {
   if (!meta) return ''
   let result = ''
   for (const key in meta) {
@@ -81,7 +87,7 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
         result += `<meta property="og:description" content="${meta[key]}"><meta name="twitter:description" content="${meta[key]}"><meta name="${key}" content="${meta[key]}">`
         break
       case 'keywords':
-        result += `<meta name="keywords" content="${meta[key].join(',')}">`
+        result += `<meta name="keywords" content="${(meta[key] as string[]).join(',')}">`
         break
       case 'image':
         result += `<meta name="twitter:image" content="${meta[key]}"><meta property="og:image" content="${meta[key]}">`
@@ -148,7 +154,7 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
     !url.match(indexPageRe) &&
     url != '/404.html' &&
     url != '/announcements/test/' &&
-    url != '/contact/about/'
+    url != '/about/'
   ) {
     const dateObj = new Date(time)
     const dateIsoString = dateObj.toISOString()

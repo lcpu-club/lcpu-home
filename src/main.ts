@@ -8,7 +8,10 @@ import App from './App.vue'
 import { createRouter, RouterSymbol } from './router/router'
 import ExpanderComponent from './components/ExpanderComponent.vue'
 
-const pageModules = import.meta.glob('../content/*/*.md')
+const pageModules = {
+  ...import.meta.glob('../content/*/*.md'),
+  ...import.meta.glob('../content/*.md'),
+}
 
 export function createApp() {
   const app = createSSRApp(App)

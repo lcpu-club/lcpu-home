@@ -82,7 +82,8 @@ onMounted(() => {
 })
 
 async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
-  if (sourceOrPathname.match(indexPageRe)) {
+  const matches = sourceOrPathname.match(indexPageRe)
+  if (matches && SiteConfiguration.getRouteCategoryTitle(matches[1])) {
     return PageListView as never
   }
   if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
@@ -115,14 +116,14 @@ function getHash(path: string) {
 
 function getCurrentPage(pathname: string): { page: PageData | undefined; isIndexPage: boolean } {
   const match = pathname.match(indexPageRe)
-  if (match) {
+  if (match && SiteConfiguration.getRouteCategoryTitle(match[1])) {
     const pages = categoryList.find((list) => list.routeBase === match[1])?.pages ?? []
     const first = pages[0]
     const last = pages[pages.length - 1]
     return {
       page: {
         contentUrl: '',
-        title: SiteConfiguration.getRouteCategoryTitle(match[1]),
+        title: SiteConfiguration.getRouteCategoryTitle(match[1]) ?? match[1],
         time:
           pages.length == 0
             ? ''
@@ -144,7 +145,7 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
 
 function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
-  return SiteConfiguration.getRouteCategoryTitle(pageSegs[1])
+  return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
 }
 </script>
 
