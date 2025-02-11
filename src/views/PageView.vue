@@ -82,17 +82,16 @@ onMounted(() => {
 })
 
 async function resolvePageModule(pathname: string): Promise<Module | never> {
+  if (pathname.match(indexPageRe)) {
+    return PageListView as never
+  }
   if (pathname.endsWith('/')) pathname = pathname.slice(0, -1)
   const modulePath = '../content' + pathname + '.md'
-  return new Promise(async (resolve) => {
-    if (pathname.match(indexPageRe)) {
-      resolve(PageListView as never)
-    } else if (modulePath in pageModules) {
-      let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
-      if ('then' in module && typeof module.then === 'function') module = await module
-      resolve(module)
-    } else resolve(NotFoundView as never)
-  })
+  if (modulePath in pageModules) {
+    let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
+    if ('then' in module && typeof module.then === 'function') module = await module
+    return module
+  } else return NotFoundView as never
 }
 
 function handleScroll() {
