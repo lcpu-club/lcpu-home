@@ -128,7 +128,7 @@ function renderMeta(
     const category = SiteConfiguration.getRouteCategoryTitle(slug)
     BreadcrumbList['itemListElement'].push({
       '@type': 'ListItem',
-      item: `https://lcpu.dev/${slug}`,
+      item: `${BreadcrumbList['itemListElement'][count - 2]["item"]}${slug}/`,
       name: (category === undefined || category === slug) ? title : category,
       position: count,
     })
