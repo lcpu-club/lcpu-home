@@ -4,8 +4,8 @@ import { ArrowRightIcon } from '@heroicons/vue/24/outline'
 import AutoDarkImage from './AutoDarkImage.vue'
 
 defineProps<{
-  item: Item,
-  tag: string,
+  item: Item
+  tag: string
   tagClass: string
 }>()
 </script>
@@ -27,7 +27,19 @@ defineProps<{
     class="group text-unset! position-relative"
   >
     <span
-      v-if="tag" position-absolute top-0 end-0 mx-4 my-7 px-2 py-1 rounded-md border border-solid text-xs :class="tagClass"
+      v-if="tag"
+      position-absolute
+      top-0
+      end-0
+      mx-4
+      my-7
+      px-2
+      py-1
+      rounded-md
+      border
+      border-solid
+      text-xs
+      :class="tagClass"
     >
       {{ tag }}
     </span>

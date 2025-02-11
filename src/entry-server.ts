@@ -77,16 +77,16 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
   for (const key in meta) {
     if (!meta[key]) continue
     switch (key) {
-      case "description":
+      case 'description':
         result += `<meta property="og:description" content="${meta[key]}"><meta name="twitter:description" content="${meta[key]}"><meta name="${key}" content="${meta[key]}">`
         break
-      case "keywords":
-        result += `<meta name="keywords" content="${meta[key].join(",")}">`
+      case 'keywords':
+        result += `<meta name="keywords" content="${meta[key].join(',')}">`
         break
-      case "image":
+      case 'image':
         result += `<meta name="twitter:image" content="${meta[key]}"><meta property="og:image" content="${meta[key]}">`
         break
-      case "video":
+      case 'video':
         result += `<meta property="og:video" content="${meta[key]}">`
     }
   }
@@ -100,34 +100,86 @@ function renderMeta(meta, title: string, url: string, author: string, time: stri
   }
   result += `<link rel="canonical" href="https://lcpu.dev${url}"><meta property="og:url" content="https://lcpu.dev${url}"><meta property="og:site_name" content="北京大学学生 Linux 俱乐部" />`
 
-  const slugs = url.substring(1).split( '/' )
-  const BreadcrumbList = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://lcpu.dev/","name":"北京大学学生 Linux 俱乐部","position":1}]}
+  const slugs = url.substring(1).split('/')
+  const BreadcrumbList = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        item: 'https://lcpu.dev/',
+        name: '北京大学学生 Linux 俱乐部',
+        position: 1,
+      },
+    ],
+  }
   let count = 1
-  slugs.forEach(slug => {
-    if (slug === "") {
+  slugs.forEach((slug) => {
+    if (slug === '') {
       return
     }
     count++
     const category = SiteConfiguration.getRouteCategoryTitle(slug)
-    BreadcrumbList['itemListElement'].push({"@type":"ListItem","item":`https://lcpu.dev/${slug}`, "name": category === slug ? title : category,"position":count})
+    BreadcrumbList['itemListElement'].push({
+      '@type': 'ListItem',
+      item: `https://lcpu.dev/${slug}`,
+      name: category === slug ? title : category,
+      position: count,
+    })
   })
   result += `<script type="application/ld+json">${JSON.stringify(BreadcrumbList)}</script>`
 
   if (url === '/') {
-    const jsonLd = {"@context":"https://schema.org","@type":"WebSite","@id":"https://lcpu.dev/","name":"北京大学学生 Linux 俱乐部","description":"${meta['description']}","inLanguage":"zh-Hans","url":"https://lcpu.dev/","keywords":meta['keywords'],"publisher":{"@type":"Organization","name":"北京大学学生 Linux 俱乐部"}}
-    result += `<script type="application/ld+json">${
-      JSON.stringify(jsonLd)}</script><meta property="og:type" content="website"><meta name="twitter:card" content="summary">`
-  } else if (!url.match(indexPageRe) && url != "/404.html" && url != "/announcements/test/" && url != "/contact/about/" ) {
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': 'https://lcpu.dev/',
+      name: '北京大学学生 Linux 俱乐部',
+      description: "${meta['description']}",
+      inLanguage: 'zh-Hans',
+      url: 'https://lcpu.dev/',
+      keywords: meta['keywords'],
+      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部' },
+    }
+    result += `<script type="application/ld+json">${JSON.stringify(
+      jsonLd,
+    )}</script><meta property="og:type" content="website"><meta name="twitter:card" content="summary">`
+  } else if (
+    !url.match(indexPageRe) &&
+    url != '/404.html' &&
+    url != '/announcements/test/' &&
+    url != '/contact/about/'
+  ) {
     const dateObj = new Date(time)
     const dateIsoString = dateObj.toISOString()
     let sectionName
-    if (url.substring(1).split( '/' )[0] !== "") {
-      sectionName = SiteConfiguration.getRouteCategoryTitle(url.substring(1).split( '/' )[0])
+    if (url.substring(1).split('/')[0] !== '') {
+      sectionName = SiteConfiguration.getRouteCategoryTitle(url.substring(1).split('/')[0])
     }
-    const jsonLd = {"@context":"https://schema.org","@type":"Article","articleSection": sectionName,"name": title, "headline": meta['description'],"description":meta['description'],"abstract":meta['description'],"inLanguage":"zh-Hans","url":`https://lcpu.dev${url}`,"author": author !== "" ? {"@type":"Person","name": author} : {"@type":"Organization","name": "北京大学学生 Linux 俱乐部"}, "copyrightYear":dateObj.getFullYear(),"dateCreated":dateIsoString,"datePublished":dateIsoString,"keywords":meta.keywords,"mainEntityOfPage":"true"}
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      articleSection: sectionName,
+      name: title,
+      headline: meta['description'],
+      description: meta['description'],
+      abstract: meta['description'],
+      inLanguage: 'zh-Hans',
+      url: `https://lcpu.dev${url}`,
+      author:
+        author !== ''
+          ? { '@type': 'Person', name: author }
+          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部' },
+      copyrightYear: dateObj.getFullYear(),
+      dateCreated: dateIsoString,
+      datePublished: dateIsoString,
+      keywords: meta.keywords,
+      mainEntityOfPage: 'true',
+    }
 
-    result += `<meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="article:published_time" content="${dateIsoString}"><meta property="article:modified_time" content="${dateIsoString}"><script type="application/ld+json">${
-      JSON.stringify(jsonLd)}</script>
+    result += `<meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="article:published_time" content="${dateIsoString}"><meta property="article:modified_time" content="${dateIsoString}"><script type="application/ld+json">${JSON.stringify(
+      jsonLd,
+    )}</script>
 `
   }
   return result

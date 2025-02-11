@@ -41,8 +41,11 @@ routesToPrerender.push(
 for (const url of routesToPrerender) {
   const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
   let html = template
-  if (url === "/") {
-    html = template.replace(`<!--title-prefix--> | <!--title-suffix-->`, `北京大学学生 Linux 俱乐部`)
+  if (url === '/') {
+    html = template.replace(
+      `<!--title-prefix--> | <!--title-suffix-->`,
+      `北京大学学生 Linux 俱乐部`,
+    )
   }
   html = html
     .replace(`<!--preload-links-->`, preloadLinks)
