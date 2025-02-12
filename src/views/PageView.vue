@@ -44,6 +44,7 @@ if (ssrContext) {
   ssrContext.meta = meta
   ssrContext.time = currentPage.value?.time ?? ''
   ssrContext.author = currentPage.value?.data?.author ?? ''
+  ssrContext.sourceUrl = currentPage.value?.sourceUrl ?? ''
 }
 const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
