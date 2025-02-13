@@ -71,7 +71,7 @@ if (import.meta.env.SSR) {
       ctx.meta = {}
     }
     ctx.meta.description =
-      '北京大学学生 Linux 俱乐部是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
+      '北京大学学生 Linux 俱乐部(Linux Club of Peking University, LCPU)是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
     ctx.meta.keywords = [
       'lcpu',
       'linux',

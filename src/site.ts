@@ -34,7 +34,7 @@ export const SiteConfiguration: SiteConfiguration = {
   },
   getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment],
   getRootPageTitle: (routeSegment) => rootPages[routeSegment],
-  titleSuffix: '北京大学学生 Linux 俱乐部',
+  titleSuffix: 'LCPU',
   theme: 'normal',
   pureStatic: true,
 }
