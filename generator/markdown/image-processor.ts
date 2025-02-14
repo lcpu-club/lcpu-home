@@ -14,7 +14,7 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
     const srcIndex = token.attrIndex('src')
     const src = token.attrs[srcIndex][1]
 
-    const dimensions = resolveDimensions(src)
+    const dimensions = resolveDimensions(src, env.mdRootPath)
 
     if (dimensions) {
       const widthIndex = token.attrIndex('width')
@@ -36,13 +36,24 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
   }
 }
 
-function resolveDimensions(src: string) {
-  if (!src.startsWith('/')) return null
-  const size = sizeOf('public' + src)
-  if (size.height && size.width)
-    return {
-      height: size.height.toString(),
-      width: size.width.toString(),
-    }
-  return null
+function resolveDimensions(src: string, mdRootPath: string) {
+  if (src.startsWith('./')) {
+    const size = sizeOf(mdRootPath + src.slice(1))
+    if (size.height && size.width)
+      return {
+        height: size.height.toString(),
+        width: size.width.toString(),
+      }
+    return null
+  } else if (src.startsWith('/')) {
+    const size = sizeOf('public' + src)
+    if (size.height && size.width)
+      return {
+        height: size.height.toString(),
+        width: size.width.toString(),
+      }
+    return null
+  } else {
+    return null
+  }
 }

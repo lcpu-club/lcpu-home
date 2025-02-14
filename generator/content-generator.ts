@@ -2,6 +2,7 @@ import { PluginOption } from 'vite'
 import matter from 'gray-matter'
 import * as mdit from 'markdown-it'
 import { registerMarkdownPlugins } from './markdown'
+import { dirname } from "path"
 
 const md = mdit.default({
   html: true,
@@ -30,7 +31,7 @@ export default function markdownContentGenerator(): PluginOption {
     transform(code, id) {
       if (id.endsWith('.md')) {
         const content = matter(code, { excerpt: true }).content
-        let rendered = md.render(content)
+        let rendered = md.render(content, { mdRootPath: dirname(id) })
         const scripts: string[] = []
         const styles: string[] = []
         rendered.match(scriptRe)?.forEach((script) => {
