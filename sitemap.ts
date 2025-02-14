@@ -2,23 +2,23 @@ import { SitemapStream, streamToPromise } from 'sitemap'
 import { Readable } from 'stream'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import path from 'path'
+import { dirname } from 'path'
 import fs from 'fs'
 
 const categories = ['news', 'announcements']
 const links = []
 for (const category of categories) {
   const pages = fg
-    .sync(`./content/${category}/*.md`)
+    .sync(`./content/${category}/*/index.md`)
     .map((entry) => {
       return { entry, frontmatter: matter.read(entry) }
     })
     .map((file) => {
       const { entry, frontmatter } = file
       if (frontmatter.data.hidden) return undefined
-      const filename = path.parse(entry).name
+      const dir = dirname(entry).split('/')
       return {
-        url: `/${category}/${filename}/`,
+        url: `/${category}/${dir[dir.length - 1]}/`,
         lastmod: frontmatter.data.time,
         changefreq: 'monthly',
         priority: 0.5,

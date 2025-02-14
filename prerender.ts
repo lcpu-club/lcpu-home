@@ -27,13 +27,13 @@ routesToPrerender.push(
     .map((p) => p.slice(9)),
 )
 routesToPrerender.push(
-  ...fg.sync('./content/*/*.md').map((file) => {
-    const dir = path.dirname(file)
+  ...fg.sync('./content/*/*/index.md').map((file) => {
+    const dir = path.dirname(file).split("/")
     const frontmatter = gm(fs.readFileSync(file, 'utf-8')).data
     if (frontmatter.slug) {
-      return dir.slice(9) + '/' + frontmatter.slug + '/'
+      return `/${dir[2]}/${frontmatter.slug}/`
     }
-    return file.slice(9, -3) + '/'
+    return `/${dir.slice(2,4).join("/")}/`
   }),
 )
 

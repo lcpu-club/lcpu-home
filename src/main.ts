@@ -9,7 +9,7 @@ import { createRouter, RouterSymbol } from './router/router'
 import ExpanderComponent from './components/ExpanderComponent.vue'
 
 const pageModules = {
-  ...import.meta.glob('../content/*/*.md'),
+  ...import.meta.glob('../content/*/*/index.md'),
   ...import.meta.glob('../content/*.md'),
 }
 

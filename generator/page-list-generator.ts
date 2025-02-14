@@ -2,7 +2,7 @@ import { PluginOption } from 'vite'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
 import type { PageData } from '../src/data/pagedata'
-import path from 'node:path'
+import { dirname } from 'node:path'
 
 export default function pageListGenerator(routeBase: string[]): PluginOption {
   const virtualModuleId = 'virtual:category-list.json'
@@ -22,14 +22,15 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
           result.push({
             routeBase: base,
             pages: fg
-              .sync(`./content/${base}/*.md`)
+              .sync(`./content/${base}/*/index.md`)
               .map((entry) => {
                 return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
               })
               .map((file): PageData | undefined => {
                 const { entry, frontmatter } = file
                 if (frontmatter.data.hidden) return undefined
-                const filename = path.parse(entry).name
+                const dir = dirname(entry).split("/")
+                const filename = dir[dir.length - 1]
                 const data = frontmatter.data
                 const time = data.time
                 const title = data.title
@@ -46,7 +47,7 @@ export default function pageListGenerator(routeBase: string[]): PluginOption {
                   meta,
                   excerpt: frontmatter.excerpt,
                   contentUrl: `/${base}/${slug}/`,
-                  sourceUrl: `/${base}/${filename}.md`,
+                  sourceUrl: `/${base}/${filename}/index.md`,
                 }
               })
               .filter((page) => page !== undefined)

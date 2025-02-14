@@ -8,8 +8,8 @@ category: LCPU
 
 ---
 
-![Powered by LCPU](/news/intro-badge/hero.svg)
+![Powered by LCPU](./hero.svg)
 
 and this little cutie icon!
 
-![cutie icon](/news/intro-badge/cutie.svg)
+![cutie icon](./cutie.svg)
