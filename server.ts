@@ -17,10 +17,10 @@ export async function createServer(
   const __dirname = path.dirname(fileURLToPath(import.meta.url))
   const resolve = (p: string) => path.resolve(__dirname, p)
 
-  const indexProd = isProd ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8') : ''
+  const indexProd = isProd ? fs.readFileSync(resolve('dist/static/index.html'), 'utf-8') : ''
 
   const manifest = isProd
-    ? JSON.parse(fs.readFileSync(resolve('dist/client/.vite/ssr-manifest.json'), 'utf-8'))
+    ? JSON.parse(fs.readFileSync(resolve('dist/static/.vite/ssr-manifest.json'), 'utf-8'))
     : {}
 
   const app = express()
@@ -56,7 +56,7 @@ export async function createServer(
     app.use((await import('compression')).default())
     app.use(
       '/',
-      (await import('serve-static')).default(resolve('dist/client'), {
+      (await import('serve-static')).default(resolve('dist/static'), {
         index: false,
       }),
     )

@@ -153,7 +153,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
     }
     results.push(`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`, `<meta property="og:type" content="website">`, `<meta name="twitter:card" content="summary">`)
   } else if (sourceUrl && url != '/404.html') {
-    const jsonLd : Record<string, any> = {
+    const jsonLd : Record<string, string | object | number | undefined> = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       'name': title,

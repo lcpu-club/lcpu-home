@@ -60,7 +60,7 @@ for (const url of routesToPrerender) {
 }
 
 // done, delete .vite directory including ssr manifest
-// fs.rmSync(toAbsolute('dist/static/.vite'), { recursive: true })
+fs.rmSync(toAbsolute('dist/static/.vite'), { recursive: true })
 
 function customWriteFileSync(filePath, content) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
