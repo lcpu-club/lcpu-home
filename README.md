@@ -21,10 +21,10 @@ Powered by Vue 3 and Vite.
 - Containers, code blocks, math... A lot supported by MarkdownIt Plugins
 - Independently implemented expander component, which offers a fluent animation, compared to VitePress
 - Automatically generated sidebar and index pages, grouped by time order (once you added the routes)
+- Image lazy loading
 
 ## Features not implemented yet
 
-- Referencing frontmatter in markdown
-- Page outline
-- Github flavored containers (no plan yet)
-- Image lazy loading (no plan yet)
+- [ ] Referencing frontmatter in markdown
+- [ ] Page outline
+- [ ] Github flavored containers (no plan yet)
