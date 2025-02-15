@@ -7,20 +7,15 @@ interface SiteConfiguration {
       expanderLabel?: string
     }
   }
-  getRouteCategoryTitle: (routeSegment: string) => string | undefined
-  getRootPageTitle: (routeSegment: string) => string | undefined
+  getRouteCategoryTitle: (routeSegment: string) => string
   titleSuffix: string
   theme: 'normal' | 'new-year'
   pureStatic?: boolean
 }
 
-const routeTitleRecord: Record<string, string> = {
+export const RouteTitleRecord: Record<string, string> = {
   news: '新闻',
   announcements: '公告',
-}
-
-const rootPages: Record<string, string> = {
-  about: '关于我们',
 }
 
 export const SiteConfiguration: SiteConfiguration = {
@@ -32,8 +27,7 @@ export const SiteConfiguration: SiteConfiguration = {
       expanderLabel: '更多',
     },
   },
-  getRouteCategoryTitle: (routeSegment) => routeTitleRecord[routeSegment],
-  getRootPageTitle: (routeSegment) => rootPages[routeSegment],
+  getRouteCategoryTitle: (routeSegment) => RouteTitleRecord[routeSegment],
   titleSuffix: 'LCPU',
   theme: 'normal',
   pureStatic: true,

@@ -13,7 +13,7 @@ import MarkdownItContainer from 'markdown-it-container'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import ImageProcessor from './image-processor'
 import anchor from 'markdown-it-anchor'
-import { imgLazyload } from "@mdit/plugin-img-lazyload";
+import { imgLazyload } from '@mdit/plugin-img-lazyload'
 
 export async function registerMarkdownPlugins(mdit: MarkdownIt) {
   mdit

@@ -3,19 +3,29 @@ import { ref } from 'vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 import LcpuLight from '@/assets/lcpu-light.svg'
 import LcpuDark from '@/assets/lcpu-dark.svg'
-import categoryList from 'virtual:category-list.json'
+import allPages from 'virtual:pages.json'
 import { groupByYearMonth } from '@/utils'
 import ExpanderComponent from './ExpanderComponent.vue'
-import { SiteConfiguration } from '@/site'
+import { SiteConfiguration, RouteTitleRecord } from '@/site'
+import type { PageData } from '@/data/pagedata'
 
-const categories = categoryList.map((list) => {
-  return {
-    title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
-    route: `/${list.routeBase}/`,
-    pageGroups: groupByYearMonth(list.pages),
-  }
+const categories: {
+  title: string
+  route: string
+  pageGroups: { year: number; month: number; items: PageData[] }[]
+}[] = []
+
+Object.keys(RouteTitleRecord).forEach((category) => {
+  categories.push({
+    title: SiteConfiguration.getRouteCategoryTitle(category),
+    route: `/${category}/`,
+    pageGroups: groupByYearMonth(
+      allPages
+        .filter((page) => page.category === category)
+        .sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
+    ),
+  })
 })
-
 const sidebarCollapsed = ref(true)
 const toggleSidebar = (collapse?: boolean) => {
   if (collapse === undefined) {
