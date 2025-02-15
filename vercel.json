@@ -1,0 +1,34 @@
+{
+    "redirects": [
+        {
+            "source": "/s/:path*",
+            "destination": "https://s.lcpu.dev/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/lgslive/:path*",
+            "destination": "https://old.lcpu.dev/lgslive/:path*",
+            "permanent": true
+        }
+    ],
+    "headers": [
+        {
+            "source": "/s/(.*)",
+            "headers": [
+                {
+                    "key": "X-Robots-Tag",
+                    "value": "none"
+                }
+            ]
+        },
+        {
+            "source": "/lgslive/(.*)",
+            "headers": [
+                {
+                    "key": "X-Robots-Tag",
+                    "value": "none"
+                }
+            ]
+        }
+    ]
+}
