@@ -6,7 +6,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import url from 'node:url'
 import fg from 'fast-glob'
-import { SiteConfiguration } from './src/site.js'
+import { SiteConfiguration, RouteTitleRecord } from './src/site.js'
 import gm from 'gray-matter'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
@@ -19,21 +19,19 @@ const manifest = JSON.parse(
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
-const routesToPrerender = ['/', '/404.html', '/about/']
+const routesToPrerender = ['/', '/404.html']
 
 routesToPrerender.push(
-  ...fg
-    .sync('./content/*', { markDirectories: true, onlyDirectories: true })
-    .map((p) => p.slice(9)),
+  ...Object.keys(RouteTitleRecord).map(category => `/${category}/`)
 )
 routesToPrerender.push(
-  ...fg.sync('./content/*/*/index.md').map((file) => {
+  ...fg.sync('./content/**/index.md').map((file) => {
     const dir = path.dirname(file).split("/")
     const frontmatter = gm(fs.readFileSync(file, 'utf-8')).data
     if (frontmatter.slug) {
-      return `/${dir[2]}/${frontmatter.slug}/`
+      return `/${frontmatter.slug}/`
     }
-    return `/${dir.slice(2,4).join("/")}/`
+    return `/${dir.slice(2).join("/")}/`
   }),
 )
 

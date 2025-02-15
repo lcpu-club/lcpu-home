@@ -1,5 +1,8 @@
-// matches /*/ or /*/index or /*/index.html, but not /*/*/...(anything)
-export const indexPageRe = /^\/([^\/]*?)\/(?:index(?:.html)?)?$/
+import { RouteTitleRecord } from "./site"
+
+export function isIndexPage(slugs: string[]) : boolean {
+  return slugs.length === 1 && slugs[0] in RouteTitleRecord
+}
 
 export function dateString(rawDate: string | undefined): string {
   if (rawDate == undefined) return ''

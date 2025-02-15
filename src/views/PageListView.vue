@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import PageListEntry from '@/components/PageListEntry.vue'
 import { useRoute } from '@/router/router'
-import { groupByYearMonth, indexPageRe } from '@/utils'
-import categoryList from 'virtual:category-list.json'
+import { groupByYearMonth } from '@/utils'
+import allPages from 'virtual:pages.json'
+import { isIndexPage } from '@/utils'
 
 const route = useRoute(() => undefined)
 const path = route.path
 const pathname = new URL(path, 'http://localhost').pathname
-const match = pathname.match(indexPageRe)
+const urlSlugs = pathname.split('/').filter(slug=>slug)
 let base: string | null = null
-if (match) base = match[1]
-const pages = categoryList.find((list) => list.routeBase === base)?.pages ?? []
+if (isIndexPage(urlSlugs)) base = urlSlugs[0]
+const pages = allPages.filter(page => page.category === base).sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
+
 const pageGroups = groupByYearMonth(pages)
 </script>
 

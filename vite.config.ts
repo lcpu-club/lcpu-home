@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
-import PageListGenerator from './generator/page-list-generator'
+import PagesGenerator from './generator/pages-generator'
 import MarkdownContentGenerator from './generator/content-generator'
 
 // https://vite.dev/config/
@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     vueDevTools(),
     UnoCSS(),
-    PageListGenerator(['news', 'announcements']),
+    PagesGenerator(),
   ],
   resolve: {
     alias: {

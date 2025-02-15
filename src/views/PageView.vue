@@ -11,11 +11,11 @@ import {
   watch,
 } from 'vue'
 import type { PageData } from '@/data/pagedata'
-import categoryList from 'virtual:category-list.json'
+import allPages from 'virtual:pages.json'
 import NotFoundView from '@/views/NotFoundView.vue'
 import type { Module } from '@/module'
 import { useTitle } from '@vueuse/core'
-import { dateString, indexPageRe } from '@/utils'
+import { dateString, isIndexPage as testIndexPage } from '@/utils'
 import PageListView from './PageListView.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
@@ -28,7 +28,6 @@ let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
 
 const pageModules = inject('pageModules') as Record<string, () => Promise<unknown>>
-const allPages = categoryList.flatMap((list) => list.pages)
 const route = useRoute(() => scrollViewRef.value?.scrollTop)
 const pathname = getPathname(route.path)
 const pageCategory = ref(getPageCategory(pathname))
@@ -83,8 +82,9 @@ onMounted(() => {
 })
 
 async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
-  const matches = sourceOrPathname.match(indexPageRe)
-  if (matches && SiteConfiguration.getRouteCategoryTitle(matches[1])) {
+  const urlSlugs = sourceOrPathname.split('/').filter(slug=>slug)
+  const indexPage = testIndexPage(urlSlugs)
+  if (indexPage) {
     return PageListView as never
   }
   if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
@@ -116,15 +116,16 @@ function getHash(path: string) {
 }
 
 function getCurrentPage(pathname: string): { page: PageData | undefined; isIndexPage: boolean } {
-  const match = pathname.match(indexPageRe)
-  if (match && SiteConfiguration.getRouteCategoryTitle(match[1])) {
-    const pages = categoryList.find((list) => list.routeBase === match[1])?.pages ?? []
+  const urlSlugs = pathname.split('/').filter(slug=>slug)
+  const indexPage = testIndexPage(urlSlugs)
+  if (indexPage) {
+    const pages = allPages.filter(page => page.category === urlSlugs[0]).sort((a, b) => Date.parse(b.time) - Date.parse(a.time)) ?? []
     const first = pages[0]
     const last = pages[pages.length - 1]
     return {
       page: {
         contentUrl: '',
-        title: SiteConfiguration.getRouteCategoryTitle(match[1]) ?? match[1],
+        title: SiteConfiguration.getRouteCategoryTitle(urlSlugs[0]),
         time:
           pages.length == 0
             ? ''
@@ -148,7 +149,6 @@ function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
   return (
     SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ??
-    SiteConfiguration.getRootPageTitle(pageSegs[1]) ??
     pageSegs[1]
   )
 }

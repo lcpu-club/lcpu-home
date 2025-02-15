@@ -148,7 +148,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
       inLanguage: 'zh-Hans',
       url: 'https://lcpu.dev/',
       keywords: meta['keywords'],
-      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev" },
+      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev/" },
       image: "https://lcpu.dev/favicon.svg",
     }
     results.push(`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`, `<meta property="og:type" content="website">`, `<meta name="twitter:card" content="summary">`)
@@ -162,7 +162,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
       'author':
         author
           ? { '@type': 'Person', name: author }
-          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev" },
+          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev/" },
       'description': meta['description'] || undefined,
       'headline': meta['headline'] || undefined,
       'abstract': meta['abstract'] || undefined,

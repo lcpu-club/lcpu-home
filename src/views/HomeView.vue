@@ -2,7 +2,7 @@
 import ItemCard from '@/components/ItemCard.vue'
 import rawProjectData from '@/data/projects.json'
 import rawEventData from '@/data/events.json'
-import categoryList from 'virtual:category-list.json'
+import allPages from 'virtual:pages.json'
 import type { Project } from '@/data/project'
 import type { Event } from '@/data/event'
 import PageListEntry from '@/components/PageListEntry.vue'
@@ -19,20 +19,23 @@ import { useTitle } from '@vueuse/core'
 import { useRoute } from '@/router/router'
 import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
-import { SiteConfiguration } from '@/site'
+import { SiteConfiguration, RouteTitleRecord } from '@/site'
 
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
 const eventItems = events.map((event) => {
   return { ...event, startDate: new Date(event.startDate), endDate: new Date(event.endDate) }
 })
-const categories = categoryList.map((list) => {
-  return {
-    title: SiteConfiguration.getRouteCategoryTitle(list.routeBase),
-    route: `/${list.routeBase}/`,
-    pages: list.pages,
-  }
+const categories : {title: string, route: string, pages: {year: number;month: number;items: {time: string;}[];}[]}[]= []
+
+Object.keys(RouteTitleRecord).forEach(category=>{
+  categories.push({
+    title: SiteConfiguration.getRouteCategoryTitle(category),
+    route: `/${category}/`,
+    pages: allPages.filter(page=> page.category === category).sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
+  })
 })
+
 const scrollViewRef = useTemplateRef('scrollViewRef')
 const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
 const route = useRoute(() =>
