@@ -29,6 +29,26 @@
             "source": "/lgslive/:path*",
             "destination": "https://old.lcpu.dev/lgslive/:path*",
             "permanent": true
+        },
+        {
+            "source": "/s-client/:path*",
+            "destination": "https://old.lcpu.dev/s-client/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/s/",
+            "destination": "https://s.lcpu.dev/",
+            "permanent": true
+        },
+        {
+            "source": "/lgslive/",
+            "destination": "https://old.lcpu.dev/lgslive/",
+            "permanent": true
+        },
+        {
+            "source": "/s-client/",
+            "destination": "https://old.lcpu.dev/s-client/",
+            "permanent": true
         }
     ]
 }
