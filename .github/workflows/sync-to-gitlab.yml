@@ -17,4 +17,4 @@ jobs:
     - name: Add remote 
       run: git remote add target https://${{ secrets.GLUSER }}:${{ secrets.GLTOKEN }}@${{ secrets.GLREPO }}
     - name: Push
-      run: git push -f
+      run: git push -f target
