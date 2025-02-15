@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Git Repo Sync
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Add remote 
-      run: git remote add target https://${{ secrets.GLUSER }}:${{ secrets.GLTOKEN }}@${{ secrets.GLREPO }}
-    - name: Push
-      run: git push -f target
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add remote
+        run: git remote add target https://${{ secrets.GLUSER }}:${{ secrets.GLTOKEN }}@${{ secrets.GLREPO }}
+      - name: Push
+        run: git push -f target
