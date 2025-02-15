@@ -20,19 +20,22 @@ import { useRoute } from '@/router/router'
 import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration, RouteTitleRecord } from '@/site'
+import type { PageData } from '@/data/pagedata'
 
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
 const eventItems = events.map((event) => {
   return { ...event, startDate: new Date(event.startDate), endDate: new Date(event.endDate) }
 })
-const categories : {title: string, route: string, pages: {year: number;month: number;items: {time: string;}[];}[]}[]= []
+const categories: { title: string; route: string; pages: PageData[] }[] = []
 
-Object.keys(RouteTitleRecord).forEach(category=>{
+Object.keys(RouteTitleRecord).forEach((category) => {
   categories.push({
     title: SiteConfiguration.getRouteCategoryTitle(category),
     route: `/${category}/`,
-    pages: allPages.filter(page=> page.category === category).sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
+    pages: allPages
+      .filter((page) => page.category === category)
+      .sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
   })
 })
 

@@ -1,6 +1,6 @@
-import { RouteTitleRecord } from "./site"
+import { RouteTitleRecord } from './site'
 
-export function isIndexPage(slugs: string[]) : boolean {
+export function isIndexPage(slugs: string[]): boolean {
   return slugs.length === 1 && slugs[0] in RouteTitleRecord
 }
 

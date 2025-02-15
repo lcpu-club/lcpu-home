@@ -2,7 +2,7 @@ import { PluginOption } from 'vite'
 import matter from 'gray-matter'
 import * as mdit from 'markdown-it'
 import { registerMarkdownPlugins } from './markdown'
-import { dirname } from "path"
+import { dirname } from 'path'
 
 const md = mdit.default({
   html: true,

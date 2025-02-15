@@ -8,6 +8,9 @@ import url from 'node:url'
 import fg from 'fast-glob'
 import { SiteConfiguration, RouteTitleRecord } from './src/site.js'
 import gm from 'gray-matter'
+import chalk from 'chalk'
+
+console.log(chalk.bgYellow.greenBright('Prerender:'))
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
@@ -21,17 +24,19 @@ const { render } = await import('./dist/server/entry-server.js')
 
 const routesToPrerender = ['/', '/404.html']
 
-routesToPrerender.push(
-  ...Object.keys(RouteTitleRecord).map(category => `/${category}/`)
-)
+routesToPrerender.push(...Object.keys(RouteTitleRecord).map((category) => `/${category}/`))
 routesToPrerender.push(
   ...fg.sync('./content/**/index.md').map((file) => {
-    const dir = path.dirname(file).split("/")
+    const dir = path.dirname(file).split('/')
     const frontmatter = gm(fs.readFileSync(file, 'utf-8')).data
     if (frontmatter.slug) {
       return `/${frontmatter.slug}/`
     }
-    return `/${dir.slice(2).join("/")}/`
+    return `/${dir.slice(2).join('/')}/`
+  }),
+  ...fg.sync('./content/**/index.vue').map((file) => {
+    const dir = path.dirname(file).split('/')
+    return `/${dir.slice(2).join('/')}/`
   }),
 )
 
@@ -54,7 +59,7 @@ for (const url of routesToPrerender) {
 
   const filePath = `dist/static${url.endsWith('/') ? url + 'index.html' : url}`
   customWriteFileSync(toAbsolute(filePath), html)
-  console.log('pre-rendered:', filePath)
+  console.log(chalk.green('pre-rendered:'), filePath)
 }
 
 // done, delete .vite directory including ssr manifest

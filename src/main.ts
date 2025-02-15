@@ -10,6 +10,7 @@ import ExpanderComponent from './components/ExpanderComponent.vue'
 
 const pageModules = {
   ...import.meta.glob('../content/**/index.md'),
+  ...import.meta.glob('../content/**/index.vue'),
 }
 
 export function createApp() {

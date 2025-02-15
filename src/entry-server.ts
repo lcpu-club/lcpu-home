@@ -79,7 +79,11 @@ function renderMeta(ctx: SSRContext, url: string): string {
 
   const results: string[] = []
 
-  results.push(`<meta name="title" content="${title}">`, `<meta property="og:title" content="${title}">`, `<meta name="twitter:title" content="${title}">`)
+  results.push(
+    `<meta name="title" content="${title}">`,
+    `<meta property="og:title" content="${title}">`,
+    `<meta name="twitter:title" content="${title}">`,
+  )
 
   if (author) {
     results.push(`<meta name="author" content="${author}">`)
@@ -87,18 +91,31 @@ function renderMeta(ctx: SSRContext, url: string): string {
     results.push(`<meta name="author" content="北京大学学生 Linux 俱乐部">`)
   }
 
-  results.push(`<link rel="canonical" href="https://lcpu.dev${url}">`, `<meta property="og:url" content="https://lcpu.dev${url}">`)
+  results.push(
+    `<link rel="canonical" href="https://lcpu.dev${url}">`,
+    `<meta property="og:url" content="https://lcpu.dev${url}">`,
+  )
 
   if (meta['description']) {
-    results.push(`<meta property="og:description" content="${meta['description']}">`, `<meta name="twitter:description" content="${meta['description']}">`, `<meta name="${'description'}" content="${meta['description']}">`)
+    results.push(
+      `<meta property="og:description" content="${meta['description']}">`,
+      `<meta name="twitter:description" content="${meta['description']}">`,
+      `<meta name="${'description'}" content="${meta['description']}">`,
+    )
   }
   if (meta['keywords']) {
     results.push(`<meta name="keywords" content="${(meta['keywords'] as string[]).join(',')}">`)
   }
   if (meta['image']) {
-    results.push(`<meta name="twitter:image" content="${meta['image']}">`, `<meta property="og:image" content="${meta['image']}">`)
+    results.push(
+      `<meta name="twitter:image" content="${meta['image']}">`,
+      `<meta property="og:image" content="${meta['image']}">`,
+    )
   } else {
-    results.push(`<meta name="twitter:image" content="https://lcpu.dev/favicon.svg">`, `<meta property="og:image" content="https://lcpu.dev/favicon.svg">`)
+    results.push(
+      `<meta name="twitter:image" content="https://lcpu.dev/favicon.svg">`,
+      `<meta property="og:image" content="https://lcpu.dev/favicon.svg">`,
+    )
   }
   if (meta['video']) {
     results.push(`<meta property="og:video" content="${meta['video']}">`)
@@ -126,13 +143,13 @@ function renderMeta(ctx: SSRContext, url: string): string {
     const category = SiteConfiguration.getRouteCategoryTitle(slug)
     BreadcrumbList['itemListElement'].push({
       '@type': 'ListItem',
-      item: `${BreadcrumbList['itemListElement'][count - 2]["item"]}${slug}/`,
-      name: (category === undefined || category === slug) ? title : category,
+      item: `${BreadcrumbList['itemListElement'][count - 2]['item']}${slug}/`,
+      name: category === undefined || category === slug ? title : category,
       position: count,
     })
   })
-  if (url === "/404.html") {
-    BreadcrumbList['itemListElement'][1].item = "https://lcpu.dev/404.html"
+  if (url === '/404.html') {
+    BreadcrumbList['itemListElement'][1].item = 'https://lcpu.dev/404.html'
     results.push(`<meta name="robots" content="noindex">`)
   }
 
@@ -148,26 +165,33 @@ function renderMeta(ctx: SSRContext, url: string): string {
       inLanguage: 'zh-Hans',
       url: 'https://lcpu.dev/',
       keywords: meta['keywords'],
-      publisher: { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev/" },
-      image: "https://lcpu.dev/favicon.svg",
+      publisher: {
+        '@type': 'Organization',
+        name: '北京大学学生 Linux 俱乐部',
+        url: 'https://lcpu.dev/',
+      },
+      image: 'https://lcpu.dev/favicon.svg',
     }
-    results.push(`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`, `<meta property="og:type" content="website">`, `<meta name="twitter:card" content="summary">`)
+    results.push(
+      `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+      `<meta property="og:type" content="website">`,
+      `<meta name="twitter:card" content="summary">`,
+    )
   } else if (sourceUrl && url != '/404.html') {
-    const jsonLd : Record<string, string | object | number | undefined> = {
+    const jsonLd: Record<string, string | object | number | undefined> = {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      'name': title,
-      'inLanguage': 'zh-Hans',
-      'url': `https://lcpu.dev${url}`,
-      'author':
-        author
-          ? { '@type': 'Person', name: author }
-          : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: "https://lcpu.dev/" },
-      'description': meta['description'] || undefined,
-      'headline': meta['headline'] || undefined,
-      'abstract': meta['abstract'] || undefined,
-      'keywords': meta['keywords'] || undefined,
-      'image': meta['image'] || "https://lcpu.dev/favicon.svg"
+      name: title,
+      inLanguage: 'zh-Hans',
+      url: `https://lcpu.dev${url}`,
+      author: author
+        ? { '@type': 'Person', name: author }
+        : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: 'https://lcpu.dev/' },
+      description: meta['description'] || undefined,
+      headline: meta['headline'] || undefined,
+      abstract: meta['abstract'] || undefined,
+      keywords: meta['keywords'] || undefined,
+      image: meta['image'] || 'https://lcpu.dev/favicon.svg',
     }
     if (time) {
       const dateObj = new Date(time)
@@ -175,14 +199,22 @@ function renderMeta(ctx: SSRContext, url: string): string {
       jsonLd['copyrightYear'] = dateObj.getFullYear()
       jsonLd['dateCreated'] = dateIsoString
       jsonLd['datePublished'] = dateIsoString
-      results.push(`<meta property="article:published_time" content="${dateIsoString}">`,`<meta property="article:modified_time" content="${dateIsoString}">`)
+      results.push(
+        `<meta property="article:published_time" content="${dateIsoString}">`,
+        `<meta property="article:modified_time" content="${dateIsoString}">`,
+      )
     }
 
     if (url.substring(1).split('/')[0] !== '') {
-      jsonLd['articleSection'] = SiteConfiguration.getRouteCategoryTitle(url.substring(1).split('/')[0]) || undefined
+      jsonLd['articleSection'] =
+        SiteConfiguration.getRouteCategoryTitle(url.substring(1).split('/')[0]) || undefined
     }
 
-    results.push('<meta property="og:type" content="article">','<meta name="twitter:card" content="summary_large_image">',`<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`)
+    results.push(
+      '<meta property="og:type" content="article">',
+      '<meta name="twitter:card" content="summary_large_image">',
+      `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    )
   }
   return results.join('\n')
 }

@@ -8,10 +8,12 @@ import { isIndexPage } from '@/utils'
 const route = useRoute(() => undefined)
 const path = route.path
 const pathname = new URL(path, 'http://localhost').pathname
-const urlSlugs = pathname.split('/').filter(slug=>slug)
+const urlSlugs = pathname.split('/').filter((slug) => slug)
 let base: string | null = null
 if (isIndexPage(urlSlugs)) base = urlSlugs[0]
-const pages = allPages.filter(page => page.category === base).sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
+const pages = allPages
+  .filter((page) => page.category === base)
+  .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
 
 const pageGroups = groupByYearMonth(pages)
 </script>
