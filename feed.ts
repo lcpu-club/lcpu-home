@@ -54,6 +54,7 @@ pages.forEach((page) => {
         ],
     date: new Date(page.time),
     image: page.meta?.image,
+    category: page.category ? [{ name: RouteTitleRecord[page.category] }] : [],
   })
 })
 
