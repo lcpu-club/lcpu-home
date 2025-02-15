@@ -1,54 +1,54 @@
 {
-    "headers": [
+  "headers": [
+    {
+      "source": "/s/(.*)",
+      "headers": [
         {
-            "source": "/s/(.*)",
-            "headers": [
-                {
-                    "key": "X-Robots-Tag",
-                    "value": "none"
-                }
-            ]
-        },
-        {
-            "source": "/lgslive/(.*)",
-            "headers": [
-                {
-                    "key": "X-Robots-Tag",
-                    "value": "none"
-                }
-            ]
+          "key": "X-Robots-Tag",
+          "value": "none"
         }
-    ],
-    "redirects": [
+      ]
+    },
+    {
+      "source": "/lgslive/(.*)",
+      "headers": [
         {
-            "source": "/s/:path*",
-            "destination": "https://s.lcpu.dev/:path*",
-            "permanent": true
-        },
-        {
-            "source": "/lgslive/:path*",
-            "destination": "https://old.lcpu.dev/lgslive/:path*",
-            "permanent": true
-        },
-        {
-            "source": "/s-client/:path*",
-            "destination": "https://old.lcpu.dev/s-client/:path*",
-            "permanent": true
-        },
-        {
-            "source": "/s/",
-            "destination": "https://s.lcpu.dev/",
-            "permanent": true
-        },
-        {
-            "source": "/lgslive/",
-            "destination": "https://old.lcpu.dev/lgslive/",
-            "permanent": true
-        },
-        {
-            "source": "/s-client/",
-            "destination": "https://old.lcpu.dev/s-client/",
-            "permanent": true
+          "key": "X-Robots-Tag",
+          "value": "none"
         }
-    ]
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/s/:path*",
+      "destination": "https://s.lcpu.dev/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/lgslive/:path*",
+      "destination": "https://old.lcpu.dev/lgslive/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/s-client/:path*",
+      "destination": "https://old.lcpu.dev/s-client/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/s/",
+      "destination": "https://s.lcpu.dev/",
+      "permanent": true
+    },
+    {
+      "source": "/lgslive/",
+      "destination": "https://old.lcpu.dev/lgslive/",
+      "permanent": true
+    },
+    {
+      "source": "/s-client/",
+      "destination": "https://old.lcpu.dev/s-client/",
+      "permanent": true
+    }
+  ]
 }
