@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
+    "lint": "prettier --write . && eslint . --fix",
     "format": "prettier --write src/",
     "build:client": "vite build --outDir dist/static --ssrManifest",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.ts",

@@ -8,7 +8,6 @@
     "playwright.config.*",
     "generator/*",
     "src/data/*.ts",
-    "src/utils.ts",
     "src/site.ts",
     "generator/*.ts",
     "generator/**/*.ts"
