@@ -18,7 +18,8 @@
     "build:sitemap": "bun ./sitemap.ts",
     "build:post": "run-p build:render build:sitemap",
     "build:minify": "bun ./minify.ts",
-    "build": "run-s build:bundle build:post build:minify"
+    "build:feed": "bun ./feed.ts",
+    "build": "run-s build:bundle build:post build:feed build:minify"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -26,6 +27,7 @@
     "@vueuse/core": "^12.2.0",
     "cheerio": "^1.0.0",
     "compression": "^1.7.5",
+    "feed": "^4.2.2",
     "html-minifier": "^4.0.0",
     "vue": "^3.5.13"
   },

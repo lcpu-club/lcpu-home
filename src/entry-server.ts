@@ -3,7 +3,7 @@
 import { basename } from 'path'
 import { renderToString, type SSRContext } from 'vue/server-renderer'
 import { createApp } from './main'
-import { SiteConfiguration } from './site'
+import { SiteConfiguration, RouteTitleRecord } from './site'
 
 export async function render(url: string, manifest: { [key: string]: string[] }) {
   const { app, router } = createApp()
@@ -176,6 +176,11 @@ function renderMeta(ctx: SSRContext, url: string): string {
       `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
       `<meta property="og:type" content="website">`,
       `<meta name="twitter:card" content="summary">`,
+      `<link rel="alternate" type="application/atom+xml" href="/posts.atom" title="北京大学学生 Linux 俱乐部" />`,
+      ...Object.keys(RouteTitleRecord).map(
+        (routeBase) =>
+          `<link rel="alternate" type="application/atom+xml" href="/${routeBase}/posts.atom" title="${RouteTitleRecord[routeBase]} | 北京大学学生 Linux 俱乐部" />`,
+      ),
     )
   } else if (sourceUrl && url != '/404.html') {
     const jsonLd: Record<string, string | object | number | undefined> = {
@@ -214,6 +219,10 @@ function renderMeta(ctx: SSRContext, url: string): string {
       '<meta property="og:type" content="article">',
       '<meta name="twitter:card" content="summary_large_image">',
       `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    )
+  } else if (slugs[0] in RouteTitleRecord) {
+    results.push(
+      `<link rel="alternate" type="application/atom+xml" href="/${slugs[0]}/posts.atom" title="${RouteTitleRecord[slugs[0]]} | 北京大学学生 Linux 俱乐部" />`,
     )
   }
   return results.join('\n')
