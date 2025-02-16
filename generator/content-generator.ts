@@ -1,8 +1,10 @@
 import { PluginOption } from 'vite'
 import matter from 'gray-matter'
 import * as mdit from 'markdown-it'
-import { registerMarkdownPlugins } from './markdown'
+import { injectHeaderData, registerMarkdownPlugins } from './markdown'
 import { dirname } from 'path'
+import { MarkdownSfcBlocks } from '@mdit-vue/plugin-sfc'
+import { MarkdownItHeader } from '@mdit-vue/plugin-headers'
 
 const md = mdit.default({
   html: true,
@@ -12,8 +14,6 @@ const md = mdit.default({
 
 registerMarkdownPlugins(md)
 
-const scriptRe = /(<script[\s\S]*?>[\s\S]*?<\/script>)/g
-const styleRe = /(<style[\s\S]*?>[\s\S]*?<\/style>)/g
 const preReplaceRe = /(<pre(?:(?!v-pre)[\s\S])*?)>/gm
 
 export default function markdownContentGenerator(): PluginOption {
@@ -31,20 +31,18 @@ export default function markdownContentGenerator(): PluginOption {
     transform(code, id) {
       if (id.endsWith('.md')) {
         const content = matter(code, { excerpt: true }).content
-        let rendered = md.render(content, { mdRootPath: dirname(id) })
-        const scripts: string[] = []
-        const styles: string[] = []
-        rendered.match(scriptRe)?.forEach((script) => {
-          scripts.push(script)
-        })
-        rendered = rendered.replace(scriptRe, '')
-        rendered.match(styleRe)?.forEach((style) => {
-          styles.push(style)
-        })
-        rendered = rendered.replace(styleRe, '')
-        rendered = rendered.replace(preReplaceRe, '$1 v-pre>')
-
-        return `<template><div class="md-content">${rendered}</div></template>${scripts.join('')}${styles.join('')}`
+        const env: {
+          mdRootPath: string
+          sfcBlocks?: MarkdownSfcBlocks
+          headers?: MarkdownItHeader[]
+        } = { mdRootPath: dirname(id) }
+        const rendered = md.render(content, env)
+        const sfcBlocks = env.sfcBlocks!
+        let templateContent = sfcBlocks.template?.contentStripped || ''
+        templateContent = rendered.replace(preReplaceRe, '$1 v-pre>')
+        const headers = env.headers || []
+        injectHeaderData(headers, sfcBlocks)
+        return `<template><div class="md-content">${templateContent}</div></template>${sfcBlocks.scriptSetup?.content}${sfcBlocks.script?.content || ''}${sfcBlocks.styles.map((x) => x.content) || ''}${sfcBlocks.customBlocks.map((x) => x.content).join('')}`
       }
     },
   }

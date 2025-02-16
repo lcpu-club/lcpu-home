@@ -11,6 +11,8 @@ import {
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
 import { componentPlugin } from '@mdit-vue/plugin-component'
+import { MarkdownSfcBlocks, sfcPlugin } from '@mdit-vue/plugin-sfc'
+import { headersPlugin, MarkdownItHeader } from '@mdit-vue/plugin-headers'
 import ImageProcessor from './image-processor'
 import anchor from 'markdown-it-anchor'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
@@ -57,7 +59,27 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
       }),
     )
     .use(componentPlugin)
+    .use(sfcPlugin)
+    .use(headersPlugin)
     .use(imgLazyload)
+}
+
+export function injectHeaderData(headers: MarkdownItHeader[], sfcBlocks: MarkdownSfcBlocks) {
+  const headerData = JSON.stringify(headers)
+  const code = `export const __headers = ${headerData}`
+  if (!sfcBlocks.script) {
+    sfcBlocks.script = {
+      type: 'script',
+      content: `<script>${code}</script>`,
+      contentStripped: code,
+      tagOpen: '<script>',
+      tagClose: '</script>',
+    }
+  } else {
+    sfcBlocks.script.contentStripped = code + sfcBlocks.script.contentStripped
+    sfcBlocks.script.content =
+      sfcBlocks.script.tagOpen + sfcBlocks.script.contentStripped + sfcBlocks.script.tagClose
+  }
 }
 
 function extractExpanderTitle(info: string) {

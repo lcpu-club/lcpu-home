@@ -23,6 +23,7 @@ import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
+import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
 
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
@@ -35,6 +36,8 @@ const { page, isIndexPage } = getCurrentPage(pathname)
 const currentPage = shallowRef(page)
 const isCurrentIndexPage = ref(isIndexPage)
 const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffix}` })
+const headers = ref<MarkdownItHeader[]>([])
+
 title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
@@ -82,6 +85,7 @@ onMounted(() => {
 })
 
 async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
+  headers.value = []
   const urlSlugs = sourceOrPathname.split('/').filter((slug) => slug)
   const indexPage = testIndexPage(urlSlugs)
   if (indexPage) {
@@ -98,8 +102,8 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
       ]
   for (const modulePath of modulePathCandidates) {
     if (modulePath in pageModules) {
-      let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
-      if ('then' in module && typeof module.then === 'function') module = await module
+      const module = await (pageModules[modulePath]() as Promise<Module> | Module)
+      headers.value = module.__headers ?? []
       return module
     }
   }
@@ -161,6 +165,10 @@ function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
   return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
 }
+
+watch(headers, (newHeaders) => {
+  console.log(newHeaders)
+})
 </script>
 
 <template>
