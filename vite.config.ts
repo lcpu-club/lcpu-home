@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import PagesGenerator from './generator/pages-generator'
 import MarkdownContentGenerator from './generator/content-generator'
+import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -32,5 +33,14 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
     cssMinify: true,
+  },
+  experimental: {
+    renderBuiltUrl(filename) {
+      if (path.extname(filename).match(/\.(jpg|png|jpeg|bmp|gif|heic)$/i)) {
+        return 'https://img.lcpu.dev/' + filename
+      } else {
+        return { relative: true }
+      }
+    },
   },
 })
