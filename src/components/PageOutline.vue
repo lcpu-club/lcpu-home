@@ -43,7 +43,7 @@ watch(
 </script>
 
 <template>
-  <nav v-if="pageOutline?.length" flex-shrink-1 w-64 text-sm text-gray-500 dark:text-truegray-400>
+  <nav flex-shrink-1 w-64 text-sm text-gray-500 dark:text-truegray-400>
     <div fixed top-12 p-r-4 box-border border-l="1 gray-200 solid dark:dark-200" w-56>
       <div ref="marker" opacity-0 absolute h-8 w-1px bg-blue transition-all duration-150></div>
       <span block font-bold tracking-widest text-xs m-l-1rem>本页目录</span>

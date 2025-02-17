@@ -46,6 +46,8 @@ const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
 const Content = shallowRef(module.default)
 const pageOutlineData = ref<MarkdownItHeader[]>(module.__headers ?? [])
 const highlightedSlug = ref('')
+let headerElements: Element[] = []
+let headerElementsOutdated = true
 
 watch(
   () => route.path,
@@ -67,6 +69,7 @@ watch(
     pageOutlineData.value = module.__headers ?? []
     if ('default' in module) Content.value = module.default
     else Content.value = module
+    headerElementsOutdated = true
     scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   },
 )
@@ -111,17 +114,22 @@ const handleScroll = throttleAndDebounce(() => {
   }
   if (!pageOutlineData.value.length) return
   if (!scrollViewRef.value) return
-  const headerElements = [...scrollViewRef.value?.querySelectorAll('h1, h2, h3, h4, h5, h6')]
+  if (headerElementsOutdated) {
+    headerElements = [
+      ...(scrollViewRef.value?.querySelectorAll('h1, h2, h3, h4, h5, h6') ?? []),
+    ].filter((x) => pageOutlineData.value.some((y) => y.slug == x.id))
+    headerElementsOutdated = false
+  }
+  const elements = headerElements
     .map((x) => {
       return {
         slug: x.id,
         top: x.getBoundingClientRect().top,
       }
     })
-    .filter((x) => pageOutlineData.value.some((y) => y.slug == x.slug))
     .filter((x) => x.top < 80)
     .sort((a, b) => b.top - a.top)
-  highlightedSlug.value = headerElements[0]?.slug ?? ''
+  highlightedSlug.value = elements[0]?.slug ?? ''
 }, 100)
 
 function getPathname(path: string) {
@@ -202,7 +210,7 @@ function getPageCategory(pathname: string): string {
           </div>
         </div>
         <Transition mode="out-in">
-          <component :is="Content" max-w-800px m-x-auto />
+          <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />
         </Transition>
         <FooterComponent m-t-12 max-w-800px m-x-auto />
       </div>
