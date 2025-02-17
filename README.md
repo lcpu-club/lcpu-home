@@ -11,7 +11,7 @@ A [VitePress](https://vitepress.dev/) inspired minimalism Static Site Generator 
 
 Powered by Vue 3 and Vite.
 
-[Live demo](https://lh.djdjz7.top).
+[Live demo](https://lcpu.dev).
 
 ## Features
 
@@ -22,9 +22,9 @@ Powered by Vue 3 and Vite.
 - Independently implemented expander component, which offers a fluent animation, compared to VitePress
 - Automatically generated sidebar and index pages, grouped by time order (once you added the routes)
 - Image lazy loading
+- Page outline (experimental)
 
 ## Features not implemented yet
 
 - [ ] Referencing frontmatter in markdown
-- [ ] Page outline
 - [ ] Github flavored containers (no plan yet)

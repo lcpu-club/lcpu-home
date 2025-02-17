@@ -47,7 +47,7 @@ watch(
     <div fixed top-12 p-r-4 box-border border-l="1 gray-200 solid dark:dark-200" w-56>
       <div ref="marker" opacity-0 absolute h-8 w-1px bg-blue transition-all duration-150></div>
       <span block font-bold tracking-widest text-xs m-l-1rem>本页目录</span>
-      <ul p-l-0>
+      <ul p-l-0 m-b-0>
         <li
           overflow-hidden
           text-ellipsis
