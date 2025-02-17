@@ -1,21 +1,12 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router'
-import {
-  defineAsyncComponent,
-  inject,
-  onMounted,
-  ref,
-  shallowRef,
-  useSSRContext,
-  useTemplateRef,
-  watch,
-} from 'vue'
+import { inject, onMounted, ref, shallowRef, useSSRContext, useTemplateRef, watch } from 'vue'
 import type { PageData } from '@/data/pagedata'
 import allPages from 'virtual:pages.json'
 import NotFoundView from '@/views/NotFoundView.vue'
 import type { Module } from '@/module'
 import { useTitle } from '@vueuse/core'
-import { dateString, isIndexPage as testIndexPage } from '@/utils'
+import { dateString, isIndexPage as testIndexPage, throttleAndDebounce } from '@/utils'
 import PageListView from './PageListView.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
@@ -23,6 +14,8 @@ import LoadingView from './LoadingView.vue'
 import type { SSRContext } from 'vue/server-renderer'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
+import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
+import PageOutline from '@/components/PageOutline.vue'
 
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
@@ -35,6 +28,7 @@ const { page, isIndexPage } = getCurrentPage(pathname)
 const currentPage = shallowRef(page)
 const isCurrentIndexPage = ref(isIndexPage)
 const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffix}` })
+
 title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
@@ -48,10 +42,10 @@ if (ssrContext) {
 const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
 const sidebarRef = useTemplateRef('sidebar-ref')
-
-const Content = shallowRef(
-  defineAsyncComponent(() => resolvePageModule(currentPage.value?.sourceUrl || pathname)),
-)
+const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
+const Content = shallowRef(module.default)
+const pageOutlineData = ref<MarkdownItHeader[]>(module.__headers ?? [])
+const highlightedSlug = ref('')
 
 watch(
   () => route.path,
@@ -60,7 +54,7 @@ watch(
     const oldPathname = getPathname(oldVal)
     if (pathname === oldPathname) {
       const anchor = document.getElementById(getHash(newVal).substring(1))
-      if (anchor) anchor.scrollIntoView({ behavior: 'smooth' })
+      if (anchor) scrollViewRef.value?.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
       return
     }
     const { page, isIndexPage } = getCurrentPage(pathname)
@@ -68,7 +62,9 @@ watch(
     isCurrentIndexPage.value = isIndexPage
     title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
     Content.value = LoadingView as never
+    pageOutlineData.value = []
     const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
+    pageOutlineData.value = module.__headers ?? []
     if ('default' in module) Content.value = module.default
     else Content.value = module
     scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
@@ -77,7 +73,7 @@ watch(
 
 onMounted(() => {
   const anchor = document.getElementById(getHash(route.path).substring(1))
-  if (anchor) anchor.scrollIntoView({ behavior: 'smooth' })
+  if (anchor) scrollViewRef.value?.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
   else scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
 })
 
@@ -98,15 +94,14 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
       ]
   for (const modulePath of modulePathCandidates) {
     if (modulePath in pageModules) {
-      let module: Promise<Module> | Module = pageModules[modulePath]() as Promise<Module> | Module
-      if ('then' in module && typeof module.then === 'function') module = await module
+      const module = await (pageModules[modulePath]() as Promise<Module> | Module)
       return module
     }
   }
   return NotFoundView as never
 }
 
-function handleScroll() {
+const handleScroll = throttleAndDebounce(() => {
   const scrollTop = scrollViewRef.value?.scrollTop
   if (scrollTop == undefined) return
   if (scrollTop > 60) {
@@ -114,7 +109,20 @@ function handleScroll() {
   } else {
     showTitle.value = false
   }
-}
+  if (!pageOutlineData.value.length) return
+  if (!scrollViewRef.value) return
+  const headerElements = [...scrollViewRef.value?.querySelectorAll('h1, h2, h3, h4, h5, h6')]
+    .map((x) => {
+      return {
+        slug: x.id,
+        top: x.getBoundingClientRect().top,
+      }
+    })
+    .filter((x) => pageOutlineData.value.some((y) => y.slug == x.slug))
+    .filter((x) => x.top < 80)
+    .sort((a, b) => b.top - a.top)
+  highlightedSlug.value = headerElements[0]?.slug ?? ''
+}, 100)
 
 function getPathname(path: string) {
   return new URL(path, 'http://a.com').pathname
@@ -168,9 +176,7 @@ function getPageCategory(pathname: string): string {
     <SidebarComponent ref="sidebar-ref" :current-title="currentPage?.title" />
     <div
       lg:col-span-3
-      p-y-12
-      p-x-6
-      lg:p-x-12
+      lg:flex
       overflow-auto
       h-screen
       class="h-100dvh!"
@@ -178,26 +184,34 @@ function getPageCategory(pathname: string): string {
       ref="scrollViewRef"
       @scroll.passive="handleScroll"
     >
-      <TopbarComponent
-        :toggleSidebarFn="sidebarRef?.toggleSidebar"
-        :title="currentPage?.title ?? pageCategory"
-        :show-title="showTitle"
-      />
-      <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
-        <h1 m-0>{{ currentPage.title }}</h1>
-        <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
-          <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
-          <span v-else>{{ currentPage.time }}</span>
-          <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
-            <span>·</span>
-            <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
-          </span>
+      <div flex-1 p-t-12 p-x-6 lg:p-x-12>
+        <TopbarComponent
+          :toggleSidebarFn="sidebarRef?.toggleSidebar"
+          :title="currentPage?.title ?? pageCategory"
+          :show-title="showTitle"
+        />
+        <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
+          <h1 m-0>{{ currentPage.title }}</h1>
+          <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
+            <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
+            <span v-else>{{ currentPage.time }}</span>
+            <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
+              <span>·</span>
+              <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
+            </span>
+          </div>
         </div>
+        <Transition mode="out-in">
+          <component :is="Content" max-w-800px m-x-auto />
+        </Transition>
+        <FooterComponent m-t-12 max-w-800px m-x-auto />
       </div>
-      <Transition mode="out-in">
-        <component :is="Content" max-w-800px m-x-auto />
-      </Transition>
-      <FooterComponent m-t-12 max-w-800px m-x-auto />
+      <PageOutline
+        hidden
+        xl:block
+        :page-outline="pageOutlineData"
+        :highlighted-slug="highlightedSlug"
+      />
     </div>
   </div>
 </template>

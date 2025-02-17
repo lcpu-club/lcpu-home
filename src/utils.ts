@@ -44,3 +44,20 @@ export function groupByYearMonth<T extends { time: string }>(items: T[]) {
     [],
   )
 }
+
+export function throttleAndDebounce(
+  fn: (...args: unknown[]) => void,
+  delay: number,
+): (...args: unknown[]) => void {
+  let timeoutId: NodeJS.Timeout
+  let called = false
+
+  return (...args: unknown[]) => {
+    if (timeoutId) clearTimeout(timeoutId)
+    if (!called) {
+      fn(...args)
+      called = true
+      setTimeout(() => (called = false), delay)
+    } else timeoutId = setTimeout(fn, delay)
+  }
+}

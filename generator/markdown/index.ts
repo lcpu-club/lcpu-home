@@ -11,6 +11,8 @@ import {
 import MathJax3 from 'markdown-it-mathjax3'
 import MarkdownItContainer from 'markdown-it-container'
 import { componentPlugin } from '@mdit-vue/plugin-component'
+import { MarkdownSfcBlocks, sfcPlugin } from '@mdit-vue/plugin-sfc'
+import { headersPlugin, MarkdownItHeader } from '@mdit-vue/plugin-headers'
 import ImageProcessor from './image-processor'
 import anchor from 'markdown-it-anchor'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
@@ -57,7 +59,40 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
       }),
     )
     .use(componentPlugin)
+    .use(sfcPlugin)
+    .use(headersPlugin)
     .use(imgLazyload)
+}
+
+export function injectHeaderData(headers: MarkdownItHeader[], sfcBlocks: MarkdownSfcBlocks) {
+  const headerData = JSON.stringify(flattenHeaders(headers))
+  const code = `export const __headers = ${headerData}`
+  const useTypescript = sfcBlocks.scriptSetup
+    ? sfcBlocks.scriptSetup.tagOpen.includes(`lang="ts"`)
+    : false
+  if (!sfcBlocks.script) {
+    sfcBlocks.script = {
+      type: 'script',
+      content: `<script ${useTypescript ? 'lang="ts"' : ''}>${code}</script>`,
+      contentStripped: code,
+      tagOpen: `<script ${useTypescript ? 'lang="ts"' : ''}>`,
+      tagClose: '</script>',
+    }
+  } else {
+    sfcBlocks.script.contentStripped = code + sfcBlocks.script.contentStripped
+    sfcBlocks.script.content =
+      sfcBlocks.script.tagOpen + sfcBlocks.script.contentStripped + sfcBlocks.script.tagClose
+  }
+}
+
+function flattenHeaders(headers: MarkdownItHeader[]): MarkdownItHeader[] {
+  return headers.flatMap((header) => {
+    if (header.children) {
+      return [header, ...flattenHeaders(header.children)]
+    } else {
+      return [header]
+    }
+  })
 }
 
 function extractExpanderTitle(info: string) {
