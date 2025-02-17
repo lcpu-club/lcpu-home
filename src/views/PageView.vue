@@ -212,7 +212,7 @@ function getPageCategory(pathname: string): string {
         <Transition mode="out-in">
           <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />
         </Transition>
-        <FooterComponent m-t-12 max-w-800px m-x-auto />
+        <FooterComponent p-y-12 max-w-800px m-x-auto />
       </div>
       <PageOutline
         hidden
