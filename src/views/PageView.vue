@@ -24,6 +24,7 @@ import type { SSRContext } from 'vue/server-renderer'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
 import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
+import PageOutline from '@/components/PageOutline.vue'
 
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
@@ -36,7 +37,7 @@ const { page, isIndexPage } = getCurrentPage(pathname)
 const currentPage = shallowRef(page)
 const isCurrentIndexPage = ref(isIndexPage)
 const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffix}` })
-const headers = ref<MarkdownItHeader[]>([])
+const pageOutlineData = ref<MarkdownItHeader[]>([])
 
 title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
 if (ssrContext) {
@@ -85,7 +86,7 @@ onMounted(() => {
 })
 
 async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
-  headers.value = []
+  pageOutlineData.value = []
   const urlSlugs = sourceOrPathname.split('/').filter((slug) => slug)
   const indexPage = testIndexPage(urlSlugs)
   if (indexPage) {
@@ -103,7 +104,7 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
   for (const modulePath of modulePathCandidates) {
     if (modulePath in pageModules) {
       const module = await (pageModules[modulePath]() as Promise<Module> | Module)
-      headers.value = module.__headers ?? []
+      pageOutlineData.value = module.__headers ?? []
       return module
     }
   }
@@ -165,10 +166,6 @@ function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
   return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
 }
-
-watch(headers, (newHeaders) => {
-  console.log(newHeaders)
-})
 </script>
 
 <template>
@@ -176,9 +173,7 @@ watch(headers, (newHeaders) => {
     <SidebarComponent ref="sidebar-ref" :current-title="currentPage?.title" />
     <div
       lg:col-span-3
-      p-y-12
-      p-x-6
-      lg:p-x-12
+      lg:flex
       overflow-auto
       h-screen
       class="h-100dvh!"
@@ -186,26 +181,29 @@ watch(headers, (newHeaders) => {
       ref="scrollViewRef"
       @scroll.passive="handleScroll"
     >
-      <TopbarComponent
-        :toggleSidebarFn="sidebarRef?.toggleSidebar"
-        :title="currentPage?.title ?? pageCategory"
-        :show-title="showTitle"
-      />
-      <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
-        <h1 m-0>{{ currentPage.title }}</h1>
-        <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
-          <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
-          <span v-else>{{ currentPage.time }}</span>
-          <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
-            <span>·</span>
-            <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
-          </span>
+      <div flex-1 p-t-12 p-x-6 lg:p-x-12>
+        <TopbarComponent
+          :toggleSidebarFn="sidebarRef?.toggleSidebar"
+          :title="currentPage?.title ?? pageCategory"
+          :show-title="showTitle"
+        />
+        <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
+          <h1 m-0>{{ currentPage.title }}</h1>
+          <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
+            <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
+            <span v-else>{{ currentPage.time }}</span>
+            <span flex="~ gap-1" v-for="key in Object.keys(currentPage.data)" :key="key">
+              <span>·</span>
+              <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
+            </span>
+          </div>
         </div>
+        <Transition mode="out-in">
+          <component :is="Content" max-w-800px m-x-auto />
+        </Transition>
+        <FooterComponent m-t-12 max-w-800px m-x-auto />
       </div>
-      <Transition mode="out-in">
-        <component :is="Content" max-w-800px m-x-auto />
-      </Transition>
-      <FooterComponent m-t-12 max-w-800px m-x-auto />
+      <PageOutline hidden lg:block lg:col :page-outline="pageOutlineData" />
     </div>
   </div>
 </template>

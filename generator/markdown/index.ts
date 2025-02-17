@@ -65,7 +65,7 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
 }
 
 export function injectHeaderData(headers: MarkdownItHeader[], sfcBlocks: MarkdownSfcBlocks) {
-  const headerData = JSON.stringify(headers)
+  const headerData = JSON.stringify(flattenHeaders(headers))
   const code = `export const __headers = ${headerData}`
   if (!sfcBlocks.script) {
     sfcBlocks.script = {
@@ -80,6 +80,16 @@ export function injectHeaderData(headers: MarkdownItHeader[], sfcBlocks: Markdow
     sfcBlocks.script.content =
       sfcBlocks.script.tagOpen + sfcBlocks.script.contentStripped + sfcBlocks.script.tagClose
   }
+}
+
+function flattenHeaders(headers: MarkdownItHeader[]): MarkdownItHeader[] {
+  return headers.flatMap((header) => {
+    if (header.children) {
+      return [header, ...flattenHeaders(header.children)]
+    } else {
+      return [header]
+    }
+  })
 }
 
 function extractExpanderTitle(info: string) {
