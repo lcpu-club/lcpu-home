@@ -129,6 +129,16 @@ const handleScroll = throttleAndDebounce(() => {
     .filter((x) => x.top < 80)
     .sort((a, b) => b.top - a.top)
   highlightedSlug.value = elements[0]?.slug ?? ''
+  // if scrolled to bottom, highlight the last item
+  if (
+    Math.abs(
+      scrollViewRef.value.scrollTop +
+        scrollViewRef.value.clientHeight -
+        scrollViewRef.value.scrollHeight,
+    ) < 1
+  ) {
+    highlightedSlug.value = pageOutlineData.value.slice(-1)[0].slug
+  }
 }, 100)
 
 function getPathname(path: string) {
