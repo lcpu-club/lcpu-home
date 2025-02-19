@@ -43,7 +43,7 @@ const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
 const sidebarRef = useTemplateRef('sidebar-ref')
 const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
-const Content = shallowRef(module.default)
+const Content = shallowRef(module.default ?? module)
 const pageOutlineData = ref<MarkdownItHeader[]>(module.__headers ?? [])
 const highlightedSlug = ref('')
 let headerElements: Element[] = []
@@ -67,8 +67,7 @@ watch(
     pageOutlineData.value = []
     const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
     pageOutlineData.value = module.__headers ?? []
-    if ('default' in module) Content.value = module.default
-    else Content.value = module
+    Content.value = module.default ?? module
     headerElementsOutdated = true
     scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   },
