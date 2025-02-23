@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router'
-import { inject, onMounted, ref, shallowRef, useSSRContext, useTemplateRef, watch } from 'vue'
+import {
+  inject,
+  onMounted,
+  onUnmounted,
+  ref,
+  shallowRef,
+  useSSRContext,
+  useTemplateRef,
+  watch,
+} from 'vue'
 import type { PageData } from '@/data/pagedata'
 import allPages from 'virtual:pages.json'
 import NotFoundView from '@/views/NotFoundView.vue'
@@ -21,7 +30,7 @@ let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
 
 const pageModules = inject('pageModules') as Record<string, () => Promise<unknown>>
-const route = useRoute(() => scrollViewRef.value?.scrollTop)
+const route = useRoute(() => document.scrollingElement?.scrollTop)
 const pathname = decodeURI(getPathname(route.path))
 const pageCategory = ref(getPageCategory(pathname))
 const { page, isIndexPage } = getCurrentPage(pathname)
@@ -39,24 +48,23 @@ if (ssrContext) {
   ssrContext.author = currentPage.value?.data?.author ?? ''
   ssrContext.sourceUrl = currentPage.value?.sourceUrl ?? ''
 }
-const scrollViewRef = ref<HTMLDivElement>()
 const showTitle = ref(false)
+const documentWrapper = useTemplateRef('document-wrapper')
 const sidebarRef = useTemplateRef('sidebar-ref')
 const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
 const Content = shallowRef(module.default ?? module)
 const pageOutlineData = ref<MarkdownItHeader[]>(module.__headers ?? [])
 const highlightedSlug = ref('')
 let headerElements: Element[] = []
-let headerElementsOutdated = true
 
 watch(
   () => route.path,
   async (newVal, oldVal) => {
     const pathname = decodeURI(getPathname(newVal))
-    const oldPathname = decodeURI(getPathname(oldVal))
+    const oldPathname = getPathname(oldVal)
     if (pathname === oldPathname) {
       const anchor = document.getElementById(getHash(newVal).substring(1))
-      if (anchor) scrollViewRef.value?.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
+      if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
       return
     }
     const { page, isIndexPage } = getCurrentPage(pathname)
@@ -68,15 +76,21 @@ watch(
     const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
     pageOutlineData.value = module.__headers ?? []
     Content.value = module.default ?? module
-    headerElementsOutdated = true
-    scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+    const anchor = document.getElementById(getHash(newVal).substring(1))
+    if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
+    else window.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   },
 )
 
 onMounted(() => {
   const anchor = document.getElementById(getHash(route.path).substring(1))
-  if (anchor) scrollViewRef.value?.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
-  else scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+  if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
+  else window.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+  document.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('scroll', handleScroll)
 })
 
 async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
@@ -104,7 +118,7 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
 }
 
 const handleScroll = throttleAndDebounce(() => {
-  const scrollTop = scrollViewRef.value?.scrollTop
+  const scrollTop = document.scrollingElement?.scrollTop
   if (scrollTop == undefined) return
   if (scrollTop > 60) {
     showTitle.value = true
@@ -112,12 +126,11 @@ const handleScroll = throttleAndDebounce(() => {
     showTitle.value = false
   }
   if (!pageOutlineData.value.length) return
-  if (!scrollViewRef.value) return
-  if (headerElementsOutdated) {
+  if (!documentWrapper.value) return
+  if (!validateHeaderElements()) {
     headerElements = [
-      ...(scrollViewRef.value?.querySelectorAll('h1, h2, h3, h4, h5, h6') ?? []),
+      ...(documentWrapper.value.querySelectorAll('h1, h2, h3, h4, h5, h6') ?? []),
     ].filter((x) => pageOutlineData.value.some((y) => y.slug == x.id))
-    headerElementsOutdated = false
   }
   const elements = headerElements
     .map((x) => {
@@ -130,13 +143,7 @@ const handleScroll = throttleAndDebounce(() => {
     .sort((a, b) => b.top - a.top)
   highlightedSlug.value = elements[0]?.slug ?? ''
   // if scrolled to bottom, highlight the last item
-  if (
-    Math.abs(
-      scrollViewRef.value.scrollTop +
-        scrollViewRef.value.clientHeight -
-        scrollViewRef.value.scrollHeight,
-    ) < 1
-  ) {
+  if (Math.abs(scrollTop + window.innerHeight - documentWrapper.value.clientHeight) < 1) {
     highlightedSlug.value = pageOutlineData.value.slice(-1)[0].slug
   }
 }, 100)
@@ -186,22 +193,21 @@ function getPageCategory(pathname: string): string {
   const pageSegs = pathname.split('/')
   return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
 }
+
+function validateHeaderElements() {
+  if (headerElements.length !== pageOutlineData.value.length) return false
+  for (let i = 0; i < headerElements.length; i++) {
+    if (headerElements[i].id !== pageOutlineData.value[i].slug) return false
+  }
+  return true
+}
 </script>
 
 <template>
-  <div lg:grid lg:grid-cols-4 h-screen class="h-100dvh!" overflow-auto>
+  <div lg:grid class="lg:grid-cols-[auto_1fr_auto]" overflow-auto>
     <SidebarComponent ref="sidebar-ref" :current-title="currentPage?.title" />
-    <div
-      lg:col-span-3
-      lg:flex
-      overflow-auto
-      h-screen
-      class="h-100dvh!"
-      box-border
-      ref="scrollViewRef"
-      @scroll.passive="handleScroll"
-    >
-      <div flex-1 p-t-12 p-x-6 lg:p-x-12>
+    <div overflow-auto box-border ref="document-wrapper">
+      <div p-t-12 p-x-6 lg:p-x-12>
         <TopbarComponent
           :toggleSidebarFn="sidebarRef?.toggleSidebar"
           :title="currentPage?.title ?? pageCategory"
@@ -223,13 +229,13 @@ function getPageCategory(pathname: string): string {
         </Transition>
         <FooterComponent p-y-12 max-w-800px m-x-auto />
       </div>
-      <PageOutline
-        hidden
-        xl:block
-        :page-outline="pageOutlineData"
-        :highlighted-slug="highlightedSlug"
-      />
     </div>
+    <PageOutline
+      hidden
+      xl:block
+      :page-outline="pageOutlineData"
+      :highlighted-slug="highlightedSlug"
+    />
   </div>
 </template>
 

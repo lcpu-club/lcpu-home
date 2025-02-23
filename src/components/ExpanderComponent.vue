@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ChevronRightIcon } from '@heroicons/vue/24/outline'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps<{
   initialCollapsed?: boolean
@@ -22,6 +22,8 @@ function toggleCollapsed() {
   }
 }
 
+let observer: ResizeObserver
+
 onMounted(() => {
   if (!contentWrapperRef.value || !contentDesiredSizeWrapperRef.value) return
   if (collapsed.value) contentWrapperRef.value!.style.height = '0'
@@ -31,11 +33,14 @@ onMounted(() => {
 
   content.value = contentDesiredSizeWrapperRef.value!.scrollHeight
 
-  const observer = new ResizeObserver(() => {
+  observer = new ResizeObserver(() => {
     content.value = contentDesiredSizeWrapperRef.value!.scrollHeight
   })
-
   observer.observe(contentDesiredSizeWrapperRef.value)
+})
+
+onUnmounted(() => {
+  observer.disconnect()
 })
 </script>
 
