@@ -34,7 +34,7 @@ export default defineConfig({
     minify: 'esbuild',
     cssMinify: true,
   },
-  experimental: {
+  /*experimental: {
     renderBuiltUrl(filename) {
       if (path.extname(filename).match(/\.(jpg|png|jpeg|bmp|gif|heic)$/i)) {
         return 'https://img.lcpu.dev/' + filename
@@ -42,5 +42,5 @@ export default defineConfig({
         return { relative: true }
       }
     },
-  },
+  },*/
 })
