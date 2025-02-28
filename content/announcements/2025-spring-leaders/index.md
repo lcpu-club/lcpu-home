@@ -1,0 +1,20 @@
+---
+title: Linux 俱乐部 2025 春季学期换届公告
+time: 2025-2-28
+meta:
+  description: A brief introduction to ScantPress
+  generator: ScantPress 0.0.1
+---
+
+
+2025 年 2 月 15 日晚，北京大学学生 Linux 俱乐部换届选举会议顺利召开，经 AP 组研究及投票表决，最终确定 2024-2025 学年春季学期负责人名单如下: 
+
+霍子晗同学任北京大学学生 Linux 俱乐部社长；      
+
+黄熙鸣同学任北京大学学生 Linux 俱乐部理事长；
+
+戴嘉震同学任北京大学学生 Linux 俱乐部团支书；
+
+李博海同学任北京大学学生 Linux 俱乐部财务负责人。
+
+希望在新的一学期，大家能一起把社团建设得更好！

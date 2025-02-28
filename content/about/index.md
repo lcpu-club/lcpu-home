@@ -2,23 +2,4 @@
 title: 关于我们
 ---
 
-> Ciallo～(∠・ω< )⌒★
-
-## write here
-
-**Markdown enabled**
-
-<script setup lang="ts">
-// override page title with this
-import { useTitle } from '@vueuse/core'
-import { useSSRContext } from 'vue'
-import { SiteConfiguration } from '@/site'
-
-useTitle(`关于我们 | ${SiteConfiguration.titleSuffix}`)
-if (import.meta.env.SSR) {
-  const context = useSSRContext()
-  if (context) {
-    context.titlePrefix = '关于我们'
-  }
-}
-</script>
+**北京大学学生 Linux 俱乐部** (Linux Club of Peking University, 简称 **LCPU**) 成立于 2003 年，是北京大学最活跃的学术科创类社团之一。我们致力于学习和研究 Linux 操作系统及其他开源软硬件技术，并通过多个高质量项目和活动推动开源精神的发展。
