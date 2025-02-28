@@ -1,9 +1,6 @@
 ---
 title: Linux 俱乐部 2025 春季学期换届公告
-time: 2025-2-28
-meta:
-  description: A brief introduction to ScantPress
-  generator: ScantPress 0.0.1
+time: 2025-02-28
 ---
 
 
