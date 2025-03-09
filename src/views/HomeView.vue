@@ -21,6 +21,7 @@ import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration, RouteTitleRecord } from '@/site'
 import type { PageData } from '@/data/pagedata'
+import ProjectInfoDialog from '@/components/ProjectInfoDialog.vue'
 
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
@@ -41,6 +42,7 @@ Object.keys(RouteTitleRecord).forEach((category) => {
 
 const scrollViewRef = useTemplateRef('scrollViewRef')
 const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
+const projectInfoDlg = useTemplateRef('project-info-dlg')
 const route = useRoute(() =>
   Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0),
 )
@@ -135,17 +137,21 @@ if (import.meta.env.SSR) {
         <h2>项目</h2>
         <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
           <ItemCard
+            cursor-pointer
             v-for="item in projects"
             :key="item.title"
             :item="item"
             :tag="item.internal && !pkuNetwork ? '仅校园网' : ''"
             :tagClass="colorClasses['red']"
+            :disable-anchor="true"
+            @click="projectInfoDlg?.showProjectInfo(item)"
           />
         </div>
 
         <h2>活动</h2>
         <div grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2>
           <ItemCard
+            cursor-pointer
             v-for="item in eventItems"
             :key="item.title"
             :item="item"
@@ -159,6 +165,7 @@ if (import.meta.env.SSR) {
                   ? colorClasses['green']
                   : colorClasses['red']
             "
+            :disable-anchor="false"
           />
         </div>
 
@@ -188,6 +195,7 @@ if (import.meta.env.SSR) {
       </div>
     </div>
   </main>
+  <ProjectInfoDialog ref="project-info-dlg" />
 </template>
 
 <style lang="css" scoped></style>

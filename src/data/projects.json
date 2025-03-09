@@ -4,13 +4,85 @@
     "description": "开箱即用的免费云计算服务，为教学与科研服务",
     "image": "/projects/clab.svg",
     "link": "https://clab.pku.edu.cn/",
-    "internal": true
+    "internal": true,
+    "personInCharge": [
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      },
+      {
+        "name": "孙远航",
+        "username": "leavelet",
+        "avatar": "https://avatars.githubusercontent.com/u/45084815?v=4"
+      }
+    ],
+    "roadmap": {
+      "pending": [
+        {
+          "content": "Our future plan B",
+          "time": "Someday"
+        },
+        {
+          "content": "Our future plan A",
+          "time": "Someday"
+        }
+      ],
+      "done": [
+        {
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+          "time": "2024 年 12 月"
+        },
+        {
+          "content": "General idea of this milestone",
+          "time": "2024 年 11 月"
+        },
+        {
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+          "time": "2024 年 10 月"
+        },
+        {
+          "content": "General idea of this milestone",
+          "time": "2024 年 9 月"
+        }
+      ]
+    }
   },
   {
     "title": "LCPU Getting Started",
     "description": "计算机入门系列课程，补充学校课程涉及不到的知识",
     "image": "/projects/missing.jpg",
-    "link": "https://missing.lcpu.dev/"
+    "link": "https://missing.lcpu.dev/",
+    "personInCharge": [],
+    "roadmap": {
+      "pending": [],
+      "done": []
+    }
   },
   {
     "title": "PKUTeX",
@@ -18,7 +90,12 @@
     "image": "/projects/pkutex-light.svg",
     "imageDark": "/projects/pkutex-dark.svg",
     "link": "https://latex.pku.edu.cn/",
-    "internal": true
+    "internal": true,
+    "personInCharge": [],
+    "roadmap": {
+      "pending": [],
+      "done": []
+    }
   },
   {
     "title": "PKUGit",
@@ -26,20 +103,35 @@
     "image": "/projects/pkugit.svg",
     "imageDark": "/projects/pkugit-dark.svg",
     "link": "https://git.pku.edu.cn/",
-    "internal": true
+    "internal": true,
+    "personInCharge": [],
+    "roadmap": {
+      "pending": [],
+      "done": []
+    }
   },
   {
     "title": "北京大学开源镜像站",
     "description": "立足燕园，解放 TUNA！",
     "image": "/projects/pku-mirrors.svg",
     "imageDark": "/projects/pku-mirrors-dark.svg",
-    "link": "https://mirrors.pku.edu.cn/"
+    "link": "https://mirrors.pku.edu.cn/",
+    "personInCharge": [],
+    "roadmap": {
+      "pending": [],
+      "done": []
+    }
   },
   {
     "title": "Arch Linux LoongArch Patches",
     "description": "为 LoongArch 架构的 Arch Linux 打包",
     "image": "/projects/loongarch.svg",
     "imageDark": "/projects/loongarch-dark-alt.svg",
-    "link": "https://github.com/lcpu-club/loongarch-packages"
+    "link": "https://github.com/lcpu-club/loongarch-packages",
+    "personInCharge": [],
+    "roadmap": {
+      "pending": [],
+      "done": []
+    }
   }
 ]

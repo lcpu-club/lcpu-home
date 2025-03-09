@@ -9,6 +9,6 @@ import NewYearBg from './components/NewYearBg.vue'
 <template>
   <NewYearBg v-if="SiteConfiguration.theme === 'new-year'" />
   <Suspense>
-    <MainComponent z-1 relative />
+    <MainComponent />
   </Suspense>
 </template>

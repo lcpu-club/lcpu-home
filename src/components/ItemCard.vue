@@ -7,12 +7,13 @@ defineProps<{
   item: Item
   tag: string
   tagClass: string
+  disableAnchor: boolean
 }>()
 </script>
 <template>
   <a
-    :href="item.link"
-    :target="item.link.startsWith('/') ? '' : '_blank'"
+    :href="disableAnchor ? 'javascript:void(0)' : item.link"
+    :target="disableAnchor ? '' : item.link.startsWith('/') ? '' : '_blank'"
     rel="noopener noreferrer"
     decoration-none
     rounded-xl
