@@ -72,7 +72,6 @@ watch(
     isCurrentIndexPage.value = isIndexPage
     title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
     Content.value = LoadingView as never
-    pageOutlineData.value = []
     const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
     pageOutlineData.value = module.__headers ?? []
     Content.value = module.default ?? module
@@ -233,6 +232,7 @@ function validateHeaderElements() {
     <PageOutline
       hidden
       xl:block
+      v-if="pageOutlineData.length"
       :page-outline="pageOutlineData"
       :highlighted-slug="highlightedSlug"
     />
