@@ -28,7 +28,7 @@ export const SiteConfiguration: SiteConfiguration = {
     },
   },
   getRouteCategoryTitle: (routeSegment) => RouteTitleRecord[routeSegment],
-  titleSuffix: 'LCPU',
+  titleSuffix: 'TUNA',
   theme: 'normal',
   pureStatic: true,
 }

@@ -1,14 +1,14 @@
 ---
-title: Powered by LCPU 标签
+title: Powered by TUNA 标签
 time: 2024-12-30
-category: LCPU
+category: TUNA
 ---
 
-隆重推出：Powered by LCPU 标签
+隆重推出：Powered by TUNA 标签
 
 ---
 
-![Powered by LCPU](./hero.svg)
+![Powered by TUNA](./hero.svg)
 
 and this little cutie icon!
 

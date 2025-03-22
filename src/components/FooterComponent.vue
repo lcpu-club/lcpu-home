@@ -11,6 +11,6 @@ const year = new Date().getFullYear()
       <a text-unset href="mailto:linuxclub@pku.edu.cn">邮件联系</a>
     </div>
     <span text-xs m-t-2>Site under construction. For preview purposes only.</span>
-    <span>© 2003 - {{ year }}, LCPU</span>
+    <span>© 2003 - {{ year }}, TUNA</span>
   </footer>
 </template>

@@ -8,8 +8,9 @@ import type { Event } from '@/data/event'
 import PageListEntry from '@/components/PageListEntry.vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
 
-import LcpuDark from '../assets/lcpu-dark.svg?no-inline'
-import LcpuLight from '../assets/lcpu-light.svg?no-inline'
+// import LcpuDark from '../assets/lcpu-dark.svg?no-inline'
+// import LcpuLight from '../assets/lcpu-light.svg?no-inline'
+import TunaWhite from '../assets/tuna-white.png?no-inline'
 import GithubMark from '../assets/github-mark.svg?no-inline'
 import GithubMarkWhite from '../assets/github-mark-white.svg?no-inline'
 import BilibiliIcon from '../assets/bilibili.svg?no-inline'
@@ -44,7 +45,7 @@ const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
 const route = useRoute(() =>
   Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0),
 )
-useTitle('北京大学学生 Linux 俱乐部')
+useTitle('清华大学 TUNA 协会')
 
 const colorClasses = {
   red: 'text-red-400 border-red-400',
@@ -77,7 +78,7 @@ if (import.meta.env.SSR) {
       ctx.meta = {}
     }
     ctx.meta.description =
-      '北京大学学生 Linux 俱乐部(Linux Club of Peking University, LCPU)是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
+      '清华大学 TUNA 协会(Linux Club of Peking University, TUNA)是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
     ctx.meta.keywords = [
       'lcpu',
       'linux',
@@ -111,8 +112,8 @@ if (import.meta.env.SSR) {
       ref="mobileScrollViewRef"
     >
       <div flex="~ items-center justify-center col" m-t-24 box-border sm:m-t-0 p-r-6 sm:p-r-0>
-        <AutoDarkImage h-48 :src="LcpuDark" :src-dark="LcpuLight" alt="LCPU 标识" />
-        <h1 m-t-8 m-b-0 text-center>北京大学<br />学生 Linux 俱乐部</h1>
+        <AutoDarkImage h-48 :src="TunaWhite" alt="TUNA 标识" />
+        <h1 m-t-8 m-b-0 text-center>清华大学 TUNA 协会</h1>
         <span m-t-1 text-lg>Linux Club of Peking University</span>
         <div flex="~ items-center gap-6" m-t-8>
           <a href="https://github.com/lcpu-club" h-7>
