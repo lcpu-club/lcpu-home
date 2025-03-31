@@ -7,13 +7,13 @@
     "internal": true
   },
   {
-    "title": "LCPU Getting Started",
+    "title": "TUNA Getting Started",
     "description": "计算机入门系列课程，补充学校课程涉及不到的知识",
     "image": "/projects/missing.jpg",
     "link": "https://missing.lcpu.dev/"
   },
   {
-    "title": "PKUTeX",
+    "title": "THUTeX",
     "description": "在线协作LaTeX平台，助力科研创造",
     "image": "/projects/pkutex-light.svg",
     "imageDark": "/projects/pkutex-dark.svg",
@@ -21,7 +21,7 @@
     "internal": true
   },
   {
-    "title": "PKUGit",
+    "title": "THUGit",
     "description": "便捷 · 安全 · 助力科研开发",
     "image": "/projects/pkugit.svg",
     "imageDark": "/projects/pkugit-dark.svg",
@@ -29,7 +29,7 @@
     "internal": true
   },
   {
-    "title": "北京大学开源镜像站",
+    "title": "清华大学开源镜像站",
     "description": "立足燕园，解放 TUNA！",
     "image": "/projects/pku-mirrors.svg",
     "imageDark": "/projects/pku-mirrors-dark.svg",
