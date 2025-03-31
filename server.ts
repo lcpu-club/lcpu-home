@@ -82,7 +82,7 @@ export async function createServer(
       if (url === '/') {
         template = template.replace(
           `<!--title-prefix--> | <!--title-suffix-->`,
-          `北京大学学生 Linux 俱乐部`,
+          `清华大学 TUNA 协会`,
         )
       }
       const html = template

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import AutoDarkImage from '@/components/AutoDarkImage.vue'
-import LcpuLight from '@/assets/lcpu-light.svg'
-import LcpuDark from '@/assets/lcpu-dark.svg'
+// import LcpuLight from '@/assets/lcpu-light.svg'
+// import LcpuDark from '@/assets/lcpu-dark.svg'
+import TunaWhite from '@/assets/tuna-white.png'
 import allPages from 'virtual:pages.json'
 import { groupByYearMonth } from '@/utils'
 import ExpanderComponent from './ExpanderComponent.vue'
@@ -74,8 +75,8 @@ defineExpose({ toggleSidebar })
         lg:shadow-none
       >
         <a flex="~ items-center gap-2" href="/" class="text-unset! decoration-none">
-          <AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" alt="LCPU 标识" />
-          <span text-xl font-semibold>LCPU</span>
+          <!--<AutoDarkImage h-8 :src="LcpuDark" :src-dark="LcpuLight" alt="TUNA 标识" />-->
+          <AutoDarkImage h-8 :src="TunaWhite" alt="TUNA 标识" />
         </a>
 
         <ExpanderComponent m-t-4 v-for="category in categories" :key="category.title">
