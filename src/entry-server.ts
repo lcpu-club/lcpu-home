@@ -72,7 +72,7 @@ function renderPreloadLink(file: string) {
 
 function renderMeta(ctx: SSRContext, url: string): string {
   const meta = ctx.meta
-  const title = ctx.titlePrefix || '清华大学 TUNA 协会'
+  const title = ctx.titlePrefix || '北京大学学生 Linux 俱乐部'
   const author = ctx.author
   const time = ctx.time
   const sourceUrl = ctx.sourceUrl
@@ -88,7 +88,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
   if (author) {
     results.push(`<meta name="author" content="${author}">`)
   } else {
-    results.push(`<meta name="author" content="清华大学 TUNA 协会">`)
+    results.push(`<meta name="author" content="北京大学学生 Linux 俱乐部">`)
   }
 
   results.push(
@@ -129,7 +129,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
       {
         '@type': 'ListItem',
         item: 'https://lcpu.dev/',
-        name: '清华大学 TUNA 协会',
+        name: '北京大学学生 Linux 俱乐部',
         position: 1,
       },
     ],
@@ -160,14 +160,14 @@ function renderMeta(ctx: SSRContext, url: string): string {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       '@id': 'https://lcpu.dev/',
-      name: '清华大学 TUNA 协会',
+      name: '北京大学学生 Linux 俱乐部',
       description: `${meta['description']}`,
       inLanguage: 'zh-Hans',
       url: 'https://lcpu.dev/',
       keywords: meta['keywords'],
       publisher: {
         '@type': 'Organization',
-        name: '清华大学 TUNA 协会',
+        name: '北京大学学生 Linux 俱乐部',
         url: 'https://lcpu.dev/',
       },
       image: 'https://lcpu.dev/favicon.svg',
@@ -176,10 +176,10 @@ function renderMeta(ctx: SSRContext, url: string): string {
       `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
       `<meta property="og:type" content="website">`,
       `<meta name="twitter:card" content="summary">`,
-      `<link rel="alternate" type="application/atom+xml" href="/posts.atom" title="清华大学 TUNA 协会" />`,
+      `<link rel="alternate" type="application/atom+xml" href="/posts.atom" title="北京大学学生 Linux 俱乐部" />`,
       ...Object.keys(RouteTitleRecord).map(
         (routeBase) =>
-          `<link rel="alternate" type="application/atom+xml" href="/${routeBase}/posts.atom" title="${RouteTitleRecord[routeBase]} | 清华大学 TUNA 协会" />`,
+          `<link rel="alternate" type="application/atom+xml" href="/${routeBase}/posts.atom" title="${RouteTitleRecord[routeBase]} | 北京大学学生 Linux 俱乐部" />`,
       ),
     )
   } else if (sourceUrl && url != '/404.html') {
@@ -191,7 +191,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
       url: `https://lcpu.dev${url}`,
       author: author
         ? { '@type': 'Person', name: author }
-        : { '@type': 'Organization', name: '清华大学 TUNA 协会', url: 'https://lcpu.dev/' },
+        : { '@type': 'Organization', name: '北京大学学生 Linux 俱乐部', url: 'https://lcpu.dev/' },
       description: meta['description'] || undefined,
       headline: meta['headline'] || undefined,
       abstract: meta['abstract'] || undefined,
@@ -222,7 +222,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
     )
   } else if (slugs[0] in RouteTitleRecord) {
     results.push(
-      `<link rel="alternate" type="application/atom+xml" href="/${slugs[0]}/posts.atom" title="${RouteTitleRecord[slugs[0]]} | 清华大学 TUNA 协会" />`,
+      `<link rel="alternate" type="application/atom+xml" href="/${slugs[0]}/posts.atom" title="${RouteTitleRecord[slugs[0]]} | 北京大学学生 Linux 俱乐部" />`,
     )
   }
   return results.join('\n')
