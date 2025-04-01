@@ -63,7 +63,7 @@ LaTeX 可以在线协作，游戏可以一起开黑，Shell 怎么能不上云�
 - 最低配置: 1 x Potato + 4 x Kittens with **TPM 2.1 (Teapot Monitoring Module)**
 - Kernel: 
 
-### 用户评价
+## 用户评价
 
 - “自从用了LLMOS，我的猫学会了写内核模块！”——Linus Catvalds
 - “98%的用户表示编译失败后更快乐了，因为他们终于有时间去约会了！”
