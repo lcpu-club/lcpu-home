@@ -114,3 +114,7 @@ blockquote {
 li {
   --at-apply: line-height-relaxed;
 }
+
+.md-content {
+  overflow-wrap: break-word;
+}
