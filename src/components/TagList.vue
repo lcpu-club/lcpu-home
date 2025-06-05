@@ -31,7 +31,7 @@ const selectedTag = defineModel<string>({
             tag == selectedTag,
         }"
         border="1 gray-200 dark:dark-100 solid"
-        @click="selectedTag = selectedTag === tag ? '' : tag"
+        @click="selectedTag = tag"
       >
         {{ tag }}
       </a>
