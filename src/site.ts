@@ -27,7 +27,12 @@ export const SiteConfiguration: SiteConfiguration = {
       expanderLabel: '更多',
     },
   },
-  getRouteCategoryTitle: (routeSegment) => RouteTitleRecord[routeSegment],
+  getRouteCategoryTitle: (routeSegment) => {
+    if (routeSegment === 'tags') {
+      return '标签'
+    }
+    return RouteTitleRecord[routeSegment]
+  },
   titleSuffix: 'LCPU',
   theme: 'normal',
   pureStatic: true,

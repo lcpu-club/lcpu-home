@@ -25,6 +25,8 @@ import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
 import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
 import PageOutline from '@/components/PageOutline.vue'
+import TagsView from './TagsView.vue'
+import TagList from '@/components/TagList.vue'
 
 let ssrContext: SSRContext | undefined
 if (import.meta.env.SSR) ssrContext = useSSRContext()
@@ -97,6 +99,9 @@ async function resolvePageModule(sourceOrPathname: string): Promise<Module | nev
   const indexPage = testIndexPage(urlSlugs)
   if (indexPage) {
     return PageListView as never
+  }
+  if (urlSlugs.length > 0 && urlSlugs[0] === 'tags') {
+    return TagsView as never
   }
   if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
   const modulePathCandidates = sourceOrPathname.endsWith('.md')
@@ -182,6 +187,19 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
     }
   }
 
+  if (urlSlugs[0] === 'tags') {
+    return {
+      page: {
+        title: '标签',
+        contentUrl: '/tags/',
+        time: '',
+        data: {},
+        sourceUrl: '',
+      },
+      isIndexPage: true,
+    }
+  }
+
   return {
     page: allPages.find((page) => page.contentUrl === pathname) || undefined,
     isIndexPage: false,
@@ -222,6 +240,7 @@ function validateHeaderElements() {
               <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
             </span>
           </div>
+          <TagList :tags="currentPage.tags" v-if="currentPage.tags" m-t-4 />
         </div>
         <Transition mode="out-in">
           <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />

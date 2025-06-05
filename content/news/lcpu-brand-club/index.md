@@ -2,6 +2,7 @@
 title: 喜报 | LCPU 荣获北大品牌社团！
 time: 2024-12-11
 author: 黄翟
+tags: ['社团事务']
 meta:
   image: https://baidu.com
   video: https://google.com

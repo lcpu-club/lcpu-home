@@ -7,4 +7,5 @@ export interface PageData {
   sourceUrl: string
   meta?: { [key: string]: string }
   data: { [key: string]: unknown }
+  tags?: string[]
 }
