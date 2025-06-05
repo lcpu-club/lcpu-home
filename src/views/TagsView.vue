@@ -6,7 +6,7 @@ import { computed, ref } from 'vue'
 import PageListEntry from '@/components/PageListEntry.vue'
 
 const router = useRoute(() => undefined)
-const url = new URL(router.path)
+const url = new URL(router.path, 'https://a.com')
 const currentTag = ref(decodeURIComponent(url.hash.slice(1)) || '')
 
 const allTags = Array.from(new Set(allPages.flatMap((page) => page.tags || [])))
