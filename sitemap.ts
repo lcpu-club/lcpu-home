@@ -62,6 +62,13 @@ for (const category of Object.keys(RouteTitleRecord)) {
   })
 }
 
+links.push({
+  url: `/tags/`,
+  changefreq: 'daily',
+  priority: 0.8,
+  lastmod: new Date(),
+})
+
 console.log(chalk.bgYellow.greenBright('Sitemap:'))
 console.log(links.map((x) => x.url).join('\n'))
 const stream = new SitemapStream({ hostname: 'https://lcpu.dev/' })
