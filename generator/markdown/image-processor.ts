@@ -38,13 +38,17 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
 
 function resolveDimensions(src: string, mdRootPath: string) {
   if (src.startsWith('./')) {
-    const size = sizeOf(mdRootPath + src.slice(1))
-    if (size.height && size.width)
-      return {
-        height: size.height.toString(),
-        width: size.width.toString(),
-      }
-    return null
+    try {
+      const size = sizeOf(mdRootPath + '/' + src.slice(2))
+      if (size.height && size.width)
+        return {
+          height: size.height.toString(),
+          width: size.width.toString(),
+        }
+      return null
+    } catch (e) {
+      return null
+    }
   } else if (src.startsWith('/')) {
     const size = sizeOf('public' + src)
     if (size.height && size.width)

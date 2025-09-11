@@ -137,11 +137,11 @@ tags: ['招新']
     *   百度贴吧“北京大学吧” 小吧主
     *   兴趣爱好: 烹饪、Roguelike Game、网络文学
 
-![](yyb_1.jpg)  
+![](./yyb_1.jpg)  
 
-![](yyb_2.jpg)  
+![](./yyb_2.jpg)  
 
-![](yyb_3.jpg)  
+![](./yyb_3.jpg)  
   
 
 ### 外联部
