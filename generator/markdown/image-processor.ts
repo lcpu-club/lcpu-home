@@ -47,6 +47,7 @@ function resolveDimensions(src: string, mdRootPath: string) {
         }
       return null
     } catch (e) {
+      console.warn(`Failed to get image size for ${src}:`, e)
       return null
     }
   } else if (src.startsWith('/')) {
