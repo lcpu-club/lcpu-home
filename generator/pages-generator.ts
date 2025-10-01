@@ -62,7 +62,10 @@ export default function pagesGenerator(): PluginOption {
     handleHotUpdate({ server, file }) {
       if (file.includes('content/')) {
         const thisModule = server.moduleGraph.getModuleById(resolvedVirtualModuleId)
-        if (thisModule) return [thisModule]
+        if (thisModule) {
+          server.moduleGraph.invalidateModule(thisModule)
+          return [thisModule]
+        }
       }
     },
   }

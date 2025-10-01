@@ -6,7 +6,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import PagesGenerator from './generator/pages-generator'
 import MarkdownContentGenerator from './generator/content-generator'
-import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,6 +23,18 @@ export default defineConfig({
     vueDevTools(),
     UnoCSS(),
     PagesGenerator(),
+    {
+      name: 'markdown-full-reload',
+      handleHotUpdate({ file, server }) {
+        if (file.endsWith('.md')) {
+          server.ws.send({
+            type: 'full-reload',
+            path: '*'
+          })
+          return []
+        }
+      }
+    }
   ],
   resolve: {
     alias: {
