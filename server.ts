@@ -19,8 +19,9 @@ export async function createServer(
 
   const indexProd = isProd ? fs.readFileSync(resolve('dist/static/index.html'), 'utf-8') : ''
 
-  const manifest = isProd
-    ? JSON.parse(fs.readFileSync(resolve('dist/static/.vite/ssr-manifest.json'), 'utf-8'))
+  const manifestPath = resolve('dist/static/.vite/ssr-manifest.json')
+  const manifest = isProd && fs.existsSync(manifestPath)
+    ? JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
     : {}
 
   const app = express()
