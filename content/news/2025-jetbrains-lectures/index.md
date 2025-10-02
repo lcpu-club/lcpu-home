@@ -79,9 +79,10 @@ JetBrains 不仅打造了 IntelliJ IDEA、PyCharm 等知名 IDE，也自主研�
 *   **刘辰皆**
     
     刘辰皆是 JetBrains 教育项目中国区负责人，在培训管理及产品市场推广具有浓厚兴趣，并始终致力于 JetBrains 为中国高校提供有效的教学支持与持续推动 JetBrains 教育方案在中国教育市场的落地及改进，让同学们在编程工具学习中更轻松上手，更便利使用。
-    
 
-  
-
-
-<p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">文案: JetBrains 霍子晗</span></span></p><p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">排版: 霍子晗</span></span></p><p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">问卷: 霍子晗</span></span></p><p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">图片: JetBrains</span></span></p><p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">审阅: 刘浩槟 邢朕玮 戴嘉震 黄熙鸣</span></span></p><p data-tool="mdnice编辑器" style="font-size: 16px;padding-top: 8px;padding-bottom: 8px;margin: 0px;line-height: 1em;color: black;text-align: center;"><span leaf=""><span textstyle="" style="font-size: 12px;color: rgb(136, 136, 136);">感谢 JetBrains 公司为本次活动提供周边支持。</span></span></p></section><p style="display: none;"><mp-style-type data-value="3"></mp-style-type></p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">文案: JetBrains 霍子晗</p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">排版: 霍子晗</p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">问卷: 霍子晗</p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">图片: JetBrains</p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">审阅: 刘浩槟 邢朕玮 戴嘉震 黄熙鸣</p>
+<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">感谢 JetBrains 公司为本次活动提供周边支持。</p>
