@@ -10,7 +10,7 @@ time: 2025-08-28
 
 1. 原有的 IAAA 账号已在 CLab 上注册登录。如从未使用过 CLab ，使用新的 IAAA 账号登入即可；
 
-2. 新的 IAAA 账号状态为“在校”； 
+2. 新的 IAAA 账号状态为“在校”；
 
 3. 新的 IAAA 未登录过 CLab 。如已登录过 CLab ，请使用新学号的 pku 邮箱发送邮件至 linuxclub@pku.edu.cn ，主题为： `[CLab] 确认删除本邮箱关联的 CLab 账号` 。
 

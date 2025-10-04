@@ -35,6 +35,7 @@ _Italic Text_
 
 - Unordered List Item 1
 - Unordered List Item 2
+
 1. Ordered List Item 1
 2. Ordered List Item 2
 
@@ -60,9 +61,9 @@ def hello_world():
 > This is a blockquote.
 
 | Left-Aligned | Center-Aligned | Right-Aligned |
-|:------------ |:--------------:| -------------:|
-| Left         | Center         | Right         |
-| Data         | Data           | Data          |
+| :----------- | :------------: | ------------: |
+| Left         |     Center     |         Right |
+| Data         |      Data      |          Data |
 
 **Escaping Characters:**  
 \*This is not italic\*
@@ -94,7 +95,7 @@ export function createApp() {
 
 ::: expander 显示代码
 
-```md
+````md
 ```js
 export function createApp() {
   const app = createSSRApp(App) // [\!code highlight]
@@ -108,7 +109,9 @@ export function createApp() {
   return { app, router }
 }
 ```
-```
+````
+
+````
 
 :::
 
@@ -159,7 +162,7 @@ Desert you~
 
 ```csharp
 Console.WriteLine("Got rickrolled lol {{ 1 + 1 }}");
-```
+````
 
 :::
 
