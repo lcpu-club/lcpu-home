@@ -111,6 +111,8 @@ export function createApp() {
 ```
 ````
 
+````
+
 :::
 
 ### Math `(markdown-it-mathjax3)`
@@ -160,7 +162,7 @@ Desert you~
 
 ```csharp
 Console.WriteLine("Got rickrolled lol {{ 1 + 1 }}");
-```
+````
 
 :::
 

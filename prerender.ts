@@ -14,7 +14,7 @@ console.log(chalk.bgYellow.greenBright('Prerender:'))
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
-const toAbsolute = (p) => path.resolve(__dirname, p)
+const toAbsolute = (p: string) => path.resolve(__dirname, p)
 
 const manifest = JSON.parse(
   fs.readFileSync(toAbsolute('dist/static/.vite/ssr-manifest.json'), 'utf-8'),
@@ -65,7 +65,7 @@ for (const url of routesToPrerender) {
 // done, delete .vite directory including ssr manifest
 fs.rmSync(toAbsolute('dist/static/.vite'), { recursive: true })
 
-function customWriteFileSync(filePath, content) {
+function customWriteFileSync(filePath: string, content: string) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
   fs.writeFileSync(filePath, content)
 }

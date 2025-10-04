@@ -45,5 +45,14 @@ export default function markdownContentGenerator(): PluginOption {
         return `<template><div class="md-content">${templateContent}</div></template>${sfcBlocks.scriptSetup?.content}${sfcBlocks.script?.content || ''}${sfcBlocks.styles.map((x) => x.content) || ''}${sfcBlocks.customBlocks.map((x) => x.content).join('')}`
       }
     },
+    handleHotUpdate({ server, file }) {
+      if (file.includes('content/') && file.endsWith('.md')) {
+        const thisModule = server.moduleGraph.getModuleById(file)
+        if (thisModule) {
+          server.reloadModule(thisModule)
+          return [thisModule]
+        }
+      }
+    },
   }
 }

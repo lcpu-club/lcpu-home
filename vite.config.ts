@@ -6,7 +6,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
 import PagesGenerator from './generator/pages-generator'
 import MarkdownContentGenerator from './generator/content-generator'
-import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({

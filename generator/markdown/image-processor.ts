@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it/index.js'
-import sizeOf from 'image-size'
+import probe from 'probe-image-size'
+import fs from 'node:fs'
 
 export default function markdownItImageProcessor(md: MarkdownIt) {
   const defaultRender =
@@ -39,24 +40,34 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
 function resolveDimensions(src: string, mdRootPath: string) {
   if (src.startsWith('./')) {
     try {
-      const size = sizeOf(mdRootPath + '/' + src.slice(2))
-      if (size.height && size.width)
+      const filePath = mdRootPath + '/' + src.slice(2)
+      const data = fs.readFileSync(filePath)
+      const size = probe.sync(data)
+      if (size && size.height && size.width)
         return {
           height: size.height.toString(),
           width: size.width.toString(),
         }
       return null
     } catch (e) {
+      console.warn(`Failed to get image size for ${src}:`, e)
       return null
     }
   } else if (src.startsWith('/')) {
-    const size = sizeOf('public' + src)
-    if (size.height && size.width)
-      return {
-        height: size.height.toString(),
-        width: size.width.toString(),
-      }
-    return null
+    try {
+      const filePath = 'public' + src
+      const data = fs.readFileSync(filePath)
+      const size = probe.sync(data)
+      if (size && size.height && size.width)
+        return {
+          height: size.height.toString(),
+          width: size.width.toString(),
+        }
+      return null
+    } catch (e) {
+      console.warn(`Failed to get image size for ${src}:`, e)
+      return null
+    }
   } else {
     return null
   }

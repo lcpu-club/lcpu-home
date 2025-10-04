@@ -13,7 +13,7 @@ LLMOS 深度融合了 CLab 平台的基础算力与来自 LCPU AP 成员的专�
 
 ## 核心亮点
 
-### No More ***Linux Update***
+### No More **_Linux Update_**
 
 智能识别 CPU 占用率，在不忙的时候让电脑持续发光发热，及时打上最新的 Out of Tree 补丁让你体验到最新的 Linux 技术；同时，AI 会智能判断用户交互，避免在工作时间弹出恼人的 Linux Update。
 
@@ -24,16 +24,16 @@ LLMOS 深度融合了 CLab 平台的基础算力与来自 LCPU AP 成员的专�
 ```
 ./configure -prefix=/var/www/html --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --with-pcre  --lock-path=/var/lock/nginx.lock --pid-path=/var/run/nginx.pid --with-http_ssl_module --with-http_image_filter_module=dynamic --modules-path=/etc/nginx/modules --with-http_v2_module --with-stream=dynamic --with-http_addition_module --with-http_mp4_module --with-mail --with-mail_ssl_module --with-openssl=/usr/include/openssl/
 
-make -f objs/Makefile 
-make[1]: Entering directory '/root/nginx' 
-cd /usr/include/openssl/ \ 
-&& if [ -f Makefile ]; then make clean; fi \ 
-&& ./config --prefix=/usr/include/openssl/.openssl no-shared no-threads \ 
-&& make \ 
-&& make install_sw LIBDIR=lib 
-/bin/sh: 3: ./config: not found 
-make[1]: *** [objs/Makefile:1705: /usr/include/openssl/.openssl/include/openssl/ssl.h] Error 127 
-make[1]: Leaving directory '/root/nginx' 
+make -f objs/Makefile
+make[1]: Entering directory '/root/nginx'
+cd /usr/include/openssl/ \
+&& if [ -f Makefile ]; then make clean; fi \
+&& ./config --prefix=/usr/include/openssl/.openssl no-shared no-threads \
+&& make \
+&& make install_sw LIBDIR=lib
+/bin/sh: 3: ./config: not found
+make[1]: *** [objs/Makefile:1705: /usr/include/openssl/.openssl/include/openssl/ssl.h] Error 127
+make[1]: Leaving directory '/root/nginx'
 make: *** [Makefile:10: build] Error 2
 ```
 
@@ -61,7 +61,7 @@ LaTeX 可以在线协作，游戏可以一起开黑，Shell 怎么能不上云�
 
 - 支持架构: `x86_64`, `arm`, `Loongarch`, `LCPU 9¾`
 - 最低配置: 1 x Potato + 4 x Kittens with **TPM 2.1 (Teapot Monitoring Module)**
-- Kernel: 
+- Kernel:
 
 ## 用户评价
 
