@@ -23,18 +23,6 @@ export default defineConfig({
     vueDevTools(),
     UnoCSS(),
     PagesGenerator(),
-    {
-      name: 'markdown-full-reload',
-      handleHotUpdate({ file, server }) {
-        if (file.endsWith('.md')) {
-          server.ws.send({
-            type: 'full-reload',
-            path: '*'
-          })
-          return []
-        }
-      }
-    }
   ],
   resolve: {
     alias: {

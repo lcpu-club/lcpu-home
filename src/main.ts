@@ -3,7 +3,7 @@ import '@/assets/base.css'
 import '@/assets/codeblocks.css'
 import '@/assets/containers.css'
 
-import { createSSRApp } from 'vue'
+import { createSSRApp, createApp as createSPAApp } from 'vue'
 import App from './App.vue'
 import { createRouter, RouterSymbol } from './router/router'
 import ExpanderComponent from './components/ExpanderComponent.vue'
@@ -14,7 +14,7 @@ const pageModules = {
 }
 
 export function createApp() {
-  const app = createSSRApp(App)
+  const app = import.meta.env.DEV ? createSPAApp(App) : createSSRApp(App)
   const router = createRouter()
 
   app.provide(RouterSymbol, router)
