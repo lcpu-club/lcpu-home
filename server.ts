@@ -12,15 +12,16 @@ const isTest = process.env.VITEST
 export async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === 'production',
-  hmrPort,
+  hmrPort: number | undefined = undefined,
 ) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url))
   const resolve = (p: string) => path.resolve(__dirname, p)
 
   const indexProd = isProd ? fs.readFileSync(resolve('dist/static/index.html'), 'utf-8') : ''
 
-  const manifest = isProd
-    ? JSON.parse(fs.readFileSync(resolve('dist/static/.vite/ssr-manifest.json'), 'utf-8'))
+  const manifestPath = resolve('dist/static/.vite/ssr-manifest.json')
+  const manifest = isProd && fs.existsSync(manifestPath)
+    ? JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
     : {}
 
   const app = express()
@@ -94,10 +95,11 @@ export async function createServer(
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
+      const error = e as Error
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      vite && vite.ssrFixStacktrace(e)
-      console.log(e.stack)
-      res.status(500).end(e.stack)
+      vite && vite.ssrFixStacktrace(error)
+      console.log(error.stack)
+      res.status(500).end(error.stack)
     }
   })
   // @ts-expect-error vite could be undefined in prod
