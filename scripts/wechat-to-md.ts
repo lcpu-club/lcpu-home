@@ -81,31 +81,13 @@ function extractArticleContent(html: string): {
     '未命名文章'
 
   // 提取发布时间
-  const publishTimeElement = doc.querySelector('#publish_time')
+  const publishTimeMatch = html.match(/var createTime = '(\d{4})-(\d{2})-(\d{2}) \d{2}:\d{2}';/)
   let publishTime = ''
-
-  if (publishTimeElement) {
-    const timeText = publishTimeElement.textContent?.trim() || ''
-    console.log(`发现时间文本: ${publishTimeElement.outerHTML}`)
-    // 格式: "2025年09月30日 08:00" -> "2025-09-30"
-    const match = timeText.match(/(\d{4})年(\d{2})月(\d{2})日/)
-    if (match) {
-      publishTime = `${match[1]}-${match[2]}-${match[3]}`
-      console.log(`✅ 解析后的发布时间: ${publishTime}`)
-    } else {
-      console.warn(`⚠️  时间格式不匹配: ${timeText}`)
-    }
+  if (publishTimeMatch) {
+    publishTime = `${publishTimeMatch[1]}-${publishTimeMatch[2]}-${publishTimeMatch[3]}`
+    console.log(`🕒 发现发布时间: ${publishTime}`)
   } else {
-    // 尝试通过其他方式提取时间
-    const metaInfo = doc.querySelector('#meta_content_hide_info')
-    if (metaInfo) {
-      const timeText = metaInfo.textContent?.trim() || ''
-      const match = timeText.match(/(\d{4})年(\d{2})月(\d{2})日/)
-      if (match) {
-        publishTime = `${match[1]}-${match[2]}-${match[3]}`
-        console.log(`提取到时间: ${publishTime}`)
-      }
-    }
+    console.log('🕒 未能提取发布时间，稍后可手动输入')
   }
 
   // 提取正文内容
