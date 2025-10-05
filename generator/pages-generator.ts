@@ -9,7 +9,7 @@ export function generatePages() {
   return fg
     .sync(`./content/**/index.md`)
     .map((entry) => {
-      return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
+      return { entry, frontmatter: matter.read(entry) }
     })
     .map((file): PageData | undefined => {
       const { entry, frontmatter } = file
@@ -34,7 +34,7 @@ export function generatePages() {
         data,
         meta,
         category,
-        excerpt: frontmatter.excerpt,
+        excerpt: frontmatter.data.excerpt,
         contentUrl: `/${slug}/`,
         sourceUrl: `/${path}/index.md`,
         tags,
