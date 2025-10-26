@@ -9,7 +9,7 @@ export function generatePages() {
   return fg
     .sync(`./content/**/index.md`)
     .map((entry) => {
-      return { entry, frontmatter: matter.read(entry) }
+      return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
     })
     .map((file): PageData | undefined => {
       const { entry, frontmatter } = file
