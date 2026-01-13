@@ -7,6 +7,7 @@ import { createSSRApp, createApp as createSPAApp } from 'vue'
 import App from './App.vue'
 import { createRouter, RouterSymbol } from './router/router'
 import ExpanderComponent from './components/ExpanderComponent.vue'
+import ImageBox from './components/ImageBox.vue'
 
 const pageModules = {
   ...import.meta.glob('../content/**/index.md'),
@@ -20,5 +21,6 @@ export function createApp() {
   app.provide(RouterSymbol, router)
   app.provide('pageModules', pageModules)
   app.component('ExpanderComponent', ExpanderComponent)
+  app.component('ImageBox', ImageBox)
   return { app, router }
 }

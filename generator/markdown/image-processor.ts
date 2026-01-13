@@ -14,6 +14,8 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
     if (!token.attrs) return defaultRender(tokens, idx, options, env, self)
     const srcIndex = token.attrIndex('src')
     const src = token.attrs[srcIndex][1]
+    const altIndex = token.attrIndex('alt')
+    const alt = altIndex >= 0 ? token.attrs[altIndex][1] : ''
 
     const dimensions = resolveDimensions(src, env.mdRootPath)
 
@@ -22,18 +24,32 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
       const heightIndex = token.attrIndex('height')
 
       if (widthIndex >= 0) {
-        token.attrs[widthIndex][1] = dimensions.width
+        token.attrs[widthIndex][1] = dimensions.width.toString()
       } else {
-        token.attrs.push(['width', dimensions.width])
+        token.attrs.push(['width', dimensions.width.toString()])
       }
 
       if (heightIndex >= 0) {
-        token.attrs[heightIndex][1] = dimensions.height
+        token.attrs[heightIndex][1] = dimensions.height.toString()
       } else {
-        token.attrs.push(['height', dimensions.height])
+        token.attrs.push(['height', dimensions.height.toString()])
       }
     }
-    return defaultRender(tokens, idx, options, env, self)
+
+    // Add loading="lazy" attribute for lazy loading
+    const loadingIndex = token.attrIndex('loading')
+    if (loadingIndex < 0) {
+      token.attrs.push(['loading', 'lazy'])
+    }
+
+    // Render the default img tag first
+    const imgTag = defaultRender(tokens, idx, options, env, self)
+
+    // Use alt text as caption if it exists, and escape it for HTML attributes
+    const caption = alt ? alt.replace(/"/g, '&quot;').replace(/'/g, '&#39;') : ''
+
+    // Wrap it in ImageBox component
+    return `<ImageBox src="${src}" alt="${alt}" caption="${caption}" width="${dimensions?.width || ''}" height="${dimensions?.height || ''}">${imgTag}</ImageBox>`
   }
 }
 

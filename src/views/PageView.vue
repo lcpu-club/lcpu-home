@@ -223,14 +223,14 @@ function validateHeaderElements() {
 <template>
   <div lg:grid class="lg:grid-cols-[auto_1fr_auto]" overflow-auto>
     <SidebarComponent ref="sidebar-ref" :current-title="currentPage?.title" />
-    <div overflow-auto box-border ref="document-wrapper">
-      <div p-t-12 p-x-6 lg:p-x-12>
+    <div overflow-auto box-border ref="document-wrapper" flex="~ col" min-h-screen>
+      <div p-t-12 p-x-6 lg:p-x-12 flex="~ col" flex-grow>
         <TopbarComponent
           :toggleSidebarFn="sidebarRef?.toggleSidebar"
           :title="currentPage?.title ?? pageCategory"
           :show-title="showTitle"
         />
-        <div v-if="currentPage" m-b-8 max-w-800px m-x-auto m-t-4 lg:m-t-0>
+        <div v-if="currentPage" m-b-4 max-w-800px m-t-4 lg:m-t-0>
           <h1 m-0>{{ currentPage.title }}</h1>
           <div flex="~ items-center gap-1" m-t-2 text-gray-500 dark:text-truegray-400>
             <span v-if="!isCurrentIndexPage">{{ dateString(currentPage.time) }}</span>
@@ -240,20 +240,22 @@ function validateHeaderElements() {
               <span v-if="currentPage.data[key]">{{ currentPage.data[key] }}</span>
             </span>
           </div>
-          <TagList :tags="currentPage.tags" v-if="currentPage.tags" m-t-4 />
+          <TagList :tags="currentPage.tags" v-if="currentPage.tags?.length" m-t-4 />
         </div>
-        <Transition mode="out-in">
-          <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />
-        </Transition>
+        <div flex-grow>
+          <Transition mode="out-in">
+            <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />
+          </Transition>
+        </div>
         <FooterComponent p-y-12 max-w-800px m-x-auto />
       </div>
     </div>
     <PageOutline
       hidden
       xl:block
-      v-if="pageOutlineData.length"
       :page-outline="pageOutlineData"
       :highlighted-slug="highlightedSlug"
+      :class="{ 'opacity-0 pointer-events-none': !pageOutlineData.length }"
     />
   </div>
 </template>

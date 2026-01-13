@@ -34,7 +34,7 @@ export function generatePages() {
         data,
         meta,
         category,
-        excerpt: frontmatter.excerpt,
+        excerpt: frontmatter.data.excerpt,
         contentUrl: `/${slug}/`,
         sourceUrl: `/${path}/index.md`,
         tags,
