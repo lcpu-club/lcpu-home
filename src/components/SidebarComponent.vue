@@ -103,8 +103,8 @@ defineExpose({ toggleSidebar })
               p-y-3
             >
               <span text-xs text-gray-500 dark:text-truegray-400
-                >{{ pageGroup.year }} 年 {{ pageGroup.month }} 月
-              </span>
+                >{{ pageGroup.year }} 年 {{ pageGroup.month }} 月</span
+              >
               <a
                 v-for="page in pageGroup.items"
                 @click="toggleSidebar()"
