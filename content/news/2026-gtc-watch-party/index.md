@@ -60,9 +60,7 @@ GTC 2026 来了！黄仁勋将在圣何塞 SAP Center 登台，面向来自190�
 
 ## 抽奖步骤（约五分钟）
 
-1.  3月17日（含）前，通过以下链接报名 NVIDIA GTC、在 GTC 规划页面将 S81580 加入 GTC Calendar 并截图提交。 [GTC 报名链接](https://www.nvidia.cn/gtc/?ncid=ref-inpa-249-prsp-zh-cn-4-l7)（或扫描如下二维码）
-
-   ![](./image_5.png)
+1.  3月17日（含）前，通过以下链接报名 NVIDIA GTC、在 GTC 规划页面将 S81580 加入 GTC Calendar 并截图提交。 [GTC 报名链接](https://www.nvidia.cn/gtc/?ncid=ref-inpa-249-prsp-zh-cn-4-l7)
 
 2. 填写报名问卷
 

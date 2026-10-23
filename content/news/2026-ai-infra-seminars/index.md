@@ -134,7 +134,7 @@ Weiming HPC Training Camp × LCPU AI Infra Seminars 即将开始。
 
 最后，特别感谢腾讯与宽德投资对本次活动的赞助和大力支持！
 
-![](./image_2.jpg)
+[填写 Weiming HPC Training Camp × LCPU AI Infra Seminars 报名问卷](https://www.feishu.cn/share/base/form/shrcn8p79S5hUphdZICTHgOafiu?share_link_type=qrcode&ccm_open_type=form_qrcode)
 
 ---
 

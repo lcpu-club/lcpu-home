@@ -23,7 +23,7 @@ meta:
 - 地点: 北京大学二教地下极客实验室(公众号后台回复**极客实验室**获取路线图)
 - 线上参与: 活动开始前将在 [Install Party 活动页面](https://old.lcpu.dev/inpart25f) 及群内更新直播地址及现场演示文稿
 
-![即刻扫码报名参与活动](./image_2.jpg)
+[填写 2025 秋季 Install Party 报名问卷](https://f.wps.cn/ksform/w/write/zmYBq7aU)
 
 ## 现场活动
 

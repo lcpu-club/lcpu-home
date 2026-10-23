@@ -39,11 +39,11 @@ printf("Linuxer的衣柜里还差一件社衫");
 
 :::
 
-![1号订购链接](./image_13.png)
+[订购 1 号社衫](https://h5.m.goofish.com/item?forceFlush=1&id=1055799103777)
 
 ![2号设计稿](./image_14.jpg)
 
-![2号订购链接](./image_15.png)
+[订购 2 号社衫](https://h5.m.goofish.com/item?forceFlush=1&id=1057567689777)
 
 ::: gallery 3号设计稿（多种颜色）
 
@@ -55,11 +55,11 @@ printf("Linuxer的衣柜里还差一件社衫");
 
 :::
 
-![3号订购链接](./image_19.png)
+[订购 3 号社衫](https://h5.m.goofish.com/item?forceFlush=1&id=1055799895814)
 
 ![4号设计稿](./image_20.jpg)
 
-![4号订购链接](./image_21.png)
+[订购 4 号社衫](https://h5.m.goofish.com/item?forceFlush=1&id=1058495276216)
 
 ::: gallery 5号设计稿（多种颜色）
 
@@ -71,7 +71,7 @@ printf("Linuxer的衣柜里还差一件社衫");
 
 :::
 
-![5号订购链接](./image_25.png)
+[订购 5 号社衫](https://h5.m.goofish.com/item?forceFlush=1&id=1055800167907)
 
 ## 尺码信息
 
@@ -91,7 +91,7 @@ printf("Linuxer的衣柜里还差一件社衫");
 
 - **预订方式**
 
-  使用闲鱼扫描对应社衫设计二维码，进行下单；下单后将预订信息和闲鱼订单号填写至下方问卷中，方便工作人员统计款式和数量
+  点击对应社衫设计的订购链接，在闲鱼下单；下单后将预订信息和闲鱼订单号填写至下方问卷中，方便工作人员统计款式和数量
 
 - **价格**
 
@@ -109,4 +109,4 @@ printf("Linuxer的衣柜里还差一件社衫");
 
   社衫将于学期末在校内统一发放
 
-![征订统计问卷](./image_36.jpg)
+[填写社衫征订统计问卷](https://v.wjx.cn/vm/hvjxLhf.aspx)

@@ -24,7 +24,7 @@ summary: Getting Started 入门课程开讲，从搜索、知识获取与基础�
 
 经过几个月的准备，这个系列课程的第一部《入门篇》初步筹备完成，将于 2024 年 11 月 3 日起开始第一讲《简介》与第二讲《搜索与知识获取》的分享。课程主页为 [LCPU Getting Started](https://missing.lcpu.dev)，欢迎大家提前阅读。
 
-**第一讲时间为 11 月 3 日 18:40 至 20:30，地点为二教 527，请扫描文末二维码报名参加。**
+**第一讲时间为 11 月 3 日 18:40 至 20:30，地点为二教 527，请填写文末问卷报名参加。**
 
 ## 课程安排
 
@@ -68,6 +68,6 @@ summary: Getting Started 入门课程开讲，从搜索、知识获取与基础�
 
 ## 报名参与
 
-请扫描二维码报名，并加入活动通知群以便了解活动动态。群内请备注姓名和学院。如有疑问，可以发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn) 与我们联系。
+请填写下方问卷报名，并加入活动通知群以便了解活动动态。群内请备注姓名和学院。如有疑问，可以发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn) 与我们联系。
 
-![活动报名二维码](./image_2.png)
+[填写 Getting Started 01 活动报名问卷](https://lcpu.dev/s/2024-fall-getting-started-01-form)
