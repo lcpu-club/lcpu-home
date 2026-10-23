@@ -32,6 +32,8 @@ export default defineConfig({
     },
   },
   build: {
+    // Keep asset URLs identical between the client and prerender builds.
+    ssrEmitAssets: true,
     minify: true,
     cssMinify: true,
   },

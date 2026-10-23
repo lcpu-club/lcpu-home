@@ -1,12 +1,14 @@
 import { Feed } from 'feed'
-import { generatePages } from './generator/pages-generator'
+import type { PageData } from './src/data/pagedata'
 import { RouteTitleRecord } from './src/site'
 import { writeFileSync } from 'fs'
 import chalk from 'chalk'
 
 console.log(chalk.bgYellow.greenBright('Generating feed:'))
 
-const pages = generatePages()
+const serverEntry = './dist/server/entry-server.js'
+const { pages: builtPages }: { pages: PageData[] } = await import(serverEntry)
+const pages = builtPages
   .filter((page) => page.category && page.category in RouteTitleRecord)
   .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
 

@@ -3,6 +3,7 @@ import fg from 'fast-glob'
 import matter from 'gray-matter'
 import type { PageData } from '../src/data/pagedata.ts'
 import { dirname, relative, resolve } from 'node:path'
+import { statSync } from 'node:fs'
 import { RouteTitleRecord } from '../src/site.ts'
 
 export function generatePages(contentRoot = './content') {
@@ -60,9 +61,52 @@ function getSummary(text: string): string {
   return characters.length > 120 ? characters.slice(0, 119).join('') + '…' : plainText
 }
 
+/** Import local covers so Vite owns optimization, hashing and URL generation. */
+export function generatePagesModule(
+  pages: PageData[],
+  contentRoot = './content',
+  publicDir = './public',
+) {
+  const imports: string[] = []
+  const entries = pages.map((page, index) => {
+    const image = page.meta?.image
+    if (!image) return JSON.stringify(page)
+    if (typeof image !== 'string') throw new Error(`Invalid meta.image in ${page.sourceUrl}`)
+    if (/^(?:https?:)?\/\//i.test(image)) {
+      return JSON.stringify({
+        ...page,
+        meta: { ...page.meta, image: new URL(image, 'https://lcpu.dev').href },
+      })
+    }
+    if (/^[a-z][a-z\d+.-]*:/i.test(image))
+      throw new Error(`Unsupported meta.image URL in ${page.sourceUrl}: ${image}`)
+    const suffixStart = image.search(/[?#]/)
+    const pathname = suffixStart < 0 ? image : image.slice(0, suffixStart)
+    const suffix = suffixStart < 0 ? '' : image.slice(suffixStart)
+    const file = image.startsWith('/')
+      ? resolve(publicDir, '.' + decodeURIComponent(pathname))
+      : resolve(dirname(resolve(contentRoot, '.' + page.sourceUrl)), decodeURIComponent(pathname))
+    try {
+      if (!statSync(file).isFile()) throw new Error('Not a file')
+    } catch {
+      throw new Error(`Missing meta.image in ${page.sourceUrl}: ${image}`)
+    }
+    if (image.startsWith('/')) {
+      return JSON.stringify({
+        ...page,
+        meta: { ...page.meta, image: new URL(image, 'https://lcpu.dev').href },
+      })
+    }
+    const query = /\.(?:jpe?g|png|webp)$/i.test(file) ? '?article-image' : '?url&no-inline'
+    imports.push(`import cover${index} from ${JSON.stringify(file + query)}`)
+    return `{...${JSON.stringify(page)},meta:{...${JSON.stringify(page.meta)},image:new URL(cover${index}+${JSON.stringify(suffix)},'https://lcpu.dev').href}}`
+  })
+  return `${imports.join('\n')}\nexport default [${entries.join(',')}]`
+}
+
 export default function pagesGenerator(): PluginOption {
   const virtualModuleId = 'virtual:pages.json'
-  const resolvedVirtualModuleId = '\0' + virtualModuleId
+  const resolvedVirtualModuleId = '\0virtual:pages.js'
   const modulesId = 'virtual:page-modules'
   const resolvedModulesId = '\0' + modulesId
 
@@ -88,7 +132,7 @@ export default function pagesGenerator(): PluginOption {
           .join(',')}}`
       }
       if (id === resolvedVirtualModuleId) {
-        return JSON.stringify(generatePages())
+        return generatePagesModule(generatePages())
       }
     },
     handleHotUpdate({ server, file }) {

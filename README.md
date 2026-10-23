@@ -28,3 +28,21 @@ Powered by Vue 3 and Vite.
 
 - [ ] Referencing frontmatter in markdown
 - [ ] Github flavored containers (no plan yet)
+
+## Article cover images
+
+Set `meta.image` in article frontmatter to an image relative to that article:
+
+```yaml
+meta:
+  image: ./cover.jpg
+```
+
+Local covers go through Vite's asset pipeline, including the article raster optimizer,
+with hashed filenames and absolute URLs in Open Graph, Twitter, structured data, and
+Atom feeds. Covers are emitted even when absent from the article body. SVGs and other
+assets remain separate files rather than inline data URLs. Missing local covers fail
+the build. Absolute HTTP(S) URLs are retained; `/cover.jpg` refers to `public/cover.jpg`.
+
+Run `bun run build` to generate both pages and feeds. `bun run build:feed` uses the
+metadata from the latest server build, so rebuild the bundles after changing covers.

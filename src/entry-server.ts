@@ -4,6 +4,9 @@ import { renderToString, type SSRContext } from 'vue/server-renderer'
 import { createApp } from './main'
 import { renderMeta } from './metadata'
 
+// Feed generation consumes the same built metadata as prerendering.
+export { default as pages } from 'virtual:pages.json'
+
 export async function render(url: string, manifest: { [key: string]: string[] }) {
   const { app, router } = createApp()
 
