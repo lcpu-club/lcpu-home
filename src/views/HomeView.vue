@@ -25,7 +25,11 @@ import type { PageData } from '@/data/pagedata'
 const projects = rawProjectData as Project[]
 const events = rawEventData as Event[]
 const eventItems = events.map((event) => {
-  return { ...event, startDate: new Date(event.startDate), endDate: new Date(event.endDate) }
+  return {
+    ...event,
+    startDate: event.startDate ? new Date(event.startDate) : undefined,
+    endDate: event.endDate ? new Date(event.endDate) : undefined,
+  }
 })
 const categories: { title: string; route: string; pages: PageData[] }[] = []
 
@@ -150,14 +154,22 @@ if (import.meta.env.SSR) {
             :key="item.title"
             :item="item"
             :tag="
-              nowDate < item.startDate ? '未开始' : nowDate < item.endDate ? '进行中' : '已结束'
+              !item.startDate || !item.endDate
+                ? ''
+                : nowDate < item.startDate
+                  ? '未开始'
+                  : nowDate < item.endDate
+                    ? '进行中'
+                    : '已结束'
             "
             :tagClass="
-              nowDate < item.startDate
-                ? colorClasses['gray']
-                : nowDate < item.endDate
-                  ? colorClasses['green']
-                  : colorClasses['red']
+              !item.startDate || !item.endDate
+                ? ''
+                : nowDate < item.startDate
+                  ? colorClasses['gray']
+                  : nowDate < item.endDate
+                    ? colorClasses['green']
+                    : colorClasses['red']
             "
           />
         </div>

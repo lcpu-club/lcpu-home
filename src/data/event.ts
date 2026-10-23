@@ -4,6 +4,6 @@ export interface Event {
   image?: string
   imageDark?: string
   link: string
-  startDate: string
-  endDate: string
+  startDate?: string
+  endDate?: string
 }
