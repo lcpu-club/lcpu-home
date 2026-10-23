@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MainComponent from './components/MainComponent.vue'
+import ImageBox from './components/ImageBox.vue'
 import { SiteConfiguration } from './site'
 import NewYearBg from './components/NewYearBg.vue'
 // import { useDark } from '@vueuse/core'
@@ -11,4 +12,5 @@ import NewYearBg from './components/NewYearBg.vue'
   <Suspense>
     <MainComponent z-1 relative />
   </Suspense>
+  <ImageBox />
 </template>
