@@ -34,7 +34,7 @@ summary: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大�
 
 课前阅读：
 
-- Inside vLLM: Anatomy of a High-Throughput LLM Inference System https://vllm.ai/blog/2025-09-05-anatomy-of-vllm
+- [Inside vLLM: Anatomy of a High-Throughput LLM Inference System](https://vllm.ai/blog/2025-09-05-anatomy-of-vllm)
 
 ## 活动安排
 
@@ -56,7 +56,7 @@ Guest Lecture 01 | vLLM & Inferact
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

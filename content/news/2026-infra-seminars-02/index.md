@@ -38,11 +38,11 @@ summary: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构
 
 课前阅读：
 
-1.  https://developer.nvidia.com/blog/even-easier-introduction-cuda/
+1.  [An Even Easier Introduction to CUDA](https://developer.nvidia.com/blog/even-easier-introduction-cuda/)
 
-2.  https://www.nvidia.com/en-us/on-demand/session/gtc24-s62191/
+2.  [NVIDIA GTC 2024 视频（S62191）](https://www.nvidia.com/en-us/on-demand/session/gtc24-s62191/)
 
-3.  https://github.com/olcf/cuda-training-series/blob/master/exercises/hw4/readme.md (资料已较为老旧，建议借助大模型对部分内容进行甄别)
+3.  [CUDA Training Series：HW4](https://github.com/olcf/cuda-training-series/blob/master/exercises/hw4/readme.md) (资料已较为老旧，建议借助大模型对部分内容进行甄别)
 
 ## 活动安排
 
@@ -64,7 +64,7 @@ Session 02 | Kernels: Memory Abstraction & Hierarchy
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

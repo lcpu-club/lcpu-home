@@ -38,11 +38,11 @@ summary: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统�
 
 课前阅读：
 
-- FlashMLA https://github.com/deepseek-ai/FlashMLA
+- [FlashMLA](https://github.com/deepseek-ai/FlashMLA)
 
-- DeepGEMM https://github.com/deepseek-ai/DeepGEMM
+- [DeepGEMM](https://github.com/deepseek-ai/DeepGEMM)
 
-- DeepEP https://github.com/deepseek-ai/DeepEP
+- [DeepEP](https://github.com/deepseek-ai/DeepEP)
 
 ## 活动安排
 
@@ -64,7 +64,7 @@ Session 07 | Inference & LLM Serving
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

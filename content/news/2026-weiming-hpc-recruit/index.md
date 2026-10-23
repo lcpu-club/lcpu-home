@@ -55,11 +55,11 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 ![HPCGame 2026 海报](./image_7.jpg)
 
-招新问卷：https://wj.qq.com/s2/25657172/7e70/
+[招新问卷](https://wj.qq.com/s2/25657172/7e70/)
 
-HPCGame链接：hpcgame.pku.edu.cn
+HPCGame链接：[hpcgame.pku.edu.cn](https://hpcgame.pku.edu.cn)
 
-队长邮箱：hee@stu.pku.edu.cn
+队长邮箱：[hee@stu.pku.edu.cn](mailto:hee@stu.pku.edu.cn)
 
 ## 特别鸣谢
 

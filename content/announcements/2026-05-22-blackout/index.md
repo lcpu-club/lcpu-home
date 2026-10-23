@@ -14,7 +14,7 @@ meta:
 summary: 5 月 24、28、29 日凌晨停电倒闸，LCPU 服务将提前约半小时关闭，完成供电后恢复。
 ---
 
-按照学校停电通知 https://portal.pku.edu.cn/portal2017/#/deptNoticeDetail/459601
+按照[学校停电通知](https://portal.pku.edu.cn/portal2017/#/deptNoticeDetail/459601)
 
 2026年5月24日00：00——04：00
 
@@ -26,9 +26,9 @@ summary: 5 月 24、28、29 日凌晨停电倒闸，LCPU 服务将提前约半�
 
 受影响的服务包括：
 
-- CLab ( https://clab.pku.edu.cn )：全部关闭
+- [CLab](https://clab.pku.edu.cn)：全部关闭
 
-- PKUTeX ( https://latex.pku.edu.cn )：全部关闭
+- [PKUTeX](https://latex.pku.edu.cn)：全部关闭
 
 停电时段后早上6点起,服务将陆续恢复。
 

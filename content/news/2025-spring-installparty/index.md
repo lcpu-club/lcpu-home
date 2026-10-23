@@ -22,7 +22,7 @@ summary: 春季迎新会在极客实验室举行，一起了解社团项目、�
 
 - **时间**: 2025年3月15日(星期六) 15:00-17:00 (CST)
 - **地点**: 北京大学二教地下极客实验室
-- **报名问卷**: [https://s.lcpu.dev/2025-spring-install-party-form](https://s.lcpu.dev/2025-spring-install-party-form)
+- **报名问卷**: [Install Party 报名问卷](https://s.lcpu.dev/2025-spring-install-party-form)
 
 ## 活动流程
 
@@ -45,7 +45,7 @@ website = https://en.wikipedia.org/wiki/Tux_(mascot)
 ```
 
 ::: info
-可在 <https://missing.lcpu.dev/basic/06-drive-your-computer-2> 了解 Git 的基本原理及使用方法。
+可在 [Getting Started：用好你的电脑](https://missing.lcpu.dev/basic/06-drive-your-computer-2) 了解 Git 的基本原理及使用方法。
 :::
 
 ### Install Party

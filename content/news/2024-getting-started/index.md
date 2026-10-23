@@ -68,6 +68,6 @@ summary: Getting Started 入门课程开讲，从搜索、知识获取与基础�
 
 ## 报名参与
 
-请扫描二维码报名，并加入活动通知群以便了解活动动态。群内请备注姓名和学院。如有疑问，可以发送邮件至 linuxclub@pku.edu.cn 与我们联系。
+请扫描二维码报名，并加入活动通知群以便了解活动动态。群内请备注姓名和学院。如有疑问，可以发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn) 与我们联系。
 
 ![活动报名二维码](./image_2.png)

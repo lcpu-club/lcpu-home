@@ -40,23 +40,27 @@ meta:
 
 总而言之，LCPU是一个充满温暖、充满想象的大家庭。无论你来自哪里，只要你对技术感兴趣，我们都欢迎你加入LCPU，在未知的挑战中收获知识与热爱！
 
-( 欢迎填写问卷报名 https://f.kdocs.cn/g/lfErHbn3 )
+（欢迎[填写问卷报名](https://f.kdocs.cn/g/lfErHbn3)）
 
 ## 组织架构
 
 ### 技术部
 
-作为学术科创类社团的门面担当，我们开发并维护了 **[CLab 云计算平台](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484384&idx=1&sn=5169d6f03b7431804145786a6de678ec&scene=21#wechat_redirect)**、**[PKUInfo 校内资讯汇总](https://mp.weixin.qq.com/s?__biz=MzkxMTIyODMwOQ==&mid=2247483799&idx=1&sn=09be959b752c015148532087c0a7c2df&sharer_shareinfo=da5377450d76f9c236422c0ac42d482d&sharer_shareinfo_first=da5377450d76f9c236422c0ac42d482d&poc_token=HLDNwmijkPk1ikIewpL-loYPg-9dbOTba92I3vAA&scene=21#wechat_redirect)**，运营了 **PKUTeX 论文写作平台**、**PKUGit 代码托管及 CI 平台**、**北京大学开源镜像站**等多个助力师生科研创新的工具；同时，我们还积极投身国内外开源社区，助力国产软硬件发展，推动并维护 **Arch Linux 发行版在龙芯平台上的移植**。社团大部分项目均开源在 https://github.com/lcpu-club ，希望能与全球开源社区分享成果。
+作为学术科创类社团的门面担当，我们开发并维护了 **[CLab 云计算平台](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484384&idx=1&sn=5169d6f03b7431804145786a6de678ec&scene=21#wechat_redirect)**、**[PKUInfo 校内资讯汇总](https://mp.weixin.qq.com/s?__biz=MzkxMTIyODMwOQ==&mid=2247483799&idx=1&sn=09be959b752c015148532087c0a7c2df&sharer_shareinfo=da5377450d76f9c236422c0ac42d482d&sharer_shareinfo_first=da5377450d76f9c236422c0ac42d482d&poc_token=HLDNwmijkPk1ikIewpL-loYPg-9dbOTba92I3vAA&scene=21#wechat_redirect)**，运营了 **PKUTeX 论文写作平台**、**PKUGit 代码托管及 CI 平台**、**北京大学开源镜像站**等多个助力师生科研创新的工具；同时，我们还积极投身国内外开源社区，助力国产软硬件发展，推动并维护 **Arch Linux 发行版在龙芯平台上的移植**。社团大部分项目均开源在 [LCPU GitHub 组织](https://github.com/lcpu-club) ，希望能与全球开源社区分享成果。
 
 与此同时，我们与北京大学未名超算队、北京大学PKUCC战队（网络安全）开展深入交流活动，下设超算兴趣组与网安兴趣组，通过社团项目帮助同学掌握超算及网络安全的相关知识点，培养专业领域兴趣，最终加入未名超算队/PKUCC战队参与比赛，为校争光。
 
 我们希望能够为大家提供一个实践平台，作为课本知识的补充，帮助大家检验自己的代码开发能力，同时也帮助来自其他院系的同学通过简单的项目入手学习代码知识。如果你有着不错的技术基础，希望能够参与到社团项目的开发，通过实战检验自己的技术水平；对新架构、新硬件感兴趣；或是希望能够在技术部各小组中学习新的知识，探索自己感兴趣的领域，技术部将是你的不二之选！
+
+::: gallery 社团计算资源
 
 ![](./jsb_1.jpg)
 
 ![](./jsb_2.jpg)
 
 ![](./jsb_3.jpg)
+
+:::
 
 #### 成员风采
 
@@ -92,6 +96,8 @@ meta:
 
 如果你有扎实的计算机基础、出色的表达能力、妙笔生花的写作水平、课程设计经验、LaTeX 排版 / PPT 制作功底……又或者，只是对以上课程感兴趣，希望能够为此出一份力，欢迎加入 LCPU 学习部！
 
+::: gallery 学习部活动
+
 ![](./xxb_1.png)
 
 ![](./xxb_2.jpg)
@@ -99,6 +105,8 @@ meta:
 ![](./xxb_3.jpg)
 
 ![](./xxb_4.jpg)
+
+:::
 
 #### 成员风采
 
@@ -119,11 +127,15 @@ meta:
 
 如果你有活动/赛事举办经验、熟悉海报制作、有着广泛的人脉、充满有趣的活动灵感，或者你是 Linux 爱好者，希望在 Install Party 为你喜爱的发行版站台……又或是希望能为社团活动出一份力， LCPU 活动部是你的不二之选！
 
+::: gallery 活动部活动
+
 ![](./hdb_1.jpg)
 
 ![](./hdb_2.jpg)
 
 ![](./hdb_3.jpg)
+
+:::
 
 ### 运营部
 
@@ -144,11 +156,15 @@ meta:
   - 百度贴吧“北京大学吧” 小吧主
   - 兴趣爱好: 烹饪、Roguelike Game、网络文学
 
+::: gallery 运营部活动
+
 ![](./yyb_1.jpg)
 
 ![](./yyb_2.jpg)
 
 ![](./yyb_3.jpg)
+
+:::
 
 ### 外联部
 

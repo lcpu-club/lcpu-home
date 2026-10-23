@@ -52,7 +52,7 @@ Guest Lecture 02 | Verda
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

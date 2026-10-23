@@ -32,7 +32,7 @@ PKU CLab 是开箱即用的在线的云实验平台。借助平台，同学们�
 
 目前 CLab 已经经过了两个月的小规模 Alpha 测试，实现了云平台的基本功能，现向全校师生开放试运行。
 
-欢迎所有同学和老师登陆 **clab.pku.edu.cn** ，体验云计算的方便快捷！
+欢迎所有同学和老师登陆 **[clab.pku.edu.cn](https://clab.pku.edu.cn)** ，体验云计算的方便快捷！
 
 ![](./image_2.png)
 
@@ -82,17 +82,17 @@ Clab 平台目前仍然处于测试阶段，仍然有可能出现服务不稳定
 
 4.  为什么系统无法更新？
 
-    答：未登录网关时，只可连接到北京大学镜像站，可以到 mirrors.pku.edu.cn 查看换源教程。
+    答：未登录网关时，只可连接到北京大学镜像站，可以到 [mirrors.pku.edu.cn](https://mirrors.pku.edu.cn) 查看换源教程。
 
 ## 关于我们
 
 CLab 由北京大学学生 Linux 俱乐部云计算小组的同学们构建并维护。
 
-如果在使用中遇到任何问题，或者有意见与建议，请发送邮件至 linuxclub@pku.edu.cn，我们将第一时间回复。
+如果在使用中遇到任何问题，或者有意见与建议，请发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn)，我们将第一时间回复。
 
 同时，欢迎老师们联系平台，我们可以为课程提供专门的镜像与环境。
 
-戳 clab.pku.edu.cn
+戳 [clab.pku.edu.cn](https://clab.pku.edu.cn)
 
 即刻参与公测
 

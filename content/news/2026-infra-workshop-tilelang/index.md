@@ -46,9 +46,9 @@ summary: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU K
 
 课前阅读：
 
-1.  TileLang官方文档：https://tilelang.com/
+1.  [TileLang官方文档](https://tilelang.com/)
 
-2.  CuTeDSL 文档：https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl.html
+2.  [CuTeDSL 文档](https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl.html)
 
 （CuTeDSL 是 NVIDIA 开发和维护的另一套 DSL，其特点 Layout Algebra 比较强大但也相对复杂。本次 Workshop 基本不会涉及 CuTeDSL，但感兴趣的同学可以自行阅读相关内容并对比）
 
@@ -72,7 +72,7 @@ Workshop 01 | Parallel Programming with TileLang
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

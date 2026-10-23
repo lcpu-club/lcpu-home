@@ -26,7 +26,7 @@ summary: Getting Started 04：配置顺手的编程环境，认识帮助你高�
 
 ## 本讲介绍
 
-> 讲义: https://lcpu.dev/s/lgs-materials-04
+> [讲义](https://lcpu.dev/s/lgs-materials-04)
 
 在学习了计算机软硬件基础知识后，本讲将实际上手操作，帮助你更好地与你的设备“对话”。
 

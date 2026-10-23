@@ -26,7 +26,7 @@ summary: Getting Started 05：学习 Git 的基础原理与使用方法，在开
 
 ## 本讲介绍
 
-> 讲义: https://lcpu.dev/s/lgs-materials-05
+> [讲义](https://lcpu.dev/s/lgs-materials-05)
 
 或许你曾听说过 GitHub 是全球最大的同性交友网站，也在 GitHub 上下载到过许多有用的程序或文档，但其背后的 Git 所蕴含的奥秘远远不止于此。
 

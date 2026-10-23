@@ -47,9 +47,13 @@ summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方�
 
 ### 比赛
 
+::: gallery 社团竞赛
+
 ![GeekGame 合影](./image_4.png)
 
 ![HPCGame 合影](./image_5.jpg)
+
+:::
 
 > Linux 俱乐部已成功参与或组织了 **[HPCGame](https://hpcgame.pku.edu.cn/)、[GeekGame](https://geekgame.pku.edu.cn/)** 等比赛，获得了校内外广泛好评。今年下旬及明年初，比赛也将如期举行。欢迎感兴趣的同学们报名参加！
 
@@ -67,11 +71,15 @@ summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方�
 >
 > [CLab 云计算平台面向全校开放公测](http://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484384&idx=1&sn=5169d6f03b7431804145786a6de678ec&chksm=c355b6f4f4223fe2d6079b05b8a8b523d07457aff982a81c55ff94ce3a3e5f2d3ee5061b6263&scene=21#wechat_redirect)
 
-> 同时，社团也积极参与**国产软硬件生态建设**当中，承担了 Loong Arch Linux 的维护工作，主要为龙芯 LoongArch 架构适配 Arch Linux 移植。如您对此有兴趣，可以查看我们的仓库：https://github.com/lcpu-club/loongarch-packages。
+> 同时，社团也积极参与**国产软硬件生态建设**当中，承担了 Loong Arch Linux 的维护工作，主要为龙芯 LoongArch 架构适配 Arch Linux 移植。如您对此有兴趣，可以查看我们的[仓库](https://github.com/lcpu-club/loongarch-packages)。
+>
+> ::: gallery Loong Arch Linux 项目
 >
 > ![](./image_7.png)
 >
 > ![](./image_8.png)
+>
+> :::
 
 ### 学习组
 
@@ -120,4 +128,4 @@ summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方�
 >
 > 从一次次活动的组织与策划中迸发出新的灵感，收获一群志同道合的小伙伴，将自己的想法变为现实。当然，也会有更多的团建~
 >
-> 请向 **linuxclub@pku.edu.cn** 发送邮件，并表明自己的兴趣方向。我们期待着你的来信！
+> 请向 **[linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn)** 发送邮件，并表明自己的兴趣方向。我们期待着你的来信！

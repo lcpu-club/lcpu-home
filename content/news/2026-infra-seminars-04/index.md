@@ -52,15 +52,15 @@ summary: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执
 
 课前阅读：
 
-1.  NVIDIA CUDA Programming Guide, Cooperative Groups: https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/cooperative-groups.html
+1.  [NVIDIA CUDA Programming Guide, Cooperative Groups](https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/cooperative-groups.html)
 
-2.  NVIDIA Developer Blog, Cooperative Groups: https://developer.nvidia.com/blog/cooperative-groups/
+2.  [NVIDIA Developer Blog, Cooperative Groups](https://developer.nvidia.com/blog/cooperative-groups/)
 
-3.  NVIDIA CUDA Programming Guide, Asynchronous Data Copies: https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/async-copies.html
+3.  [NVIDIA CUDA Programming Guide, Asynchronous Data Copies](https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/async-copies.html)
 
-4.  NVIDIA CUDA Programming Guide, Pipelines: https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/pipelines.html
+4.  [NVIDIA CUDA Programming Guide, Pipelines](https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/pipelines.html)
 
-5.  NVIDIA Nsight Compute, Source Page: https://docs.nvidia.com/nsight-compute/NsightCompute/index.html#source-page
+5.  [NVIDIA Nsight Compute, Source Page](https://docs.nvidia.com/nsight-compute/NsightCompute/index.html#source-page)
 
 ## 活动安排
 
@@ -82,7 +82,7 @@ Session 04 | Pipeline Ordering: Data Orchestration
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

@@ -42,11 +42,11 @@ summary: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与�
 
 课前阅读：
 
-1.  https://www.nvidia.com/en-us/data-center/tensor-cores/
+1.  [NVIDIA Tensor Cores](https://www.nvidia.com/en-us/data-center/tensor-cores/)
 
-2.  https://docs.nvidia.com/cuda/parallel-thread-execution/#warp-level-matrix-instructions-mma 只需要看m16n8k16 那一节，重点是 A 和 B 的 fragment 布局
+2.  [PTX 文档：Warp-level Matrix Instructions（mma）](https://docs.nvidia.com/cuda/parallel-thread-execution/#warp-level-matrix-instructions-mma) 只需要看m16n8k16 那一节，重点是 A 和 B 的 fragment 布局
 
-3.  https://docs.nvidia.com/cuda/cuda-c-programming-guide/#shared-memory 复习 bank 的划分和 conflict 的成因
+3.  [CUDA C++ Programming Guide：Shared Memory](https://docs.nvidia.com/cuda/cuda-c-programming-guide/#shared-memory) 复习 bank 的划分和 conflict 的成因
 
 4.  DeepSeek-V3 Technical Report，只读 FP8 训练小节
 
@@ -70,7 +70,7 @@ Session 03 | Kernels with GEMM: Tensor Core
 
 - B 站直播 （B站搜索 LCPU直播姬 ）
 
-- LCPU Livestream （https://live.lcpu.dev）
+- [LCPU Livestream](https://live.lcpu.dev)
 
 **分享人**
 

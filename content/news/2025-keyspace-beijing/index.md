@@ -25,7 +25,7 @@ Keyspace 北京峰会是由Linux Foundation主办，聚焦 Valkey 前沿技术�
 
 - 活动地点：北京市，海淀区，东升大厦A9-10层原点学堂（AI 原点社区）
 
-报名链接：https://www.wjx.top/vm/tqTMGH4.aspx
+[报名链接](https://www.wjx.top/vm/tqTMGH4.aspx)
 
 另招募志愿者五位，可以在 Linux 俱乐部群中联系群主报名。
 

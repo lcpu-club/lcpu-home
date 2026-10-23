@@ -84,21 +84,25 @@ while True:
 
     [视频](https://mp.weixin.qq.com/mp/readtemplate?t=pages/video_player_tmpl&action=mpvideo&auto=0&vid=wxv_3833341947715944448)
 
-    https://latex.pku.edu.cn
+    [PKUTeX 论文写作平台](https://latex.pku.edu.cn)
 
 3.  CLab云计算平台建成，赋能教学科研: 我们建成了CLab云计算平台，为教学科研提供了强大的计算环境，助力学术研究更上一层楼。
 
     [视频](https://mp.weixin.qq.com/mp/readtemplate?t=pages/video_player_tmpl&action=mpvideo&auto=0&vid=wxv_3833335088335060993)
 
-    https://clab.pku.edu.cn/
+    [CLab 云计算平台](https://clab.pku.edu.cn/)
 
 4.  Loong Arch Linux 项目全面对外发布: Loong Arch Linux 是社团助力国产化架构发展，社区建设运营的一次尝试。社团从头打造了 Loong Arch Linux 的打包构建工具，修复并构建了 KDE 6、Firefox、Chromium、Code - OSS 等广受欢迎的日用应用，新增了大量原项目中缺失的软件包；积极推动多个重要项目的龙架构修复上游化；整理并发布了丰富详尽的维护文档，使社区参与更加广泛和可行。这些成果展现了团队强大的开发、维护、教育与组织能力，为项目注入了新的活力。Loong Arch Linux 已于2025年初正式对外发布。
+
+    ::: gallery Loong Arch Linux 项目
 
     ![](./image_2.jpg)
 
     ![](./image_3.jpg)
 
-    参考: https://www.loongbbs.cn/d/156-%E6%96%B0-loong-arch-linux-%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A
+    :::
+
+    参考：[Loong Arch Linux 项目发布公告](https://www.loongbbs.cn/d/156-%E6%96%B0-loong-arch-linux-%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A)
 
 5.  HPCGame再创佳绩，协作绘图精彩纷呈: HPCGame 2nd 于几天前圆满结束。作为全球首创的普及向超算比赛，为我国超算产业培养了后备人才。除紧张激烈的比赛外，本届首次开展了有趣的协作绘图活动，大家在比赛的同时利用集群提供工作量证明(`PoW`)共同协作绘画了一幅作品，展现了大家的团队合作和创新精神。
 
@@ -110,7 +114,7 @@ while True:
 
 新年新气象，LCPU也将继续努力，为大家带来更多精彩的活动和项目！
 
-最后，LCPU为大家送上蛇年专属红包封面，目前封面正在微信红包平台审核中，我们先行为大家提供 `Redpackfile` 以便大家编译封面照片和视频 （ 可在链接处下载源文件: https://lcpu.dev/s/redpackcover-2025 ），欢迎关注我们后几天的推送直接扫码领取。再次祝大家新年快乐，万事如意！
+最后，LCPU为大家送上蛇年专属红包封面，目前封面正在微信红包平台审核中，我们先行为大家提供 `Redpackfile` 以便大家编译封面照片和视频 （ 可在链接处[下载源文件](https://lcpu.dev/s/redpackcover-2025) ），欢迎关注我们后几天的推送直接扫码领取。再次祝大家新年快乐，万事如意！
 
 ![红包封面（感谢 @舫尘 绘制）](./image_5.jpg)
 

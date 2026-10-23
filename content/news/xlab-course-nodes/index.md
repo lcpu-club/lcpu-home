@@ -22,9 +22,9 @@ xLab 是北京大学学生 Linux 俱乐部为课程搭建的教学云。选了�
 
 Linux 俱乐部现在维护两个平台：
 
-- **CLab**（clab.pku.edu.cn）面向全校师生免费开放，每人一台云主机，账号可以一直用到毕业。
+- **CLab**（[clab.pku.edu.cn](https://clab.pku.edu.cn)）面向全校师生免费开放，每人一台云主机，账号可以一直用到毕业。
 
-- **xLab**（xlab.pku.edu.cn）面向课程。节点由课程建立，规格、镜像和网络由课程决定，课程结束后节点回收。
+- **xLab**（[xlab.pku.edu.cn](https://xlab.pku.edu.cn)）面向课程。节点由课程建立，规格、镜像和网络由课程决定，课程结束后节点回收。
 
 两者账号独立。想要一台自己的、长期使用的主机，用 CLab；课程要给全班统一的实验环境，用 xLab。
 
@@ -48,9 +48,13 @@ Linux 俱乐部现在维护两个平台：
 
 - **浏览器里的 VS Code**：在节点里运行 VS Code（code-server），新标签页打开，本机同样不需要安装。
 
+::: gallery 网页终端与浏览器里的 VS Code
+
 ![网页终端](./image_3.png)
 
 ![浏览器里的 VS Code](./image_4.png)
+
+:::
 
 几件值得知道的事：
 
@@ -102,7 +106,7 @@ xlab 从 2026 年 9 月开始试运行，本学期先在几门课程中使用。
 
 如果你的课程需要统一的 Linux 实验环境，欢迎联系我们试用。请告诉我们课程名称、大致人数、需要的软件和每人的规格，我们建好课程后给出加入链接，或者直接导入选课名单。软件环境可以由我们按清单准备，也可以由教师或助教在一个节点上装好后自行发布为课程镜像。
 
-联系方式：linuxclub@pku.edu.cn。
+联系方式：[linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn)。
 
 ## 文档
 
@@ -110,4 +114,4 @@ xlab 从 2026 年 9 月开始试运行，本学期先在几门课程中使用。
 
 ![帮助](./image_7.png)
 
-xlab 由北京大学学生 Linux 俱乐部开发和维护。使用中遇到问题，或有意见和建议，请发邮件到 linuxclub@pku.edu.cn。
+xlab 由北京大学学生 Linux 俱乐部开发和维护。使用中遇到问题，或有意见和建议，请发邮件到 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn)。

@@ -44,9 +44,9 @@ summary: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编�
 
 ### 课前阅读 & 参考资料
 
-- Introduction to Parallel Computing Tutorial (https://hpc.llnl.gov/documentation/tutorials/introduction-parallel-computing-tutorial)
+- [Introduction to Parallel Computing Tutorial](https://hpc.llnl.gov/documentation/tutorials/introduction-parallel-computing-tutorial)
 
-- Parallel Computing on Wikipedia (https://en.wikipedia.org/wiki/Parallel_computing)
+- [Parallel Computing on Wikipedia](https://en.wikipedia.org/wiki/Parallel_computing)
 
 ## Session 01 | GPU 编程模型
 
@@ -66,15 +66,15 @@ CUDA 为何要把线程组织成 Thread、Block 和 Grid？Warp 又是什么？
 
 ### 课前阅读 & 参考资料
 
-- CUDA-From-Correctness-To-Performance-Code/lecture.md (https://github.com/interestingLSY/CUDA-From-Correctness-To-Performance-Code/blob/master/lecture.md)
+- [CUDA-From-Correctness-To-Performance-Code/lecture.md](https://github.com/interestingLSY/CUDA-From-Correctness-To-Performance-Code/blob/master/lecture.md)
 
-- CUDA Programming Guide (https://docs.nvidia.com/cuda/cuda-programming-guide/)
+- [CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/)
 
-- CUDA C Best Practices Guide (https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/)
+- [CUDA C Best Practices Guide](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/)
 
-- TileLang Documentation (https://tilelang.com/)
+- [TileLang Documentation](https://tilelang.com/)
 
-- Triton Documentation (https://triton-lang.org/main/index.html)
+- [Triton Documentation](https://triton-lang.org/main/index.html)
 
 ## 丰富的交流与实践
 
@@ -108,7 +108,7 @@ Session 01｜GPU Programming Model
 
 B站直播（B站搜索 **LCPU直播姬** ）
 
-LCPU 直播平台（https://live.lcpu.dev/）
+[LCPU 直播平台](https://live.lcpu.dev/)
 
 **分享人**
 

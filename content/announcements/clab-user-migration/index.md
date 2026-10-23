@@ -22,13 +22,13 @@ meta:
 
 2. 新的 IAAA 账号状态为“在校”；
 
-3. 新的 IAAA 未登录过 CLab 。如已登录过 CLab ，请使用新学号的 pku 邮箱发送邮件至 linuxclub@pku.edu.cn ，主题为： `[CLab] 确认删除本邮箱关联的 CLab 账号` 。
+3. 新的 IAAA 未登录过 CLab 。如已登录过 CLab ，请使用新学号的 pku 邮箱发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn) ，主题为： `[CLab] 确认删除本邮箱关联的 CLab 账号` 。
 
 如您从北京大学毕业，我们也提供账号数据取回服务，请见“数据取回操作步骤”。
 
 ## 迁移操作步骤
 
-1. 使用原有账号登入 CLab，网址：https://clab.pku.edu.cn/auth/login
+1. 使用原有账号登入 [CLab](https://clab.pku.edu.cn/auth/login)
 
 2. 此时应跳转至用户迁移界面，阅读并确认网页信息，点击**开始迁移**；
 
@@ -42,7 +42,7 @@ meta:
 
 ## 数据取回操作步骤
 
-1. 请使用学号邮箱发送邮件至 linuxclub@pku.edu.cn，主题为： `[CLab] 取回已毕业账号文件`；
+1. 请使用学号邮箱发送邮件至 [linuxclub@pku.edu.cn](mailto:linuxclub@pku.edu.cn)，主题为： `[CLab] 取回已毕业账号文件`；
 
 2. 取回包括A和B两种形式。A. 虚拟机镜像取回，我们将把您的虚拟机完整镜像上传至北大网盘，给您发送链接。B. 指定目录取回，我们将从您的虚拟机中提取指定目录的数据，打成压缩包后上传，给您发送链接；
 

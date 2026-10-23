@@ -22,9 +22,9 @@ meta:
 
 受影响的服务包括：
 
-- CLab ( https://clab.pku.edu.cn )：全部关闭
-- PKUTeX ( https://latex.pku.edu.cn )：全部关闭
-- LCPU 内部镜像站 ( https://mirrors.lcpu.dev )：全部关闭
+- [CLab](https://clab.pku.edu.cn)：全部关闭
+- [PKUTeX](https://latex.pku.edu.cn)：全部关闭
+- [LCPU 内部镜像站](https://mirrors.lcpu.dev)：全部关闭
 
 其中，CLab 于10月8日晚20时有计划维护，当日服务停止时间相较其他服务提前两小时。
 
