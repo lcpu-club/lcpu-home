@@ -12,7 +12,7 @@ meta:
 summary: LCPU 携未名超算队、PKUCC 战队开启 2026 秋季招新，欢迎一起开发项目、学习技术与参与竞赛。
 ---
 
-![Image](./image_1.webp)
+![](./image_1.webp)
 
 如果你热爱计算机，乐于分享，希望将你的奇思妙想变为现实……
 
@@ -66,13 +66,9 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 如果你享受创造的乐趣，LCPU 更能为你提供好玩又有意义的项目！我们的项目横跨内容涵盖前后端开发、系统软件、网络与虚拟化、Linux 内核、AI 与大语言模型等多个方向，同时还以帮助学校和同学为目的，都是既好玩又实用的项目。加入社团最大的幸福莫过于看到自己的项目顺利上线，真正帮助到别人！
 
-![](./image_4.png)
+![LLM From Scratch 活动](./image_4.png)
 
-LLM From Scratch 活动
-
-![](./image_5.jpg)
-
-Infra Seminars 系列活动
+![Infra Seminars 系列活动](./image_5.jpg)
 
 总而言之，LCPU 是一个充满活力与创造力的技术社区。无论你是刚刚接触 Linux 的新手，还是已经在某个方向深耕的技术爱好者，只要你对技术充满好奇，我们都期待你的加入！欢迎来到 LCPU，一起探索技术世界的更多可能！
 
@@ -122,13 +118,11 @@ Infra Seminars 系列活动
 
   - **兴趣爱好**: 系统运维、计算机网络、设计、前端、美食
 
-![Image](./image_6.webp)
+![社团计算资源](./image_6.webp)
 
-![Image](./image_7.webp)
+![社团计算资源](./image_7.webp)
 
-![Image](./image_8.webp)
-
-社团计算资源
+![社团计算资源](./image_8.webp)
 
 ### 学习部
 
@@ -154,13 +148,13 @@ Infra Seminars 系列活动
 
   - **兴趣爱好**: 桌游和类似桌游的电子游戏，写东西，睡觉，以及我是大笨蛋
 
-![Image](./image_11.webp)
+![](./image_11.webp)
 
-![Image](./image_12.webp)
+![](./image_12.webp)
 
-![Image](./image_13.webp)
+![](./image_13.webp)
 
-![Image](./image_14.webp)
+![](./image_14.webp)
 
 ### 活动部
 
@@ -170,11 +164,11 @@ Infra Seminars 系列活动
 
 如果你有活动/赛事举办经验、熟悉海报制作、有着广泛的人脉、充满有趣的活动灵感，或者你是 Linux 爱好者，希望在 Install Party 为你喜爱的发行版站台……又或是希望能为社团活动出一份力， LCPU 活动部是你的不二之选！
 
-![Image](./image_17.webp)
+![](./image_17.webp)
 
-![Image](./image_18.webp)
+![](./image_18.webp)
 
-![Image](./image_19.webp)
+![](./image_19.webp)
 
 ### 运营部
 
@@ -184,11 +178,11 @@ Infra Seminars 系列活动
 
 如果你有出众的文采、丰富的奇思妙想、平面设计经验；对财务知识感兴趣，想要学习先进的社团管理经验，那么欢迎你成为**北京大学品牌社团**运营团队的一份子！
 
-![Image](./image_22.webp)
+![](./image_22.webp)
 
-![Image](./image_23.webp)
+![](./image_23.webp)
 
-![Image](./image_24.webp)
+![](./image_24.webp)
 
 ### 外联部
 

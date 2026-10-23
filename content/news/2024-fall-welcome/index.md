@@ -13,9 +13,7 @@ meta:
 summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方式，欢迎来百团摊位交流。
 ---
 
-![](./image_1.png)
-
-小企鹅可爱捏！
+![小企鹅可爱捏！](./image_1.png)
 
 > **Attention!!!** 我们换新公众号啦！
 >
@@ -29,9 +27,7 @@ summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方�
 
 ### Install Party
 
-![](./image_2.jpg)
-
-Install Party 现场
+![Install Party 现场](./image_2.jpg)
 
 > 一般也同时作为迎新会~
 >
@@ -41,37 +37,29 @@ Install Party 现场
 
 ### 讲座 & 沙龙
 
-![](./image_3.jpg)
-
-讲座拼图
+![讲座拼图](./image_3.jpg)
 
 > 社团不定期举行沙龙或讲座活动，届时会有校内外的大佬给大家带来精彩纷呈的分享，也令同学们收获颇丰。部分讲座和沙龙也会**同步上线俱乐部 B 站账号**。
 
-> 本学期，社团面向全校同学开展 **LCPU Getting Started** 计算机入门系列课程，希望能为大家补充学校课程涉及不到的知识，帮助大家更好地使用自己的计算机。您可以访问 LCPU Getting Started\[1\] 以获取课程 wiki 及大纲。具体活动通知会在后续以推送形式发送。敬请关注！
+> 本学期，社团面向全校同学开展 **LCPU Getting Started** 计算机入门系列课程，希望能为大家补充学校课程涉及不到的知识，帮助大家更好地使用自己的计算机。您可以访问 [LCPU Getting Started](https://missing.lcpu.dev/) 以获取课程 wiki 及大纲。具体活动通知会在后续以推送形式发送。敬请关注！
 
 ---
 
 ### 比赛
 
-![](./image_4.png)
+![GeekGame 合影](./image_4.png)
 
-GeekGame 合影
+![HPCGame 合影](./image_5.jpg)
 
-![](./image_5.jpg)
-
-HPCGame 合影
-
-> Linux 俱乐部已成功参与或组织了 **HPCGame\[2\]、GeekGame\[3\]** 等比赛，获得了校内外广泛好评。今年下旬及明年初，比赛也将如期举行。欢迎感兴趣的同学们报名参加！
+> Linux 俱乐部已成功参与或组织了 **[HPCGame](https://hpcgame.pku.edu.cn/)、[GeekGame](https://geekgame.pku.edu.cn/)** 等比赛，获得了校内外广泛好评。今年下旬及明年初，比赛也将如期举行。欢迎感兴趣的同学们报名参加！
 
 ---
 
 ### 项目
 
-![](./image_6.png)
+![PKU Clab](./image_6.png)
 
-PKU Clab
-
-> 社团同样有许多合作开发与维护的项目，如PKU Clab\[4\]、北大镜像站\[5\]、PKUTeX\[6\]、PKU INFO\[7\]等，为师生带来了极大便利。
+> 社团同样有许多合作开发与维护的项目，如[PKU Clab](https://clab.pku.edu.cn/)、[北大镜像站](https://mirrors.pku.edu.cn/)、[PKUTeX](https://latex.pku.edu.cn/)、[PKU INFO](https://pkuinfo.lcpu.dev/)等，为师生带来了极大便利。
 
 > 本学期社团建设了 **PKU Clab** 平台，为北大同学提供**免费**的云服务，也已为 **计算机系统导论（ICS）、操作系统** 等覆盖面极广的课程提供技术支持。未来 Clab 平台还预计会为更多课程提供服务。
 >
@@ -89,9 +77,8 @@ PKU Clab
 
 > 或许你一直有希望学习的技能，却总是无从下手？别担心，社团开展的**学习组**也许能帮上忙！在骨干成员的带领下，与更多人一起学习、讨论，往往事半功倍~
 >
-> ![](./image_9.jpg)
+> ![你知道的，我一直是语言神的忠实信徒](./image_9.jpg)
 >
-> 你知道的，我一直是语言神的忠实信徒
 >
 > 上学期社团成功试点举行了 **Rust 学习小组**，获得了同学们的广泛好评。在收集社团成员意愿的基础上，社团这学期也将举办其他学习小组，也欢迎同学们踊跃报名参加！
 
@@ -99,9 +86,7 @@ PKU Clab
 
 > **2024 年 9 月 20-21 日**，社团将在百团大战 **A11** 号摊位举行招新活动！
 
-![](./image_10.png)
-
-标有小企鹅的位置就是社团摊位地点啦！
+![标有小企鹅的位置就是社团摊位地点啦！](./image_10.png)
 
 > 另外，摊位会不定时有**各式贴纸**掉落，欢迎来玩！
 
@@ -136,33 +121,3 @@ PKU Clab
 > 从一次次活动的组织与策划中迸发出新的灵感，收获一群志同道合的小伙伴，将自己的想法变为现实。当然，也会有更多的团建~
 >
 > 请向 **linuxclub@pku.edu.cn** 发送邮件，并表明自己的兴趣方向。我们期待着你的来信！
-
-## 参考链接
-
-\[1\]
-
-LCPU Getting Started: https://missing.lcpu.dev/
-
-\[2\]
-
-HPCGame: https://hpcgame.pku.edu.cn/
-
-\[3\]
-
-GeekGame: https://geekgame.pku.edu.cn/
-
-\[4\]
-
-PKU Clab: https://clab.pku.edu.cn/
-
-\[5\]
-
-北大镜像站: https://mirrors.pku.edu.cn/
-
-\[6\]
-
-PKUTeX: https://latex.pku.edu.cn/
-
-\[7\]
-
-PKU INFO: https://pkuinfo.lcpu.dev/

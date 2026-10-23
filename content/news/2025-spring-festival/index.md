@@ -78,9 +78,7 @@ while True:
 
 1.  [荣获北京大学品牌社团称号](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484605&idx=1&sn=692a76199cceabcc21e228da0d7e9b49&scene=21#wechat_redirect): 在社团骨干几年的不断奋斗下，俱乐部推出了众多服务服务校园的项目，收获了老师同学们的认可。品牌社团是北京大学学生社团的最高荣誉，是对我们的辛勤付出和卓越成绩的充分肯定，也是对LCPU未来发展的巨大鼓舞。
 
-    ![](./image_1.jpg)
-
-    颁奖现场部分骨干合影
+    ![颁奖现场部分骨干合影](./image_1.jpg)
 
 2.  PKUTeX项目重启，助力学术写作: 我们重启了PKUTeX项目的建设，启用了审阅与批注、OCR公式识别等功能，为同学们的论文写作提供了便利，让LaTeX排版更加高效便捷。
 
@@ -104,9 +102,7 @@ while True:
 
 5.  HPCGame再创佳绩，协作绘图精彩纷呈: HPCGame 2nd 于几天前圆满结束。作为全球首创的普及向超算比赛，为我国超算产业培养了后备人才。除紧张激烈的比赛外，本届首次开展了有趣的协作绘图活动，大家在比赛的同时利用集群提供工作量证明(`PoW`)共同协作绘画了一幅作品，展现了大家的团队合作和创新精神。
 
-    ![](./image_4.png)
-
-    由 25 位选手在 3 天内完成的作品
+    ![由 25 位选手在 3 天内完成的作品](./image_4.png)
 
     [HPCGame 协作绘图](https://hpcgame.pku.edu.cn/kube/_/ui/#/canvas)
 
@@ -116,11 +112,9 @@ while True:
 
 最后，LCPU为大家送上蛇年专属红包封面，目前封面正在微信红包平台审核中，我们先行为大家提供 `Redpackfile` 以便大家编译封面照片和视频 （ 可在链接处下载源文件: https://lcpu.dev/s/redpackcover-2025 ），欢迎关注我们后几天的推送直接扫码领取。再次祝大家新年快乐，万事如意！
 
-![](./image_5.jpg)
+![红包封面（感谢 @舫尘 绘制）](./image_5.jpg)
 
 [视频](https://mp.weixin.qq.com/mp/readtemplate?t=pages/video_player_tmpl&action=mpvideo&auto=0&vid=wxv_3833351027292454913)
-
-(感谢 @舫尘 绘制红包封面)
 
 ![](./image_6.jpg)
 

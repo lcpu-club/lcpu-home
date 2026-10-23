@@ -23,11 +23,11 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 随着时代的发展，单线程计算已经早已满足不了生产力的需求，多线程、多进程、GPU异构计算等新形态应运而生。而未名超算队，则是探索**高性能并行计算**的最好平台！
 
-![微信图片_20260127143126.jpg](./image_2.jpg)
+![](./image_2.jpg)
 
 我们追逐高性能计算最前沿，将高性能计算落地到每一个**实际领域**。Deepseek推理优化、Alphafold蛋白质结构预测、SST体系结构模拟器、ECE全球气候模拟预测、Geant4高能粒子模拟、血液流动、黑洞融合、具身智能、量子力学……无论是什么方向，都能在这里找到自己的兴趣!
 
-![image.png](./image_3.png)
+![](./image_3.png)
 
 ## 为什么加入我们？
 
@@ -37,7 +37,7 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 未名超算队自成立以来，多次获得**国际奖项**，例如ASC2023和ASC2024冠军，ASC2025亚军，SCC2023、SCC2024、SCC2025亚军等。这离不开老队员们的代代传承，更离不开新生血液的踊跃加入。
 
-![image.png](./image_5.png)
+![](./image_5.png)
 
 加入未名超算队，你可以**深入了解计算机系统**，掌握硬件、体系结构、网络、并行计算等全方面能力，锻炼**工程能力**。你还能享有充足的**算力资源**，可供学习生活科研使用。
 
@@ -53,7 +53,7 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 也欢迎新队员以及所有对高性能计算感兴趣的同学报名参加HPCGame，在零基础、有梯度的比赛中得到锻炼，开启高性能计算的新世界！
 
-![hpcgame-front-2026.png](./image_7.jpg)
+![HPCGame 2026 海报](./image_7.jpg)
 
 招新问卷：https://wj.qq.com/s2/25657172/7e70/
 

@@ -26,9 +26,7 @@ redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 
 如有意现场参会，请扫下方二维码填写入校申请表。
 
-![Image](./image_1.webp)
-
-入校申请问卷
+![入校申请问卷](./image_1.webp)
 
 北京大学的参会同学请同时填写扫描填写以下问卷以便统计拼车出行、当晚就餐等情况，同时加入安同校园行-LCPU通知群。
 
@@ -38,9 +36,7 @@ redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 
 ## 附近地图
 
-![Image](./image_4.png)
-
-附近地图
+![附近地图](./image_4.png)
 
 ## 前往会场
 
@@ -48,9 +44,7 @@ redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 
 需要格外注意的是，“新东门”与“东门”是不同的门，“新主楼”与“主楼”是不同的楼，“主 M 楼”与“主楼”直接相连。
 
-![Image](./image_5.png)
-
-入校路线
+![入校路线](./image_5.png)
 
 ## 校内用餐
 
@@ -58,18 +52,12 @@ redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 
 北区食堂楼二、三楼，东区食堂楼（即学二食堂楼）三楼支持微信支付。在前往食堂途中，如需出门，请与门卫沟通告知参会者为刷身份证入校方可放行。
 
-![Image](./image_6.png)
-
-就餐地点
+![就餐地点](./image_6.png)
 
 相关食堂开餐时间如下表：
 
-![Image](./image_7.png)
-
-各食堂开放时间
+![各食堂开放时间](./image_7.png)
 
 ## 校区完整地图
 
-![Image](./image_8.png)
-
-学院路校区平面图
+![学院路校区平面图](./image_8.png)

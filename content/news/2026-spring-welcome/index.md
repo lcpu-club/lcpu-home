@@ -12,7 +12,7 @@ meta:
 summary: LCPU 携未名超算队、PKUCC 战队开启 2026 春季招新，欢迎加入项目开发、学习小组与技术社区。
 ---
 
-![Image](./image_1.webp)
+![](./image_1.webp)
 
 如果你热爱计算机，乐于分享，希望将你的奇思妙想变为现实……
 
@@ -118,13 +118,11 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
   - **兴趣爱好**: 系统运维、计算机网络、设计、前端、美食
 
-![Image](./image_5.webp)
+![社团计算资源](./image_5.webp)
 
-![Image](./image_6.webp)
+![社团计算资源](./image_6.webp)
 
-![Image](./image_7.webp)
-
-社团计算资源
+![社团计算资源](./image_7.webp)
 
 ### 学习部
 
@@ -150,13 +148,13 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
   - **兴趣爱好**: 桌游和类似桌游的电子游戏，写东西，睡觉，以及我是大笨蛋
 
-![Image](./image_10.webp)
+![](./image_10.webp)
 
-![Image](./image_11.webp)
+![](./image_11.webp)
 
-![Image](./image_12.webp)
+![](./image_12.webp)
 
-![Image](./image_13.webp)
+![](./image_13.webp)
 
 ### 活动部
 
@@ -166,11 +164,11 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 如果你有活动/赛事举办经验、熟悉海报制作、有着广泛的人脉、充满有趣的活动灵感，或者你是 Linux 爱好者，希望在 Install Party 为你喜爱的发行版站台……又或是希望能为社团活动出一份力， LCPU 活动部是你的不二之选！
 
-![Image](./image_16.webp)
+![](./image_16.webp)
 
-![Image](./image_17.webp)
+![](./image_17.webp)
 
-![Image](./image_18.webp)
+![](./image_18.webp)
 
 ### 运营部
 
@@ -180,11 +178,11 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 如果你有出众的文采、丰富的奇思妙想、平面设计经验；对财务知识感兴趣，想要学习先进的社团管理经验，那么欢迎你成为**北京大学品牌社团**运营团队的一份子！
 
-![Image](./image_21.webp)
+![](./image_21.webp)
 
-![Image](./image_22.webp)
+![](./image_22.webp)
 
-![Image](./image_23.webp)
+![](./image_23.webp)
 
 ### 外联部
 

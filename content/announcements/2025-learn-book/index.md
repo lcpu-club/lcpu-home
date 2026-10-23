@@ -52,9 +52,7 @@ meta:
 
 **附录：** Mini-ICS、C++/Python迅速入门、文科生三件套（Pandas/Matplotlib/jieba）速查表。
 
-![](./image_7.jpg)
-
-目录节选
+![目录节选](./image_7.jpg)
 
 ## 💡 使用技巧（亲测有效）
 
