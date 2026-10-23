@@ -16,7 +16,7 @@ summary: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU K
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
 
-这个暑假，北京大学未名超算队与北京大学学生 Linux 俱乐部共同推出的 **Weiming HPC Training Camp × LCPU AI Infra Seminars** 将于 \*\*7月到9月 \*\*正式开课！
+这个暑假，北京大学未名超算队与北京大学学生 Linux 俱乐部共同推出的 **Weiming HPC Training Camp × LCPU AI Infra Seminars** 将于 **7月到9月**正式开课！
 
 从 Kernel 到编译器，从分布式系统到集合通信，从模型推理到强化学习系统，我们将在七周时间里，围绕四个 Topic，一起走进大模型训练与推理背后的系统。
 
@@ -24,7 +24,7 @@ summary: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU K
 
 第一周我们将进入 Topic 1 —— **Kernel & ML Compiler**。从 GPU 的工作方式开始，逐步认识 CUDA 编程模型，并初步接触 Triton、TileLang 等 GPU Kernel DSL。
 
-## 1Workshop 01 | Parallel Programming with TileLang
+## Workshop 01 | Parallel Programming with TileLang
 
 > 在每周的 Sessions 之外，我们针对特定专题，设计了自包含、独立成小节的 Workshop；我们希望 Workshop 能不依赖 Main Sessions 的上下文，同时补充有趣、有意思的特定内容
 
@@ -48,11 +48,11 @@ summary: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU K
 
 1.  TileLang官方文档：https://tilelang.com/
 
-2.  CuTeDSL 文档：https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute\_dsl.html
+2.  CuTeDSL 文档：https://docs.nvidia.com/cutlass/latest/media/docs/pythonDSL/cute_dsl.html
 
 （CuTeDSL 是 NVIDIA 开发和维护的另一套 DSL，其特点 Layout Algebra 比较强大但也相对复杂。本次 Workshop 基本不会涉及 CuTeDSL，但感兴趣的同学可以自行阅读相关内容并对比）
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

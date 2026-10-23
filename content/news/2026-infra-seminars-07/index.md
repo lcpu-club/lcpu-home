@@ -24,7 +24,7 @@ summary: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统�
 
 本周开始，我们将进入第三阶段： Inference & LLM Serving
 
-## 1Session 07 | Inference & LLM Serving
+## Session 07 | Inference & LLM Serving
 
 训练结束，我们获得了一个性能强大的模型。然而，如何把模型推起来、如何把模型推得更快，如何在相同机器上承载更多请求，都变成让模型走向实用的过程中不可避免的问题：为什么 DeepSeek 的 API 比别家便宜？为什么 DeepSeek V4 Flash API 这么快？
 
@@ -44,7 +44,7 @@ summary: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统�
 
 - DeepEP https://github.com/deepseek-ai/DeepEP
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

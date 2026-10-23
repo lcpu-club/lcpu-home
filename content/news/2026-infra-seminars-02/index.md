@@ -24,7 +24,7 @@ summary: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构
 
 第一周我们将进入 Topic 1 —— **Kernel & ML Compiler**。从 GPU 的工作方式开始，逐步认识 CUDA 编程模型，并初步接触 Triton、TileLang 等 GPU Kernel DSL。
 
-## 1Session 02 | Kernels: Memory Abstraction & Hierarchy
+## Session 02 | Kernels: Memory Abstraction & Hierarchy
 
 从经典的矩阵乘法出发，本节课，我们将讲解从 Data Reuse 利用 Memory Hierarchy 直觉、到 Roofline Model 与 Kernel Optimization 的主要目标；从矩阵乘法的逐渐优化步骤，我们将逐步引出更多硬件执行的机理和流程：
 
@@ -44,7 +44,7 @@ summary: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构
 
 3.  https://github.com/olcf/cuda-training-series/blob/master/exercises/hw4/readme.md (资料已较为老旧，建议借助大模型对部分内容进行甄别)
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

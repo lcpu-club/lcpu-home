@@ -17,7 +17,7 @@ summary: 未名超算队 2026 年招新，欢迎对并行计算、集群与 GPU 
 redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 ---
 
-**我们是谁？**
+## 我们是谁？
 
 我们是一个**手握顶级算力、资金充足、男女比例均衡、多院系交叉**的 “硬核组织”！
 
@@ -29,7 +29,7 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 ![image.png](./image_3.png)
 
-**为什么加入我们？**
+## 为什么加入我们？
 
 ![](./image_4.jpg)
 
@@ -45,7 +45,7 @@ redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 
 除此之外，你还将获得备赛期间的免费午餐、丰厚的比赛奖金，以及与工业界头部公司深度交流的机会……更多惊喜收获，等你亲自揭秘！
 
-**如何加入我们？**
+## 如何加入我们？
 
 我们欢迎一切对超算感兴趣的同学！**不限学院，不限专业**，以大一、大二为主，只要对超算感兴趣，愿意投入时间进行学习和备赛，都可以加入我们的队伍！
 
@@ -61,7 +61,7 @@ HPCGame链接：hpcgame.pku.edu.cn
 
 队长邮箱：hee@stu.pku.edu.cn
 
-**特别鸣谢**
+## 特别鸣谢
 
 ![](./image_8.png)
 

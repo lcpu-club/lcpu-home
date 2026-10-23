@@ -27,23 +27,35 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 
 - **地点**：二教410
 
-## 1**活动流程**
+## 活动流程
 
 ### 迎新会
 
-![](./image_2.png)俱乐部骨干成员将首先为大家介绍 Linux 俱乐部的主要活动及开发项目(文末附有项目一览)，欢迎大家畅所欲言，分享自己的想法及灵感。
+![](./image_2.png)
+
+俱乐部骨干成员将首先为大家介绍 Linux 俱乐部的主要活动及开发项目(文末附有项目一览)，欢迎大家畅所欲言，分享自己的想法及灵感。
 
 同时，为了帮助大家快速熟悉彼此，俱乐部成员将带领大家使用 Git 完成一次"开源贡献"并以代码的形式进行自我介绍，欢迎大家向 https://github.com/lcpu-club/2026-spring-registration/ 仓库提交自己的头像及个人信息，
 
 完成打卡后，现场还有贴纸、小企鹅钥匙扣、LCPU 键帽等精美周边等你领取！
 
-```
-[about]name = Tuxavatar = ./tux.pnghobbies = eat, sleepskills = c, rust, php[social]github = tuxwebsite = https://en.wikipedia.org/wiki/Tux_(mascot)
+```ini
+[about]
+name = Tux
+avatar = ./tux.png
+hobbies = eat, sleep
+skills = c, rust, php
+
+[social]
+github = tux
+website = https://en.wikipedia.org/wiki/Tux_(mascot)
 ```
 
 ### 安装教学
 
-![](./image_3.png)俱乐部骨干成员将为大家简要介绍 Linux 内核与 Linux 的各大发行版。我们会尽可能以简单的形式帮助大家理解 Linux 操作系统的核心理念，并带领大家在自己的设备上安装 Linux 操作系统。
+![](./image_3.png)
+
+俱乐部骨干成员将为大家简要介绍 Linux 内核与 Linux 的各大发行版。我们会尽可能以简单的形式帮助大家理解 Linux 操作系统的核心理念，并带领大家在自己的设备上安装 Linux 操作系统。
 
 尽管我们很开心看到大家日常使用 Linux 作为主要操作系统，如果你暂时不想抛弃 Windows / macOS 等操作系统，也可以通过:
 
@@ -63,7 +75,7 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 
 希望能与大家度过一个美好且有意义的下午！
 
-- **LCPU Infrastructures**
+## LCPU Infrastructures
 
 - **[CLab 云计算平台](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484384&idx=1&sn=5169d6f03b7431804145786a6de678ec&scene=21#wechat_redirect)**: 全国首个由高校社团自主打造的云计算平台。基于 OpenStack 混合 AMD / Intel 多架构，助力全校科研教学工作。在这里可以在真实生产环境中发挥你的 Linux 知识并创造出更大价值。
 
@@ -77,7 +89,7 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 
 - **PKUTeX 论文协作平台**: PKUTeX 是 LCPU 基于 Overleaf 开源项目打造的论文在线协作平台。我们会根据上游更新移植企业版功能并加入中文本地化支持。
 
-- **LCPU Programmes**
+## LCPU Programmes
 
 - **SigHW 硬件学习小组**: 本学期，SigHW 小组将继续在探索和实践中学习硬件，FPGA 开发、软硬件协作、内核模块开发， 资深骨干将继续精心设计活动内容，尽量让大家收获满满、乐趣满满！
 
@@ -91,19 +103,19 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 
 - **[计算机基础能力手册](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484830&idx=1&sn=26ca8738c74dee8d0e47880ad28fcf80&scene=21#wechat_redirect):** 在 Getting Started 课程之外，《手册》以其翔实、实用已受到广大同学的热烈欢迎。《手册》希望能提供一份完整而详尽的 handbook 供大家参考和进一步学习！
 
-- **LCPU Events**
+## LCPU Events
 
 - 对话、沙龙、交流、参访！这一模块包含了我们日常的所有活动！
 
 - 往期，我们举办了**发行版之夜沙龙**、**[JetBrains 技术交流会](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485008&idx=1&sn=c6da947bd35eec3113995fd0dcc6b9f3&scene=21#wechat_redirect)、AMD 参访交流、[NVIDIA GTC Watch Party](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485226&idx=1&sn=b9cf2f88f6fc2a9971e121bf6c3ea1c6&scene=21#wechat_redirect)** 等反响热烈收获丰富的活动，本学期，更多更有意思的活动等你来参与！（当然，也包括本次 **Install Party！**）
 
-- **LCPU Competitions**
+## LCPU Competitions
 
 - **[HPC Game 北京大学高性能计算综合能力竞赛](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485115&idx=1&sn=0ec06c6e55e0eb0f297ea4c87026f436&scene=21#wechat_redirect)**: HPC Game 是 Linux 俱乐部 & 北京大学未名超算队联合举办的一年一度的高性能领域竞赛，题面真实有趣，奖金丰厚！
 
 - **[GeekGame 北京大学网络安全综合能力竞赛](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485051&idx=1&sn=7108d5a5b4dbd84de363104d36fbb130&scene=21#wechat_redirect)**: GeekGame 是现由北大清华联合举办的网络安全CTF竞赛，着力于发掘同学们对网络安全的兴趣，比赛同样有丰厚奖金！
 
-- **LCPU Living!**
+## LCPU Living!
 
 - **吃喝玩乐！**: 从群友们的约饭面基逐步发展为频率不小的休闲组织地（是的！在 LCPU，你甚至能找到旅游搭子！）。忙碌的学习之余可不要忘了休闲哦～
 
@@ -111,7 +123,9 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 
 - **[社团大群](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485100&idx=1&sn=d94a87cf41a666f28802495b429908ef&scene=21#wechat_redirect)**：日活上百人，每日几千条消息的社员交流平台，Rust, Arch, Deepseek V4😡，在这里与同好交流一切！
 
-- **LCPU Core**：社团运转离不开骨干们的支撑！新架构下，社团现设以下部门与小组
+## LCPU Core
+
+社团运转离不开骨干们的支撑！新架构下，社团现设以下部门与小组
 
 - **运营部:** 负责社团日常运行的大小事务，从活动策划到推送排版、从企业对接到设备采购，运营部处理了技术外的其他事务。
 

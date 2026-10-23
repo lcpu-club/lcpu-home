@@ -24,7 +24,7 @@ summary: 8 月 23 日 Infra Seminars 06：梳理 AI 通信栈，学习大规模 
 
 本周开始，我们将进入第二阶段： Parallelization and Communication。从现代网络系统开始，探索Scale-Out的力量。
 
-## 1Session 06 | AI Communication Stack
+## Session 06 | AI Communication Stack
 
 Pipeline 背后真正的问题是：谁来决定什么工作在什么时候、在哪个资源上执行？谁负责维护依赖、推进执行，并判断一个阶段何时真正完成？这其中涉及到一组连续的设计trade off：硬件与软件的责任划分、编程复杂度与硬件复杂度、静态与动态调度、显式控制与自动管理、灵活性与可预测性，以及细粒度重叠带来的性能收益与状态和同步开销。
 
@@ -34,7 +34,7 @@ Pipeline 背后真正的问题是：谁来决定什么工作在什么时候、�
 
 本次活动无课前阅读。
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

@@ -24,7 +24,7 @@ summary: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与�
 
 第一周我们将进入 Topic 1 —— **Kernel & ML Compiler**。从 GPU 的工作方式开始，逐步认识 CUDA 编程模型，并初步接触 Triton、TileLang 等 GPU Kernel DSL。
 
-## 1Session 03 | Kernels with GEMM: Tensor Core
+## Session 03 | Kernels with GEMM: Tensor Core
 
 近年来，NVIDIA GPU 的算力正在逐年倍增；细看却不难发现，总算力高速提升的同时，CUDA Core 算力、FP32/FP64 算力的提升却并不显著，主要的算力提升全都来自于一块特殊的硬件：Tensor Core
 
@@ -44,13 +44,13 @@ summary: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与�
 
 1.  https://www.nvidia.com/en-us/data-center/tensor-cores/
 
-2.  https://docs.nvidia.com/cuda/parallel-thread-execution/#warp\-level-matrix-instructions-mma 只需要看m16n8k16 那一节，重点是 A 和 B 的 fragment 布局
+2.  https://docs.nvidia.com/cuda/parallel-thread-execution/#warp-level-matrix-instructions-mma 只需要看m16n8k16 那一节，重点是 A 和 B 的 fragment 布局
 
-3.  https://docs.nvidia.com/cuda/cuda-c-programming-guide/#shared\-memory 复习 bank 的划分和 conflict 的成因
+3.  https://docs.nvidia.com/cuda/cuda-c-programming-guide/#shared-memory 复习 bank 的划分和 conflict 的成因
 
 4.  DeepSeek-V3 Technical Report，只读 FP8 训练小节
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

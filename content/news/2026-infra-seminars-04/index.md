@@ -24,7 +24,7 @@ summary: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执
 
 第一阶段我们将进入 Topic 1 —— **Kernel & ML Compiler**。从 GPU 的工作方式开始，逐步认识 CUDA 编程模型，并初步接触 Triton、TileLang 等 GPU Kernel DSL。
 
-## 1Session 04 | Pipeline Ordering: Data Orchestration
+## Session 04 | Pipeline Ordering: Data Orchestration
 
 硬件发展过程中，计算能力、内存带宽提升的同时，频率提升稍显缓慢。单个操作 latency 的改善已经远慢于系统 throughput 的增长，现代体系结构从“降低 latency”逐渐转为越来越依赖于通过并行性容忍和隐藏 latency。从指令并行 ILP，乱序执行 OoO，到内存层级并行 MLP、Warp 调度与 TLP，追寻自动 latency hiding 的方法不断发展和演进，然而，随着 Tensor Core 等专用计算单元的吞吐快速增长，计算与数据供给能力之间的差距进一步扩大。以 `cp.async`、TMA 为代表的异步数据搬运机制，逐渐将原先很大程度由硬件自动完成的 latency hiding，暴露为程序员和编译器需要显式组织的 Pipeline。具体来说，我们需要：
 
@@ -60,9 +60,9 @@ summary: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执
 
 4.  NVIDIA CUDA Programming Guide, Pipelines: https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/pipelines.html
 
-5.  NVIDIA Nsight Compute, Source Page: https://docs.nvidia.com/nsight-compute/NsightCompute/index.html#source\-page
+5.  NVIDIA Nsight Compute, Source Page: https://docs.nvidia.com/nsight-compute/NsightCompute/index.html#source-page
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

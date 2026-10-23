@@ -24,7 +24,7 @@ summary: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大�
 
 本周开始，我们将进入第三阶段： Inference & LLM Serving
 
-## 1Guset Lecture 01 | vLLM & Inferact
+## Guset Lecture 01 | vLLM & Inferact
 
 > 在每周的 Sessions 之外，我们还有幸请到了来自工业界的经验丰富的专家，基于他们的宝贵实践和经验，来向我们分享更前沿、更专业、更贴合生产实际的内容。
 
@@ -36,7 +36,7 @@ summary: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大�
 
 - Inside vLLM: Anatomy of a High-Throughput LLM Inference System https://vllm.ai/blog/2025-09-05-anatomy-of-vllm
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

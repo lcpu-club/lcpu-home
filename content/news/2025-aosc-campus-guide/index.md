@@ -18,8 +18,6 @@ summary: 安同校园行北京站参会指南，介绍北航会场的入校、�
 redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 ---
 
-#
-
 本次安同校园行线下会场位于北京航空航天大学学院路校区，本文为计划现场参会的朋友们提供入校、出行与进餐指引参考。
 
 ## 进校申请

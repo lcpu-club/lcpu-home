@@ -42,7 +42,7 @@ summary: LCPU 携未名超算队、PKUCC 战队开启 2026 春季招新，欢迎
 
 ## 为什么要来LCPU
 
-### 1资源超多！
+### 资源超多！
 
 LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽德投资、九坤投资等投资集团及 AMD、NVIDIA、华为、小米、等众多头部企业的资金资源支持。
 
@@ -52,7 +52,7 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 ![](./image_3.png)
 
-### 2氛围超好！
+### 氛围超好！
 
 社团还兼具严肃的技术讨论和轻松活泼的"吹水"氛围：如果你享受和数百个志同道合的"群友"在同一个群里谈天论地，LCPU 绝对是不二之选！我们拥有自己的专属吹水群聊，让有着各式各样小爱好的同学能在同一个平台上愉快的交流，从技术到游戏，从学习工作到日常生活，上至天文地理国际形势，下至起居饮食校园住宿……这里感兴趣的话题等着你。
 
@@ -60,7 +60,7 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 详情阅读[LCPU 2025 年度总结（一）丨微信群年报](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485100&idx=1&sn=d94a87cf41a666f28802495b429908ef&scene=21#wechat_redirect)
 
-### 3活动超充实！
+### 活动超充实！
 
 来这里，你可以享受各式各样的技术沙龙。我们定期举办的沙龙中，邀请来自开源社区和业界的开发者分享经验，也会有学长分享自己踩过的"坑"和自己独到的开发经历！
 
@@ -74,7 +74,7 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 ## 组织架构
 
-### 1技术部
+### 技术部
 
 作为学术科创类社团的门面担当，我们开发并维护了 **[CLab 云计算平台](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484384&idx=1&sn=5169d6f03b7431804145786a6de678ec&scene=21#wechat_redirect)**、**SigStore PT 级分布式存储系统**，运营了 **PKUTeX 论文写作平台**、**PKUGit 代码托管及 CI 平台**、**北京大学开源镜像站、** [PKUInfo 校内资讯汇总](https://mp.weixin.qq.com/s?__biz=MzkxMTIyODMwOQ==&mid=2247483799&idx=1&sn=09be959b752c015148532087c0a7c2df&sharer_shareinfo=da5377450d76f9c236422c0ac42d482d&sharer_shareinfo_first=da5377450d76f9c236422c0ac42d482d&poc_token=HLDNwmijkPk1ikIewpL-loYPg-9dbOTba92I3vAA&scene=21#wechat_redirect)等多个助力师生科研创新的工具；除此之外，社团还为志同道合的伙伴提供资源，以特别兴趣小组的形式开展学习科研，上学期我们开设了SIGHardware、SIGAgent、SIGMLSys等学习/讨论小组，开展了多次线上线下活动，同学们收益颇丰。同时，我们还积极投身国内外开源社区，助力国产软硬件发展，推动并维护 **Arch Linux 发行版在龙芯平台上的移植**。社团大部分项目均开源在 **Github** ，希望能与全球开源社区分享成果。
 
@@ -84,55 +84,49 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 - **陈嘉骏**
 
-- 25级元培学院
+  - 25级元培学院
 
-- Linux 俱乐部社长
+  - Linux 俱乐部社长
 
-- LLM From Scratch 项目负责人
+  - LLM From Scratch 项目负责人
 
-- 北京大学 iGEM 2025 团队湿实验负责人
+  - 北京大学 iGEM 2025 团队湿实验负责人
 
-- 兴趣爱好: 系统运维、大模型 & 超算、美食
+  - 兴趣爱好: 系统运维、大模型 & 超算、美食
 
 - **李思润**
 
-- 23级地空
+  - 23级地空
 
-- Linux 俱乐部理事长
+  - Linux 俱乐部理事长
 
-- 极客实验室多维智造工坊负责人
+  - 极客实验室多维智造工坊负责人
 
-- 北京大学 iGEM 2024 团队 Wiki与湿实验组成员
+  - 北京大学 iGEM 2024 团队 Wiki与湿实验组成员
 
-- 百度贴吧"北京大学吧" 小吧主
+  - 百度贴吧"北京大学吧" 小吧主
 
-- 兴趣爱好: 烹饪、Roguelike Game、LLM、网络文学
+  - 兴趣爱好: 烹饪、Roguelike Game、LLM、网络文学
 
 - **黄尚禹**
 
-- 25级基础医学
+  - 25级基础医学
 
-- Linux 俱乐部团支书
+  - Linux 俱乐部团支书
 
-- SigStore 项目负责人
+  - SigStore 项目负责人
 
-- **兴趣爱好**: 系统运维、计算机网络、设计、前端、美食
+  - **兴趣爱好**: 系统运维、计算机网络、设计、前端、美食
 
-  ![Image](./image_5.webp)
+![Image](./image_5.webp)
 
-  ![Image](./image_6.webp)
+![Image](./image_6.webp)
 
-  ![Image](./image_7.webp)
+![Image](./image_7.webp)
 
-  ![Image](./image_8.svg)
+社团计算资源
 
-  社团计算资源
-
-  ![Image](./image_9.svg)
-
-  ####
-
-### 2学习部
+### 学习部
 
 我们编撰了 **[Getting Started 计算机入门系列课程](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484544&idx=1&sn=7e6b4951d45a61d96882570acd69c792&scene=21#wechat_redirect)**与**北京大学计算机基础能力手册**；开设了 Rust 、内核与虚拟化等学习小组。
 
@@ -142,33 +136,29 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 - **臧炫懿**
 
-- 23级信科
+  - 23级信科
 
-- 学习部部长
+  - 学习部部长
 
-- 北京大学计算机基础能力手册作者
+  - 北京大学计算机基础能力手册作者
 
-- 在MoriZero参与Milthm（梦见霖音）的开发工作
+  - 在MoriZero参与Milthm（梦见霖音）的开发工作
 
-- 曾在Ndemic Creations中国玩家社区做项目维护
+  - 曾在Ndemic Creations中国玩家社区做项目维护
 
-- 在北京大学-华祥智能情感交互联合实验室作科研实习
+  - 在北京大学-华祥智能情感交互联合实验室作科研实习
 
-- **兴趣爱好**: 桌游和类似桌游的电子游戏，写东西，睡觉，以及我是大笨蛋
+  - **兴趣爱好**: 桌游和类似桌游的电子游戏，写东西，睡觉，以及我是大笨蛋
 
-  ![Image](./image_10.webp)
+![Image](./image_10.webp)
 
-  ![Image](./image_11.webp)
+![Image](./image_11.webp)
 
-  ![Image](./image_12.webp)
+![Image](./image_12.webp)
 
-  ![Image](./image_13.webp)
+![Image](./image_13.webp)
 
-  ![Image](./image_14.svg)
-
-  ![Image](./image_15.svg)
-
-### 3活动部
+### 活动部
 
 我们负责开展每学期一度的迎新活动 **[Install Party](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247484974&idx=1&sn=543516e63d1cf19b9bbdb964b8e1b75b&scene=21#wechat_redirect)**；曾组织了 **[JetBrains 技术交流开放日](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485008&idx=1&sn=c6da947bd35eec3113995fd0dcc6b9f3&scene=21#wechat_redirect)** 等沙龙讲座活动；假期开展了 **[LLM from Scratch](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485107&idx=1&sn=0c632ca5066a846f58364f48b9e36d51&scene=21#wechat_redirect)** 等学习活动；同时，我们还负责组织 **[北京大学高性能计算综合能力竞赛 HPCGame](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485115&idx=1&sn=0ec06c6e55e0eb0f297ea4c87026f436&scene=21#wechat_redirect)** 、 **[北京大学信息安全综合能力竞赛 GeekGame](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485051&idx=1&sn=7108d5a5b4dbd84de363104d36fbb130&scene=21#wechat_redirect)** 系列赛事。
 
@@ -182,7 +172,7 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 ![Image](./image_18.webp)
 
-### 4运营部
+### 运营部
 
 我们负责筹备**百团大战**活动设计、参与校园文化节、管理社团资金，完成财务报销流程；定期举行社团内部团建、整理社团动态并撰写推送，还负责**设计社团各项周边**，是社团最重要的组成部分。
 
@@ -196,7 +186,7 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 
 ![Image](./image_23.webp)
 
-### 5外联部
+### 外联部
 
 我们曾与AMD、宽德投资、九坤投资、华为、NVIDIA、小米等头部企业建立合作，组织社员前往 AMD 、华为、NVIDIA等公司参访，目前与 AMD 及宽德投资保持长期合作关系。
 

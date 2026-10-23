@@ -24,7 +24,7 @@ summary: 8 月 30 日 Verda 工程师分享 NVL72 Scale-Up 域内的推理优化
 
 本周开始，我们将进入第三阶段： Inference & LLM Serving
 
-## 1Guset Lecture 02 | Verda
+## Guset Lecture 02 | Verda
 
 > 在每周的 Sessions 之外，我们还有幸请到了来自工业界的经验丰富的专家，基于他们的宝贵实践和经验，来向我们分享更前沿、更专业、更贴合生产实际的内容。
 
@@ -34,7 +34,7 @@ Verda 是一家国际领先的人工智能基础设施提供商， 他们运营�
 
 本次活动，我们非常荣幸地请到了来自 Verda 的 Kevin，向我们分享他近期在 NVL72 Scale-Up 域内关于 PD 的工作，并介绍相关性能优化与工程实践。
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 

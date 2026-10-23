@@ -12,11 +12,37 @@ meta:
 summary: LCPU 祝大家乙巳新春快乐，与社员一起分享新年祝福和红包活动。
 ---
 
-```
-$ loginWARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐部 #2025 🎆" instead$ sudo pacman -Syu[sudo] password for lcpu: :: Synchronizing package databases... core is up to date extra is up to date:: Starting full system upgrade...resolving dependencies...looking for conflicting packages...Packages (1) lcpu-2025.1-1Total Download Size:   0.06 MiBTotal Installed Size:  0.14 MiBNet Upgrade Size:      0.00 MiB:: Proceed with installation? [Y/n] y :: Retrieving packages... lcpu-2025.1-1 57.6 KiB 175 KiB/s 00:00 [######] 100%(1/1) checking keys in keyring [######] 100%(1/1) checking package integrity [######] 100%(1/1) loading package files [######] 100%(1/1) checking for file conflicts [######] 100%(1/1) checking available disk space [######] 100%:: Processing package changes...(1/1) upgrading lcpu [######] 100%:: Running post-transaction hooks...(1/1) Arming ConditionNeedsUpdate...
+```text
+$ login
+WARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐部 #2025 🎆" instead
+
+$ sudo pacman -Syu
+[sudo] password for lcpu:
+:: Synchronizing package databases...
+core is up to date
+extra is up to date
+:: Starting full system upgrade...
+resolving dependencies...
+looking for conflicting packages...
+Packages (1) lcpu-2025.1-1
+Total Download Size:   0.06 MiB
+Total Installed Size:  0.14 MiB
+Net Upgrade Size:      0.00 MiB
+:: Proceed with installation? [Y/n] y
+:: Retrieving packages...
+lcpu-2025.1-1 57.6 KiB 175 KiB/s 00:00 [######] 100%
+(1/1) checking keys in keyring [######] 100%
+(1/1) checking package integrity [######] 100%
+(1/1) loading package files [######] 100%
+(1/1) checking for file conflicts [######] 100%
+(1/1) checking available disk space [######] 100%
+:: Processing package changes...
+(1/1) upgrading lcpu [######] 100%
+:: Running post-transaction hooks...
+(1/1) Arming ConditionNeedsUpdate...
 ```
 
-# 亲爱的 LCPUers:
+## 亲爱的 LCPUers:
 
 在这辞旧迎新的美好时刻，**北京大学学生Linux俱乐部**全体AP成员向大家致以最诚挚的祝福，祝大家在新的一年里：
 
@@ -38,7 +64,15 @@ $ loginWARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐�
 
 - 资源像 Kubernetes 一样弹性伸缩，能力无限扩展，梦想触手可及；
 
-最后，祝大家蛇年快乐，生活更精彩，像开源软件一样，自由开放，共享共赢，未来更加美好！ `while(True):       happiness.increase()       wealth.grow()       health.boost()       print("祝您蛇年快乐，幸福无限循环！")`
+最后，祝大家蛇年快乐，生活更精彩，像开源软件一样，自由开放，共享共赢，未来更加美好！
+
+```python
+while True:
+    happiness.increase()
+    wealth.grow()
+    health.boost()
+    print("祝您蛇年快乐，幸福无限循环！")
+```
 
 回首过去一年，LCPU在大家的支持与陪伴下，取得了丰硕的成果：
 
@@ -74,7 +108,7 @@ $ loginWARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐�
 
     由 25 位选手在 3 天内完成的作品
 
-    https://hpcgame.pku.edu.cn/kube/\_/ui/#/canvas
+    [HPCGame 协作绘图](https://hpcgame.pku.edu.cn/kube/_/ui/#/canvas)
 
 这些成绩的取得，离不开每一位LCPUer的辛勤付出和无私奉献。感谢大家一路以来的支持与陪伴，祝各位同学在新的一年身体健康，万事如意！
 
@@ -88,20 +122,29 @@ $ loginWARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐�
 
 (感谢 @舫尘 绘制红包封面)
 
-![](./image_6.jpg)同时，我们还为各位LCPUers准备了如下礼物，欢迎大家查收！
+![](./image_6.jpg)
 
-1.
+同时，我们还为各位LCPUers准备了如下礼物，欢迎大家查收！
 
-![](./image_7.jpg)
+1. ![](./image_7.jpg)
 
-2.
+2. `ZmxhZ3toYXBweV9weXRob25feWVhcn0=`
 
-`ZmxhZ3toYXBweV9weXRob25feWVhcn0=`
+3. C 程序：
 
-3.
+   ```c
+   #include <stdio.h>
 
-```
-#include <stdio.h>int main() {    char msg[] = {0x66,0x6c,0x61,0x67,0x7b,0x77,0x61,0x72,0x6e,0x69,0x6e,0x67,0x5f,0x6d,0x65,0x6d,                  0x6f,0x72,0x79,0x5f,0x6f,0x76,0x65,0x72,0x66,0x6c,0x6f,0x77,0x7d,0x0};    char *p = msg;    while(*p) printf("%c", *p++);    return 0;}
-```
+   int main() {
+       char msg[] = {
+           0x66, 0x6c, 0x61, 0x67, 0x7b, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67,
+           0x5f, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x5f, 0x6f, 0x76, 0x65, 0x72,
+           0x66, 0x6c, 0x6f, 0x77, 0x7d, 0x0
+       };
+       char *p = msg;
+       while (*p) printf("%c", *p++);
+       return 0;
+   }
+   ```
 
 (Tip: 可以在评论区分享找到的 flag ~ )

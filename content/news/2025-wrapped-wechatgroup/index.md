@@ -70,25 +70,23 @@ summary: 回顾 LCPU 2025 年微信群的交流与趣事，用社区数据记录
 
 1. 🖐🏻️😭🖐🏻️ (使用次数: 230 次)
 
-  ![](./image_2.jpg)
+   ![](./image_2.jpg)
 
 2. 😭😭😭 (使用次数: 217次)
 
-  ![](./image_3.jpg)
-  
+   ![](./image_3.jpg)
 
 3. 要给他迎头痛击 (使用次数: 120次)
 
-  ![](./image_4.jpg)  
+   ![](./image_4.jpg)
 
 4. 向将军\_\_ \_\_  (使用次数: 113次)
 
-  ![](./image_5.jpg)
+   ![](./image_5.jpg)
 
-5. 🥹 (
-使用次数: 103次)
+5. 🥹 (使用次数: 103次)
 
-  ![](./image_6.jpg)
+   ![](./image_6.jpg)
 
 ### 🥵 年度热门 Emoji
 
@@ -119,7 +117,7 @@ summary: 回顾 LCPU 2025 年微信群的交流与趣事，用社区数据记录
 
 ![](./image_7.jpg)
 
-<div style="display: none">ARCH</div>
+<!-- ARCH -->
 
 ## 💬说文解字 |  LCPU 年度热词
 
@@ -320,5 +318,3 @@ LCPU 运维组曾多次打算把手上的内存全部出售待低价再进行回
 Nano Banana Pro 生成
 
 `echo "Happy New Year 2026!" >> /dev/tty` 🎊
-
-##

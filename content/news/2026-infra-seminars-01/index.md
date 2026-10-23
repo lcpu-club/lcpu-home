@@ -24,7 +24,7 @@ summary: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编�
 
 第一周我们将进入 Topic 1 —— **Kernel & ML Compiler**。从 GPU 的工作方式开始，逐步认识 CUDA 编程模型，并初步接触 Triton、TileLang 等 GPU Kernel DSL。
 
-## 1Session 00 | 从 HPC 到 AI Infra: 并行计算与并行编程
+## Session 00 | 从 HPC 到 AI Infra: 并行计算与并行编程
 
 为什么超算和 AI Infra 息息相关？为什么随着算力增强，人工智能才能越来越强？
 
@@ -46,9 +46,9 @@ summary: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编�
 
 - Introduction to Parallel Computing Tutorial (https://hpc.llnl.gov/documentation/tutorials/introduction-parallel-computing-tutorial)
 
-- Parallel Computing on Wikipedia (https://en.wikipedia.org/wiki/Parallel\_computing)
+- Parallel Computing on Wikipedia (https://en.wikipedia.org/wiki/Parallel_computing)
 
-## 2Session 01 | GPU 编程模型
+## Session 01 | GPU 编程模型
 
 为什么 GPU 上的一个线程不比 CPU 更快，却能完成更大规模的并行计算？
 
@@ -76,7 +76,7 @@ CUDA 为何要把线程组织成 Thread、Block 和 Grid？Warp 又是什么？
 
 - Triton Documentation (https://triton-lang.org/main/index.html)
 
-## 3丰富的交流与实践
+## 丰富的交流与实践
 
 Infra Seminars 不是一套由少数讲者单向输出的课程
 
@@ -86,7 +86,7 @@ Infra Seminars 不是一套由少数讲者单向输出的课程
 
 同时，我们也非常欢迎有独到见解的你来做分享，向大家分享你在某个子领域的见解！（具体关注活动群内报名📢）
 
-## 4活动安排
+## 活动安排
 
 **活动主题**
 

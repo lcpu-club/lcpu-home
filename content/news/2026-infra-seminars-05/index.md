@@ -24,7 +24,7 @@ summary: 8 月 17 日 Infra Seminars 05：走进现代网络系统，理解 AI �
 
 本周开始，我们将进入第二阶段： Parallelization and Communication。从现代网络系统开始，探索Scale-Out的力量。
 
-## 1Session 05 | Towards Modern Networking System
+## Session 05 | Towards Modern Networking System
 
 随着计算量的不断增加，单个计算单元已无法满足更大的计算需求，这要求我们必须采用某些方式将计算单元连接起来。历史上，总线、PCIe、TCP/IP、Ethernet等，都从不同方面不同层次对互联中关键的问题进行了回答。
 
@@ -34,7 +34,7 @@ AI 时代，为了承载 HPC/AI Workload 中大规模并行计算所需要的通
 
 本次活动无课前阅读
 
-## 2活动安排
+## 活动安排
 
 **活动主题**
 
