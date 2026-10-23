@@ -11,6 +11,7 @@ import pageModules from 'virtual:page-modules'
 import { RouteTitleRecord } from './site'
 import { normalizePath } from './router/paths'
 import ExpanderComponent from './components/ExpanderComponent.vue'
+import ImageGallery from './components/ImageGallery'
 
 const routes = new Set([
   '/',
@@ -30,5 +31,6 @@ export function createApp() {
   app.provide(RouterSymbol, router)
   app.provide('pageModules', pageModules)
   app.component('ExpanderComponent', ExpanderComponent)
+  app.component('ImageGallery', ImageGallery)
   return { app, router }
 }

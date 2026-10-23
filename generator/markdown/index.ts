@@ -22,6 +22,12 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
   mdit
     .use(ImageProcessor)
     .use(MathJax3)
+    .use(MarkdownItContainer, 'gallery', {
+      render: (tokens: Token[], idx: number) =>
+        tokens[idx].nesting === 1
+          ? `<ImageGallery caption="${mdit.utils.escapeHtml(tokens[idx].info.trim().slice('gallery'.length).trim())}">\n`
+          : '</ImageGallery>\n',
+    })
     .use(anchor, {
       slugify: headingSlug,
       permalink: anchor.permalink.ariaHidden({

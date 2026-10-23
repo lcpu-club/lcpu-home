@@ -129,9 +129,56 @@ li {
   margin-inline: auto;
 }
 
-.md-content .article-image figcaption {
+.md-content .article-image figcaption,
+.md-content .image-gallery > figcaption {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.6;
   --at-apply: text-gray-500 dark:text-truegray-400;
+}
+
+.md-content .image-gallery {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.image-gallery-viewport {
+  height: min(65vh, 32rem);
+}
+
+.image-gallery-slide,
+.image-gallery-slide .article-image {
+  height: 100%;
+  margin: 0;
+}
+
+.md-content .image-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.image-gallery-controls button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.image-gallery:focus-visible,
+.image-gallery-controls button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }

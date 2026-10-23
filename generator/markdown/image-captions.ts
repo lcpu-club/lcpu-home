@@ -4,8 +4,18 @@ import type { MarkdownIt, Token } from 'markdown-it'
 export default function imageCaptions(md: MarkdownIt) {
   md.core.ruler.after('inline', 'image_captions', (state) => {
     const result: Token[] = []
+    let galleryDepth = 0
+    const gallerySlides: number[] = []
     for (let i = 0; i < state.tokens.length; i++) {
       const open = state.tokens[i]
+      if (open.type === 'container_gallery_open') {
+        galleryDepth++
+        gallerySlides.push(0)
+      }
+      if (open.type === 'container_gallery_close') {
+        galleryDepth--
+        gallerySlides.pop()
+      }
       const inline = state.tokens[i + 1]
       const close = state.tokens[i + 2]
       const groups =
@@ -21,6 +31,11 @@ export default function imageCaptions(md: MarkdownIt) {
       }
 
       for (const children of groups) {
+        if (galleryDepth) {
+          const slot = new state.Token('html_block', '', 0)
+          slot.content = `<template #slide-${gallerySlides[gallerySlides.length - 1]++}>\n`
+          result.push(slot)
+        }
         const image = children.find((token) => token.type === 'image')!
         const caption = md.renderer
           .renderInlineAsText(image.children ?? [], md.options, state.env)
@@ -33,7 +48,7 @@ export default function imageCaptions(md: MarkdownIt) {
         imageContent.children = children
         result.push(figure, imageContent)
 
-        if (caption) {
+        if (caption && !galleryDepth) {
           const captionOpen = new state.Token('figcaption_open', 'figcaption', 1)
           // Captions are literal text, including any Vue-like interpolation.
           captionOpen.attrSet('v-pre', '')
@@ -51,6 +66,11 @@ export default function imageCaptions(md: MarkdownIt) {
         const figureClose = new state.Token('figure_close', 'figure', -1)
         figureClose.block = true
         result.push(figureClose)
+        if (galleryDepth) {
+          const slotClose = new state.Token('html_block', '', 0)
+          slotClose.content = '</template>\n'
+          result.push(slotClose)
+        }
       }
       i += 2
     }
