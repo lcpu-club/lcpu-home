@@ -4,7 +4,7 @@ time: '2024-09-19'
 tags:
   - 招新
   - 社团事务
-author: 北京大学学生 Linux 俱乐部
+author: 黄翟
 meta:
   description: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方式，欢迎来百团摊位交流。
   keywords:
@@ -164,5 +164,3 @@ PKUTeX: https://latex.pku.edu.cn/
 \[7\]
 
 PKU INFO: https://pkuinfo.lcpu.dev/
-
-文案、排版 黄翟

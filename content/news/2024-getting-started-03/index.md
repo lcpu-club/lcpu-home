@@ -5,7 +5,6 @@ tags:
   - 活动
   - Getting Started
   - 计算机基础
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: Getting Started 03：计算机软件基础，11 月 24 日晚在二教 515 开讲。
   keywords:

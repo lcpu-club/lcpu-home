@@ -5,7 +5,6 @@ tags:
   - 活动
   - LLM From Scratch
   - AI
-author: Linux 俱乐部
 meta:
   description: 以 Stanford CS336 为蓝本，从模型架构、数据处理到系统优化，动手实现并训练语言模型。
   keywords:

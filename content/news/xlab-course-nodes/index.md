@@ -5,7 +5,6 @@ tags:
   - xLab
   - 服务更新
   - 教学
-author: Linux 俱乐部
 meta:
   description: xLab 教学云开始试运行，为课程提供统一 Linux 节点、课程镜像、远程开发与教学管理。
   keywords:

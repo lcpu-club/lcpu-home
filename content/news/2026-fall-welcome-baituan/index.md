@@ -5,7 +5,7 @@ tags:
   - 活动
   - 招新
   - 百团大战
-author: Linux 俱乐部
+author: 黄尚禹、陈嘉骏、李思润
 meta:
   description: 9 月 19—20 日，百讲南侧与新太阳北侧 14 号摊位，体验 LCPU 游戏、技术展示与社团周边。
   keywords:
@@ -165,8 +165,6 @@ SigStore 集群是 LCPU 开发的高性能网络存储集群，对外可以提�
 [![](./image_13.jpg)](https://mp.weixin.qq.com/s?__biz=Mzk0OTY1ODc0Nw==&mid=2247485151&idx=1&sn=4bb4add1ad1b01015673bed7d6a05937&scene=21#wechat_redirect)**
 
 ---
-
-文案：黄尚禹、陈嘉骏、李思润
 
 排版：陈嘉骏
 

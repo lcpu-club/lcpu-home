@@ -5,7 +5,6 @@ tags:
   - 维护
   - CLab
   - PKUTeX
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: '6 月 2 日 20:00 至 23:59 进行日常维护，CLab 与 PKUTeX 暂停服务。'
   keywords:

@@ -5,7 +5,6 @@ tags:
   - 活动
   - Getting Started
   - 开发工具
-author: Linux俱乐部
 meta:
   description: Getting Started 04：配置顺手的编程环境，认识帮助你高效使用电脑的应用程序。
   keywords:

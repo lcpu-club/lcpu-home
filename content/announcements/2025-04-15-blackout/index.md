@@ -5,7 +5,6 @@ tags:
   - 维护
   - CLab
   - PKUTeX
-author: Linux俱乐部
 meta:
   description: '4 月 15 日 21:00 起部分 LCPU 服务因停电关闭，预计 16 日 06:00 前恢复。'
   keywords:

@@ -4,7 +4,6 @@ time: '2026-09-18'
 tags:
   - 招新
   - 社团事务
-author: Linux 俱乐部
 meta:
   description: LCPU 携未名超算队、PKUCC 战队开启 2026 秋季招新，欢迎一起开发项目、学习技术与参与竞赛。
   keywords:
@@ -171,8 +170,6 @@ Infra Seminars 系列活动
 
   ![Image](./image_15.svg)
 
-  左右滑动查看更多
-
   ![Image](./image_16.svg)
 
 ### 3活动部
@@ -189,12 +186,6 @@ Infra Seminars 系列活动
 
 ![Image](./image_19.webp)
 
-![Image](./image_20.svg)
-
-左右滑动查看更多
-
-![Image](./image_21.svg)
-
 ### 4运营部
 
 我们负责筹备**百团大战**活动设计、参与校园文化节、管理社团资金，完成财务报销流程；定期举行社团内部团建、整理社团动态并撰写推送，还负责**设计社团各项周边**，是社团最重要的组成部分。
@@ -208,12 +199,6 @@ Infra Seminars 系列活动
 ![Image](./image_23.webp)
 
 ![Image](./image_24.webp)
-
-![Image](./image_25.svg)
-
-左右滑动查看更多
-
-![Image](./image_26.svg)
 
 ### 5外联部
 

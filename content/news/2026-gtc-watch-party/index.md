@@ -5,7 +5,6 @@ tags:
   - 活动
   - 技术讲座
   - AI
-author: Linux 俱乐部
 meta:
   description: 3 月 19 日一起观看 NVIDIA GTC 主题演讲，交流 GPU、模型与 AI 应用的新进展。
   keywords:

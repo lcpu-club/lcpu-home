@@ -5,7 +5,6 @@ tags:
   - 活动
   - 开源社区
   - LoongArch
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: COSCon’24 开源教育分论坛：周乾康分享重建 Loong Arch Linux 社区的经验。
   keywords:

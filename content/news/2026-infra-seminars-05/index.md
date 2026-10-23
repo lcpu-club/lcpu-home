@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 17 日 Infra Seminars 05：走进现代网络系统，理解 AI 集群互联与网络性能。
   keywords:

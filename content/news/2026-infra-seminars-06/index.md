@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 23 日 Infra Seminars 06：梳理 AI 通信栈，学习大规模 GPU 集群中的通信与优化。
   keywords:

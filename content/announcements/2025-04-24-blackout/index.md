@@ -5,7 +5,6 @@ tags:
   - 维护
   - CLab
   - PKUTeX
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 4 月 24 日凌晨机房停电，CLab、PKUTeX 与内部镜像站暂停服务，请提前保存工作。
   keywords:

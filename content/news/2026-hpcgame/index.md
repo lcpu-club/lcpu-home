@@ -5,7 +5,6 @@ tags:
   - 竞赛
   - HPCGame
   - 高性能计算
-author: Linux 俱乐部
 meta:
   description: 第三届 HPCGame 于 2 月 1—8 日线上举行，通过真实有趣的赛题学习高性能计算与性能优化。
   keywords:

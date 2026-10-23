@@ -6,7 +6,6 @@ tags:
   - 招新
   - 云计算
 summary: CLab v2 团队招募开发伙伴，研究高性能虚拟网络、可靠存储与云平台性能优化。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: CLab v2 团队招募开发伙伴，研究高性能虚拟网络、可靠存储与云平台性能优化。
   keywords:

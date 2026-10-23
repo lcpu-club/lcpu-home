@@ -5,7 +5,6 @@ tags:
   - CLab
   - 服务更新
   - 云计算
-author: Linux俱乐部
 meta:
   description: CLab 云计算平台面向全校公测，提供免费 Linux 云主机，支持远程开发与教学科研。
   keywords:

@@ -12,7 +12,6 @@ tags:
   - 招新
 time: '2025-03-13'
 summary: 春季迎新会在极客实验室举行，一起了解社团项目、交流开源技术并安装 Linux。
-author: 北京大学学生 Linux 俱乐部
 ---
 
 ![封面图由 FLUX.1 生成](./cover.jpg)

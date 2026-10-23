@@ -5,7 +5,7 @@ tags:
   - 活动
   - Install Party
   - 招新
-author: Linux 俱乐部
+author: 黄尚禹、陈嘉骏、霍子晗
 meta:
   description: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目、进行 Git 打卡并指导安装 Linux。
   keywords:
@@ -126,7 +126,5 @@ summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目
 ![](./image_4.png)
 
 ---
-
-文案 | 黄尚禹 陈嘉骏 霍子晗
 
 审核 | 霍子晗 黄熙鸣

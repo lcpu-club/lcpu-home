@@ -7,7 +7,6 @@ tags:
   - JetBrains
   - AI
 summary: 10 月 18 日 JetBrains 分享开源 Mellum 2 的预训练与工程实践，探讨面向开发者的 AI 工作流。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 10 月 18 日 JetBrains 分享开源 Mellum 2 的预训练与工程实践，探讨面向开发者的 AI 工作流。
   keywords:

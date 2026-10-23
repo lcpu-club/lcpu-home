@@ -6,7 +6,6 @@ tags:
   - CLab
   - PKUTeX
 summary: 征求 6 月 28—29 日维护安排意见，计划迁移 CLab 网络、合并服务器网络并部署新主干。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 征求 6 月 28—29 日维护安排意见，计划迁移 CLab 网络、合并服务器网络并部署新主干。
   keywords:

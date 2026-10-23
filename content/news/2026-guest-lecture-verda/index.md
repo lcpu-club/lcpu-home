@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 30 日 Verda 工程师分享 NVL72 Scale-Up 域内的推理优化与工程实践。
   keywords:

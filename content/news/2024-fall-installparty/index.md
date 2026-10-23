@@ -5,7 +5,6 @@ tags:
   - 活动
   - Install Party
   - Linux
-author: Linux俱乐部
 meta:
   description: 2024 秋季 Install Party：交流 Linux 发行版与安装经验，在自己的设备上体验开源系统。
   keywords:

@@ -4,7 +4,6 @@ time: '2025-01-28'
 tags:
   - 社团事务
   - 节日祝福
-author: Linux俱乐部
 meta:
   description: LCPU 祝大家乙巳新春快乐，与社员一起分享新年祝福和红包活动。
   keywords:

@@ -5,7 +5,6 @@ tags:
   - 招新
   - 社团事务
 summary: LCPU 携未名超算队、PKUCC 战队开启 2025 秋季招新，介绍社团项目与学习实践机会。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: LCPU 携未名超算队、PKUCC 战队开启 2025 秋季招新，介绍社团项目与学习实践机会。
   keywords:

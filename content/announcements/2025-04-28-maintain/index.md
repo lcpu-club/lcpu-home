@@ -4,7 +4,6 @@ time: '2025-04-26'
 tags:
   - 维护
   - PKUTeX
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: '主服务器光模块故障维护，4 月 27 日 23:00 至 28 日 01:00，PKUTeX 暂停访问。'
   keywords:

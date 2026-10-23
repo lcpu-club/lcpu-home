@@ -6,7 +6,7 @@ tags:
   - 技术讲座
   - JetBrains
 summary: 10 月 11 日 JetBrains 工程师分享 IDE 与 Git 技巧、Kotlin 设计和开发工具中的 AI 特性。
-author: 北京大学学生 Linux 俱乐部
+author: JetBrains、霍子晗
 meta:
   description: 10 月 11 日 JetBrains 工程师分享 IDE 与 Git 技巧、Kotlin 设计和开发工具中的 AI 特性。
   keywords:
@@ -83,7 +83,6 @@ JetBrains 不仅打造了 IntelliJ IDEA、PyCharm 等知名 IDE，也自主研�
 
   刘辰皆是 JetBrains 教育项目中国区负责人，在培训管理及产品市场推广具有浓厚兴趣，并始终致力于 JetBrains 为中国高校提供有效的教学支持与持续推动 JetBrains 教育方案在中国教育市场的落地及改进，让同学们在编程工具学习中更轻松上手，更便利使用。
 
-<p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">文案: JetBrains 霍子晗</p>
 <p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">排版: 霍子晗</p>
 <p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">问卷: 霍子晗</p>
 <p style="text-align: center;font-size: 12px;color: rgb(136, 136, 136);">图片: JetBrains</p>

@@ -12,7 +12,6 @@ tags:
   - AI
   - 愚人节
 summary: LCPU 愚人节特别企划：设想由大模型驱动的 LLMOS，探索 AI 与 Linux 使用体验的趣味结合。
-author: 北京大学学生 Linux 俱乐部
 ---
 
 在这个春暖花开，万物复苏的季节里，我们怀着激动的心情宣布: 由 LCPU 开发的 LLMOS，. Fully powered by Large Language Models, 正式上线 CLab 云计算平台 🐧 ！

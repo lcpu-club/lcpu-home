@@ -5,7 +5,6 @@ tags:
   - 维护
   - CLab
   - PKUTeX
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 5 月 24、28、29 日凌晨停电倒闸，LCPU 服务将提前约半小时关闭，完成供电后恢复。
   keywords:

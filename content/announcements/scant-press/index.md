@@ -11,7 +11,6 @@ tags:
   - 开源项目
   - ScantPress
 summary: 介绍为 LCPU 官网提供支持的 ScantPress：基于 Vue 3 与 Vite 的轻量静态站点生成器。
-author: 北京大学学生 Linux 俱乐部
 ---
 
 ::: info

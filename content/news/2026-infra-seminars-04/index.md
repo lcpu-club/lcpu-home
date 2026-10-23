@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执行顺序，优化 GPU 数据流。
   keywords:

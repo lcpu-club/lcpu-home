@@ -6,7 +6,6 @@ tags:
   - 计算机基础
   - Getting Started
 summary: 发布计算机基础科学与开发手册，从入门知识到工具、排版与开发实践，提供持续更新的开源参考。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 发布计算机基础科学与开发手册，从入门知识到工具、排版与开发实践，提供持续更新的开源参考。
   keywords:

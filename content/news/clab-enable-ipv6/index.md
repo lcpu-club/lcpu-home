@@ -6,7 +6,6 @@ tags:
   - 服务更新
   - 网络
 summary: CLab 已开启 IPv6 网络支持，用户可在云主机中使用 IPv6 连接。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: CLab 已开启 IPv6 网络支持，用户可在云主机中使用 IPv6 连接。
   keywords:

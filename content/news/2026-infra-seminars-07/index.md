@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统，理解高效部署的关键机制。
   keywords:

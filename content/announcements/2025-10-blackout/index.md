@@ -6,7 +6,6 @@ tags:
   - CLab
   - PKUTeX
 summary: 10 月 9、14、25 日凌晨停电倒闸，LCPU 各项服务将在相应时段暂停，请提前安排使用。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 10 月 9、14、25 日凌晨停电倒闸，LCPU 各项服务将在相应时段暂停，请提前安排使用。
   keywords:

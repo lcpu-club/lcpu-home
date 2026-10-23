@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与高性能矩阵运算。
   keywords:

@@ -6,7 +6,6 @@ tags:
   - 社团事务
   - 百团大战
 summary: 2025 春季百团招新，欢迎到 33 号摊位了解 LCPU 的项目、活动与技术社区。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 2025 春季百团招新，欢迎到 33 号摊位了解 LCPU 的项目、活动与技术社区。
   keywords:

@@ -6,7 +6,6 @@ tags:
   - 高性能计算
   - 未名超算队
   - 转载
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 未名超算队 2026 年招新，欢迎对并行计算、集群与 GPU 优化感兴趣的同学加入。
   keywords:
@@ -17,8 +16,6 @@ meta:
 summary: 未名超算队 2026 年招新，欢迎对并行计算、集群与 GPU 优化感兴趣的同学加入。
 redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 ---
-
-![](./image_1.jpg)
 
 **我们是谁？**
 

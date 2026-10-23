@@ -5,7 +5,6 @@ tags:
   - 活动
   - Getting Started
   - 硬件
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: Getting Started 02：计算机硬件基础，11 月 17 日晚在理科二号楼 2129 开讲。
   keywords:

@@ -6,7 +6,6 @@ tags:
   - 招新
   - 百团大战
 summary: 2025 秋季百团大战，来 LCPU 摊位参与现场游戏、技术展示与开源互动。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 2025 秋季百团大战，来 LCPU 摊位参与现场游戏、技术展示与开源互动。
   keywords:

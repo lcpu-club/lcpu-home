@@ -5,7 +5,6 @@ tags:
   - 活动
   - HPCGame
   - 技术讲座
-author: LCPU
 meta:
   description: HPCGame 联合九坤投资举办技术分享，探索高性能计算经验如何应用于超低延迟交易系统。
   keywords:

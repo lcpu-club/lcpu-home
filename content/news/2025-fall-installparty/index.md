@@ -6,7 +6,7 @@ tags:
   - Install Party
   - 招新
 summary: 9 月 27 日在极客实验室举行秋季迎新会，介绍社团计划并提供 Linux 安装指导。
-author: 北京大学学生 Linux 俱乐部
+author: 方尤乐、霍子晗
 meta:
   description: 9 月 27 日在极客实验室举行秋季迎新会，介绍社团计划并提供 Linux 安装指导。
   keywords:
@@ -127,8 +127,6 @@ meta:
 
 - 2025-2026秋季社衫征订
 - GeekGame 网络安全比赛
-
-文案: 方尤乐 霍子晗
 
 排版: 霍子晗
 

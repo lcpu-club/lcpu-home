@@ -6,7 +6,7 @@ tags:
   - 高性能计算
   - 未名超算队
   - 转载
-author: 北京大学学生 Linux 俱乐部
+author: 马诗尧
 meta:
   description: 北京大学超算队获 2026 ASC 总冠军及 e Prize 计算挑战奖，再创国际超算赛事佳绩。
   keywords:
@@ -17,8 +17,6 @@ meta:
 summary: 北京大学超算队获 2026 ASC 总冠军及 e Prize 计算挑战奖，再创国际超算赛事佳绩。
 redirect: 'https://mp.weixin.qq.com/s/EnLcSfjEMHMM3CvZER_pdg'
 ---
-
-![](./image_1.gif)
 
 近日
 
@@ -148,58 +146,10 @@ HPC Game界面
 
 孙远航 计算机学院2025级硕士生
 
-![](./image_12.png)
-
 **来源 |** 北京大学融媒体中心、北京大学计算中心
-
-**文字 |** 马诗尧
 
 **图片 |** 北京大学计算中心
 
 **排版 |** 刘芮佳
 
 **责编 |** 戴璐瑶
-
-![](./image_13.png)
-
-[![](./image_14.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3165670512140845059#wechat_redirect)
-
-[![](./image_15.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3261407292848177159#wechat_redirect)
-
-[![](./image_16.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=1805264657067081734#wechat_redirect)
-
-[![](./image_17.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=1805260283028766725#wechat_redirect)
-
-[![](./image_18.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3261419369658679296#wechat_redirect)
-
-[![](./image_19.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=1861779586846359557#wechat_redirect)
-
-[![](./image_20.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2325222650018594819#wechat_redirect)
-
-[![](./image_21.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2090656912403922945#wechat_redirect)
-
-[![](./image_22.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3261427425691926535#wechat_redirect)
-
-[![](./image_23.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3261433989509251074#wechat_redirect)
-
-[![](./image_24.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2316489530561855490#wechat_redirect)
-
-[![](./image_25.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2013838206927962116#wechat_redirect)
-
-[![](./image_26.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2993306770175524866#wechat_redirect)
-
-[![](./image_27.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=3334292922271367174#wechat_redirect)
-
-[![](./image_28.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2975807473620189186#wechat_redirect)
-
-[![](./image_29.jpg)](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA3OTE0MjQzMw==&action=getalbum&album_id=2413335162353680384#wechat_redirect)
-
-**<<左右滑动查看栏目>>**
-
-![](./image_30.png)
-
-![融媒体矩阵.gif](./image_31.gif)
-
-![尾图动图春天版.gif](./image_32.gif)
-
-![](./image_33.gif)

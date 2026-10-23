@@ -4,7 +4,7 @@ time: '2024-10-04'
 tags:
   - 维护
   - CLab
-author: LCPU
+author: 云计算小组
 meta:
   description: '因机房停电，CLab 于 10 月 7 日 23:00 至 8 日 05:00 关闭服务与虚拟机，请提前安排使用。'
   keywords:
@@ -20,7 +20,3 @@ summary: '因机房停电，CLab 于 10 月 7 日 23:00 至 8 日 05:00 关闭�
 对于所有 10 月 7 日晚 11 时状态为开启的虚拟机，平台恢复后也将恢复开机状态。若您遇到任何问题，请您及时与平台管理员联系，联系邮箱为linuxclub@pku.edu.cn。
 
 后续 CLab 有关通知会通过 Linux 俱乐部微信公众号、clab@lcpu.dev 邮箱及 CLab 首页等方式发布，请留意查看。
-
-Linux俱乐部云小组
-
-2024年10月4日

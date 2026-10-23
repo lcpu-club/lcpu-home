@@ -4,7 +4,6 @@ time: '2026-06-27'
 tags:
   - 社团事务
   - 社衫
-author: Linux 俱乐部
 meta:
   description: '6 月 27—30 日每日 14:00—17:30，可到燕园大厦 308 领取夏季社衫，附路线指引。'
   keywords:

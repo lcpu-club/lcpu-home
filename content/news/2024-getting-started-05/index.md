@@ -5,7 +5,6 @@ tags:
   - 活动
   - Getting Started
   - Git
-author: Linux俱乐部
 meta:
   description: Getting Started 05：学习 Git 的基础原理与使用方法，在开源项目中实践版本管理。
   keywords:

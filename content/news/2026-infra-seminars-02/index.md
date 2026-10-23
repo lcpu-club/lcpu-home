@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构，学习数据访问和存储优化。
   keywords:

@@ -5,7 +5,6 @@ tags:
   - 活动
   - Getting Started
   - 计算机基础
-author: Linux俱乐部
 meta:
   description: Getting Started 入门课程开讲，从搜索、知识获取与基础工具开始学习高效使用计算机。
   keywords:

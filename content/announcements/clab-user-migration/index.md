@@ -6,7 +6,6 @@ tags:
   - 服务更新
 time: '2025-08-28'
 summary: 毕业生可迁移 CLab 账号至新的 IAAA 账号，或取回虚拟机数据，本文说明条件与操作步骤。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 毕业生可迁移 CLab 账号至新的 IAAA 账号，或取回虚拟机数据，本文说明条件与操作步骤。
   keywords:

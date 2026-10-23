@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU Kernel 的编写与优化。
   keywords:

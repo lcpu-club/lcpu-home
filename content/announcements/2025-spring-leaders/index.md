@@ -5,7 +5,6 @@ tags:
   - 社团事务
   - 换届
 summary: 公布 LCPU 2024—2025 学年春季学期负责人名单，介绍新学期社团组织安排。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 公布 LCPU 2024—2025 学年春季学期负责人名单，介绍新学期社团组织安排。
   keywords:

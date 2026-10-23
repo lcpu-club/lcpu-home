@@ -5,7 +5,6 @@ tags:
   - Infra Seminars
   - AI Infra
   - 学习资源
-author: Linux 俱乐部
 meta:
   description: Infra Seminars 官网、首份作业与临时算力上线，提供课程资料、代码仓库和评测支持。
   keywords:

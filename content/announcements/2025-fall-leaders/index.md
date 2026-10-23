@@ -5,7 +5,6 @@ tags:
   - 社团事务
   - 换届
 summary: 公布 LCPU 2025—2026 学年秋季学期负责人名单，明确社团组织与各部门分工。
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 公布 LCPU 2025—2026 学年秋季学期负责人名单，明确社团组织与各部门分工。
   keywords:

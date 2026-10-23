@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编写第一个 GPU Kernel。
   keywords:

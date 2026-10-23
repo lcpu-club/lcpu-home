@@ -5,7 +5,6 @@ tags:
   - 活动
   - Infra Seminars
   - AI Infra
-author: Linux 俱乐部
 meta:
   description: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大模型推理系统。
   keywords:

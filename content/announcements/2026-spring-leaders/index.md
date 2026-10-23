@@ -4,7 +4,6 @@ time: '2026-03-11'
 tags:
   - 社团事务
   - 换届
-author: 北京大学学生 Linux 俱乐部
 meta:
   description: 公布 LCPU 2025—2026 学年春季学期负责人名单，明确新学期社团组织与骨干分工。
   keywords:
@@ -27,6 +26,5 @@ summary: 公布 LCPU 2025—2026 学年春季学期负责人名单，明确新�
 
 北京大学学生 Linux 俱乐部
 
-2026 年 3 月 11 日
 
 ![](./image_1.jpg)

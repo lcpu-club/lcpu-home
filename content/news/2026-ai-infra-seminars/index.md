@@ -5,7 +5,6 @@ tags:
   - 活动
   - AI Infra
   - Infra Seminars
-author: Linux 俱乐部
 meta:
   description: 未名超算队与 LCPU 联合开设 AI Infra Seminars，从 GPU Kernel 到推理与强化学习系统。
   keywords:
