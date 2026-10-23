@@ -1,11 +1,16 @@
 ---
-title: '春节快乐 | 乙巳献瑞迎新春，红包传情贺团圆'
-time: 2025-01-28
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/XXFzZPWMfnwMhzRJ6DRLvQ
-author: 'Linux俱乐部'
+title: 春节快乐 | 乙巳献瑞迎新春，红包传情贺团圆
+time: '2025-01-28'
+tags:
+  - 社团事务
+  - 节日祝福
+author: Linux俱乐部
 meta:
-  description: 'Linux 俱乐部恭祝大家新春快乐！'
+  description: LCPU 祝大家乙巳新春快乐，与社员一起分享新年祝福和红包活动。
+  keywords:
+    - 社团事务
+    - 节日祝福
+summary: LCPU 祝大家乙巳新春快乐，与社员一起分享新年祝福和红包活动。
 ---
 
 ```
@@ -101,7 +106,3 @@ $ loginWARNING: "Linux 俱乐部 #2024" is deprecated, please use "Linux 俱乐�
 ```
 
 (Tip: 可以在评论区分享找到的 flag ~ )
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/XXFzZPWMfnwMhzRJ6DRLvQ)

@@ -1,11 +1,18 @@
 ---
-title: 'Guest Lecture - 8 月 28 日 | vLLM & Inferact'
-time: 2026-08-27
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/qLS_EQDm4dckVhkfR3MwKQ
-author: 'Linux 俱乐部'
+title: Guest Lecture - 8 月 28 日 | vLLM & Inferact
+time: '2026-08-27'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: '来自vLLM & Inferact的Guest Lecture，本周五（8月28日）快来参加！'
+  description: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大模型推理系统。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 28 日邀请 vLLM 与 Inferact 专家，介绍 vLLM 框架和大模型推理系统。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -63,7 +70,3 @@ Guest Lecture 01 | vLLM & Inferact
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/qLS_EQDm4dckVhkfR3MwKQ)

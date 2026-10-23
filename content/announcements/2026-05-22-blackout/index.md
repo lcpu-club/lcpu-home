@@ -1,11 +1,18 @@
 ---
-title: '维护公告 | CLab 停电通知'
-time: 2026-05-23
-tags: ['维护', 'CLab']
-source: https://mp.weixin.qq.com/s/1sYE3rxMPsBpoAgIkYwveA
-author: '北京大学学生 Linux 俱乐部'
+title: 维护公告 | CLab 停电通知
+time: '2026-05-23'
+tags:
+  - 维护
+  - CLab
+  - PKUTeX
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: '接动力中心通知，本周部分时段全校停电倒闸，LCPU服务所在机房也受此影响。'
+  description: 5 月 24、28、29 日凌晨停电倒闸，LCPU 服务将提前约半小时关闭，完成供电后恢复。
+  keywords:
+    - 维护
+    - CLab
+    - PKUTeX
+summary: 5 月 24、28、29 日凌晨停电倒闸，LCPU 服务将提前约半小时关闭，完成供电后恢复。
 ---
 
 按照学校停电通知 https://portal.pku.edu.cn/portal2017/#/deptNoticeDetail/459601
@@ -27,7 +34,3 @@ meta:
 停电时段后早上6点起,服务将陆续恢复。
 
 如您遇到任何问题，可以邮件联系linuxclub@pku.edu.cn。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/1sYE3rxMPsBpoAgIkYwveA)

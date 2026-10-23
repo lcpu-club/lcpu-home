@@ -1,11 +1,16 @@
 ---
-title: '招新 | Linux 俱乐部 x 未名超算队 x PKUCC战队欢迎你的加入'
-time: 2026-03-11
-tags: ['招新']
-source: https://mp.weixin.qq.com/s/_zy3fB00XSxgWDQ8e28r8w
-author: 'Linux 俱乐部'
+title: 招新 | Linux 俱乐部 x 未名超算队 x PKUCC战队欢迎你的加入
+time: '2026-03-11'
+tags:
+  - 招新
+  - 社团事务
+author: Linux 俱乐部
 meta:
-  description: '如果你热爱计算机，乐于分享，希望将你的奇思妙想变为现实……那么你一定不要错过北京大学学生 Linux 俱乐部！'
+  description: LCPU 携未名超算队、PKUCC 战队开启 2026 春季招新，欢迎加入项目开发、学习小组与技术社区。
+  keywords:
+    - 招新
+    - 社团事务
+summary: LCPU 携未名超算队、PKUCC 战队开启 2026 春季招新，欢迎加入项目开发、学习小组与技术社区。
 ---
 
 ![Image](./image_1.webp)
@@ -219,7 +224,3 @@ LCPU 长期与计算中心合作，拥有丰富的计算资源，还曾获得宽
 ---
 
 LCPU 是一个年轻、多元、充满活力的团队！欢迎大家积极报名骨干团队，一起为社团发展做出贡献。如果你想要参与俱乐部活动、加入社群参与讨论，欢迎关注我们的公众号及后续百团大战等精彩活动预告！
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/_zy3fB00XSxgWDQ8e28r8w)

@@ -1,11 +1,18 @@
 ---
 title: 'Infra Seminars 04 - 8月9日 | Pipeline Ordering: Data Orchestration'
-time: 2026-08-08
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/L1rmdAUOjghqBN5XOHknZg
-author: 'Linux 俱乐部'
+time: '2026-08-08'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 04 - Pipeline Ordering 就在本周日（8月9日），快来参加～！'
+  description: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执行顺序，优化 GPU 数据流。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 9 日 Infra Seminars 04：学习流水线中的数据编排与执行顺序，优化 GPU 数据流。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -87,7 +94,3 @@ Session 04 | Pipeline Ordering: Data Orchestration
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/L1rmdAUOjghqBN5XOHknZg)

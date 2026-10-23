@@ -1,11 +1,18 @@
 ---
 title: '活动 | Getting Started 04: 用好你的电脑(一)'
-time: 2024-11-29
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/p9Gkpqxm28ZO9QfVYqYeBw
-author: 'Linux俱乐部'
+time: '2024-11-29'
+tags:
+  - 活动
+  - Getting Started
+  - 开发工具
+author: Linux俱乐部
 meta:
-  description: '用好你的电脑: 学会了Python却只用IDLE编写代码？还在用DevC++运行C程序？本讲课程将介绍如何配置一份得心应手的编程环境，以及提升效率的应用程序。'
+  description: Getting Started 04：配置顺手的编程环境，认识帮助你高效使用电脑的应用程序。
+  keywords:
+    - 活动
+    - Getting Started
+    - 开发工具
+summary: Getting Started 04：配置顺手的编程环境，认识帮助你高效使用电脑的应用程序。
 ---
 
 ![](./image_1.png)
@@ -47,7 +54,3 @@ meta:
 ![](./image_2.png)
 
 课程群及反馈问卷
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/p9Gkpqxm28ZO9QfVYqYeBw)

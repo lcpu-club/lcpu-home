@@ -1,11 +1,16 @@
 ---
-title: 'Linux 俱乐部 2026 秋季学期换届公告'
-time: 2026-09-09
-tags: ['换届']
-source: https://mp.weixin.qq.com/s/2bwqvSTeeoxx99cKivYWdw
-author: 'Linux 俱乐部'
+title: Linux 俱乐部 2026 秋季学期换届公告
+time: '2026-09-09'
+tags:
+  - 社团事务
+  - 换届
+author: Linux 俱乐部
 meta:
-  description: 'Linux 俱乐部 2026 秋季学期换届公告'
+  description: 公布 LCPU 2026—2027 学年秋季学期负责人名单，陈嘉骏任社长、黄尚禹任团支书。
+  keywords:
+    - 社团事务
+    - 换届
+summary: 公布 LCPU 2026—2027 学年秋季学期负责人名单，陈嘉骏任社长、黄尚禹任团支书。
 ---
 
 2026 年 9 月 5 日晚，北京大学学生 Linux 俱乐部换届选举会议顺利召开，经社团骨干成员研究及投票表决，最终确定 2026-2027 学年秋季学期负责人名单如下:
@@ -23,7 +28,3 @@ meta:
 北京大学学生 Linux 俱乐部
 
 2026 年 9 月 9 日
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/2bwqvSTeeoxx99cKivYWdw)

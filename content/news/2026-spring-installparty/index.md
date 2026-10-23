@@ -1,11 +1,18 @@
 ---
-title: '活动 | Install Party & LCPU 迎新会就在本周末！'
-time: 2026-03-26
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/rYZ9jctir_diwt_j4GDjkg
-author: 'Linux 俱乐部'
+title: 活动 | Install Party & LCPU 迎新会就在本周末！
+time: '2026-03-26'
+tags:
+  - 活动
+  - Install Party
+  - 招新
+author: Linux 俱乐部
 meta:
-  description: '作为一名 LCPUer ，你是否想要了解俱乐部的日常活动与开发项目？是否想要在你的设备上安装和体验最新的Linux发行版？'
+  description: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目、进行 Git 打卡并指导安装 Linux。
+  keywords:
+    - 活动
+    - Install Party
+    - 招新
+summary: 3 月 29 日春季迎新会与 Install Party，现场介绍社团项目、进行 Git 打卡并指导安装 Linux。
 ---
 
 ![](./image_1.png)
@@ -123,7 +130,3 @@ meta:
 文案 | 黄尚禹 陈嘉骏 霍子晗
 
 审核 | 霍子晗 黄熙鸣
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/rYZ9jctir_diwt_j4GDjkg)

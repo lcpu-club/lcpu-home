@@ -1,11 +1,18 @@
 ---
-title: 'CLab 云计算平台面向全校开放公测'
-time: 2024-09-09
-tags: ['CLab']
-source: https://mp.weixin.qq.com/s/cteCSKgqE6VMtHTiJ9Xoxg
-author: 'Linux俱乐部'
+title: CLab 云计算平台面向全校开放公测
+time: '2024-09-09'
+tags:
+  - CLab
+  - 服务更新
+  - 云计算
+author: Linux俱乐部
 meta:
-  description: '给所有同学的云平台，来了！'
+  description: CLab 云计算平台面向全校公测，提供免费 Linux 云主机，支持远程开发与教学科研。
+  keywords:
+    - CLab
+    - 服务更新
+    - 云计算
+summary: CLab 云计算平台面向全校公测，提供免费 Linux 云主机，支持远程开发与教学科研。
 ---
 
 ![](./image_1.png)
@@ -105,7 +112,3 @@ CLab 由北京大学学生 Linux 俱乐部云计算小组的同学们构建并�
 获取免费云计算服务！
 
 ![](./image_7.png)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/cteCSKgqE6VMtHTiJ9Xoxg)

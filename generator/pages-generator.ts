@@ -24,7 +24,6 @@ export function generatePages(contentRoot = './content') {
         tags,
         summary,
         redirect,
-        source,
         ...data
       } = frontmatter.data
       if (redirect !== undefined) {
@@ -49,7 +48,6 @@ export function generatePages(contentRoot = './content') {
           summary ?? meta?.description ?? (frontmatter.excerpt || frontmatter.content),
         ),
         redirect,
-        originalUrl: source,
         contentUrl: `/${slug}/`,
         sourceUrl: `/${path}/index.md`,
         tags,

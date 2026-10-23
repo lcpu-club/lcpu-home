@@ -1,11 +1,18 @@
 ---
-title: '维护公告 | 4月24日凌晨停电通知'
-time: 2025-04-21
-tags: ['维护', 'CLab']
-source: https://mp.weixin.qq.com/s/VF2bO3h4j1wBKoh-ifzSbw
-author: '北京大学学生 Linux 俱乐部'
+title: 维护公告 | 4月24日凌晨停电通知
+time: '2025-04-21'
+tags:
+  - 维护
+  - CLab
+  - PKUTeX
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: '接动力中心通知，2025年4月23日00:00到02:00全校停电倒闸，LCPU服务所在机房也受此影响。'
+  description: 4 月 24 日凌晨机房停电，CLab、PKUTeX 与内部镜像站暂停服务，请提前保存工作。
+  keywords:
+    - 维护
+    - CLab
+    - PKUTeX
+summary: 4 月 24 日凌晨机房停电，CLab、PKUTeX 与内部镜像站暂停服务，请提前保存工作。
 ---
 
 接动力中心通知，2025年4月24日00:00到02:00全校停电倒闸，LCPU服务所在机房也受此影响。因此，社团将于4月23日11:45左右关闭部分服务。
@@ -29,7 +36,3 @@ meta:
 ![](./image_1.jpg)
 
 ![](./image_2.jpg)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/VF2bO3h4j1wBKoh-ifzSbw)

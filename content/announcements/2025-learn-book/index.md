@@ -1,7 +1,18 @@
 ---
 title: 资料丨计算机基础科学与开发手册：计算机入门，一本就够
-time: 2025-07-18
-tags: []
+time: '2025-07-18'
+tags:
+  - 学习资源
+  - 计算机基础
+  - Getting Started
+summary: 发布计算机基础科学与开发手册，从入门知识到工具、排版与开发实践，提供持续更新的开源参考。
+author: 北京大学学生 Linux 俱乐部
+meta:
+  description: 发布计算机基础科学与开发手册，从入门知识到工具、排版与开发实践，提供持续更新的开源参考。
+  keywords:
+    - 学习资源
+    - 计算机基础
+    - Getting Started
 ---
 
 ![](./image_1.jpg)

@@ -1,7 +1,20 @@
 ---
 title: 开源 Mellum 2：面向“以人为本” AI 工作流的高效模型
-time: 2026-10-11
-tags: ['活动']
+time: '2026-10-11'
+tags:
+  - 活动
+  - 技术讲座
+  - JetBrains
+  - AI
+summary: 10 月 18 日 JetBrains 分享开源 Mellum 2 的预训练与工程实践，探讨面向开发者的 AI 工作流。
+author: 北京大学学生 Linux 俱乐部
+meta:
+  description: 10 月 18 日 JetBrains 分享开源 Mellum 2 的预训练与工程实践，探讨面向开发者的 AI 工作流。
+  keywords:
+    - 活动
+    - 技术讲座
+    - JetBrains
+    - AI
 ---
 
 > 从万亿级预训练 Recipe 到真实软件工程落地

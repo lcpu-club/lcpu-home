@@ -1,11 +1,18 @@
 ---
-title: 'CLab 推出课程镜像适配服务'
-time: 2025-02-23
-tags: ['CLab']
-source: https://mp.weixin.qq.com/s/ldVVvXpE4D5RJxdav6alHQ
-author: '云计算小组'
+title: CLab 推出课程镜像适配服务
+time: '2025-02-23'
+tags:
+  - CLab
+  - 教学
+  - 服务更新
+author: 云计算小组
 meta:
-  description: '欢迎使用CLab进行课程教学！'
+  description: CLab 支持为课程定制系统镜像，以 EDA 课程为例介绍统一软件环境与在线教学支持。
+  keywords:
+    - CLab
+    - 教学
+    - 服务更新
+summary: CLab 支持为课程定制系统镜像，以 EDA 课程为例介绍统一软件环境与在线教学支持。
 ---
 
 ![](./image_1.png)
@@ -127,7 +134,3 @@ CLab于近日完成了镜像构建框架，已具备根据课程定制系统镜�
 4\. 新增一些CPU算力
 
 同学们呼声较高的 GPU 资源，由于硬件成本较高、虚拟化技术较难掌握等原因，预期25年底推出试用。欢迎大家通过捐赠算力与资源、技术交流、帮忙宣传通广等方式支持我们。感谢大家对 CLab 的厚爱！
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/ldVVvXpE4D5RJxdav6alHQ)

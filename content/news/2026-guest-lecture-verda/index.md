@@ -1,11 +1,18 @@
 ---
-title: 'Guest Lecture 02 - 8 月 30 日 | Verda'
-time: 2026-08-30
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/pAnmPifQWnAMathl9q0a3w
-author: 'Linux 俱乐部'
+title: Guest Lecture 02 - 8 月 30 日 | Verda
+time: '2026-08-30'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Guest Lecture 02 From Verda，就在本周日（8月30日）晚，快来参加'
+  description: 8 月 30 日 Verda 工程师分享 NVL72 Scale-Up 域内的推理优化与工程实践。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 30 日 Verda 工程师分享 NVL72 Scale-Up 域内的推理优化与工程实践。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -57,7 +64,3 @@ Kevin | Engineer @ Verda
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/pAnmPifQWnAMathl9q0a3w)

@@ -1,11 +1,21 @@
 ---
-title: '祝贺北京大学超算队再夺ASC总冠军！'
-time: 2026-05-25
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/iWdPREjOUa5u5UwAXUGCjw
-author: '北京大学学生 Linux 俱乐部'
+title: 祝贺北京大学超算队再夺ASC总冠军！
+time: '2026-05-25'
+tags:
+  - 竞赛
+  - 高性能计算
+  - 未名超算队
+  - 转载
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: '分享一篇文章。'
+  description: 北京大学超算队获 2026 ASC 总冠军及 e Prize 计算挑战奖，再创国际超算赛事佳绩。
+  keywords:
+    - 竞赛
+    - 高性能计算
+    - 未名超算队
+    - 转载
+summary: 北京大学超算队获 2026 ASC 总冠军及 e Prize 计算挑战奖，再创国际超算赛事佳绩。
+redirect: 'https://mp.weixin.qq.com/s/EnLcSfjEMHMM3CvZER_pdg'
 ---
 
 ![](./image_1.gif)
@@ -193,7 +203,3 @@ HPC Game界面
 ![尾图动图春天版.gif](./image_32.gif)
 
 ![](./image_33.gif)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/iWdPREjOUa5u5UwAXUGCjw)

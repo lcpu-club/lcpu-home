@@ -1,11 +1,18 @@
 ---
-title: '未名超算队 × LCPU AI Infra Seminars | 这个暑假，一起学 Infra！'
-time: 2026-07-22
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/d9vUrqt7g28L1ShDZ3ovZg
-author: 'Linux 俱乐部'
+title: 未名超算队 × LCPU AI Infra Seminars | 这个暑假，一起学 Infra！
+time: '2026-07-22'
+tags:
+  - 活动
+  - AI Infra
+  - Infra Seminars
+author: Linux 俱乐部
 meta:
-  description: '这个暑假，和北大超算队、Linux俱乐部一起学习AI Infra～！'
+  description: 未名超算队与 LCPU 联合开设 AI Infra Seminars，从 GPU Kernel 到推理与强化学习系统。
+  keywords:
+    - 活动
+    - AI Infra
+    - Infra Seminars
+summary: 未名超算队与 LCPU 联合开设 AI Infra Seminars，从 GPU Kernel 到推理与强化学习系统。
 ---
 
 ![图片](./image_1.jpg)
@@ -149,7 +156,3 @@ Weiming HPC Training Camp × LCPU AI Infra Seminars 即将开始。
 宽德投资是一家国内领先、业务全面的量化对冲基金。基于先进高效的研究和交易构架，以及完善的资产管理系统，宽德投资在国内期货、股票、期权等主流市场具有良好的盈利能力。
 
 宽德智能学习实验室(Will)是宽德投资独立孵化的创业型实验室，致力于实现超级科技助手(ASI for Sci-Tech)。Will将汇聚顶尖AI人才，专注于研发通用性超级科技助手，追求技术复利与持续性领先。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/d9vUrqt7g28L1ShDZ3ovZg)

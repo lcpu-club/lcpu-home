@@ -1,11 +1,18 @@
 ---
-title: '【服务可用性】4月15日晚停电通知'
-time: 2025-04-15
-tags: ['维护', 'CLab']
-source: https://mp.weixin.qq.com/s/kPoB88viz1AWlaC3Xg24xA
-author: 'Linux俱乐部'
+title: 【服务可用性】4月15日晚停电通知
+time: '2025-04-15'
+tags:
+  - 维护
+  - CLab
+  - PKUTeX
+author: Linux俱乐部
 meta:
-  description: 'LCPU服务在4月15日21点至4月16日6点关闭'
+  description: '4 月 15 日 21:00 起部分 LCPU 服务因停电关闭，预计 16 日 06:00 前恢复。'
+  keywords:
+    - 维护
+    - CLab
+    - PKUTeX
+summary: '4 月 15 日 21:00 起部分 LCPU 服务因停电关闭，预计 16 日 06:00 前恢复。'
 ---
 
 接动力中心通知，2025年4月16日00:00到02:00全校停电倒闸。由于LCPU服务所在机房提前两小时停电进行电力检修，社团将于4月15日晚21点关闭部分服务。
@@ -31,7 +38,3 @@ meta:
 ![](./image_1.jpg)
 
 ![](./image_2.jpg)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/kPoB88viz1AWlaC3Xg24xA)

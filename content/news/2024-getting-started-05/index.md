@@ -1,11 +1,18 @@
 ---
 title: '活动 | Getting Started 05: 用好你的电脑(二)'
-time: 2024-12-05
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/1h91MFs0AmQGiLKnfcJHkQ
-author: 'Linux俱乐部'
+time: '2024-12-05'
+tags:
+  - 活动
+  - Getting Started
+  - Git
+author: Linux俱乐部
 meta:
-  description: '本讲 LGS 将介绍 Git 的基础原理及使用方法，欢迎同学们学习后在 GitHub 上探索有趣的开源项目，并在实践中理解其中的 Git 哲学。'
+  description: Getting Started 05：学习 Git 的基础原理与使用方法，在开源项目中实践版本管理。
+  keywords:
+    - 活动
+    - Getting Started
+    - Git
+summary: Getting Started 05：学习 Git 的基础原理与使用方法，在开源项目中实践版本管理。
 ---
 
 ![](./image_1.png)
@@ -47,7 +54,3 @@ meta:
 如果对本讲内容有疑问或反馈建议，欢迎扫描以下二维码分享你的见解，也可加入课程群与其他同学交流经验！
 
 ![](./image_2.png)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/1h91MFs0AmQGiLKnfcJHkQ)

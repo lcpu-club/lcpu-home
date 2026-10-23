@@ -1,11 +1,21 @@
 ---
-title: '恭喜未名超算队获 SC25 IndySCC 国际大学生超算竞赛全球第二名及最高 LINPACK'
-time: 2025-12-06
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/t6_XLvDnVU1h9KqMcljv_A
-author: '未名超算队'
+title: 恭喜未名超算队获 SC25 IndySCC 国际大学生超算竞赛全球第二名及最高 LINPACK
+time: '2025-12-06'
+tags:
+  - 竞赛
+  - 高性能计算
+  - 未名超算队
+  - 转载
+author: 未名超算队
 meta:
-  description: '恭喜未名超算队获SC25 IndySCC国际大学生超算竞赛全球第二名及最高LINPACK🎉'
+  description: 未名超算队获 SC25 IndySCC 全球第二名及最高 LINPACK，回顾比赛中的优化与协作。
+  keywords:
+    - 竞赛
+    - 高性能计算
+    - 未名超算队
+    - 转载
+summary: 未名超算队获 SC25 IndySCC 全球第二名及最高 LINPACK，回顾比赛中的优化与协作。
+redirect: 'https://mp.weixin.qq.com/s/eeRSV2HesyV83nxuii9rqA'
 ---
 
 北京时间2025年11月18日至20日，北京大学未名超算队参加SC25-IndySCC国际大学生超算竞赛，经过48小时的激烈角逐，最终取得总分第二名与最高LINPACK的好成绩。
@@ -99,7 +109,3 @@ HPCGame至今已成功举办3届，每年吸引全球上百名同学参赛。202
 队长
 
 黄熙鸣：hee \[at\] stu.pku.edu.cn
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/t6_XLvDnVU1h9KqMcljv_A)

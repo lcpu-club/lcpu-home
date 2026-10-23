@@ -1,10 +1,18 @@
 ---
 title: LCPU 2025 年度总结（一）丨微信群年报
-time: 2026-01-01
-tags: ['2025 年度总结']
+time: '2026-01-01'
+tags:
+  - 社团事务
+  - 年度总结
 meta:
-  description: 祝大家 2026 元旦快乐！
+  description: 回顾 LCPU 2025 年微信群的交流与趣事，用社区数据记录一年的技术讨论和日常生活。
+  keywords:
+    - 社团事务
+    - 年度总结
+summary: 回顾 LCPU 2025 年微信群的交流与趣事，用社区数据记录一年的技术讨论和日常生活。
+author: 北京大学学生 Linux 俱乐部
 ---
+
 ---
 
 ![Nano Banana Pro 生成](./image_1.jpg)

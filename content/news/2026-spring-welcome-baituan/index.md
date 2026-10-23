@@ -1,11 +1,18 @@
 ---
-title: '百团 | 现场游戏&展示&周边等你来！'
-time: 2026-03-13
-tags: ['招新']
-source: https://mp.weixin.qq.com/s/ne2BS44u1W3NPIBGjERwww
-author: 'Linux 俱乐部'
+title: 百团 | 现场游戏&展示&周边等你来！
+time: '2026-03-13'
+tags:
+  - 活动
+  - 招新
+  - 百团大战
+author: Linux 俱乐部
 meta:
-  description: '现场游戏&展示&周边等你来！ 地点: 百讲南侧与新太阳北侧 38 号摊位 时间: 2026年3月13日-14日(周五-周六) 09:00-17:00'
+  description: 3 月 13—14 日在百讲南侧与新太阳北侧 38 号摊位，体验 LCPU 互动游戏与社团展示。
+  keywords:
+    - 活动
+    - 招新
+    - 百团大战
+summary: 3 月 13—14 日在百讲南侧与新太阳北侧 38 号摊位，体验 LCPU 互动游戏与社团展示。
 ---
 
 ![](./image_1.jpg)
@@ -164,7 +171,3 @@ SigStore 集群是 LCPU 开发的高性能网络存储集群，对外可以提�
 排版：陈嘉骏
 
 审核：霍子晗
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/ne2BS44u1W3NPIBGjERwww)

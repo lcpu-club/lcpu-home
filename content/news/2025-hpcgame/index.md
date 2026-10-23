@@ -1,11 +1,18 @@
 ---
-title: '报名｜北京大学高性能计算综合能力竞赛'
-time: 2024-12-29
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/7ClizwzJg--bxczH44tMzw
-author: '高性能计算小组'
+title: 报名｜北京大学高性能计算综合能力竞赛
+time: '2024-12-29'
+tags:
+  - 竞赛
+  - HPCGame
+  - 高性能计算
+author: 高性能计算小组
 meta:
-  description: '来北京大学高性能计算综合能力竞赛掌控至高力量！'
+  description: 第二届 HPCGame 开放报名，在线挑战并行计算、性能优化与科学计算题目。
+  keywords:
+    - 竞赛
+    - HPCGame
+    - 高性能计算
+summary: 第二届 HPCGame 开放报名，在线挑战并行计算、性能优化与科学计算题目。
 ---
 
 ![](./image_1.png)
@@ -145,7 +152,3 @@ v
 ![](./image_4.png)
 
 小米公益基金会于2019年由小米集团捐赠发起。自成立以来，基金会积极履行社会责任，围绕人才培养、科技创新、扶危济困三大领域开展公益慈善活动，在科技创新和人才培养方面规划捐赠的总金额已超过 17亿元。截至2024年11月30日，已累计捐赠支出6.5亿元。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/7ClizwzJg--bxczH44tMzw)

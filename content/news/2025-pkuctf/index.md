@@ -1,11 +1,18 @@
 ---
-title: '报名丨第五届北京大学信息安全综合能力竞赛来啦！'
-time: 2025-10-11
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/A3jA4FKe71CHYEkw5-Y2kQ
-author: 'Linux 俱乐部'
+title: 报名丨第五届北京大学信息安全综合能力竞赛来啦！
+time: '2025-10-11'
+tags:
+  - 竞赛
+  - GeekGame
+  - 网络安全
+author: Linux 俱乐部
 meta:
-  description: '题目有趣，难度有梯度，奖励丰厚！'
+  description: 第五届北京大学信息安全综合能力竞赛于 10 月 17—24 日线上举行，欢迎报名挑战。
+  keywords:
+    - 竞赛
+    - GeekGame
+    - 网络安全
+summary: 第五届北京大学信息安全综合能力竞赛于 10 月 17—24 日线上举行，欢迎报名挑战。
 ---
 
 ![](./image_1.png)
@@ -127,7 +134,3 @@ _GeekGame 2025_
 ![](./image_8.png)
 
 文案：北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/A3jA4FKe71CHYEkw5-Y2kQ)

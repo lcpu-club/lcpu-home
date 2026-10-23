@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars 05 - 8月17日 | Towards Modern Networking System'
-time: 2026-08-17
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/cCT6NLvxKaZY6BKrLnVdig
-author: 'Linux 俱乐部'
+title: Infra Seminars 05 - 8月17日 | Towards Modern Networking System
+time: '2026-08-17'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 05 | Towards Modern Networking System，就在周一（0817），快来参加！'
+  description: 8 月 17 日 Infra Seminars 05：走进现代网络系统，理解 AI 集群互联与网络性能。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 17 日 Infra Seminars 05：走进现代网络系统，理解 AI 集群互联与网络性能。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -59,7 +66,3 @@ Session 05 | Towards Modern Networking System
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/cCT6NLvxKaZY6BKrLnVdig)

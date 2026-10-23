@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars Workshop 01 - 8月1日 | Parallel Programming with TileLang'
-time: 2026-07-31
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/fjrCYAqKItiTuVYrrp7PdQ
-author: 'Linux 俱乐部'
+title: Infra Seminars Workshop 01 - 8月1日 | Parallel Programming with TileLang
+time: '2026-07-31'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars Workshop 01 | Parallel Programming with TileLang，8月1日晚19:30，快来参加～！'
+  description: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU Kernel 的编写与优化。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 1 日 TileLang Workshop：动手练习并行编程，学习 GPU Kernel 的编写与优化。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -77,7 +84,3 @@ Workshop 01 | Parallel Programming with TileLang
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/fjrCYAqKItiTuVYrrp7PdQ)

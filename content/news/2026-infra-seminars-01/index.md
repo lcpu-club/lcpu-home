@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars 7月26日 第一次课 | 从并行编程到第一个 GPU Kernel'
-time: 2026-07-25
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/1UChDfYKGGf52m39u0cCog
-author: 'Linux 俱乐部'
+title: Infra Seminars 7月26日 第一次课 | 从并行编程到第一个 GPU Kernel
+time: '2026-07-25'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 第一次课就在本周日（7月26日）！'
+  description: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编写第一个 GPU Kernel。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 7 月 26 日 Infra Seminars 首课：从并行编程基础出发，编写第一个 GPU Kernel。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -133,7 +140,3 @@ LCPU 直播平台（https://live.lcpu.dev/）
 宽德投资是一家国内领先、业务全面的量化对冲基金。基于先进高效的研究和交易构架，以及完善的资产管理系统，宽德投资在国内期货、股票、期权等主流市场具有良好的盈利能力。
 
 宽德智能学习实验室(Will)是宽德投资独立孵化的创业型实验室，致力于实现超级科技助手(ASI for Sci-Tech)。Will将汇聚顶尖AI人才，专注于研发通用性超级科技助手，追求技术复利与持续性领先。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/1UChDfYKGGf52m39u0cCog)

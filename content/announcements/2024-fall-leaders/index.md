@@ -1,11 +1,16 @@
 ---
-title: '公告 | LCPU 换届公告'
-time: 2024-09-10
-tags: ['换届']
-source: https://mp.weixin.qq.com/s/Lh0kdZcYjYu7tbs-ijMZ9g
-author: 'LCPU'
+title: 公告 | LCPU 换届公告
+time: '2024-09-10'
+tags:
+  - 社团事务
+  - 换届
+author: LCPU
 meta:
-  description: '公告 | LCPU 换届公告'
+  description: 公布 LCPU 2024—2025 学年秋季学期负责人名单，介绍新一届社团组织安排。
+  keywords:
+    - 社团事务
+    - 换届
+summary: 公布 LCPU 2024—2025 学年秋季学期负责人名单，介绍新一届社团组织安排。
 ---
 
 2024 年 9 月 8 日晚，北京大学学生 Linux 俱乐部 AP 组会议顺利召开。会议对过去一学年社团的发展进行了阶段性总结，也对社团未来的发展作了初步规划。同时，经 AP 组研究及投票表决，最终确定 2024-2025 学年秋季学期负责人名单如下：
@@ -23,7 +28,3 @@ meta:
 北京大学学生 Linux 俱乐部
 
 2024 年 9 月 10 日
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/Lh0kdZcYjYu7tbs-ijMZ9g)

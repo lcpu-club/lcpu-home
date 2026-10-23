@@ -1,11 +1,18 @@
 ---
-title: 'GTC Watch Party | 一起看老黄发布了什么！【内有必中抽奖】'
-time: 2026-03-14
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/T8aenYTKn5djICmjt6d98A
-author: 'Linux 俱乐部'
+title: GTC Watch Party | 一起看老黄发布了什么！【内有必中抽奖】
+time: '2026-03-14'
+tags:
+  - 活动
+  - 技术讲座
+  - AI
+author: Linux 俱乐部
 meta:
-  description: '欢迎参加LCPU GTC Watch Party！'
+  description: 3 月 19 日一起观看 NVIDIA GTC 主题演讲，交流 GPU、模型与 AI 应用的新进展。
+  keywords:
+    - 活动
+    - 技术讲座
+    - AI
+summary: 3 月 19 日一起观看 NVIDIA GTC 主题演讲，交流 GPU、模型与 AI 应用的新进展。
 ---
 
 GTC 2026 来了！黄仁勋将在圣何塞 SAP Center 登台，面向来自190个国家的三万名参会者发表主题演讲，涵盖芯片、软件、模型与应用的全栈更新。LCPU 邀你一起来看，一起讨论！
@@ -59,7 +66,3 @@ GTC 2026 来了！黄仁勋将在圣何塞 SAP Center 登台，面向来自190�
 3\. 3月17日下午两点后观看 S81580 网络专场并截图，提交至抽奖问卷
 
 **欢迎转发，我们 3.19 见！报名问卷中有微信群，如有报名相关问题，可以在群里提问~**
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/T8aenYTKn5djICmjt6d98A)

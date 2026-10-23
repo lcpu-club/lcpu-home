@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars 02 - 7月30日 | Memory Abstraction & Hierarchy'
-time: 2026-07-29
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/3ayYDOuZ7ChwubgfppThfw
-author: 'Linux 俱乐部'
+title: Infra Seminars 02 - 7月30日 | Memory Abstraction & Hierarchy
+time: '2026-07-29'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 02 | Memory Abstraction & Hierarchy，7月30号见！'
+  description: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构，学习数据访问和存储优化。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 7 月 30 日 Infra Seminars 02：理解 GPU 内存抽象与层次结构，学习数据访问和存储优化。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -73,7 +80,3 @@ Session 02 | Kernels: Memory Abstraction & Hierarchy
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/3ayYDOuZ7ChwubgfppThfw)

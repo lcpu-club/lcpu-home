@@ -1,11 +1,16 @@
 ---
-title: '征订 | Linux俱乐部夏季社衫'
-time: 2026-06-11
-tags: ['社衫']
-source: https://mp.weixin.qq.com/s/1b3u5FBPOt9qK3k382Ugig
-author: '想换新皮肤的'
+title: 征订 | Linux俱乐部夏季社衫
+time: '2026-06-11'
+tags:
+  - 社团事务
+  - 社衫
+author: 想换新皮肤的
 meta:
-  description: '征订 | Linux 俱乐部夏季社衫'
+  description: 2026 夏季社衫开放征订，多款设计均可预订，附款式展示和订购入口。
+  keywords:
+    - 社团事务
+    - 社衫
+summary: 2026 夏季社衫开放征订，多款设计均可预订，附款式展示和订购入口。
 ---
 
 ![](./image_1.png)
@@ -169,7 +174,3 @@ printf("Linuxer的衣柜里还差一件社衫");
 征订统计问卷
 
 ![](./image_37.png)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/1b3u5FBPOt9qK3k382Ugig)

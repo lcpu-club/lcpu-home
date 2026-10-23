@@ -1,11 +1,18 @@
 ---
-title: '活动 | Install Party 将于本周日晚举行'
-time: 2024-10-11
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/orM7wUD_1D2gNnfjMxoF6w
-author: 'Linux俱乐部'
+title: 活动 | Install Party 将于本周日晚举行
+time: '2024-10-11'
+tags:
+  - 活动
+  - Install Party
+  - Linux
+author: Linux俱乐部
 meta:
-  description: '活动 | Install Party 将于本周日晚举行'
+  description: 2024 秋季 Install Party：交流 Linux 发行版与安装经验，在自己的设备上体验开源系统。
+  keywords:
+    - 活动
+    - Install Party
+    - Linux
+summary: 2024 秋季 Install Party：交流 Linux 发行版与安装经验，在自己的设备上体验开源系统。
 ---
 
 # Welcome to Install Party！
@@ -71,7 +78,3 @@ LCPU Getting Started: _https://missing.lcpu.dev/basic/05-drive-your-computer-2_
 \[2\]
 
 Linux 101课程: _https://101.lug.ustc.edu.cn/Ch01/_
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/orM7wUD_1D2gNnfjMxoF6w)

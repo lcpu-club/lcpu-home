@@ -1,11 +1,18 @@
 ---
-title: '征集 | Linux俱乐部夏季社衫设计'
-time: 2026-05-13
-tags: ['社衫']
-source: https://mp.weixin.qq.com/s/QsClNlT2Z53wGug33vMUYw
-author: 'Linux 俱乐部'
+title: 征集 | Linux俱乐部夏季社衫设计
+time: '2026-05-13'
+tags:
+  - 社团事务
+  - 社衫
+  - 设计
+author: Linux 俱乐部
 meta:
-  description: 'printf(Linuxer的衣柜里还差一件社衫);'
+  description: 征集 2026 夏季社衫设计，介绍作品要求、投稿方式及 LCPU 主题元素。
+  keywords:
+    - 社团事务
+    - 社衫
+    - 设计
+summary: 征集 2026 夏季社衫设计，介绍作品要求、投稿方式及 LCPU 主题元素。
 ---
 
 ```
@@ -171,7 +178,3 @@ printf("Linuxer的衣柜里还差一件社衫");
 **责任归属：** 参与者须确保对作品拥有完整版权。如因作品原创性、版权等问题引发法律纠纷，由参与者自行承担全部责任。
 
 **权益处理：** 若作品违反上述规定，主办方有权撤回其入选资格，并追回已发放的奖金及奖品。若造成主办方损失，参与者需承担相应的赔偿责任。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/QsClNlT2Z53wGug33vMUYw)

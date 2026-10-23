@@ -1,11 +1,18 @@
 ---
-title: 'LCPU Getting Started 系列课程将于本周日开始'
-time: 2024-10-30
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/7WsSTDK5moaLr_8iLyl6gg
-author: 'Linux俱乐部'
+title: LCPU Getting Started 系列课程将于本周日开始
+time: '2024-10-30'
+tags:
+  - 活动
+  - Getting Started
+  - 计算机基础
+author: Linux俱乐部
 meta:
-  description: '为 PKU 设计的 Missing Semester'
+  description: Getting Started 入门课程开讲，从搜索、知识获取与基础工具开始学习高效使用计算机。
+  keywords:
+    - 活动
+    - Getting Started
+    - 计算机基础
+summary: Getting Started 入门课程开讲，从搜索、知识获取与基础工具开始学习高效使用计算机。
 ---
 
 ![](./image_1.png)
@@ -67,7 +74,3 @@ meta:
 ![](./image_2.png)
 
 活动报名二维码
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/7WsSTDK5moaLr_8iLyl6gg)

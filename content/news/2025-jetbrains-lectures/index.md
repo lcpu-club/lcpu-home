@@ -1,7 +1,18 @@
 ---
 title: JetBrains 技术交流开放日专题讲座
-time: 2025-10-02
-tags: ['活动']
+time: '2025-10-02'
+tags:
+  - 活动
+  - 技术讲座
+  - JetBrains
+summary: 10 月 11 日 JetBrains 工程师分享 IDE 与 Git 技巧、Kotlin 设计和开发工具中的 AI 特性。
+author: 北京大学学生 Linux 俱乐部
+meta:
+  description: 10 月 11 日 JetBrains 工程师分享 IDE 与 Git 技巧、Kotlin 设计和开发工具中的 AI 特性。
+  keywords:
+    - 活动
+    - 技术讲座
+    - JetBrains
 ---
 
 ![往期活动照片](./1.jpg)

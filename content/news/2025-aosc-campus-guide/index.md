@@ -1,11 +1,21 @@
 ---
-title: '参会指南：《安同校园行》北京站 - LCPU专版'
-time: 2025-04-17
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA
-author: '安同开源社区'
+title: 参会指南：《安同校园行》北京站 - LCPU专版
+time: '2025-04-17'
+tags:
+  - 活动
+  - 开源社区
+  - 安同校园行
+  - 转载
+author: 安同开源社区
 meta:
-  description: '本次安同校园行线下会场位于北京航空航天大学学院路校区，本文为计划现场参会的朋友们提供入校、出行与进餐指引参考。'
+  description: 安同校园行北京站参会指南，介绍北航会场的入校、交通与用餐安排。
+  keywords:
+    - 活动
+    - 开源社区
+    - 安同校园行
+    - 转载
+summary: 安同校园行北京站参会指南，介绍北航会场的入校、交通与用餐安排。
+redirect: 'https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA'
 ---
 
 #
@@ -65,7 +75,3 @@ meta:
 ![Image](./image_8.png)
 
 学院路校区平面图
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/UvMY9DJrbKPXn_yQzUKfTA)

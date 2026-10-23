@@ -1,11 +1,16 @@
 ---
-title: 'LCPU2026夏季社衫自提通知'
-time: 2026-06-27
-tags: ['社衫']
-source: https://mp.weixin.qq.com/s/zOq9jfifLC9A4KJuccsOjQ
-author: 'Linux 俱乐部'
+title: LCPU2026夏季社衫自提通知
+time: '2026-06-27'
+tags:
+  - 社团事务
+  - 社衫
+author: Linux 俱乐部
 meta:
-  description: '快来领取你的社衫！！'
+  description: '6 月 27—30 日每日 14:00—17:30，可到燕园大厦 308 领取夏季社衫，附路线指引。'
+  keywords:
+    - 社团事务
+    - 社衫
+summary: '6 月 27—30 日每日 14:00—17:30，可到燕园大厦 308 领取夏季社衫，附路线指引。'
 ---
 
 快来领取你的社衫🎉🎉！
@@ -23,7 +28,3 @@ meta:
 ![](./image_3.jpg)
 
 ![](./image_4.jpg)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/zOq9jfifLC9A4KJuccsOjQ)

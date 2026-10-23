@@ -1,11 +1,18 @@
 ---
-title: 'xLab：为课程准备的 Linux 节点'
-time: 2026-09-10
-tags: ['CLab']
-source: https://mp.weixin.qq.com/s/okbFlpGwo02I2AjLeg7UMA
-author: 'Linux 俱乐部'
+title: xLab：为课程准备的 Linux 节点
+time: '2026-09-10'
+tags:
+  - xLab
+  - 服务更新
+  - 教学
+author: Linux 俱乐部
 meta:
-  description: 'xLab：为课程准备的 Linux 节点，现已全新上线！'
+  description: xLab 教学云开始试运行，为课程提供统一 Linux 节点、课程镜像、远程开发与教学管理。
+  keywords:
+    - xLab
+    - 服务更新
+    - 教学
+summary: xLab 教学云开始试运行，为课程提供统一 Linux 节点、课程镜像、远程开发与教学管理。
 ---
 
 课程作业要在 Linux 上完成，每个人的电脑却各不相同：有人是 Windows，有人是 macOS 的 arm 芯片，虚拟机装好了软件版本又对不上。助教花在配环境上的时间，常常比花在作业本身上的还多。
@@ -119,7 +126,3 @@ xlab 从 2026 年 9 月开始试运行，本学期先在几门课程中使用。
 帮助
 
 xlab 由北京大学学生 Linux 俱乐部开发和维护。使用中遇到问题，或有意见和建议，请发邮件到 linuxclub@pku.edu.cn。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/okbFlpGwo02I2AjLeg7UMA)

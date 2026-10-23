@@ -1,11 +1,16 @@
 ---
-title: 'Linux 俱乐部 2026 春季学期换届公告'
-time: 2026-03-11
-tags: ['换届']
-source: https://mp.weixin.qq.com/s/zvm_WjC0to9H2weUzyGTXw
-author: '北京大学学生 Linux 俱乐部'
+title: Linux 俱乐部 2026 春季学期换届公告
+time: '2026-03-11'
+tags:
+  - 社团事务
+  - 换届
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: 'Linux 俱乐部 2026 春季学期换届公告'
+  description: 公布 LCPU 2025—2026 学年春季学期负责人名单，明确新学期社团组织与骨干分工。
+  keywords:
+    - 社团事务
+    - 换届
+summary: 公布 LCPU 2025—2026 学年春季学期负责人名单，明确新学期社团组织与骨干分工。
 ---
 
 2026 年 3 月 2 日晚，北京大学学生 Linux 俱乐部换届选举会议顺利召开，经社团骨干成员研究及投票表决，最终确定 2025-2026 学年春季学期负责人名单如下:
@@ -25,7 +30,3 @@ meta:
 2026 年 3 月 11 日
 
 ![](./image_1.jpg)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/zvm_WjC0to9H2weUzyGTXw)

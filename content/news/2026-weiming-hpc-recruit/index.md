@@ -1,11 +1,21 @@
 ---
-title: '2026北大超算队招新!'
-time: 2026-01-29
-tags: ['招新']
-source: https://mp.weixin.qq.com/s/J_lE6q0pzXCJiVZGSSvkaA
-author: '北京大学学生 Linux 俱乐部'
+title: 2026北大超算队招新!
+time: '2026-01-29'
+tags:
+  - 招新
+  - 高性能计算
+  - 未名超算队
+  - 转载
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: '欢迎大家加入北大超算队！详情请见超算队公众号。'
+  description: 未名超算队 2026 年招新，欢迎对并行计算、集群与 GPU 优化感兴趣的同学加入。
+  keywords:
+    - 招新
+    - 高性能计算
+    - 未名超算队
+    - 转载
+summary: 未名超算队 2026 年招新，欢迎对并行计算、集群与 GPU 优化感兴趣的同学加入。
+redirect: 'https://mp.weixin.qq.com/s/Gb-ASR05rNYm9duj_dl77A'
 ---
 
 ![](./image_1.jpg)
@@ -63,7 +73,3 @@ HPCGame链接：hpcgame.pku.edu.cn
 ![](./image_9.png)
 
 乾象投资成立于2018年，是一家以人工智能和机器学习为基础的科技型量化投资公司。乾象投资深度融合与改进机器学习算法，并将其应用至信噪比极低的金融数据上，从而为投资人创造长期可持续的回报，进军顶级国际对冲基金。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/J_lE6q0pzXCJiVZGSSvkaA)

@@ -1,11 +1,16 @@
 ---
-title: '通知 | CLab 维护公告'
-time: 2024-10-04
-tags: ['维护', 'CLab']
-source: https://mp.weixin.qq.com/s/QvYkx7eJQu-_c-JVUmk7gg
-author: 'LCPU'
+title: 通知 | CLab 维护公告
+time: '2024-10-04'
+tags:
+  - 维护
+  - CLab
+author: LCPU
 meta:
-  description: '请注意合理安排使用时间'
+  description: '因机房停电，CLab 于 10 月 7 日 23:00 至 8 日 05:00 关闭服务与虚拟机，请提前安排使用。'
+  keywords:
+    - 维护
+    - CLab
+summary: '因机房停电，CLab 于 10 月 7 日 23:00 至 8 日 05:00 关闭服务与虚拟机，请提前安排使用。'
 ---
 
 各位CLab用户：
@@ -19,7 +24,3 @@ meta:
 Linux俱乐部云小组
 
 2024年10月4日
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/QvYkx7eJQu-_c-JVUmk7gg)

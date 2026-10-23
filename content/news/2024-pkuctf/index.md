@@ -1,11 +1,18 @@
 ---
-title: '报名丨第四届北京大学信息安全综合能力竞赛来啦！'
-time: 2024-10-06
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/vvqhzRZ4mE1hQvU5KvCIQw
-author: 'LCPU'
+title: 报名丨第四届北京大学信息安全综合能力竞赛来啦！
+time: '2024-10-06'
+tags:
+  - 竞赛
+  - GeekGame
+  - 网络安全
+author: LCPU
 meta:
-  description: '题目有趣，难度有梯度，奖励丰厚！'
+  description: 第四届北京大学信息安全综合能力竞赛开放报名，以趣味 CTF 题目探索网络安全。
+  keywords:
+    - 竞赛
+    - GeekGame
+    - 网络安全
+summary: 第四届北京大学信息安全综合能力竞赛开放报名，以趣味 CTF 题目探索网络安全。
 ---
 
 ![](./image_1.png)
@@ -125,7 +132,3 @@ _GeekGame 2024_
 ![](./image_9.gif)
 
 **点击“阅读原文”，即刻报名参赛！**
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/vvqhzRZ4mE1hQvU5KvCIQw)

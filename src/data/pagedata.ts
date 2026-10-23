@@ -13,7 +13,6 @@ export interface PageData {
     generator?: string
   }
   redirect?: string
-  originalUrl?: string
   data: { [key: string]: unknown }
   tags?: string[]
 }

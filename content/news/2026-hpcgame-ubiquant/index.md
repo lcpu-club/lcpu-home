@@ -1,11 +1,18 @@
 ---
-title: '活动 | HPCGAME x 九坤投资：从高性能计算到超低延迟系统'
-time: 2026-01-28
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/Zgvk-cZYe_4jVXWt7xh0eA
-author: 'LCPU'
+title: 活动 | HPCGAME x 九坤投资：从高性能计算到超低延迟系统
+time: '2026-01-28'
+tags:
+  - 活动
+  - HPCGame
+  - 技术讲座
+author: LCPU
 meta:
-  description: '活动 | HPCGAME x 九坤：从高性能计算到超低延迟系统'
+  description: HPCGame 联合九坤投资举办技术分享，探索高性能计算经验如何应用于超低延迟交易系统。
+  keywords:
+    - 活动
+    - HPCGame
+    - 技术讲座
+summary: HPCGame 联合九坤投资举办技术分享，探索高性能计算经验如何应用于超低延迟交易系统。
 ---
 
 # HPCGAME x 九坤投资：从高性能计算到超低延迟系统
@@ -73,7 +80,3 @@ HPC 与 HFT（高频交易）看似是两个不同的领域，但在对计算机
 九坤投资成立于2012年，是一家中国顶尖的量化私募管理人。九坤投资使用数量化的方法进行投资决策，围绕数据、算法、算力搭建了自主实验室体系，并深度融合数据科学、计算机技术、人工智能等领域的前沿成果，链接前沿技术创新。
 
 九坤投研和技术团队拥有国内外知名院校学术背景，其中不乏数学、物理、计算机等领域资深专家，国际顶会论文作者，国际知名竞赛如CMO、NOI、ICPC、Kaggle优胜者。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/Zgvk-cZYe_4jVXWt7xh0eA)

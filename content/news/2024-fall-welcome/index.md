@@ -1,11 +1,16 @@
 ---
-title: '活动 | Linux 俱乐部招新啦！'
-time: 2024-09-19
-tags: ['招新']
-source: https://mp.weixin.qq.com/s/Kt8m704NuHMKEMSuIJTcHQ
-author: '北京大学学生 Linux 俱乐部'
+title: 活动 | Linux 俱乐部招新啦！
+time: '2024-09-19'
+tags:
+  - 招新
+  - 社团事务
+author: 北京大学学生 Linux 俱乐部
 meta:
-  description: 'A11 摊位，等你来！'
+  description: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方式，欢迎来百团摊位交流。
+  keywords:
+    - 招新
+    - 社团事务
+summary: LCPU 2024 秋季招新，介绍社团项目、学习活动与加入方式，欢迎来百团摊位交流。
 ---
 
 # Linux 俱乐部招新啦！
@@ -161,7 +166,3 @@ PKUTeX: https://latex.pku.edu.cn/
 PKU INFO: https://pkuinfo.lcpu.dev/
 
 文案、排版 黄翟
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/Kt8m704NuHMKEMSuIJTcHQ)

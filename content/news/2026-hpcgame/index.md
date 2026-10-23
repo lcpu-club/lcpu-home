@@ -1,11 +1,18 @@
 ---
-title: '报名｜北京大学高性能计算综合能力竞赛'
-time: 2026-01-18
-tags: ['竞赛']
-source: https://mp.weixin.qq.com/s/8M7LY3Aj23Kp9Ccpc9gP4Q
-author: 'Linux 俱乐部'
+title: 报名｜北京大学高性能计算综合能力竞赛
+time: '2026-01-18'
+tags:
+  - 竞赛
+  - HPCGame
+  - 高性能计算
+author: Linux 俱乐部
 meta:
-  description: '来北京大学高性能计算综合能力竞赛掌控至高力量！'
+  description: 第三届 HPCGame 于 2 月 1—8 日线上举行，通过真实有趣的赛题学习高性能计算与性能优化。
+  keywords:
+    - 竞赛
+    - HPCGame
+    - 高性能计算
+summary: 第三届 HPCGame 于 2 月 1—8 日线上举行，通过真实有趣的赛题学习高性能计算与性能优化。
 ---
 
 ![](./image_1.png)
@@ -141,7 +148,3 @@ v
 九坤投资成立于2012年，是一家中国顶尖的量化私募管理人。九坤投资使用数量化的方法进行投资决策，围绕数据、算法、算力搭建了自主实验室体系，并深度融合数据科学、计算机技术、人工智能等领域的前沿成果，链接前沿技术创新。
 
 九坤投研和技术团队拥有国内外知名院校学术背景，其中不乏数学、物理、计算机等领域资深专家，国际顶会论文作者，国际知名竞赛如CMO、NOI、ICPC、Kaggle优胜者。
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/8M7LY3Aj23Kp9Ccpc9gP4Q)

@@ -1,11 +1,21 @@
 ---
-title: '活动预告：《安同校园行》北京站'
-time: 2025-04-17
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/GIps1i6ieq2MtW8foDaiZA
-author: '安同开源社区'
+title: 活动预告：《安同校园行》北京站
+time: '2025-04-17'
+tags:
+  - 活动
+  - 开源社区
+  - 安同校园行
+  - 转载
+author: 安同开源社区
 meta:
-  description: '2025 年 4 月 19 日下午 1 时，欢迎各位前来北京航空航天大学（学院路校区，主 M 楼 401 教室）参加活动！'
+  description: 4 月 19 日安同校园行走进北航，分享内核贡献、软件移植与龙架构打包经验。
+  keywords:
+    - 活动
+    - 开源社区
+    - 安同校园行
+    - 转载
+summary: 4 月 19 日安同校园行走进北航，分享内核贡献、软件移植与龙架构打包经验。
+redirect: 'https://aosc.io/news/2025-04-16-aosc-buaa-event'
 ---
 
 ![Image](./image_1.png)
@@ -34,7 +44,3 @@ meta:
 - GGN\_2015，吉林大学 Linux 用户协会名誉会员：《软核开源：想方设法拉人入坑开源社团的一些思考》
 
 - xen0n，龙架构社区贡献者：《打包，打 Python 包，在龙架构打 Python 包》
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/GIps1i6ieq2MtW8foDaiZA)

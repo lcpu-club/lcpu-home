@@ -1,7 +1,18 @@
 ---
 title: CLab v2 团队招募
-time: 2025-05-26
-tags: []
+time: '2025-05-26'
+tags:
+  - CLab
+  - 招新
+  - 云计算
+summary: CLab v2 团队招募开发伙伴，研究高性能虚拟网络、可靠存储与云平台性能优化。
+author: 北京大学学生 Linux 俱乐部
+meta:
+  description: CLab v2 团队招募开发伙伴，研究高性能虚拟网络、可靠存储与云平台性能优化。
+  keywords:
+    - CLab
+    - 招新
+    - 云计算
 ---
 
 近期，CLab v2小组开始招募。欢迎感兴趣的同学们参加，有劳务（虽然不多）。

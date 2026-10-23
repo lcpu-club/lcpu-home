@@ -1,11 +1,18 @@
 ---
-title: '学习组丨从零训练大模型！'
-time: 2026-01-17
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/OI03tVasMgEjy7-i3AcMxg
-author: 'Linux 俱乐部'
+title: 学习组丨从零训练大模型！
+time: '2026-01-17'
+tags:
+  - 活动
+  - LLM From Scratch
+  - AI
+author: Linux 俱乐部
 meta:
-  description: '欢迎参加LLM From Scratch！'
+  description: 以 Stanford CS336 为蓝本，从模型架构、数据处理到系统优化，动手实现并训练语言模型。
+  keywords:
+    - 活动
+    - LLM From Scratch
+    - AI
+summary: 以 Stanford CS336 为蓝本，从模型架构、数据处理到系统优化，动手实现并训练语言模型。
 ---
 
 # 这个寒假，从零训练你自己的大模型
@@ -167,7 +174,3 @@ meta:
 特别鸣谢：宽德投资
 
 ![](./image_1.png)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/OI03tVasMgEjy7-i3AcMxg)

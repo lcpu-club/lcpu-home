@@ -1,10 +1,18 @@
 ---
 title: 活动 | LCPU 迎新会等待你的到来！
 meta:
-  description: 周六下午在极客实验室，键入你的第一行 “sudo” 🐧 小企鹅在这里等你哦！
-  image: ./cover.jpg
-tags: ['社团事务', '招新']
-time: 2025-03-13
+  description: 春季迎新会在极客实验室举行，一起了解社团项目、交流开源技术并安装 Linux。
+  keywords:
+    - 活动
+    - Install Party
+    - 招新
+tags:
+  - 活动
+  - Install Party
+  - 招新
+time: '2025-03-13'
+summary: 春季迎新会在极客实验室举行，一起了解社团项目、交流开源技术并安装 Linux。
+author: 北京大学学生 Linux 俱乐部
 ---
 
 ![封面图由 FLUX.1 生成](./cover.jpg)

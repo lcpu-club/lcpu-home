@@ -1,7 +1,16 @@
 ---
-title: Linux 俱乐部 x 未名超算队 x PKUCC 战队欢迎你的加入！
-time: 2025-09-11
-tags: ['招新']
+title: "Linux\_俱乐部\_x\_未名超算队\_x\_PKUCC\_战队欢迎你的加入！"
+time: '2025-09-11'
+tags:
+  - 招新
+  - 社团事务
+summary: LCPU 携未名超算队、PKUCC 战队开启 2025 秋季招新，介绍社团项目与学习实践机会。
+author: 北京大学学生 Linux 俱乐部
+meta:
+  description: LCPU 携未名超算队、PKUCC 战队开启 2025 秋季招新，介绍社团项目与学习实践机会。
+  keywords:
+    - 招新
+    - 社团事务
 ---
 
 ![](./banner.jpg)

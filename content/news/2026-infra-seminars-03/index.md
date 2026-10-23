@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars 03 - 8月2日 | Tensor Core'
-time: 2026-08-01
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/nsfWQWshoCx8C_owaOPBYg
-author: 'Linux 俱乐部'
+title: Infra Seminars 03 - 8月2日 | Tensor Core
+time: '2026-08-01'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 03 | Tensor Core，8月2号（周日）晚，快来参加！'
+  description: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与高性能矩阵运算。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 2 日 Infra Seminars 03：探索 Tensor Core 的计算机制与高性能矩阵运算。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -75,7 +82,3 @@ Session 03 | Kernels with GEMM: Tensor Core
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/nsfWQWshoCx8C_owaOPBYg)

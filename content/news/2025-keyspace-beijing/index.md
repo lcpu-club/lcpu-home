@@ -1,11 +1,18 @@
 ---
-title: '活动丨Keyspace北京峰会 by Valkey开源社区'
-time: 2025-12-08
-tags: ['活动']
-source: https://mp.weixin.qq.com/s/sC2uCy04ghsWWT7u-9Wt4Q
-author: '云计算小组'
+title: 活动丨Keyspace北京峰会 by Valkey开源社区
+time: '2025-12-08'
+tags:
+  - 活动
+  - 开源社区
+  - Valkey
+author: 云计算小组
 meta:
-  description: '欢迎参加 Keyspace 北京峰会'
+  description: 12 月 13 日 Keyspace 北京峰会聚焦 Valkey 技术与社区建设，LCPU 参与协办并招募志愿者。
+  keywords:
+    - 活动
+    - 开源社区
+    - Valkey
+summary: 12 月 13 日 Keyspace 北京峰会聚焦 Valkey 技术与社区建设，LCPU 参与协办并招募志愿者。
 ---
 
 Keyspace北京峰会：邀您共建Valkey开源社区
@@ -25,7 +32,3 @@ Keyspace 北京峰会是由Linux Foundation主办，聚焦 Valkey 前沿技术�
 活动议程及海报如下：
 
 ![](./image_1.jpg)
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/sC2uCy04ghsWWT7u-9Wt4Q)

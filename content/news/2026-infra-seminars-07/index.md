@@ -1,11 +1,18 @@
 ---
-title: 'Infra Seminars 07 - 8月27日 | Inference & LLM Serving'
-time: 2026-08-27
-tags: ['AI Infra', '活动']
-source: https://mp.weixin.qq.com/s/sxvHOgV1APQtlIJI8JY10w
-author: 'Linux 俱乐部'
+title: Infra Seminars 07 - 8月27日 | Inference & LLM Serving
+time: '2026-08-27'
+tags:
+  - 活动
+  - Infra Seminars
+  - AI Infra
+author: Linux 俱乐部
 meta:
-  description: 'Infra Seminars 07 就在8月27号（本周四），快来参加'
+  description: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统，理解高效部署的关键机制。
+  keywords:
+    - 活动
+    - Infra Seminars
+    - AI Infra
+summary: 8 月 27 日 Infra Seminars 07：介绍大模型推理与服务系统，理解高效部署的关键机制。
 ---
 
 当一次训练需要调动成百上千张 GPU，当一个算子几毫秒的差距都会被重复放大，模型背后的系统究竟如何工作？
@@ -69,7 +76,3 @@ Session 07 | Inference & LLM Serving
 北京大学未名超算队
 
 北京大学学生 Linux 俱乐部
-
----
-
-[微信公众号原文](https://mp.weixin.qq.com/s/sxvHOgV1APQtlIJI8JY10w)
