@@ -35,6 +35,7 @@ const enhanced = new Map<
 >()
 const pointers = new Map<number, { x: number; y: number }>()
 let gesture: { x: number; y: number; distance: number } | undefined
+let swipeStart: { id: number; x: number; y: number } | undefined
 let moved = false
 
 function reset() {
@@ -42,6 +43,7 @@ function reset() {
   position.value = { x: 0, y: 0 }
   pointers.clear()
   gesture = undefined
+  swipeStart = undefined
   dragging.value = false
 }
 function zoom(value: number, point = { x: 0, y: 0 }) {
@@ -176,6 +178,13 @@ function pointerDown(event: PointerEvent) {
   if (event.button !== 0) return
   if (!pointers.size) {
     moved = false
+    swipeStart =
+      event.pointerType === 'touch' && scale.value === 1 && slides.value.length > 1
+        ? { id: event.pointerId, x: event.clientX, y: event.clientY }
+        : undefined
+  } else {
+    // A pinch must never turn into navigation when either finger is lifted.
+    swipeStart = undefined
   }
   stage.value!.setPointerCapture(event.pointerId)
   pointers.set(event.pointerId, point(event))
@@ -196,9 +205,25 @@ function pointerMove(event: PointerEvent) {
   gesture = next
 }
 function pointerUp(event: PointerEvent) {
+  const start = swipeStart
+  swipeStart = undefined
   pointers.delete(event.pointerId)
   gesture = sample()
   dragging.value = pointers.size > 0
+  if (
+    event.type !== 'pointerup' ||
+    !start ||
+    start.id !== event.pointerId ||
+    pointers.size ||
+    scale.value !== 1
+  )
+    return
+  const dx = event.clientX - start.x
+  const dy = event.clientY - start.y
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    moved = true
+    move(dx < 0 ? 1 : -1)
+  }
 }
 function dialogClick(event: MouseEvent) {
   if (event.target instanceof Element && event.target.closest('button')) return
@@ -342,7 +367,7 @@ onUnmounted(() => {
         <p v-if="current.caption">{{ current.caption }}</p>
         <small>{{
           touchOnly
-            ? '双指缩放 · 拖动查看 · 轻点任意位置关闭'
+            ? `${slides.length > 1 ? '左右滑动切换 · ' : ''}双指缩放 · 拖动查看 · 轻点关闭`
             : '按钮或滚轮缩放 · 拖动查看 · 点击图片或按 Esc 关闭'
         }}</small>
       </footer>

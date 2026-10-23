@@ -32,7 +32,8 @@ for (const width of [1440, 390]) {
     const gallery = page.locator('.image-gallery').first()
     await gallery.scrollIntoViewIfNeeded()
     const height = await gallery.evaluate((element) => element.getBoundingClientRect().height)
-    await gallery.getByRole('button', { name: '下一张图片' }).click()
+    if (width < 768) await gallery.press('ArrowRight')
+    else await gallery.getByRole('button', { name: '下一张图片' }).click()
     expect(await gallery.evaluate((element) => element.getBoundingClientRect().height)).toBe(height)
     await expect(gallery.locator('.image-gallery-slide[hidden]').first()).toHaveAttribute(
       'inert',
