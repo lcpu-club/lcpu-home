@@ -7,12 +7,6 @@
     "internal": true
   },
   {
-    "title": "xLab 教学云",
-    "description": "面向课程提供统一的基于容器的 Linux 实验节点、课程镜像与教学管理。",
-    "link": "https://xlab.pku.edu.cn/",
-    "image": "/projects/xlab.svg"
-  },
-  {
     "title": "PKUTeX",
     "description": "在线协作LaTeX平台，助力科研创造",
     "image": "/projects/pkutex-light.svg",
@@ -47,12 +41,5 @@
     "description": "从零基础计算机知识到开发实践的开源手册，帮助同学补齐工具与工程能力。",
     "link": "https://missing.lcpu.dev/",
     "image": "/projects/missing.jpg"
-  },
-  {
-    "title": "SigStore",
-    "description": "基于 Ceph 等开源项目开发的分布式存储系统，探索高可用、高性能的云存储服务。",
-    "link": "https://q1.lcpu.dev/",
-    "image": "/projects/hard-drive.svg",
-    "imageDark": "/projects/hard-drive-dark.svg"
   }
 ]

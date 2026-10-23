@@ -17,45 +17,10 @@
     "image": "/projects/infra-seminars.png"
   },
   {
-    "title": "LCPU Getting Started",
-    "description": "计算机入门系列课程，从硬件、软件到高效使用自己的电脑。",
-    "link": "https://missing.lcpu.dev/",
-    "image": "/projects/missing.jpg",
-    "startDate": "2024-11-03T18:40:00+08:00",
-    "endDate": "2024-12-08T20:30:00+08:00"
-  },
-  {
-    "title": "LLM From Scratch",
-    "description": "以 Stanford CS336 为基础，由社团提供算力，动手实现语言模型架构与训练。",
-    "link": "/news/2026-llm-from-scratch/",
-    "startDate": "2026-01-19T00:00:00+08:00",
-    "endDate": "2026-03-20T23:59:59.999+08:00",
-    "image": "/projects/brain-circuit.svg",
-    "imageDark": "/projects/brain-circuit-dark.svg"
-  },
-  {
     "title": "SigHardware",
     "description": "围绕硬件开发、FPGA 等主题开展线下学习与分享，欢迎硬件爱好者交流实践。",
     "link": "/news/2026-fall-welcome-baituan/#8sighardware-学习组",
     "image": "/projects/cpu.svg",
     "imageDark": "/projects/cpu-dark.svg"
-  },
-  {
-    "title": "Install Party",
-    "description": "每学期的迎新与 Linux 安装聚会，骨干现场指导，一起认识开源社区。",
-    "link": "/news/2026-spring-installparty/",
-    "startDate": "2026-03-29T14:00:00+08:00",
-    "endDate": "2026-03-29T17:00:00+08:00",
-    "image": "/projects/terminal.svg",
-    "imageDark": "/projects/terminal-dark.svg"
-  },
-  {
-    "title": "百团大战",
-    "description": "通过现场游戏、技术展示与社团周边认识 LCPU，欢迎新同学加入。",
-    "link": "/news/2026-fall-welcome-baituan/",
-    "startDate": "2026-09-19T10:00:00+08:00",
-    "endDate": "2026-09-20T17:00:00+08:00",
-    "image": "/projects/users.svg",
-    "imageDark": "/projects/users-dark.svg"
   }
 ]
