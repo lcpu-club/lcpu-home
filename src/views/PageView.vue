@@ -210,7 +210,11 @@ function getCurrentPage(pathname: string): { page: PageData | undefined; isIndex
   }
 
   return {
-    page: allPages.find((page) => page.contentUrl === pathname) || undefined,
+    // Static hosts can serve /article/index.html at both /article and /article/.
+    // Match both forms so hydration preserves the prerendered article header.
+    page: allPages.find(
+      (page) => page.contentUrl.replace(/\/$/, '') === pathname.replace(/\/$/, ''),
+    ),
     isIndexPage: false,
   }
 }
