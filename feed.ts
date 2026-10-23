@@ -20,7 +20,7 @@ const postsFeed = new Feed({
   image: 'https://lcpu.dev/favicon.svg',
   favicon: 'https://lcpu.dev/favicon.ico',
   copyright: `© 2003 - ${new Date().getFullYear()} 北京大学学生 Linux 俱乐部`,
-  updated: new Date(pages[0].time),
+  updated: pages.length ? new Date(pages[0].time) : undefined,
   generator: 'ScantPress',
   feedLinks: {
     atom: 'https://lcpu.dev/posts.atom',
@@ -73,7 +73,7 @@ Object.keys(RouteTitleRecord).forEach((routeBase) => {
     image: 'https://lcpu.dev/favicon.svg',
     favicon: 'https://lcpu.dev/favicon.ico',
     copyright: `© 2003 - ${new Date().getFullYear()} 北京大学学生 Linux 俱乐部`,
-    updated: new Date(categoryPages[0].time),
+    updated: categoryPages.length ? new Date(categoryPages[0].time) : undefined,
     generator: 'ScantPress',
     feedLinks: {
       atom: `https://lcpu.dev/${routeBase}/posts.atom`,

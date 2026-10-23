@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 const props = defineProps<{
   src: string
   srcDark?: string
   alt?: string
 }>()
-const srcDarkValue = `url(${props.srcDark || props.src})`
+const srcDarkValue = computed(() => `url(${props.srcDark || props.src})`)
 </script>
 
 <template>

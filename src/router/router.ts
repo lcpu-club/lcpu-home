@@ -1,6 +1,4 @@
-// Adapted from vitepress 0.8.1
-
-import { inject, reactive, type InjectionKey } from 'vue'
+import { inject, onUnmounted, reactive, type InjectionKey } from 'vue'
 
 export interface Route {
   path: string
@@ -10,68 +8,84 @@ export interface Route {
 export interface Router {
   route: Route
   go: (href?: string) => void
+  activate: () => void
+  registerScrollProvider: (provider: () => number | undefined) => () => void
 }
 
 export const RouterSymbol: InjectionKey<Router> = Symbol()
 
-const scrollHistory: Record<string, number> = {}
-let getScrollTop: () => number | undefined
-
-const getDefaultRoute = (): Route => ({
-  path: '/',
-  scrollTop: 0,
-})
-
-export function createRouter(): Router {
-  const route = reactive(getDefaultRoute())
+export function createRouter(isAppRoute: (pathname: string) => boolean = () => false): Router {
+  const route = reactive<Route>({ path: '/', scrollTop: 0 })
+  const scrollHistory = new Map<string, number>()
+  let active = false
+  let scrollProvider: (() => number | undefined) | undefined
   const go = (href?: string) => {
-    if (!href) href = import.meta.env.SSR ? '/' : window.location.href
-    route.path = href
-    route.scrollTop = scrollHistory[href] || 0
+    const next = href ?? (import.meta.env.SSR ? '/' : window.location.href)
+    // Save the departing entry before popstate changes our reactive route.
+    scrollHistory.set(route.path, scrollProvider?.() ?? 0)
+    route.scrollTop = scrollHistory.get(next) ?? 0
+    route.path = next
   }
-  if (!import.meta.env.SSR) initListeners(go)
-  return { route, go }
+  const registerScrollProvider = (provider: () => number | undefined) => {
+    scrollProvider = provider
+    return () => {
+      if (scrollProvider === provider) scrollProvider = undefined
+    }
+  }
+  if (!import.meta.env.SSR) {
+    history.scrollRestoration = 'manual'
+    window.addEventListener(
+      'click',
+      (event) => {
+        if (
+          !active ||
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.metaKey
+        )
+          return
+        const target = event.target
+        if (!(target instanceof Element)) return
+        const link = target.closest('a')
+        if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self'))
+          return
+        const url = new URL(link.href)
+        if (url.origin !== location.origin || !isAppRoute(url.pathname)) return
+        event.preventDefault()
+        if (url.href === location.href) return
+        history.pushState(null, '', url.href)
+        go(url.href)
+      },
+      { capture: true },
+    )
+    window.addEventListener('popstate', () => {
+      if (active) go(location.href)
+    })
+  }
+  const activate = () => {
+    if (import.meta.env.SSR) return
+    active = true
+    const container = document.getElementById('app')
+    if (container) container.dataset.hydrated = 'true'
+    if (route.path !== location.href) go(location.href)
+  }
+  return { route, go, registerScrollProvider, activate }
 }
 
-export function useRouter(provideScrollHeight: () => number | undefined): Router {
-  getScrollTop = provideScrollHeight
+export function useRouter(): Router {
   const router = inject(RouterSymbol)
-  if (!router) {
-    throw new Error('useRouter() is called without provider.')
-  }
+  if (!router) throw new Error('useRouter() is called without provider.')
   return router
 }
 
-export function useRoute(provideScrollHeight: () => number | undefined): Route {
-  return useRouter(provideScrollHeight).route
+export function useRoute(): Route {
+  return useRouter().route
 }
 
-function initListeners(go: (href?: string) => void) {
-  window.addEventListener(
-    'click',
-    (e) => {
-      const link = (e.target as Element).closest('a')
-      if (!link) return
-      const { protocol, hostname, target } = link
-      const currentUrl = window.location
-      if (
-        !e.ctrlKey &&
-        !e.shiftKey &&
-        !e.altKey &&
-        !e.metaKey &&
-        target !== `_blank` &&
-        protocol === currentUrl.protocol &&
-        hostname === currentUrl.hostname
-      ) {
-        e.preventDefault()
-        scrollHistory[currentUrl.href] = getScrollTop?.() ?? 0
-        history.pushState(null, '', link.href)
-        go(link.href)
-      }
-    },
-    { capture: true },
-  )
-  window.addEventListener('popstate', () => {
-    go(location.href)
-  })
+export function useScrollRestoration(provider: () => number | undefined) {
+  const unregister = useRouter().registerScrollProvider(provider)
+  onUnmounted(unregister)
 }

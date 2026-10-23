@@ -50,5 +50,10 @@
       "destination": "https://old.lcpu.dev/s-client/",
       "permanent": true
     }
-  ]
+  ],
+  "framework": null,
+  "installCommand": "bun install --frozen-lockfile",
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist/static",
+  "trailingSlash": true
 }

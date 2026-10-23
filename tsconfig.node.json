@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node22/tsconfig.json",
+  "extends": "@tsconfig/node24/tsconfig.json",
   "include": [
     "vite.config.*",
     "vitest.config.*",
@@ -10,7 +10,10 @@
     "src/data/*.ts",
     "src/site.ts",
     "generator/*.ts",
-    "generator/**/*.ts"
+    "generator/**/*.ts",
+    "sitemap.ts",
+    "feed.ts",
+    "minify.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -18,6 +21,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"]
+    "types": ["node"],
+    "allowImportingTsExtensions": true
   }
 }

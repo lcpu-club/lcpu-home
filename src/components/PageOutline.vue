@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
 import { useTemplateRef, watch } from 'vue'
+import { getHash } from '@/router/paths'
 
 const props = defineProps<{
   pageOutline?: MarkdownItHeader[]
@@ -18,7 +19,7 @@ watch(
       marker.value.style.opacity = '0'
       marker.value.style.top = '0'
     } else {
-      const target = anchors.value.find((anchor) => anchor.href.endsWith(`#${newVal}`))
+      const target = anchors.value.find((anchor) => getHash(anchor.href) === newVal)
       if (target) {
         marker.value.style.opacity = '1'
         marker.value.style.top = `${target.parentElement?.offsetTop}px`

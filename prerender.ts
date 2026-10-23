@@ -7,7 +7,8 @@ import path from 'node:path'
 import url from 'node:url'
 import fg from 'fast-glob'
 import { SiteConfiguration, RouteTitleRecord } from './src/site.js'
-import gm from 'gray-matter'
+import { generatePages } from './generator/pages-generator'
+import { escapeHtml } from './src/metadata'
 import chalk from 'chalk'
 
 console.log(chalk.bgYellow.greenBright('Prerender:'))
@@ -26,14 +27,7 @@ const routesToPrerender = ['/', '/404.html', '/tags/']
 
 routesToPrerender.push(...Object.keys(RouteTitleRecord).map((category) => `/${category}/`))
 routesToPrerender.push(
-  ...fg.sync('./content/**/index.md').map((file) => {
-    const dir = path.dirname(file).split('/')
-    const frontmatter = gm(fs.readFileSync(file, 'utf-8')).data
-    if (frontmatter.slug) {
-      return `/${frontmatter.slug}/`
-    }
-    return `/${dir.slice(2).join('/')}/`
-  }),
+  ...generatePages().map((page) => page.contentUrl),
   ...fg.sync('./content/**/index.vue').map((file) => {
     const dir = path.dirname(file).split('/')
     return `/${dir.slice(2).join('/')}/`
@@ -41,7 +35,7 @@ routesToPrerender.push(
 )
 
 // pre-render each route...
-for (const url of routesToPrerender) {
+for (const url of new Set(routesToPrerender)) {
   const [appHtml, preloadLinks, titlePrefix, meta] = await render(url, manifest)
   let html = template
   if (url === '/') {
@@ -52,9 +46,9 @@ for (const url of routesToPrerender) {
   }
   html = html
     .replace(`<!--preload-links-->`, preloadLinks)
-    .replace(`<!--app-html-->`, appHtml)
-    .replace(`<!--title-prefix-->`, titlePrefix)
-    .replace(`<!--meta-->`, meta)
+    .replace(`<!--app-html-->`, () => appHtml)
+    .replace(`<!--title-prefix-->`, () => escapeHtml(titlePrefix))
+    .replace(`<!--meta-->`, () => meta)
     .replace(`<!--title-suffix-->`, SiteConfiguration.titleSuffix)
 
   const filePath = `dist/static${url.endsWith('/') ? url + 'index.html' : url}`

@@ -25,7 +25,7 @@ const selectedTag = defineModel<string>({
         cursor-pointer
         decoration-none
         transition
-        :href="`/tags/#${tag}`"
+        :href="`/tags/#${encodeURIComponent(tag)}`"
         :class="{
           'bg-blue-100! border-blue-300! text-primary! dark:bg-blue-900! dark:border-blue-700! dark:text-primary-dark!':
             tag == selectedTag,

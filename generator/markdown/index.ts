@@ -1,6 +1,6 @@
-import MarkdownIt from 'markdown-it'
-import Token from 'markdown-it/lib/token.mjs'
-import { SiteConfiguration } from '../../src/site'
+import type { MarkdownIt } from 'markdown-it'
+import type { Token } from 'markdown-it'
+import { SiteConfiguration } from '../../src/site.ts'
 import Shiki from '@shikijs/markdown-it'
 import {
   transformerNotationDiff,
@@ -13,7 +13,8 @@ import MarkdownItContainer from 'markdown-it-container'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { MarkdownSfcBlocks, sfcPlugin } from '@mdit-vue/plugin-sfc'
 import { headersPlugin, MarkdownItHeader } from '@mdit-vue/plugin-headers'
-import ImageProcessor from './image-processor'
+import ImageProcessor from './image-processor.ts'
+import ImageCaptions from './image-captions.ts'
 import anchor from 'markdown-it-anchor'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
 
@@ -22,6 +23,7 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
     .use(ImageProcessor)
     .use(MathJax3)
     .use(anchor, {
+      slugify: headingSlug,
       permalink: anchor.permalink.ariaHidden({
         placement: 'before',
         class: 'header-anchor',
@@ -60,8 +62,9 @@ export async function registerMarkdownPlugins(mdit: MarkdownIt) {
     )
     .use(componentPlugin)
     .use(sfcPlugin)
-    .use(headersPlugin)
+    .use(headersPlugin, { slugify: headingSlug })
     .use(imgLazyload)
+    .use(ImageCaptions)
 }
 
 export function injectHeaderData(headers: MarkdownItHeader[], sfcBlocks: MarkdownSfcBlocks) {
@@ -116,4 +119,8 @@ function createContainer(md: MarkdownIt, klass: string, title: string) {
         : '</div>\n'
     },
   })
+}
+
+function headingSlug(title: string): string {
+  return title.trim().toLowerCase().replace(/\s+/g, '-')
 }

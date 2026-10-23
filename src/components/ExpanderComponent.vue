@@ -22,7 +22,7 @@ function toggleCollapsed() {
   }
 }
 
-let observer: ResizeObserver
+let observer: ResizeObserver | undefined
 
 onMounted(() => {
   if (!contentWrapperRef.value || !contentDesiredSizeWrapperRef.value) return
@@ -40,7 +40,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  observer.disconnect()
+  observer?.disconnect()
 })
 </script>
 
@@ -53,6 +53,7 @@ onUnmounted(() => {
     >
       <slot name="header"></slot>
       <button
+        :aria-expanded="!collapsed"
         title="切换折叠状态"
         @click.stop="toggleCollapsed"
         rounded-unset
@@ -70,7 +71,13 @@ onUnmounted(() => {
       </button>
     </div>
 
-    <div ref="contentWrapperRef" transition-all duration-300>
+    <div
+      ref="contentWrapperRef"
+      :style="collapsed ? { height: '0px' } : undefined"
+      :inert="collapsed"
+      transition-all
+      duration-300
+    >
       <div ref="contentDesiredSizeWrapperRef" box-border p-b-4>
         <slot></slot>
       </div>

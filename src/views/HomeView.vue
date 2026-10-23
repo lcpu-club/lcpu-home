@@ -15,11 +15,11 @@ import GithubMarkWhite from '../assets/github-mark-white.svg?no-inline'
 import BilibiliIcon from '../assets/bilibili.svg?no-inline'
 import BilibiliIconWhite from '../assets/bilibili-white.svg?no-inline'
 import { ChevronRightIcon, EnvelopeIcon } from '@heroicons/vue/24/solid'
-import { useTitle } from '@vueuse/core'
-import { useRoute } from '@/router/router'
-import { onMounted, useSSRContext, useTemplateRef, ref } from 'vue'
+import { useRoute, useRouter, useScrollRestoration } from '@/router/router'
+import { onMounted, onUnmounted, useTemplateRef, ref } from 'vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration, RouteTitleRecord } from '@/site'
+import { usePageMetadata } from '@/metadata'
 import type { PageData } from '@/data/pagedata'
 
 const projects = rawProjectData as Project[]
@@ -45,10 +45,11 @@ Object.keys(RouteTitleRecord).forEach((category) => {
 
 const scrollViewRef = useTemplateRef('scrollViewRef')
 const mobileScrollViewRef = useTemplateRef('mobileScrollViewRef')
-const route = useRoute(() =>
+const route = useRoute()
+const router = useRouter()
+useScrollRestoration(() =>
   Math.max(scrollViewRef.value?.scrollTop ?? 0, mobileScrollViewRef.value?.scrollTop ?? 0),
 )
-useTitle('北京大学学生 Linux 俱乐部')
 
 const colorClasses = {
   red: 'text-red-400 border-red-400',
@@ -57,9 +58,11 @@ const colorClasses = {
 }
 
 const pkuNetwork = ref(true)
-const nowDate = ref(new Date())
+const nowDate = ref<Date>()
+let clock: ReturnType<typeof setInterval> | undefined
 
 onMounted(() => {
+  router.activate()
   scrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   mobileScrollViewRef.value?.scrollTo({ top: route.scrollTop, behavior: 'instant' })
   fetch('https://api.lcpu.dev/generate_204', {
@@ -72,29 +75,35 @@ onMounted(() => {
     })
 
   nowDate.value = new Date()
+  clock = setInterval(() => {
+    nowDate.value = new Date()
+  }, 60_000)
+})
+onUnmounted(() => {
+  if (clock) clearInterval(clock)
 })
 
-if (import.meta.env.SSR) {
-  const ctx = useSSRContext()
-  if (ctx) {
-    if (!ctx.meta) {
-      ctx.meta = {}
-    }
-    ctx.meta.description =
-      '北京大学学生 Linux 俱乐部(Linux Club of Peking University, LCPU)是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。'
-    ctx.meta.keywords = [
-      'lcpu',
-      'linux',
-      'open-source',
-      'pku',
-      '开源',
-      '北京大学',
-      'hpcgame',
-      'geekgame',
-      'clab',
-    ]
-  }
-}
+usePageMetadata(
+  () => ({
+    titlePrefix: '北京大学学生 Linux 俱乐部',
+    meta: {
+      description:
+        '北京大学学生 Linux 俱乐部(Linux Club of Peking University, LCPU)是由学生自发成立的民间组织，以学习研究 Linux 操作系统和其它各种与开源相关的软硬件技术为目的。',
+      keywords: [
+        'lcpu',
+        'linux',
+        'open-source',
+        'pku',
+        '开源',
+        '北京大学',
+        'hpcgame',
+        'geekgame',
+        'clab',
+      ],
+    },
+  }),
+  () => route.path,
+)
 </script>
 
 <template>
@@ -154,7 +163,7 @@ if (import.meta.env.SSR) {
             :key="item.title"
             :item="item"
             :tag="
-              !item.startDate || !item.endDate
+              !nowDate || !item.startDate || !item.endDate
                 ? ''
                 : nowDate < item.startDate
                   ? '未开始'
@@ -163,7 +172,7 @@ if (import.meta.env.SSR) {
                     : '已结束'
             "
             :tagClass="
-              !item.startDate || !item.endDate
+              !nowDate || !item.startDate || !item.endDate
                 ? ''
                 : nowDate < item.startDate
                   ? colorClasses['gray']

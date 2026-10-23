@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from '@/router/router'
 import { computed, defineAsyncComponent } from 'vue'
-const route = useRoute(() => undefined)
+const route = useRoute()
 
 const HomeView = defineAsyncComponent(() => import('@/views/HomeView.vue'))
 const PageView = defineAsyncComponent(() => import('@/views/PageView.vue'))

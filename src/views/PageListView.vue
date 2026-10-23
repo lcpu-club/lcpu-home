@@ -4,18 +4,18 @@ import { useRoute } from '@/router/router'
 import { groupByYearMonth } from '@/utils'
 import allPages from 'virtual:pages.json'
 import { isIndexPage } from '@/utils'
+import { computed } from 'vue'
 
-const route = useRoute(() => undefined)
-const path = route.path
-const pathname = new URL(path, 'http://localhost').pathname
-const urlSlugs = pathname.split('/').filter((slug) => slug)
-let base: string | null = null
-if (isIndexPage(urlSlugs)) base = urlSlugs[0]
-const pages = allPages
-  .filter((page) => page.category === base)
-  .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
-
-const pageGroups = groupByYearMonth(pages)
+const route = useRoute()
+const pageGroups = computed(() => {
+  const slugs = new URL(route.path, 'https://lcpu.dev').pathname.split('/').filter(Boolean)
+  const base = isIndexPage(slugs) ? slugs[0] : null
+  return groupByYearMonth(
+    allPages
+      .filter((page) => page.category === base)
+      .sort((a, b) => Date.parse(b.time) - Date.parse(a.time)),
+  )
+})
 </script>
 
 <template>

@@ -35,7 +35,7 @@ if (import.meta.env.SSR) {
       dark:bg-white
       decoration-none
       class="text-white dark:text-black"
-      href=" /"
+      href="/"
       >Go Home</a
     >
   </div>

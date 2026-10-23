@@ -1,34 +1,23 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 import { Readable } from 'stream'
 import fg from 'fast-glob'
-import matter from 'gray-matter'
 import { dirname } from 'path'
 import fs from 'fs'
-import { RouteTitleRecord } from './src/site.ts'
+import { RouteTitleRecord } from './src/site'
+import { generatePages } from './generator/pages-generator'
 import chalk from 'chalk'
 
 const links = []
 
-const pages = fg
-  .sync(`./content/**/index.md`)
-  .map((entry) => {
-    return { entry, frontmatter: matter.read(entry) }
-  })
-  .map((file) => {
-    const { entry, frontmatter } = file
-    if (frontmatter.data.hidden || frontmatter.data.redirect) return undefined
-    const dir = dirname(entry).split('/')
-    return {
-      url: frontmatter.data.slug
-        ? `/${dir.slice(2, -1).join('/')}/${frontmatter.data.slug}/`
-        : `/${dir.slice(2).join('/')}/`,
-      lastmod: frontmatter.data.time,
-      changefreq: 'monthly',
-      priority: 0.5,
-    }
-  })
-  .filter((page) => page !== undefined)
-  .sort((a, b) => new Date(b.lastmod).getTime() - new Date(a.lastmod).getTime())
+const publishedPages = generatePages()
+const pages = publishedPages
+  .filter((page) => !page.redirect)
+  .map((page) => ({
+    url: page.contentUrl,
+    lastmod: page.time || undefined,
+    changefreq: 'monthly',
+    priority: 0.5,
+  }))
 
 const pagesVue = fg.sync(`./content/**/index.vue`).map((file) => {
   const dir = dirname(file).split('/')
@@ -44,13 +33,11 @@ links.push(...pages, ...pagesVue)
 
 const categories: { [key: string]: Date } = {}
 for (const category of Object.keys(RouteTitleRecord)) {
-  categories[category] = fg
-    .sync(`./content/${category}/**/index.md`)
-    .map((entry) => {
-      return new Date(matter.read(entry).data.time || Date.now())
-    })
-    .filter((page) => page !== undefined)
-    .sort((a, b) => b.getTime() - a.getTime())[0]
+  const times = publishedPages
+    .filter((page) => page.category === category)
+    .map((page) => Date.parse(page.time))
+    .filter(Number.isFinite)
+  categories[category] = new Date(times.length ? Math.max(...times) : Date.now())
 }
 
 for (const category of Object.keys(RouteTitleRecord)) {

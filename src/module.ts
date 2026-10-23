@@ -1,8 +1,8 @@
-// used to fix typescript errors
+import type { Component } from 'vue'
 
 import { type MarkdownItHeader } from '@mdit-vue/plugin-headers'
 
 export interface Module {
-  default: never
+  default: Component
   __headers?: MarkdownItHeader[]
 }

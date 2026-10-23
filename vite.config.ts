@@ -4,12 +4,14 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
-import PagesGenerator from './generator/pages-generator'
-import MarkdownContentGenerator from './generator/content-generator'
+import PagesGenerator from './generator/pages-generator.ts'
+import MarkdownContentGenerator from './generator/content-generator.ts'
+import ImageOptimizer from './generator/image-optimizer.ts'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    ImageOptimizer(),
     MarkdownContentGenerator(),
     vue({
       include: [/\.vue$/, /\.md$/],
@@ -30,7 +32,7 @@ export default defineConfig({
     },
   },
   build: {
-    minify: 'esbuild',
+    minify: true,
     cssMinify: true,
   },
   /*experimental: {

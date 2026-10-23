@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it/index.js'
+import type { MarkdownIt } from 'markdown-it'
 import probe from 'probe-image-size'
 import fs from 'node:fs'
 
@@ -13,9 +13,10 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
     const token = tokens[idx]
     if (!token.attrs) return defaultRender(tokens, idx, options, env, self)
     const srcIndex = token.attrIndex('src')
-    const src = token.attrs[srcIndex][1]
+    if (srcIndex < 0) return defaultRender(tokens, idx, options, env, self)
+    const src = String(token.attrs[srcIndex][1])
 
-    const dimensions = resolveDimensions(src, env.mdRootPath)
+    const dimensions = resolveDimensions(src, String(env?.mdRootPath ?? ''))
 
     if (dimensions) {
       const widthIndex = token.attrIndex('width')
@@ -32,6 +33,9 @@ export default function markdownItImageProcessor(md: MarkdownIt) {
       } else {
         token.attrs.push(['height', dimensions.height])
       }
+    }
+    if (src.startsWith('./') && /\.(?:jpe?g|png|webp)$/i.test(src)) {
+      token.attrs[srcIndex][1] = `${src}?article-image`
     }
     return defaultRender(tokens, idx, options, env, self)
   }

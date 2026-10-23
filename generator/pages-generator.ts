@@ -1,9 +1,9 @@
-import { PluginOption } from 'vite'
+import type { PluginOption } from 'vite'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
-import type { PageData } from '../src/data/pagedata'
-import { dirname, relative } from 'node:path'
-import { RouteTitleRecord } from '../src/site'
+import type { PageData } from '../src/data/pagedata.ts'
+import { dirname, relative, resolve } from 'node:path'
+import { RouteTitleRecord } from '../src/site.ts'
 
 export function generatePages(contentRoot = './content') {
   return fg
@@ -16,16 +16,7 @@ export function generatePages(contentRoot = './content') {
       if (frontmatter.data.hidden) return undefined
       const path = relative(contentRoot, dirname(entry))
       const slugs = path.split('/').filter((slug) => slug)
-      const {
-        time,
-        title,
-        meta,
-        slug = path,
-        tags,
-        summary,
-        redirect,
-        ...data
-      } = frontmatter.data
+      const { time, title, meta, slug = path, tags, summary, redirect, ...data } = frontmatter.data
       if (redirect !== undefined) {
         let url: URL
         try {
@@ -72,23 +63,39 @@ function getSummary(text: string): string {
 export default function pagesGenerator(): PluginOption {
   const virtualModuleId = 'virtual:pages.json'
   const resolvedVirtualModuleId = '\0' + virtualModuleId
+  const modulesId = 'virtual:page-modules'
+  const resolvedModulesId = '\0' + modulesId
 
   return {
     name: 'pages-generator',
     resolveId(id) {
+      if (id === modulesId) return resolvedModulesId
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId
       }
     },
     load(id) {
+      if (id === resolvedModulesId) {
+        const sources = [
+          ...generatePages().map((page) => `./content${page.sourceUrl}`),
+          ...fg.sync('./content/**/index.vue'),
+        ]
+        return `export default {${sources
+          .map((source) => {
+            const key = '../' + source.replace(/^\.\//, '')
+            return `${JSON.stringify(key)}: () => import(${JSON.stringify(resolve(source))})`
+          })
+          .join(',')}}`
+      }
       if (id === resolvedVirtualModuleId) {
         return JSON.stringify(generatePages())
       }
     },
     handleHotUpdate({ server, file }) {
       if (file.includes('content/')) {
-        const thisModule = server.moduleGraph.getModuleById(resolvedVirtualModuleId)
-        if (thisModule) return [thisModule]
+        return [resolvedVirtualModuleId, resolvedModulesId]
+          .map((id) => server.moduleGraph.getModuleById(id))
+          .filter((module) => module !== undefined)
       }
     },
   }

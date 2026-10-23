@@ -3,14 +3,14 @@ import { useRoute } from '@/router/router'
 import TagList from '@/components/TagList.vue'
 import allPages from 'virtual:pages.json'
 import { computed, onMounted, ref } from 'vue'
+import { getHash } from '@/router/paths'
 import PageListEntry from '@/components/PageListEntry.vue'
 import LoadingView from './LoadingView.vue'
 
 const loading = ref(true)
 
-const router = useRoute(() => undefined)
-const url = new URL(router.path, 'https://a.com')
-const currentTag = ref(decodeURIComponent(url.hash.slice(1)) || '')
+const router = useRoute()
+const currentTag = computed(() => getHash(router.path))
 
 const allTags = Array.from(new Set(allPages.flatMap((page) => page.tags || [])))
 const displayingPages = computed(() => {
@@ -30,7 +30,7 @@ onMounted(() => {
 <template>
   <div v-if="loading"><LoadingView /></div>
   <div v-else class="-m-t-2">
-    <TagList :tags="allTags" v-model="currentTag" />
+    <TagList :tags="allTags" :model-value="currentTag" />
     <div v-if="displayingPages.length" flex="~ col" m-t-8>
       <PageListEntry
         v-for="activity in displayingPages"

@@ -1,9 +1,9 @@
-import { defineConfig, presetAttributify, presetUno, transformerDirectives } from 'unocss'
+import { defineConfig, presetAttributify, presetWind3, transformerDirectives } from 'unocss'
 import { SiteConfiguration } from './src/site'
 
 export default defineConfig({
   presets: [
-    presetUno({
+    presetWind3({
       dark: 'media',
     }),
     presetAttributify(),

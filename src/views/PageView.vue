@@ -1,236 +1,212 @@
 <script setup lang="ts">
-import { useRoute } from '@/router/router'
+import { useRoute, useRouter, useScrollRestoration } from '@/router/router'
+import { normalizePath, getHash } from '@/router/paths'
 import {
+  computed,
   inject,
+  nextTick,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
-  useSSRContext,
   useTemplateRef,
   watch,
+  type Component,
 } from 'vue'
 import type { PageData } from '@/data/pagedata'
 import allPages from 'virtual:pages.json'
 import NotFoundView from '@/views/NotFoundView.vue'
+import LoadErrorView from '@/views/LoadErrorView.vue'
 import type { Module } from '@/module'
-import { useTitle } from '@vueuse/core'
 import { dateString, isIndexPage as testIndexPage, throttleAndDebounce } from '@/utils'
 import PageListView from './PageListView.vue'
 import SidebarComponent from '@/components/SidebarComponent.vue'
 import TopbarComponent from '@/components/TopbarComponent.vue'
 import LoadingView from './LoadingView.vue'
-import type { SSRContext } from 'vue/server-renderer'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { SiteConfiguration } from '@/site'
 import type { MarkdownItHeader } from '@mdit-vue/plugin-headers'
 import PageOutline from '@/components/PageOutline.vue'
 import TagsView from './TagsView.vue'
 import TagList from '@/components/TagList.vue'
+import { usePageMetadata } from '@/metadata'
 
-let ssrContext: SSRContext | undefined
-if (import.meta.env.SSR) ssrContext = useSSRContext()
+const pageModules = inject('pageModules') as Record<string, () => Promise<Module>>
+const route = useRoute()
+const router = useRouter()
+useScrollRestoration(() => document.scrollingElement?.scrollTop)
+const pathname = computed(() => normalizePath(route.path))
+const pageCategory = computed(() => getPageCategory(pathname.value))
+const pageInfo = computed(() => getCurrentPage(pathname.value))
+const currentPage = computed(() => pageInfo.value.page)
+const isCurrentIndexPage = computed(() => pageInfo.value.isIndexPage)
+const hasVuePage = computed(() => `../content${pathname.value}/index.vue` in pageModules)
 
-const pageModules = inject('pageModules') as Record<string, () => Promise<unknown>>
-const route = useRoute(() => document.scrollingElement?.scrollTop)
-const pathname = decodeURI(getPathname(route.path))
-const pageCategory = ref(getPageCategory(pathname))
-const { page, isIndexPage } = getCurrentPage(pathname)
-const currentPage = shallowRef(page)
-const isCurrentIndexPage = ref(isIndexPage)
-const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffix}` })
+usePageMetadata(
+  () => ({
+    titlePrefix:
+      currentPage.value?.title ?? (hasVuePage.value ? pageCategory.value : '404 NOT FOUND'),
+    meta: {
+      ...currentPage.value?.meta,
+      description:
+        currentPage.value?.meta?.description ??
+        currentPage.value?.excerpt ??
+        (!hasVuePage.value ? '未找到此页面...' : undefined),
+    },
+    time: currentPage.value?.time ?? '',
+    author: currentPage.value?.data.author ?? '',
+    sourceUrl: currentPage.value?.sourceUrl ?? '',
+    redirectUrl: currentPage.value?.redirect,
+  }),
+  () => route.path,
+)
 
-title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
-if (ssrContext) {
-  ssrContext.titlePrefix = title.value
-  const meta = { ...currentPage.value?.meta }
-  meta.description = (meta.description ?? currentPage.value?.excerpt)?.trim()
-  ssrContext.meta = meta
-  ssrContext.time = currentPage.value?.time ?? ''
-  ssrContext.author = currentPage.value?.data?.author ?? ''
-  ssrContext.sourceUrl = currentPage.value?.sourceUrl ?? ''
-  ssrContext.redirectUrl = currentPage.value?.redirect
-}
 const showTitle = ref(false)
 const documentWrapper = useTemplateRef('document-wrapper')
 const sidebarRef = useTemplateRef('sidebar-ref')
-const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
-const Content = shallowRef(module.default ?? module)
-const pageOutlineData = ref<MarkdownItHeader[]>(module.__headers ?? [])
+const Content = shallowRef<Component>(LoadingView)
+const pageOutlineData = ref<MarkdownItHeader[]>([])
 const highlightedSlug = ref('')
 let headerElements: Element[] = []
+let navigationId = 0
+let mounted = false
+
+function scrollToRoute(path: string) {
+  const anchor = document.getElementById(getHash(path))
+  if (anchor) {
+    window.scrollTo({
+      top: anchor.getBoundingClientRect().top + window.scrollY - 64,
+      behavior: 'instant',
+    })
+  } else {
+    window.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+  }
+  handleScroll()
+}
+
+async function loadPage(path: string) {
+  const id = ++navigationId
+  if (!import.meta.env.SSR && currentPage.value?.redirect) {
+    window.location.replace(currentPage.value.redirect)
+    return
+  }
+  handleScroll.cancel()
+  headerElements = []
+  highlightedSlug.value = ''
+  pageOutlineData.value = []
+  Content.value = LoadingView
+  try {
+    const module = await resolvePageModule(currentPage.value?.sourceUrl || normalizePath(path))
+    if (id !== navigationId) return
+    pageOutlineData.value = module.__headers ?? []
+    Content.value = module.default
+  } catch (error) {
+    if (import.meta.env.SSR) throw error
+    if (id !== navigationId) return
+    console.error('Failed to load article', error)
+    Content.value = LoadErrorView
+  }
+  await nextTick()
+  if (mounted && id === navigationId) scrollToRoute(route.path)
+}
 
 watch(
   () => route.path,
-  async (newVal, oldVal) => {
-    const pathname = decodeURI(getPathname(newVal))
-    const oldPathname = getPathname(oldVal)
-    if (pathname === oldPathname) {
-      const anchor = document.getElementById(getHash(newVal).substring(1))
-      if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
+  async (newPath, oldPath) => {
+    if (normalizePath(newPath) === normalizePath(oldPath)) {
+      await nextTick()
+      if (mounted && Content.value !== LoadingView) scrollToRoute(newPath)
       return
     }
-    const { page, isIndexPage } = getCurrentPage(pathname)
-    currentPage.value = page
-    if (page?.redirect) {
-      window.location.replace(page.redirect)
-      return
-    }
-    isCurrentIndexPage.value = isIndexPage
-    title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
-    Content.value = LoadingView as never
-    const module = await resolvePageModule(currentPage.value?.sourceUrl || pathname)
-    pageOutlineData.value = module.__headers ?? []
-    Content.value = module.default ?? module
-    const anchor = document.getElementById(getHash(newVal).substring(1))
-    if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
-    else window.scrollTo({ top: route.scrollTop, behavior: 'instant' })
+    await loadPage(newPath)
   },
 )
 
 onMounted(() => {
-  if (currentPage.value?.redirect) {
-    window.location.replace(currentPage.value.redirect)
-    return
-  }
-  const anchor = document.getElementById(getHash(route.path).substring(1))
-  if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
-  else window.scrollTo({ top: route.scrollTop, behavior: 'instant' })
-  document.addEventListener('scroll', handleScroll)
+  router.activate()
+  mounted = true
+  if (currentPage.value?.redirect) return
+  scrollToRoute(route.path)
+  document.addEventListener('scroll', handleScroll, { passive: true })
 })
-
 onUnmounted(() => {
+  mounted = false
+  ++navigationId
+  handleScroll.cancel()
   document.removeEventListener('scroll', handleScroll)
 })
 
-async function resolvePageModule(sourceOrPathname: string): Promise<Module | never> {
-  const urlSlugs = sourceOrPathname.split('/').filter((slug) => slug)
-  const indexPage = testIndexPage(urlSlugs)
-  if (indexPage) {
-    return PageListView as never
+async function resolvePageModule(sourceOrPathname: string): Promise<Module> {
+  const path = normalizePath(sourceOrPathname)
+  const slugs = path.split('/').filter(Boolean)
+  if (testIndexPage(slugs)) return { default: PageListView }
+  if (path === '/tags') return { default: TagsView }
+  const candidates = path.endsWith('.md')
+    ? [`../content${path}`]
+    : [`../content${path}/index.md`, `../content${path}/index.vue`]
+  for (const candidate of candidates) {
+    if (candidate in pageModules) return pageModules[candidate]()
   }
-  if (urlSlugs.length > 0 && urlSlugs[0] === 'tags') {
-    return TagsView as never
-  }
-  if (sourceOrPathname.endsWith('/')) sourceOrPathname = sourceOrPathname.slice(0, -1)
-  const modulePathCandidates = sourceOrPathname.endsWith('.md')
-    ? ['../content' + sourceOrPathname]
-    : [
-        '../content' + sourceOrPathname + '.md',
-        '../content' + sourceOrPathname + '/index.md',
-        '../content' + sourceOrPathname + '.vue',
-        '../content' + sourceOrPathname + '/index.vue',
-      ]
-  for (const modulePath of modulePathCandidates) {
-    if (modulePath in pageModules) {
-      const module = await (pageModules[modulePath]() as Promise<Module> | Module)
-      return module
-    }
-  }
-  return NotFoundView as never
+  return { default: NotFoundView }
 }
 
 const handleScroll = throttleAndDebounce(() => {
-  const scrollTop = document.scrollingElement?.scrollTop
-  if (scrollTop == undefined) return
-  if (scrollTop > 60) {
-    showTitle.value = true
-  } else {
-    showTitle.value = false
+  const scrollTop = document.scrollingElement?.scrollTop ?? 0
+  showTitle.value = scrollTop > 60
+  if (!pageOutlineData.value.length || !documentWrapper.value) return
+  if (!headerElements.length) {
+    const slugs = new Set(pageOutlineData.value.map((header) => header.slug))
+    headerElements = [...documentWrapper.value.querySelectorAll('h1, h2, h3, h4, h5, h6')].filter(
+      (element) => slugs.has(element.id),
+    )
   }
-  if (!pageOutlineData.value.length) return
-  if (!documentWrapper.value) return
-  if (!validateHeaderElements()) {
-    headerElements = [
-      ...(documentWrapper.value.querySelectorAll('h1, h2, h3, h4, h5, h6') ?? []),
-    ].filter((x) => pageOutlineData.value.some((y) => y.slug == x.id))
+  let active = ''
+  for (const element of headerElements) {
+    if (element.getBoundingClientRect().top < 80) active = element.id
   }
-  const elements = headerElements
-    .map((x) => {
-      return {
-        slug: x.id,
-        top: x.getBoundingClientRect().top,
-      }
-    })
-    .filter((x) => x.top < 80)
-    .sort((a, b) => b.top - a.top)
-  highlightedSlug.value = elements[0]?.slug ?? ''
-  // if scrolled to bottom, highlight the last item
-  if (Math.abs(scrollTop + window.innerHeight - documentWrapper.value.clientHeight) < 1) {
-    highlightedSlug.value = pageOutlineData.value.slice(-1)[0].slug
+  if (scrollTop + window.innerHeight >= (document.scrollingElement?.scrollHeight ?? Infinity) - 2) {
+    active = pageOutlineData.value.at(-1)?.slug ?? active
   }
+  highlightedSlug.value = active
 }, 100)
 
-function getPathname(path: string) {
-  return new URL(path, 'http://a.com').pathname
-}
-
-function getHash(path: string) {
-  return new URL(path, 'http://a.com').hash
-}
-
-function getCurrentPage(pathname: string): { page: PageData | undefined; isIndexPage: boolean } {
-  const urlSlugs = pathname.split('/').filter((slug) => slug)
-  const indexPage = testIndexPage(urlSlugs)
-  if (indexPage) {
-    const pages =
-      allPages
-        .filter((page) => page.category === urlSlugs[0])
-        .sort((a, b) => Date.parse(b.time) - Date.parse(a.time)) ?? []
-    const first = pages[0]
-    const last = pages[pages.length - 1]
+function getCurrentPage(path: string): { page: PageData | undefined; isIndexPage: boolean } {
+  const slugs = path.split('/').filter(Boolean)
+  if (testIndexPage(slugs)) {
+    const pages = allPages
+      .filter((page) => page.category === slugs[0])
+      .sort((a, b) => Date.parse(b.time) - Date.parse(a.time))
     return {
       page: {
-        contentUrl: '',
-        title: SiteConfiguration.getRouteCategoryTitle(urlSlugs[0]),
-        time:
-          pages.length == 0
-            ? ''
-            : pages.length > 1
-              ? `${dateString(last.time)} - ${dateString(first.time)}`
-              : dateString(first.time),
+        contentUrl: `/${slugs[0]}/`,
+        title: SiteConfiguration.getRouteCategoryTitle(slugs[0]),
+        time: !pages.length
+          ? ''
+          : pages.length > 1
+            ? `${dateString(pages.at(-1)!.time)} - ${dateString(pages[0].time)}`
+            : dateString(pages[0].time),
         data: {},
         sourceUrl: '',
       },
       isIndexPage: true,
     }
   }
-
-  if (urlSlugs[0] === 'tags') {
+  if (path === '/tags')
     return {
-      page: {
-        title: '标签',
-        contentUrl: '/tags/',
-        time: '',
-        data: {},
-        sourceUrl: '',
-      },
+      page: { title: '标签', contentUrl: '/tags/', time: '', data: {}, sourceUrl: '' },
       isIndexPage: true,
     }
-  }
-
   return {
-    // Static hosts can serve /article/index.html at both /article and /article/.
-    // Match both forms so hydration preserves the prerendered article header.
-    page: allPages.find(
-      (page) => page.contentUrl.replace(/\/$/, '') === pathname.replace(/\/$/, ''),
-    ),
+    page: allPages.find((page) => normalizePath(page.contentUrl) === path),
     isIndexPage: false,
   }
 }
 
-function getPageCategory(pathname: string): string {
-  const pageSegs = pathname.split('/')
-  return SiteConfiguration.getRouteCategoryTitle(pageSegs[1]) ?? pageSegs[1]
+function getPageCategory(path: string): string {
+  return SiteConfiguration.getRouteCategoryTitle(path.split('/')[1]) ?? 'LCPU'
 }
 
-function validateHeaderElements() {
-  if (headerElements.length !== pageOutlineData.value.length) return false
-  for (let i = 0; i < headerElements.length; i++) {
-    if (headerElements[i].id !== pageOutlineData.value[i].slug) return false
-  }
-  return true
-}
+await loadPage(route.path)
 </script>
 
 <template>
@@ -255,9 +231,7 @@ function validateHeaderElements() {
           </div>
           <TagList :tags="currentPage.tags" v-if="currentPage.tags" m-t-4 />
         </div>
-        <Transition mode="out-in">
-          <component v-on:mounted="console.log(1)" :is="Content" max-w-800px m-x-auto />
-        </Transition>
+        <component :is="Content" max-w-800px m-x-auto />
         <FooterComponent p-y-12 max-w-800px m-x-auto />
       </div>
     </div>
@@ -270,15 +244,3 @@ function validateHeaderElements() {
     />
   </div>
 </template>
-
-<style lang="css" scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>

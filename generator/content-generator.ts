@@ -1,7 +1,7 @@
 import { PluginOption } from 'vite'
 import matter from 'gray-matter'
 import * as mdit from 'markdown-it'
-import { injectHeaderData, registerMarkdownPlugins } from './markdown'
+import { injectHeaderData, registerMarkdownPlugins } from './markdown/index.ts'
 import { dirname } from 'path'
 import { MarkdownSfcBlocks } from '@mdit-vue/plugin-sfc'
 import { MarkdownItHeader } from '@mdit-vue/plugin-headers'
@@ -12,7 +12,7 @@ const md = mdit.default({
   typographer: true,
 })
 
-registerMarkdownPlugins(md)
+const markdownReady = registerMarkdownPlugins(md)
 
 const preReplaceRe = /(<pre(?:(?!v-pre)[\s\S])*?)>/gm
 
@@ -28,8 +28,9 @@ export default function markdownContentGenerator(): PluginOption {
         return resolvedVirtualModuleId
       }
     },
-    transform(code, id) {
+    async transform(code, id) {
       if (id.endsWith('.md')) {
+        await markdownReady
         const content = matter(code, { excerpt: true }).content
         const env: {
           mdRootPath: string
@@ -42,7 +43,7 @@ export default function markdownContentGenerator(): PluginOption {
         templateContent = rendered.replace(preReplaceRe, '$1 v-pre>')
         const headers = env.headers || []
         injectHeaderData(headers, sfcBlocks)
-        return `<template><div class="md-content">${templateContent}</div></template>${sfcBlocks.scriptSetup?.content}${sfcBlocks.script?.content || ''}${sfcBlocks.styles.map((x) => x.content) || ''}${sfcBlocks.customBlocks.map((x) => x.content).join('')}`
+        return `<template><div class="md-content">${templateContent}</div></template>${sfcBlocks.scriptSetup?.content || ''}${sfcBlocks.script?.content || ''}${sfcBlocks.styles.map((x) => x.content).join('')}${sfcBlocks.customBlocks.map((x) => x.content).join('')}`
       }
     },
     handleHotUpdate({ server, file }) {

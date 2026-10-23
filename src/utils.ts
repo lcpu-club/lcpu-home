@@ -7,7 +7,7 @@ export function isIndexPage(slugs: string[]): boolean {
 export function dateString(rawDate: string | undefined): string {
   if (rawDate == undefined) return ''
   const date = new Date(rawDate)
-  const year = date.getFullYear()
+  const year = date.getUTCFullYear()
   const month = date.getUTCMonth() + 1
   const day = date.getUTCDate()
   return `${year} 年 ${month} 月 ${day} 日`
@@ -24,8 +24,8 @@ export function groupByYearMonth<T extends { time: string }>(items: T[]) {
       item,
     ) => {
       const date = new Date(item.time)
-      const year = date.getFullYear()
-      const month = date.getMonth() + 1
+      const year = date.getUTCFullYear()
+      const month = date.getUTCMonth() + 1
       if (
         acc.length === 0 ||
         acc[acc.length - 1].year !== year ||
@@ -45,19 +45,24 @@ export function groupByYearMonth<T extends { time: string }>(items: T[]) {
   )
 }
 
-export function throttleAndDebounce(
-  fn: (...args: unknown[]) => void,
-  delay: number,
-): (...args: unknown[]) => void {
-  let timeoutId: NodeJS.Timeout
-  let called = false
-
-  return (...args: unknown[]) => {
-    if (timeoutId) clearTimeout(timeoutId)
-    if (!called) {
-      fn(...args)
-      called = true
-      setTimeout(() => (called = false), delay)
-    } else timeoutId = setTimeout(fn, delay)
+export function throttleAndDebounce(fn: () => void, delay: number) {
+  let timeout: ReturnType<typeof setTimeout> | undefined
+  let lastCall = -Infinity
+  const wrapped = () => {
+    if (timeout) clearTimeout(timeout)
+    const remaining = delay - (Date.now() - lastCall)
+    if (remaining <= 0) {
+      lastCall = Date.now()
+      fn()
+    } else {
+      timeout = setTimeout(() => {
+        lastCall = Date.now()
+        fn()
+      }, remaining)
+    }
   }
+  wrapped.cancel = () => {
+    if (timeout) clearTimeout(timeout)
+  }
+  return wrapped
 }
