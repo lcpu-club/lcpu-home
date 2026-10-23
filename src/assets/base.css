@@ -134,7 +134,7 @@ li {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  --at-apply: text-gray-500 dark:text-truegray-400;
+  --at-apply: text-gray-500 dark: text-truegray-400;
 }
 
 .md-content .image-gallery {
@@ -143,6 +143,10 @@ li {
 }
 
 .image-gallery-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: rgb(127 127 127 / 8%);
   height: min(65vh, 32rem);
 }
 
@@ -158,23 +162,78 @@ li {
   object-fit: contain;
 }
 
+/* Controls stay on the image, with full-size touch targets on every device. */
 .image-gallery-controls {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  pointer-events: none;
 }
 
 .image-gallery-controls button {
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  border: 1px solid currentColor;
-  border-radius: 0.5rem;
-  background: transparent;
-  color: inherit;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 50%);
+  color: white;
   cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+}
+
+.image-gallery-controls button:hover {
+  background: rgb(0 0 0 / 75%);
+}
+
+.image-gallery-controls svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.image-gallery-controls > span,
+.image-gallery-badge,
+.image-gallery-hint {
+  position: absolute;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 60%);
+  color: white;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+.image-gallery-controls > span {
+  right: 0.75rem;
+  bottom: 0.75rem;
+}
+.image-gallery-badge {
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.image-gallery-badge svg {
+  width: 1rem;
+  height: 1rem;
+}
+.image-gallery-hint {
+  display: none;
+  bottom: 0.75rem;
+  left: 0.75rem;
+}
+
+@media (pointer: coarse) {
+  .image-gallery-hint {
+    display: block;
+  }
 }
 
 .image-gallery:focus-visible,

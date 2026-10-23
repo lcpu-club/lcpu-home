@@ -55,6 +55,26 @@ test('gallery hydrates with one caption and navigates by button and keyboard', a
   await nextTick()
   expect(visibleImage()).toBe('3.jpg')
   expect(container.querySelector('[aria-live]')?.textContent).toBe('3 / 3')
+  const viewport = container.querySelector('.image-gallery-viewport')!
+  const swipe = async (dx: number, dy: number) => {
+    const start = new dom.window.Event('touchstart', { bubbles: true })
+    Object.defineProperty(start, 'touches', { value: [{ clientX: 200, clientY: 200 }] })
+    viewport.dispatchEvent(start)
+    const end = new dom.window.Event('touchend', { bubbles: true })
+    Object.defineProperties(end, {
+      touches: { value: [] },
+      changedTouches: { value: [{ clientX: 200 + dx, clientY: 200 + dy }] },
+    })
+    viewport.dispatchEvent(end)
+    await nextTick()
+  }
+  await swipe(-100, 10)
+  expect(visibleImage()).toBe('1.jpg')
+  await swipe(100, 10)
+  expect(visibleImage()).toBe('3.jpg')
+  await swipe(-20, 100)
+  expect(visibleImage()).toBe('3.jpg')
+  expect(container.querySelector('.image-gallery-badge')?.textContent).toBe('图片集')
   expect(warnings).toEqual([])
   app.unmount()
   dom.window.close()
