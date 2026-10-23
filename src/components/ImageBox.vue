@@ -23,6 +23,7 @@ const current = computed(() => slides.value[index.value])
 const scale = ref(1)
 const position = ref({ x: 0, y: 0 })
 const dragging = ref(false)
+const touchOnly = ref(false)
 let origin: HTMLElement | undefined
 let overflow = ''
 let padding = ''
@@ -35,7 +36,6 @@ const enhanced = new Map<
 const pointers = new Map<number, { x: number; y: number }>()
 let gesture: { x: number; y: number; distance: number } | undefined
 let moved = false
-let backgroundPointer = false
 
 function reset() {
   scale.value = 1
@@ -176,10 +176,10 @@ function pointerDown(event: PointerEvent) {
   if (event.button !== 0) return
   if (!pointers.size) {
     moved = false
-    backgroundPointer = event.target === event.currentTarget
   }
   stage.value!.setPointerCapture(event.pointerId)
   pointers.set(event.pointerId, point(event))
+  if (pointers.size > 1) moved = true
   gesture = sample()
   dragging.value = true
 }
@@ -200,10 +200,14 @@ function pointerUp(event: PointerEvent) {
   gesture = sample()
   dragging.value = pointers.size > 0
 }
-function stageClick() {
-  if (!moved && backgroundPointer) close()
+function dialogClick(event: MouseEvent) {
+  if (event.target instanceof Element && event.target.closest('button')) return
+  // Pointer capture retargets clicks after dragging or pinching to the stage.
+  if (moved && event.target instanceof Node && stage.value?.contains(event.target)) return
+  close()
 }
 function wheel(event: WheelEvent) {
+  if (touchOnly.value) return
   zoom(scale.value * Math.exp(-event.deltaY * 0.002), point(event))
 }
 function dialogKey(event: KeyboardEvent) {
@@ -211,13 +215,14 @@ function dialogKey(event: KeyboardEvent) {
   if (['ArrowLeft', 'ArrowRight'].includes(event.key) && slides.value.length > 1) {
     event.preventDefault()
     move(event.key === 'ArrowLeft' ? -1 : 1)
-  } else if (['+', '=', '-', '0'].includes(event.key)) {
+  } else if (!touchOnly.value && ['+', '=', '-', '0'].includes(event.key)) {
     event.preventDefault()
     zoom(event.key === '0' ? 1 : scale.value + (event.key === '-' ? -0.5 : 0.5))
   }
 }
 watch(() => route.path, close)
 onMounted(() => {
+  touchOnly.value = window.matchMedia('(hover: none) and (pointer: coarse)').matches
   document.addEventListener('click', click)
   document.addEventListener('keydown', key)
   document.addEventListener('pointerdown', recordPointer, { passive: true })
@@ -262,17 +267,14 @@ onUnmounted(() => {
     "
     @cancel.prevent="close"
     @keydown="dialogKey"
-    @click="
-      (event) => {
-        if (event.target === event.currentTarget) close()
-      }
-    "
+    @click="dialogClick"
   >
     <template v-if="current">
       <header class="imagebox-toolbar">
         <span aria-live="polite" aria-atomic="true">{{ index + 1 }} / {{ slides.length }}</span>
         <div>
           <button
+            v-if="!touchOnly"
             type="button"
             aria-label="缩小图片"
             :disabled="scale <= 1"
@@ -280,10 +282,14 @@ onUnmounted(() => {
           >
             <MinusIcon />
           </button>
-          <button type="button" aria-label="重置缩放" @click="reset">
+          <span v-if="touchOnly" class="imagebox-scale" role="status" aria-label="缩放比例">
+            {{ Math.round(scale * 100) }}%
+          </span>
+          <button v-else type="button" aria-label="重置缩放" @click="reset">
             {{ Math.round(scale * 100) }}%
           </button>
           <button
+            v-if="!touchOnly"
             type="button"
             aria-label="放大图片"
             :disabled="scale >= 5"
@@ -306,8 +312,6 @@ onUnmounted(() => {
         @pointerup="pointerUp"
         @pointercancel="pointerUp"
         @lostpointercapture="pointerUp"
-        @click="stageClick"
-        @dblclick.prevent="zoom(scale === 1 ? 2 : 1)"
       >
         <img
           :src="current.src"
@@ -317,7 +321,7 @@ onUnmounted(() => {
         />
       </div>
       <button
-        v-if="slides.length > 1"
+        v-if="slides.length > 1 && !touchOnly"
         type="button"
         class="imagebox-prev"
         aria-label="上一张图片"
@@ -326,7 +330,7 @@ onUnmounted(() => {
         <ChevronLeftIcon />
       </button>
       <button
-        v-if="slides.length > 1"
+        v-if="slides.length > 1 && !touchOnly"
         type="button"
         class="imagebox-next"
         aria-label="下一张图片"
@@ -336,7 +340,11 @@ onUnmounted(() => {
       </button>
       <footer class="imagebox-caption">
         <p v-if="current.caption">{{ current.caption }}</p>
-        <small>滚轮或双指缩放 · 拖动查看 · Esc 关闭</small>
+        <small>{{
+          touchOnly
+            ? '双指缩放 · 拖动查看 · 轻点任意位置关闭'
+            : '按钮或滚轮缩放 · 拖动查看 · 点击图片或按 Esc 关闭'
+        }}</small>
       </footer>
     </template>
   </dialog>
@@ -381,6 +389,10 @@ onUnmounted(() => {
     max(0.75rem, env(safe-area-inset-left));
   gap: 0.5rem;
 }
+.imagebox-scale {
+  align-self: center;
+  padding-inline: 0.5rem;
+}
 .imagebox-toolbar > div {
   display: flex;
   gap: 0.25rem;
@@ -421,7 +433,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   touch-action: none;
-  cursor: grab;
+  cursor: zoom-out;
 }
 .imagebox-stage.is-dragging {
   cursor: grabbing;
