@@ -108,7 +108,9 @@ defineExpose({ toggleSidebar })
               <a
                 v-for="page in pageGroup.items"
                 @click="toggleSidebar()"
-                :href="page.contentUrl"
+                :href="page.redirect ?? page.contentUrl"
+                :target="page.redirect ? '_blank' : undefined"
+                :rel="page.redirect ? 'noopener noreferrer' : undefined"
                 text-wrap
                 :key="page.title"
                 class="text-gray-500! dark:text-truegray-400! hover:text-gray-800! dark:hover:text-white! decoration-none"

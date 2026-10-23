@@ -36,7 +36,7 @@ pages.forEach((page) => {
   postsFeed.addItem({
     title: page.title,
     id: `https://lcpu.dev${page.contentUrl}`,
-    link: `https://lcpu.dev${page.contentUrl}`,
+    link: page.redirect ?? `https://lcpu.dev${page.contentUrl}`,
     description: page.meta?.description,
     content: page.excerpt,
     author: page.data?.author
@@ -88,7 +88,7 @@ Object.keys(RouteTitleRecord).forEach((routeBase) => {
     categoryFeed.addItem({
       title: page.title,
       id: `https://lcpu.dev${page.contentUrl}`,
-      link: `https://lcpu.dev${page.contentUrl}`,
+      link: page.redirect ?? `https://lcpu.dev${page.contentUrl}`,
       description: page.meta?.description,
       content: page.excerpt,
       author: page.data?.author

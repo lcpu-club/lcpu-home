@@ -2,45 +2,73 @@ import { PluginOption } from 'vite'
 import fg from 'fast-glob'
 import matter from 'gray-matter'
 import type { PageData } from '../src/data/pagedata'
-import { dirname } from 'node:path'
+import { dirname, relative } from 'node:path'
 import { RouteTitleRecord } from '../src/site'
 
-export function generatePages() {
+export function generatePages(contentRoot = './content') {
   return fg
-    .sync(`./content/**/index.md`)
+    .sync(`${contentRoot}/**/index.md`)
     .map((entry) => {
       return { entry, frontmatter: matter.read(entry, { excerpt: true }) }
     })
     .map((file): PageData | undefined => {
       const { entry, frontmatter } = file
       if (frontmatter.data.hidden) return undefined
-      const path = dirname(entry).slice(10)
+      const path = relative(contentRoot, dirname(entry))
       const slugs = path.split('/').filter((slug) => slug)
-      const data = frontmatter.data
-      const time = data.time
-      const title = data.title
-      const meta = data.meta
-      const slug = data.slug || path
-      const tags = data.tags
+      const {
+        time,
+        title,
+        meta,
+        slug = path,
+        tags,
+        summary,
+        redirect,
+        source,
+        ...data
+      } = frontmatter.data
+      if (redirect !== undefined) {
+        let url: URL
+        try {
+          url = new URL(redirect)
+        } catch {
+          throw new Error(`Invalid redirect URL in ${entry}`)
+        }
+        if (typeof redirect !== 'string' || !['http:', 'https:'].includes(url.protocol)) {
+          throw new Error(`Redirect must be an absolute HTTP(S) URL in ${entry}`)
+        }
+      }
       const category = (slugs[0] in RouteTitleRecord && slugs[0]) || undefined
-      delete data.time
-      delete data.title
-      delete data.meta
-      delete data.slug
-      delete data.tags
       return {
         title,
         time,
         data,
         meta,
         category,
-        excerpt: frontmatter.excerpt,
+        excerpt: getSummary(
+          summary ?? meta?.description ?? (frontmatter.excerpt || frontmatter.content),
+        ),
+        redirect,
+        originalUrl: source,
         contentUrl: `/${slug}/`,
         sourceUrl: `/${path}/index.md`,
         tags,
       }
     })
     .filter((page) => page !== undefined)
+}
+
+function getSummary(text: string): string {
+  const plainText = text
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]*>/g, '')
+    .replace(/(^|\n)\s*[>#]+\s*/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  const characters = Array.from(plainText)
+  return characters.length > 120 ? characters.slice(0, 119).join('') + '…' : plainText
 }
 
 export default function pagesGenerator(): PluginOption {

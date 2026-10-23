@@ -16,7 +16,7 @@ const pages = fg
   })
   .map((file) => {
     const { entry, frontmatter } = file
-    if (frontmatter.data.hidden) return undefined
+    if (frontmatter.data.hidden || frontmatter.data.redirect) return undefined
     const dir = dirname(entry).split('/')
     return {
       url: frontmatter.data.slug
@@ -47,10 +47,10 @@ for (const category of Object.keys(RouteTitleRecord)) {
   categories[category] = fg
     .sync(`./content/${category}/**/index.md`)
     .map((entry) => {
-      return matter.read(entry).data.time || new Date()
+      return new Date(matter.read(entry).data.time || Date.now())
     })
     .filter((page) => page !== undefined)
-    .sort((a, b) => Date.parse(b) - Date.parse(a))[0]
+    .sort((a, b) => b.getTime() - a.getTime())[0]
 }
 
 for (const category of Object.keys(RouteTitleRecord)) {

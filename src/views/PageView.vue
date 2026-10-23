@@ -43,12 +43,13 @@ const title = useTitle('', { titleTemplate: `%s | ${SiteConfiguration.titleSuffi
 title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
 if (ssrContext) {
   ssrContext.titlePrefix = title.value
-  const meta: { [key: string]: string } = currentPage.value?.meta ?? {}
+  const meta = { ...currentPage.value?.meta }
   meta.description = (meta.description ?? currentPage.value?.excerpt)?.trim()
   ssrContext.meta = meta
   ssrContext.time = currentPage.value?.time ?? ''
   ssrContext.author = currentPage.value?.data?.author ?? ''
   ssrContext.sourceUrl = currentPage.value?.sourceUrl ?? ''
+  ssrContext.redirectUrl = currentPage.value?.redirect
 }
 const showTitle = ref(false)
 const documentWrapper = useTemplateRef('document-wrapper')
@@ -71,6 +72,10 @@ watch(
     }
     const { page, isIndexPage } = getCurrentPage(pathname)
     currentPage.value = page
+    if (page?.redirect) {
+      window.location.replace(page.redirect)
+      return
+    }
     isCurrentIndexPage.value = isIndexPage
     title.value = currentPage.value?.title ? currentPage.value.title : pageCategory.value
     Content.value = LoadingView as never
@@ -84,6 +89,10 @@ watch(
 )
 
 onMounted(() => {
+  if (currentPage.value?.redirect) {
+    window.location.replace(currentPage.value.redirect)
+    return
+  }
   const anchor = document.getElementById(getHash(route.path).substring(1))
   if (anchor) window.scrollTo({ top: anchor.offsetTop - 40, behavior: 'smooth' })
   else window.scrollTo({ top: route.scrollTop, behavior: 'instant' })

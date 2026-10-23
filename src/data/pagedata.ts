@@ -5,7 +5,15 @@ export interface PageData {
   category?: string
   contentUrl: string
   sourceUrl: string
-  meta?: { [key: string]: string }
+  meta?: {
+    description?: string
+    keywords?: string[]
+    image?: string
+    video?: string
+    generator?: string
+  }
+  redirect?: string
+  originalUrl?: string
   data: { [key: string]: unknown }
   tags?: string[]
 }

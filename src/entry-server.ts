@@ -78,38 +78,44 @@ function renderMeta(ctx: SSRContext, url: string): string {
   const sourceUrl = ctx.sourceUrl
 
   const results: string[] = []
+  const canonicalUrl = ctx.redirectUrl ?? `https://lcpu.dev${url}`
+  if (ctx.redirectUrl) {
+    results.push(`<meta http-equiv="refresh" content="0;url=${escapeHtml(ctx.redirectUrl)}">`)
+  }
 
   results.push(
-    `<meta name="title" content="${title}">`,
-    `<meta property="og:title" content="${title}">`,
-    `<meta name="twitter:title" content="${title}">`,
+    `<meta name="title" content="${escapeHtml(title)}">`,
+    `<meta property="og:title" content="${escapeHtml(title)}">`,
+    `<meta name="twitter:title" content="${escapeHtml(title)}">`,
   )
 
   if (author) {
-    results.push(`<meta name="author" content="${author}">`)
+    results.push(`<meta name="author" content="${escapeHtml(author)}">`)
   } else {
     results.push(`<meta name="author" content="北京大学学生 Linux 俱乐部">`)
   }
 
   results.push(
-    `<link rel="canonical" href="https://lcpu.dev${url}">`,
-    `<meta property="og:url" content="https://lcpu.dev${url}">`,
+    `<link rel="canonical" href="${escapeHtml(canonicalUrl)}">`,
+    `<meta property="og:url" content="${escapeHtml(canonicalUrl)}">`,
   )
 
   if (meta['description']) {
     results.push(
-      `<meta property="og:description" content="${meta['description']}">`,
-      `<meta name="twitter:description" content="${meta['description']}">`,
-      `<meta name="${'description'}" content="${meta['description']}">`,
+      `<meta property="og:description" content="${escapeHtml(meta['description'])}">`,
+      `<meta name="twitter:description" content="${escapeHtml(meta['description'])}">`,
+      `<meta name="${'description'}" content="${escapeHtml(meta['description'])}">`,
     )
   }
   if (meta['keywords']) {
-    results.push(`<meta name="keywords" content="${(meta['keywords'] as string[]).join(',')}">`)
+    results.push(
+      `<meta name="keywords" content="${escapeHtml((meta['keywords'] as string[]).join(','))}">`,
+    )
   }
   if (meta['image']) {
     results.push(
-      `<meta name="twitter:image" content="${meta['image']}">`,
-      `<meta property="og:image" content="${meta['image']}">`,
+      `<meta name="twitter:image" content="${escapeHtml(meta['image'])}">`,
+      `<meta property="og:image" content="${escapeHtml(meta['image'])}">`,
     )
   } else {
     results.push(
@@ -118,7 +124,7 @@ function renderMeta(ctx: SSRContext, url: string): string {
     )
   }
   if (meta['video']) {
-    results.push(`<meta property="og:video" content="${meta['video']}">`)
+    results.push(`<meta property="og:video" content="${escapeHtml(meta['video'])}">`)
   }
 
   const slugs = url.substring(1).split('/')
@@ -226,4 +232,10 @@ function renderMeta(ctx: SSRContext, url: string): string {
     )
   }
   return results.join('\n')
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]!
+  })
 }
