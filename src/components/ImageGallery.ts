@@ -58,7 +58,12 @@ export default defineComponent({
               images.map((name, i) =>
                 h(
                   'div',
-                  { key: name, hidden: i !== index, class: 'image-gallery-slide' },
+                  {
+                    key: name,
+                    hidden: i !== index,
+                    inert: i !== index,
+                    class: 'image-gallery-slide',
+                  },
                   slots[name]?.(),
                 ),
               ),
